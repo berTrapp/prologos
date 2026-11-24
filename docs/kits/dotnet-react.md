@@ -704,7 +704,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
         "en": "First test passing",
         "es": "Primera prueba pasando"
       },
-      "command": "dotnet new xunit -n Api.Tests && dotnet test",
+      "command": "dotnet new xunit -n Api.Tests && dotnet test Api.Tests",
       "ok": {
         "pt-BR": "O resumo mostra \"Passed!\".",
         "en": "The summary shows \"Passed!\".",

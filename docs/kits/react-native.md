@@ -569,9 +569,9 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       },
       "command": "npx create-expo-app@latest meu-app",
       "ok": {
-        "pt-BR": "A pasta meu-app tem app/ e app.json.",
-        "en": "The meu-app folder has app/ and app.json.",
-        "es": "La carpeta meu-app tiene app/ y app.json."
+        "pt-BR": "A pasta meu-app tem src/app/ e app.json.",
+        "en": "The meu-app folder has src/app/ and app.json.",
+        "es": "La carpeta meu-app tiene src/app/ y app.json."
       },
       "docs": "https://docs.expo.dev/get-started/create-a-project/"
     },
@@ -591,7 +591,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
   ],
   "folders": [
     {
-      "path": "app/",
+      "path": "src/app/",
       "what": {
         "pt-BR": "Telas; cada arquivo vira uma rota (Expo Router).",
         "en": "Screens; each file becomes a route (Expo Router).",
@@ -599,7 +599,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       }
     },
     {
-      "path": "components/",
+      "path": "src/components/",
       "what": {
         "pt-BR": "Peças de interface reutilizáveis.",
         "en": "Reusable interface pieces.",
@@ -607,7 +607,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       }
     },
     {
-      "path": "lib/",
+      "path": "src/lib/",
       "what": {
         "pt-BR": "Acesso à API e ao armazenamento local.",
         "en": "API and local storage access.",

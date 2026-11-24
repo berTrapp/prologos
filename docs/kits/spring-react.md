@@ -675,11 +675,11 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
         "en": "Generate the project with Spring Initializr",
         "es": "Generar el proyecto en Spring Initializr"
       },
-      "command": "curl https://start.spring.io/starter.zip -d type=maven-project -d dependencies=web,data-jpa,validation,security,flyway,postgresql,actuator -o api.zip",
+      "command": "curl https://start.spring.io/starter.tgz -d type=maven-project -d dependencies=web,data-jpa,validation,security,flyway,postgresql,actuator,docker-compose,testcontainers -o api.tgz && mkdir api && tar -xzf api.tgz -C api",
       "ok": {
-        "pt-BR": "api.zip descompactado tem pom.xml e o arquivo mvnw.",
-        "en": "Unzipped api.zip has pom.xml and the mvnw file.",
-        "es": "api.zip descomprimido tiene pom.xml y el archivo mvnw."
+        "pt-BR": "A pasta api/ tem pom.xml, o arquivo mvnw e o compose.yaml do PostgreSQL.",
+        "en": "The api/ folder has pom.xml, the mvnw file and the PostgreSQL compose.yaml.",
+        "es": "La carpeta api/ tiene pom.xml, el archivo mvnw y el compose.yaml de PostgreSQL."
       },
       "docs": "https://start.spring.io"
     },
@@ -689,11 +689,11 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
         "en": "Run the API",
         "es": "Ejecutar la API"
       },
-      "command": "./mvnw spring-boot:run",
+      "command": "cd api && ./mvnw spring-boot:run",
       "ok": {
-        "pt-BR": "O log termina com \"Started Application\".",
-        "en": "The log ends with \"Started Application\".",
-        "es": "El log termina con \"Started Application\"."
+        "pt-BR": "Com o Docker aberto, o Spring sobe o PostgreSQL sozinho e o log mostra \"Started DemoApplication\".",
+        "en": "With Docker running, Spring starts PostgreSQL on its own and the log shows \"Started DemoApplication\".",
+        "es": "Con Docker abierto, Spring levanta PostgreSQL solo y el log muestra \"Started DemoApplication\"."
       }
     },
     {
@@ -715,7 +715,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
         "en": "First test passing",
         "es": "Primera prueba pasando"
       },
-      "command": "./mvnw test",
+      "command": "cd api && ./mvnw test",
       "ok": {
         "pt-BR": "O Maven termina com BUILD SUCCESS.",
         "en": "Maven finishes with BUILD SUCCESS.",

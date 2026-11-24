@@ -52,6 +52,10 @@
   --color-zone-security: var(--zone-security);
   --color-zone-observability: var(--zone-observability);
 
+  /* ux-ui 12: phone up to 759 px, tablet 760–1023 px, desktop from 1024 px. */
+  --breakpoint-tablet: 760px;
+  --breakpoint-desktop: 1024px;
+
   --radius-*: initial;
   --radius-tag: 2px;
   --radius-badge: 6px;

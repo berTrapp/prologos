@@ -332,10 +332,17 @@ Escolha única entre opções que precisam de uma frase de explicação (tipo de
 
 Prévia parada do mapa, sem interação (prévia do início guiado; mais tarde, o card do projeto).
 
-- **Anatomia:** grade de 3 colunas com as zonas na ordem do projeto · cada zona com raio 8 px, contorno e fundo na cor da zona (24% e 6%), nome 10,5 px peso 600 na cor da zona · itens como linhas de 18 px, raio 6 px, texto Geist 10,5 px.
+- **Anatomia:** grade de 3 colunas com as zonas na ordem do projeto · cada zona com raio 8 px, contorno interno e fundo na cor da zona (30% e 5%, os mesmos da tag de zona), nome 10,5 px peso 600 na cor da zona · itens como linhas de 18 px, raio 6 px, texto Geist 10,5 px.
 - **Itens:** decidido com contorno `border`; **pendente** com contorno tracejado `warning` e texto `warning`; **novo para você** com ponto `accent` de 5 px à direita. Itens futuros não aparecem (visão Hoje).
 - **Legenda** embaixo: Decidido · Pendente · Novo para você, com a mesma forma de cada um. Números em 22 px peso 600: decididos (`text`), a decidir (`warning`), novos para você (`accent`).
 - Zona com mais de 4 itens mostra "+N". Sem animação; muda na hora quando a resposta muda.
+
+### 13.22 Passos de um assistente
+
+Navegação entre os passos de um fluxo guiado (início guiado). Não confundir com os passos de carregamento (13.14).
+
+- **Lista (desktop):** coluna de linhas de 48 px, raio 10 px · número num círculo de 22 px com contorno `stroke-strong` (Geist Mono 11,5 px) · rótulo 14 px e, abaixo, a resposta dada em 12,5 px `muted`. Passo atual: fundo `fill-subtle`, círculo preenchido em `text` com número em `bg`, rótulo peso 600. Passos respondidos são clicáveis e voltam direto para eles; o atual tem `aria-current="step"`.
+- **Barra (celular e tablet):** um segmento de 4 px de altura por passo, raio 999, separados por 6 px; concluídos e atual em `text`, os próximos em `fill-strong`. Acompanha o texto "Passo 2 de 5" para leitores de tela.
 
 ## 14. Quando usar toast
 

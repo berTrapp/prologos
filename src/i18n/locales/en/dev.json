@@ -1,0 +1,157 @@
+{
+  "title": "Components",
+  "subtitle": "Every Prólogos component in every state. Switch the theme to check both.",
+  "language": "Language",
+  "sections": {
+    "buttons": "Buttons",
+    "segmented": "Segmented control",
+    "badges": "Badges",
+    "markers": "Count, status, chip, zone and key",
+    "fields": "Fields",
+    "toggles": "Switch and checkbox",
+    "cards": "Cards",
+    "overlays": "Dialog, sheet and popover",
+    "panel": "Panel",
+    "alerts": "Inline alerts",
+    "empty": "Empty state",
+    "mapItems": "Map items",
+    "toasts": "Toasts",
+    "loading": "Loading",
+    "skeleton": "Skeleton",
+    "mapLoader": "Mini-map"
+  },
+  "buttons": {
+    "newProject": "New project",
+    "export": "Export PNG",
+    "exporting": "Exporting…",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "disabled": "Unavailable",
+    "compact": "Undo",
+    "search": "Search",
+    "settings": "Settings",
+    "clickToLoad": "Click the primary button to see it loading"
+  },
+  "segmented": {
+    "label": "View",
+    "today": "Today",
+    "complete": "Complete",
+    "zones": "Zones",
+    "map": "Map",
+    "current": "Current",
+    "future": "Future"
+  },
+  "markers": {
+    "count": "Count",
+    "statusDot": "Status dot",
+    "chip": "Chip",
+    "zoneTag": "Zone tag",
+    "kbd": "Key",
+    "pending": "{{count}} pending",
+    "openPalette": "Open the palette"
+  },
+  "fields": {
+    "name": "Project name",
+    "namePlaceholder": "Class schedule",
+    "nameHint": "Shown at the top of the map and in the project list.",
+    "key": "Key",
+    "keyError": "Use uppercase letters, numbers and _.",
+    "notes": "Notes",
+    "notesPlaceholder": "What is decided and what is missing",
+    "env": ".env",
+    "disabled": "Disabled field"
+  },
+  "toggles": {
+    "secret": "Mark as secret",
+    "secretDescription": "The value is never stored.",
+    "reduced": "Reduced motion",
+    "decided": "Database decided",
+    "pending": "Hosting",
+    "partial": "All items"
+  },
+  "cards": {
+    "defaultTitle": "Project summary",
+    "defaultBody": "Default card: surface background, 1 px border and radius 16.",
+    "innerTitle": "Inner card",
+    "innerBody": "Inside another card: radius 12, no shadow.",
+    "highlightTitle": "Next step",
+    "highlightBody": "Choose where the database will run.",
+    "clickableTitle": "Clickable card",
+    "clickableBody": "The whole card is the target; never a button inside.",
+    "label": "Today"
+  },
+  "overlays": {
+    "openDialog": "Open dialog",
+    "openSheet": "Open sheet",
+    "openPopover": "Open popover",
+    "dialogTitle": "Empty the trash",
+    "dialogBody": "The 4 items in the trash will be deleted for good. This can't be undone.",
+    "dialogConfirm": "Empty trash",
+    "sheetTitle": "PostgreSQL",
+    "sheetBody": "Phone sheet: rises from the bottom and closes by tapping outside, on the handle or dragging down.",
+    "popoverTitle": "New item",
+    "popoverBody": "Anchored to its origin. Esc closes."
+  },
+  "panel": {
+    "title": "Details",
+    "body": "The collapse button sits at the top of the panel itself."
+  },
+  "alerts": {
+    "backupTitle": "Your last backup was 9 days ago",
+    "backupBody": "Projects live only in this browser. A backup takes 2 seconds.",
+    "later": "Remind me later",
+    "exportNow": "Export now",
+    "secretTitle": "Secret exposed in .env",
+    "secretBody": "STRIPE_SECRET_KEY has a value. Prólogos keeps only the key.",
+    "dataBody": "Your projects are saved in this browser, with no account. Export a backup now and then in Settings.",
+    "gotIt": "Got it"
+  },
+  "empty": {
+    "title": "Start your first project",
+    "body": "Five questions and Prólogos builds the map with what is decided and what is missing.",
+    "errorTitle": "This project could not be opened",
+    "errorBody": "The data in this browser may be corrupted. Your other projects were not affected.",
+    "importBackup": "Import backup",
+    "retry": "Try again"
+  },
+  "mapItems": {
+    "decided": "PostgreSQL",
+    "pending": "Hosting",
+    "future": "Redis",
+    "new": "Inertia",
+    "selected": "Laravel"
+  },
+  "toasts": {
+    "created": "Create project",
+    "createdTitle": "Project created",
+    "open": "Open",
+    "removed": "Delete item",
+    "removedTitle": "Item removed",
+    "undo": "Undo",
+    "copied": "Copy",
+    "copiedTitle": "Copied",
+    "divergence": "Divergences",
+    "divergenceTitle": "3 new divergences",
+    "review": "Review",
+    "saveError": "Save failure",
+    "saveErrorTitle": "Couldn't save",
+    "saveErrorBody": "Your changes stay in this browser until the next save.",
+    "tryAgain": "Try again",
+    "pr": "Open PR",
+    "prLoading": "Opening PR on GitHub…",
+    "prDone": "PR #14 opened",
+    "seeOnGithub": "View on GitHub"
+  },
+  "loading": {
+    "spinner": "Spinner",
+    "progress": "Progress bar",
+    "ring": "Coverage ring",
+    "steps": "Steps",
+    "stepConnect": "Connecting to GitHub",
+    "stepRead": "Reading the repository",
+    "stepAnalyze": "Analyzing package.json and composer.json",
+    "stepBuild": "Building the map",
+    "stepsContext": "You can close this window; the import keeps going.",
+    "restart": "Restart"
+  }
+}

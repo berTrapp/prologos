@@ -46,5 +46,70 @@
       "variables": "Contando las variables…",
       "flows": "Dibujando los flujos…"
     }
+  },
+  "status": {
+    "divergence": {
+      "different": "Diferente",
+      "repoOnly": "Solo en el repositorio",
+      "mapOnly": "Solo en el mapa",
+      "newInRepo": "Nuevo en el repositorio"
+    },
+    "import": {
+      "new": "Nueva",
+      "update": "Actualiza",
+      "same": "Igual",
+      "invalid": "Inválida",
+      "conflict": "Conflicto"
+    },
+    "severity": {
+      "high": "Alta",
+      "medium": "Media",
+      "low": "Baja"
+    },
+    "task": {
+      "importing": "Importando",
+      "done": "Completado",
+      "cancelled": "Cancelado"
+    },
+    "checklist": {
+      "decided": "Decidido",
+      "pending": "Por decidir",
+      "future": "Futuro",
+      "notApplicable": "No aplica"
+    },
+    "variable": {
+      "secret": "Secreto",
+      "public": "Pública",
+      "config": "Configuración"
+    },
+    "label": {
+      "newForYou": "Nuevo para ti",
+      "recommended": "Recomendado",
+      "note": "Nota",
+      "risk": "Riesgo",
+      "future": "Futuro",
+      "trashType": "Elemento"
+    },
+    "project": {
+      "planning": "Planificando",
+      "developing": "En desarrollo",
+      "paused": "En pausa"
+    }
+  },
+  "theme": {
+    "label": "Tema",
+    "system": "Sistema",
+    "light": "Claro",
+    "dark": "Oscuro"
+  },
+  "languages": {
+    "label": "Idioma",
+    "pt-BR": "Português",
+    "en": "English",
+    "es": "Español"
+  },
+  "keys": {
+    "palette": "Ctrl K",
+    "escape": "Esc"
   }
 }

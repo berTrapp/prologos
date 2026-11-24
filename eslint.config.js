@@ -26,6 +26,19 @@ export default tseslint.config(
         'error',
         {
           mode: 'jsx-only',
+          callees: {
+            exclude: [
+              'i18n(ext)?',
+              't',
+              'tc',
+              'require',
+              'addEventListener',
+              'removeEventListener',
+              'includes',
+              'startsWith',
+              'endsWith',
+            ],
+          },
           'jsx-attributes': {
             include: ['aria-label', 'aria-description', 'title', 'placeholder', 'alt', 'label'],
           },

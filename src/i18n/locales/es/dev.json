@@ -1,0 +1,157 @@
+{
+  "title": "Componentes",
+  "subtitle": "Cada componente de Prólogos en todos sus estados. Cambia el tema para revisar los dos.",
+  "language": "Idioma",
+  "sections": {
+    "buttons": "Botones",
+    "segmented": "Control segmentado",
+    "badges": "Badges",
+    "markers": "Contador, estado, chip, zona y tecla",
+    "fields": "Campos",
+    "toggles": "Interruptor y casilla",
+    "cards": "Tarjetas",
+    "overlays": "Diálogo, hoja y popover",
+    "panel": "Panel",
+    "alerts": "Alertas en línea",
+    "empty": "Estado vacío",
+    "mapItems": "Elementos del mapa",
+    "toasts": "Toasts",
+    "loading": "Carga",
+    "skeleton": "Skeleton",
+    "mapLoader": "Minimapa"
+  },
+  "buttons": {
+    "newProject": "Nuevo proyecto",
+    "export": "Exportar PNG",
+    "exporting": "Exportando…",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "disabled": "No disponible",
+    "compact": "Deshacer",
+    "search": "Buscar",
+    "settings": "Configuración",
+    "clickToLoad": "Haz clic en el principal para verlo cargando"
+  },
+  "segmented": {
+    "label": "Vista",
+    "today": "Hoy",
+    "complete": "Completo",
+    "zones": "Zonas",
+    "map": "Mapa",
+    "current": "Actual",
+    "future": "Futuro"
+  },
+  "markers": {
+    "count": "Contador",
+    "statusDot": "Estado con punto",
+    "chip": "Chip",
+    "zoneTag": "Etiqueta de zona",
+    "kbd": "Tecla",
+    "pending": "{{count}} pendientes",
+    "openPalette": "Abrir la paleta"
+  },
+  "fields": {
+    "name": "Nombre del proyecto",
+    "namePlaceholder": "Agenda de clases",
+    "nameHint": "Aparece arriba del mapa y en la lista de proyectos.",
+    "key": "Clave",
+    "keyError": "Usa mayúsculas, números y _.",
+    "notes": "Notas",
+    "notesPlaceholder": "Lo que ya está decidido y lo que falta",
+    "env": ".env",
+    "disabled": "Campo desactivado"
+  },
+  "toggles": {
+    "secret": "Marcar como secreto",
+    "secretDescription": "El valor nunca se guarda.",
+    "reduced": "Movimiento reducido",
+    "decided": "Base de datos decidida",
+    "pending": "Alojamiento",
+    "partial": "Todos los elementos"
+  },
+  "cards": {
+    "defaultTitle": "Resumen del proyecto",
+    "defaultBody": "Tarjeta estándar: fondo de superficie, borde de 1 px y radio 16.",
+    "innerTitle": "Tarjeta interna",
+    "innerBody": "Dentro de otra tarjeta: radio 12, sin sombra.",
+    "highlightTitle": "Próximo paso",
+    "highlightBody": "Elegir dónde correrá la base de datos.",
+    "clickableTitle": "Tarjeta clicable",
+    "clickableBody": "Toda la tarjeta es el objetivo; nunca un botón dentro.",
+    "label": "Hoy"
+  },
+  "overlays": {
+    "openDialog": "Abrir diálogo",
+    "openSheet": "Abrir hoja",
+    "openPopover": "Abrir popover",
+    "dialogTitle": "Vaciar la papelera",
+    "dialogBody": "Los 4 elementos de la papelera se borrarán para siempre. No se puede deshacer.",
+    "dialogConfirm": "Vaciar papelera",
+    "sheetTitle": "PostgreSQL",
+    "sheetBody": "Hoja del móvil: sube desde abajo y se cierra tocando fuera, en el asa o arrastrando hacia abajo.",
+    "popoverTitle": "Nuevo elemento",
+    "popoverBody": "Anclado a su origen. Esc cierra."
+  },
+  "panel": {
+    "title": "Detalles",
+    "body": "El botón de contraer está arriba del propio panel."
+  },
+  "alerts": {
+    "backupTitle": "Tu última copia de seguridad fue hace 9 días",
+    "backupBody": "Los proyectos solo están en este navegador. Una copia tarda 2 segundos.",
+    "later": "Recordar después",
+    "exportNow": "Exportar ahora",
+    "secretTitle": "Secreto expuesto en el .env",
+    "secretBody": "STRIPE_SECRET_KEY tiene un valor. Prólogos solo guarda la clave.",
+    "dataBody": "Tus proyectos se guardan en este navegador, sin cuenta. Exporta una copia de vez en cuando en Configuración.",
+    "gotIt": "Entendido"
+  },
+  "empty": {
+    "title": "Empieza tu primer proyecto",
+    "body": "Cinco preguntas y Prólogos arma el mapa con lo que ya está decidido y lo que falta.",
+    "errorTitle": "No se pudo abrir este proyecto",
+    "errorBody": "Los datos de este navegador pueden estar dañados. Tus otros proyectos no se vieron afectados.",
+    "importBackup": "Importar copia",
+    "retry": "Intentar de nuevo"
+  },
+  "mapItems": {
+    "decided": "PostgreSQL",
+    "pending": "Alojamiento",
+    "future": "Redis",
+    "new": "Inertia",
+    "selected": "Laravel"
+  },
+  "toasts": {
+    "created": "Crear proyecto",
+    "createdTitle": "Proyecto creado",
+    "open": "Abrir",
+    "removed": "Eliminar elemento",
+    "removedTitle": "Elemento eliminado",
+    "undo": "Deshacer",
+    "copied": "Copiar",
+    "copiedTitle": "Copiado",
+    "divergence": "Divergencias",
+    "divergenceTitle": "3 divergencias nuevas",
+    "review": "Revisar",
+    "saveError": "Fallo al guardar",
+    "saveErrorTitle": "No se pudo guardar",
+    "saveErrorBody": "Los cambios siguen en este navegador hasta el próximo guardado.",
+    "tryAgain": "Intentar de nuevo",
+    "pr": "Abrir PR",
+    "prLoading": "Abriendo PR en GitHub…",
+    "prDone": "PR #14 abierto",
+    "seeOnGithub": "Ver en GitHub"
+  },
+  "loading": {
+    "spinner": "Spinner",
+    "progress": "Barra de progreso",
+    "ring": "Anillo de cobertura",
+    "steps": "Etapas",
+    "stepConnect": "Conectando con GitHub",
+    "stepRead": "Leyendo el repositorio",
+    "stepAnalyze": "Analizando package.json y composer.json",
+    "stepBuild": "Armando el mapa",
+    "stepsContext": "Puedes cerrar esta ventana; la importación continúa.",
+    "restart": "Reiniciar"
+  }
+}

@@ -1,11 +1,13 @@
-import { useTranslation } from 'react-i18next';
+import { RouterProvider } from 'react-router';
+import { Toaster } from '@/components/ui/Toaster';
+import { TooltipProvider } from '@/components/ui/Tooltip';
+import { router } from './router';
 
 export function App() {
-  const { t } = useTranslation();
   return (
-    <main>
-      <h1>{t('app.name')}</h1>
-      <p>{t('app.tagline')}</p>
-    </main>
+    <TooltipProvider>
+      <RouterProvider router={router} />
+      <Toaster />
+    </TooltipProvider>
   );
 }

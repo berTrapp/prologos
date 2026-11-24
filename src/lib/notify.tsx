@@ -47,7 +47,11 @@ export const notify = {
   error: (title: ReactNode, options?: NotifyOptions) => show('error', title, options),
   warning: (title: ReactNode, options?: NotifyOptions) => show('warning', title, options),
   loading: (title: ReactNode, options?: NotifyOptions) => show('loading', title, options),
-  dismiss: (id?: string | number) => (id === undefined ? toast.dismiss() : toast.dismiss(id)),
+  dismiss: (id?: string | number) => {
+    if (id === undefined) visible.splice(0);
+    else forget(id);
+    toast.dismiss(id);
+  },
   dismissNewest: () => {
     const id = visible.at(-1);
     if (id === undefined) return false;

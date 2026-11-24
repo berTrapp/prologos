@@ -1,6 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import { SUPPORTED_LANGUAGES } from './languages';
-import { resources } from './resources';
+import { devResources } from './dev-resources';
+import { resources as appResources } from './resources';
+
+const resources = {
+  'pt-BR': { ...appResources['pt-BR'], dev: devResources['pt-BR'] },
+  en: { ...appResources.en, dev: devResources.en },
+  es: { ...appResources.es, dev: devResources.es },
+};
 
 type Tree = { [key: string]: string | Tree };
 

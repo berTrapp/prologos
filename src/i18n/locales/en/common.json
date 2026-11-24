@@ -46,5 +46,70 @@
       "variables": "Counting the variables…",
       "flows": "Drawing the flows…"
     }
+  },
+  "status": {
+    "divergence": {
+      "different": "Different",
+      "repoOnly": "Repo only",
+      "mapOnly": "Map only",
+      "newInRepo": "New in repo"
+    },
+    "import": {
+      "new": "New",
+      "update": "Updates",
+      "same": "Same",
+      "invalid": "Invalid",
+      "conflict": "Conflict"
+    },
+    "severity": {
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    "task": {
+      "importing": "Importing",
+      "done": "Done",
+      "cancelled": "Cancelled"
+    },
+    "checklist": {
+      "decided": "Decided",
+      "pending": "To decide",
+      "future": "Future",
+      "notApplicable": "Not applicable"
+    },
+    "variable": {
+      "secret": "Secret",
+      "public": "Public",
+      "config": "Config"
+    },
+    "label": {
+      "newForYou": "New to you",
+      "recommended": "Recommended",
+      "note": "Note",
+      "risk": "Risk",
+      "future": "Future",
+      "trashType": "Item"
+    },
+    "project": {
+      "planning": "Planning",
+      "developing": "In development",
+      "paused": "Paused"
+    }
+  },
+  "theme": {
+    "label": "Theme",
+    "system": "System",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "languages": {
+    "label": "Language",
+    "pt-BR": "Português",
+    "en": "English",
+    "es": "Español"
+  },
+  "keys": {
+    "palette": "Ctrl K",
+    "escape": "Esc"
   }
 }

@@ -17,7 +17,8 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "format": "prettier --write .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "kits:extract": "node scripts/extract-kits.mjs && prettier --write src/content/kits"
   },
   "dependencies": {
     "@fontsource-variable/geist": "^5.3.0",

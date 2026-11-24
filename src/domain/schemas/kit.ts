@@ -38,6 +38,8 @@ export const KitSchema = z
     projectTypes: z.array(z.enum(PROJECT_TYPES)).min(1),
     knownStack: z.enum(KNOWN_STACKS).nullable(),
     publicEnvPrefix: z.string().nullable(),
+    /** RN 13: pending items asked in the "Onde roda" step. */
+    runsOn: z.array(z.string()).min(1),
     dependencyFiles: z.array(z.string().min(1)),
     dependencyMap: z.record(z.string(), z.string()).optional(),
     technologies: z.array(
@@ -110,6 +112,16 @@ export const KitSchema = z
     }
     for (const ref of Object.keys(kit.pendingOptions)) {
       if (!items.has(ref)) issue(`Options for missing item ${ref}`);
+    }
+    // RN 15: every pending item offers options, one recommended to start with.
+    for (const item of kit.items.filter((i) => i.state === 'pending')) {
+      const options = kit.pendingOptions[item.id] ?? [];
+      if (!options.some((option) => option.recommended))
+        issue(`Pending item ${item.id} has no recommended option`);
+    }
+    for (const ref of kit.runsOn) {
+      if (kit.items.find((i) => i.id === ref)?.state !== 'pending')
+        issue(`runsOn ${ref} is not a pending item`);
     }
     // RN 3: secrets never carry an example value.
     for (const env of kit.envVars) {

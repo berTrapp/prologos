@@ -75,6 +75,8 @@ export function createWorkspaceStore({
     init(): Promise<void>;
     refresh(): Promise<void>;
     createProject(input: { name: string; type: ProjectType; goal?: string }): Promise<string>;
+    /** Saves a project the guided start built (RN 13). */
+    addProject(snapshot: ProjectSnapshot): Promise<string>;
     setStatus(projectId: string, status: ProjectStatus): Promise<ProjectStatus | undefined>;
     moveProjectToTrash(projectId: string): Promise<TrashEntry | undefined>;
     restoreTrash(entry: TrashEntry): Promise<string | undefined>;
@@ -125,6 +127,12 @@ export function createWorkspaceStore({
         await repo.saveProject(snapshot);
         await get().refresh();
         return id;
+      },
+
+      async addProject(snapshot) {
+        await repo.saveProject(ProjectSnapshotSchema.parse(snapshot));
+        await get().refresh();
+        return snapshot.project.id;
       },
 
       async setStatus(projectId, status) {

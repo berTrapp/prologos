@@ -15,24 +15,16 @@ beforeEach(async () => {
 const create = (name: string) => workspaceStore.getState().createProject({ name, type: 'web' });
 
 describe('home (RN 4, 18)', () => {
-  it('invites to create the first project and creates it with the keyboard', async () => {
+  it('invites to create the first project and opens the guided start', async () => {
     const user = userEvent.setup();
     const { router } = await renderApp('/');
     expect(await screen.findByText('Comece o primeiro projeto')).toBeInTheDocument();
 
     await user.click(screen.getByRole('button', { name: 'Novo projeto' }));
-    const dialog = await screen.findByRole('dialog', { name: 'Novo projeto' });
-    expect(within(dialog).getByLabelText('Nome do projeto')).toHaveFocus();
-
-    await user.keyboard('{Enter}');
-    expect(within(dialog).getByText('Dê um nome ao projeto.')).toBeInTheDocument();
-
-    await user.keyboard('Agenda de aulas{Enter}');
-    await waitFor(() => expect(router.state.location.pathname).toMatch(/^\/p\//));
+    await waitFor(() => expect(router.state.location.pathname).toBe('/novo'));
     expect(
-      await screen.findByRole('heading', { level: 1, name: 'Agenda de aulas' }),
+      await screen.findByRole('heading', { level: 1, name: 'O que você vai construir?' }),
     ).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Checklist' })).toBeInTheDocument();
   });
 
   it('changes status from the card menu, with Desfazer in the toast', async () => {

@@ -4,6 +4,7 @@ import { projectStore, repository, workspaceStore } from '@/app/services';
 import { routes } from '@/app/router';
 import { Toaster } from '@/components/ui/Toaster';
 import { TooltipProvider } from '@/components/ui/Tooltip';
+import { useGuided } from '@/features/new-project/guided-store';
 import { useUi } from '@/features/shell/ui-store';
 
 /** Clears everything the app keeps in this (fake) browser. */
@@ -13,7 +14,8 @@ export async function resetAppData() {
   await repository.emptyTrash();
   await repository.setMeta('settings', { backupReminder: true, dataNoticeSeen: true });
   localStorage.clear();
-  useUi.setState({ paletteOpen: false, newProjectOpen: false });
+  useUi.setState({ paletteOpen: false });
+  useGuided.getState().reset();
 }
 
 /** Renders the real app (routes, stores, Dexie on fake IndexedDB) at a path. */

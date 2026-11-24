@@ -10,7 +10,6 @@ import type { Project } from '@/domain/schemas/project';
 import { STATUS_TONE, projectColor } from '@/lib/project-status';
 import { zoneText, zoneTint } from '@/lib/zone-colors';
 import { cn } from '@/lib/utils';
-import { useUi } from './ui-store';
 
 export function ProjectTile({
   project,
@@ -48,7 +47,6 @@ export function ProjectSwitcher({
   const { t } = useTranslation();
   const navigate = useNavigate();
   const projects = useWorkspace((s) => s.projects);
-  const openNewProject = useUi((s) => s.setNewProjectOpen);
 
   const trigger = (
     <button
@@ -112,7 +110,7 @@ export function ProjectSwitcher({
           </MenuItem>
         ))}
       <MenuSeparator />
-      <MenuItem icon={<Plus />} onSelect={() => openNewProject(true)}>
+      <MenuItem icon={<Plus />} onSelect={() => navigate('/novo')}>
         {t('nav.newProject')}
       </MenuItem>
     </Menu>

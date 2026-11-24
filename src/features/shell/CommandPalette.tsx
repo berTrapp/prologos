@@ -93,7 +93,6 @@ export function CommandPalette() {
   const navigate = useNavigate();
   const open = useUi((s) => s.paletteOpen);
   const setOpen = useUi((s) => s.setPaletteOpen);
-  const openNewProject = useUi((s) => s.setNewProjectOpen);
   const projects = useWorkspace((s) => s.projects);
   const { setPreference } = useTheme();
   const [search, setSearch] = useState('');
@@ -187,7 +186,7 @@ export function CommandPalette() {
                   icon={<Plus />}
                   label={t('palette.newProject')}
                   hint={t('palette.actionHint')}
-                  onSelect={run(() => openNewProject(true))}
+                  onSelect={run(() => navigate('/novo'))}
                 />
                 <Item
                   icon={<Download />}

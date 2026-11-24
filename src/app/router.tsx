@@ -11,6 +11,12 @@ export const routes: RouteObject[] = [
         lazy: async () => ({ Component: (await import('@/features/home/HomePage')).HomePage }),
       },
       {
+        path: 'novo',
+        lazy: async () => ({
+          Component: (await import('@/features/new-project/NewProjectPage')).NewProjectPage,
+        }),
+      },
+      {
         element: <AppShell />,
         children: [
           {

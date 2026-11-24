@@ -33,6 +33,8 @@ if (!Element.prototype.hasPointerCapture) {
   Element.prototype.setPointerCapture = () => undefined;
 }
 if (!Element.prototype.scrollIntoView) Element.prototype.scrollIntoView = () => undefined;
+if (!Element.prototype.scrollTo) Element.prototype.scrollTo = () => undefined;
+window.scrollTo = () => undefined;
 if (!('ResizeObserver' in window)) {
   Object.defineProperty(window, 'ResizeObserver', {
     writable: true,

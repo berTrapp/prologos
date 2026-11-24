@@ -223,15 +223,126 @@
   },
   "newProject": {
     "title": "Nuevo proyecto",
-    "description": "Ponle un nombre; el mapa nace con las nueve zonas.",
-    "name": "Nombre del proyecto",
-    "namePlaceholder": "Agenda de clases",
-    "nameRequired": "Ponle un nombre al proyecto.",
-    "goal": "Objetivo en una frase",
-    "goalPlaceholder": "Organizar las clases y los pagos de los alumnos",
-    "type": "Tipo",
+    "back": "Volver",
+    "continue": "Continuar",
     "create": "Crear proyecto",
-    "creating": "Creando…"
+    "creating": "Creando…",
+    "skipHint": "Puedes saltar y responder después.",
+    "stepOf": "Paso {{current}} de {{total}}",
+    "stepsLabel": "Pasos del nuevo proyecto",
+    "steps": {
+      "idea": "Idea",
+      "stack": "Stack",
+      "experience": "Experiencia",
+      "runsOn": "Dónde corre",
+      "summary": "Resumen"
+    },
+    "idea": {
+      "title": "¿Qué vas a construir?",
+      "lead": "Dos frases bastan. Dan nombre al mapa y definen qué tipo de proyecto armar.",
+      "name": "Nombre del proyecto",
+      "namePlaceholder": "Agenda de clases",
+      "goal": "Objetivo en una frase",
+      "goalPlaceholder": "Los alumnos reservan clases y el profesor confirma",
+      "type": "Tipo de proyecto",
+      "types": {
+        "web": "Pantallas, servidor y base de datos",
+        "api": "Back-end para que otra app lo consuma",
+        "mobile": "Android e iOS",
+        "site": "Páginas de contenido, sin login",
+        "unknown": "Decide después, en el mapa"
+      }
+    },
+    "stack": {
+      "title": "¿Con qué stack?",
+      "lead": "Cuenta lo que ya dominas: de ahí sale el kit recomendado. Puedes elegir otro para aprender.",
+      "known": "¿Ya dominas algún stack?",
+      "stacks": {
+        "laravel": "Laravel / PHP",
+        "node": "Node / JavaScript",
+        "spring": "Spring / Java",
+        "dotnet": ".NET / C#",
+        "django": "Django / Python",
+        "none": "Ninguno todavía"
+      },
+      "kit": "Kit",
+      "recommended": "Recomendado para empezar",
+      "showAll": "Ver todos los kits",
+      "showFewer": "Ver solo los del tipo elegido",
+      "unknownKit": "Todavía no sé",
+      "unknownKitBody": "El mapa nace con el stack por decidir."
+    },
+    "experience": {
+      "title": "¿Cuánto conoces cada parte?",
+      "lead": "Lo que sea nuevo recibe la marca \"Nuevo para ti\", con la explicación y el enlace a la documentación.",
+      "levels": {
+        "known": "Lo conozco",
+        "some": "Lo usé poco",
+        "never": "Nunca lo usé"
+      },
+      "levelLabel": "Experiencia con {{name}}",
+      "docs": "Documentación de {{name}}",
+      "equivalences": "Si vienes de {{stack}}",
+      "equivalencesLead": "Los mismos conceptos, con otros nombres.",
+      "concepts": {
+        "orm": "ORM",
+        "migrate": "Migrations",
+        "routes": "Rutas",
+        "packages": "Paquetes",
+        "devServer": "Servidor de desarrollo",
+        "config": "Configuración",
+        "templates": "Plantillas",
+        "auth": "Autenticación",
+        "tests": "Pruebas"
+      }
+    },
+    "runsOn": {
+      "title": "¿Dónde va a correr el proyecto?",
+      "lead": "Elige ahora o déjalo para después: \"Todavía no sé\" se vuelve un ítem por decidir en el mapa.",
+      "unknown": "Todavía no sé",
+      "unknownBody": "Queda por decidir en el mapa."
+    },
+    "noKit": {
+      "title": "Ningún kit elegido",
+      "experience": "Elige un kit para marcar lo que ya conoces.",
+      "runsOn": "Sin kit, la base de datos y el hosting quedan por decidir en el mapa.",
+      "action": "Elegir el kit"
+    },
+    "summary": {
+      "title": "Todo listo para armar el mapa",
+      "lead": "Revisa y crea. Todo sigue siendo editable en el mapa.",
+      "project": "Proyecto",
+      "type": "Tipo",
+      "kit": "Kit",
+      "noKit": "Todavía no sé",
+      "unnamed": "Proyecto sin nombre",
+      "pending": "Lo que falta decidir",
+      "newForYou": "Nuevo para ti",
+      "nothing": "Nada por ahora",
+      "edit": "Cambiar {{step}}",
+      "change": "Cambiar"
+    },
+    "preview": {
+      "label": "Vista previa del mapa",
+      "note": "La vista previa cambia a medida que respondes. Lo pendiente se vuelve la lista \"Lo que falta decidir\", en orden.",
+      "decided_zero": "decididos",
+      "decided_one": "decidido",
+      "decided_other": "decididos",
+      "pending_zero": "por decidir",
+      "pending_one": "por decidir",
+      "pending_other": "por decidir",
+      "newForYou_zero": "nuevos para ti",
+      "newForYou_one": "nuevo para ti",
+      "newForYou_other": "nuevos para ti",
+      "pill": "Mapa: {{decided}} decididos · {{pending}} por decidir",
+      "show": "Ver",
+      "noKit": "Sin kit"
+    },
+    "noKitItems": {
+      "stack": "Stack",
+      "database": "Base de datos",
+      "hosting": "Hosting"
+    }
   },
   "projectTypes": {
     "web": "App web completa",
@@ -341,5 +452,23 @@
     "navHint": "página",
     "actionHint": "acción",
     "results_zero": "Ningún resultado"
+  },
+  "firstStep": {
+    "label": "Próximo paso",
+    "choose-stack": "Elegir el stack",
+    "prepare-env": "Preparar el entorno",
+    "decide": "Decidir: {{name}}",
+    "draw-flow": "Dibujar el primer flujo",
+    "body": {
+      "choose-stack": "Sin stack, el resto del mapa la espera.",
+      "prepare-env": "Hay tecnología nueva para ti: instálala, crea el proyecto y ejecuta la primera prueba.",
+      "decide": "Todavía está por decidir, y el resto del mapa depende de esta elección.",
+      "draw-flow": "Revisa el flujo sugerido y dibuja el primero de tu proyecto."
+    }
+  },
+  "miniature": {
+    "more": "+{{count}}",
+    "decided": "Decidido",
+    "pending": "Pendiente"
   }
 }

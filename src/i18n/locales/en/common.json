@@ -223,15 +223,126 @@
   },
   "newProject": {
     "title": "New project",
-    "description": "Give it a name; the map starts with the nine zones.",
-    "name": "Project name",
-    "namePlaceholder": "Class schedule",
-    "nameRequired": "Give the project a name.",
-    "goal": "Goal in one sentence",
-    "goalPlaceholder": "Organize classes and student payments",
-    "type": "Type",
+    "back": "Back",
+    "continue": "Continue",
     "create": "Create project",
-    "creating": "Creating…"
+    "creating": "Creating…",
+    "skipHint": "You can skip and answer later.",
+    "stepOf": "Step {{current}} of {{total}}",
+    "stepsLabel": "New project steps",
+    "steps": {
+      "idea": "Idea",
+      "stack": "Stack",
+      "experience": "Experience",
+      "runsOn": "Where it runs",
+      "summary": "Summary"
+    },
+    "idea": {
+      "title": "What are you going to build?",
+      "lead": "Two sentences are enough. They name the map and decide what kind of project to set up.",
+      "name": "Project name",
+      "namePlaceholder": "Class scheduler",
+      "goal": "Goal in one sentence",
+      "goalPlaceholder": "Students book classes and the teacher confirms",
+      "type": "Project type",
+      "types": {
+        "web": "Screens, server and database",
+        "api": "Back end for another app to use",
+        "mobile": "Android and iOS",
+        "site": "Content pages, no login",
+        "unknown": "Decide later, on the map"
+      }
+    },
+    "stack": {
+      "title": "Which stack?",
+      "lead": "Tell us what you already know: the recommended kit comes from that. You can pick another one to learn.",
+      "known": "Do you already know a stack?",
+      "stacks": {
+        "laravel": "Laravel / PHP",
+        "node": "Node / JavaScript",
+        "spring": "Spring / Java",
+        "dotnet": ".NET / C#",
+        "django": "Django / Python",
+        "none": "None yet"
+      },
+      "kit": "Kit",
+      "recommended": "Recommended to start",
+      "showAll": "See all kits",
+      "showFewer": "See only kits for this type",
+      "unknownKit": "Not sure yet",
+      "unknownKitBody": "The map starts with the stack to decide."
+    },
+    "experience": {
+      "title": "How well do you know each part?",
+      "lead": "Anything new gets the \"New to you\" mark, with an explanation and a link to the docs.",
+      "levels": {
+        "known": "I know it",
+        "some": "Used a little",
+        "never": "Never used"
+      },
+      "levelLabel": "Experience with {{name}}",
+      "docs": "{{name}} documentation",
+      "equivalences": "Coming from {{stack}}",
+      "equivalencesLead": "The same concepts, with other names.",
+      "concepts": {
+        "orm": "ORM",
+        "migrate": "Migrations",
+        "routes": "Routes",
+        "packages": "Packages",
+        "devServer": "Dev server",
+        "config": "Configuration",
+        "templates": "Templates",
+        "auth": "Authentication",
+        "tests": "Tests"
+      }
+    },
+    "runsOn": {
+      "title": "Where will the project run?",
+      "lead": "Choose now or leave it for later: \"Not sure yet\" becomes an item to decide on the map.",
+      "unknown": "Not sure yet",
+      "unknownBody": "Stays to decide on the map."
+    },
+    "noKit": {
+      "title": "No kit chosen",
+      "experience": "Choose a kit to mark what you already know.",
+      "runsOn": "Without a kit, database and hosting stay to decide on the map.",
+      "action": "Choose the kit"
+    },
+    "summary": {
+      "title": "Ready to set up the map",
+      "lead": "Review and create. Everything stays editable on the map.",
+      "project": "Project",
+      "type": "Type",
+      "kit": "Kit",
+      "noKit": "Not sure yet",
+      "unnamed": "Untitled project",
+      "pending": "What is left to decide",
+      "newForYou": "New to you",
+      "nothing": "Nothing for now",
+      "edit": "Change {{step}}",
+      "change": "Change"
+    },
+    "preview": {
+      "label": "Map preview",
+      "note": "The preview changes as you answer. Pending items become the \"What is left to decide\" checklist, in order.",
+      "decided_zero": "decided",
+      "decided_one": "decided",
+      "decided_other": "decided",
+      "pending_zero": "to decide",
+      "pending_one": "to decide",
+      "pending_other": "to decide",
+      "newForYou_zero": "new to you",
+      "newForYou_one": "new to you",
+      "newForYou_other": "new to you",
+      "pill": "Map: {{decided}} decided · {{pending}} to decide",
+      "show": "View",
+      "noKit": "No kit"
+    },
+    "noKitItems": {
+      "stack": "Stack",
+      "database": "Database",
+      "hosting": "Hosting"
+    }
   },
   "projectTypes": {
     "web": "Full web app",
@@ -341,5 +452,23 @@
     "navHint": "page",
     "actionHint": "action",
     "results_zero": "No results"
+  },
+  "firstStep": {
+    "label": "Next step",
+    "choose-stack": "Choose the stack",
+    "prepare-env": "Set up the environment",
+    "decide": "Decide: {{name}}",
+    "draw-flow": "Draw the first flow",
+    "body": {
+      "choose-stack": "Without a stack, the rest of the map waits for it.",
+      "prepare-env": "There is new technology for you: install it, create the project and run the first test.",
+      "decide": "Still to decide, and the rest of the map depends on this choice.",
+      "draw-flow": "Check the suggested flow and draw the first one of your project."
+    }
+  },
+  "miniature": {
+    "more": "+{{count}}",
+    "decided": "Decided",
+    "pending": "Pending"
   }
 }

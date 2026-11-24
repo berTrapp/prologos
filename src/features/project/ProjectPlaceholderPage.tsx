@@ -4,6 +4,7 @@ import { useProject } from '@/app/services';
 import { EmptyState } from '@/components/ui/EmptyState';
 import { PageHeader } from '@/features/shell/PageHeader';
 import { DataNotice } from './DataNotice';
+import { NextStepCard } from './NextStepCard';
 
 const PAGES = {
   map: {
@@ -29,7 +30,8 @@ const PAGES = {
 /** Project pages before their phases (5, 6, 7) fill them in. */
 export function ProjectPlaceholderPage({ page }: { page: keyof typeof PAGES }) {
   const { t } = useTranslation();
-  const name = useProject((s) => s.snapshot?.project.name);
+  const snapshot = useProject((s) => s.snapshot);
+  const name = snapshot?.project.name;
   const config = PAGES[page];
   return (
     <>
@@ -38,6 +40,7 @@ export function ProjectPlaceholderPage({ page }: { page: keyof typeof PAGES }) {
         subtitle={page === 'map' ? undefined : name}
       />
       <DataNotice />
+      {page === 'map' && snapshot ? <NextStepCard snapshot={snapshot} /> : null}
       <div className="rounded-card border border-dashed border-border-strong">
         <EmptyState icon={config.icon} title={t(config.title)} description={t(config.body)} />
       </div>

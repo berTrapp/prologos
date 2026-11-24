@@ -30,7 +30,6 @@ type SidebarProps = {
 export function Sidebar({ project, collapsed, onCollapsedChange }: SidebarProps) {
   const { t } = useTranslation();
   const openPalette = useUi((s) => s.setPaletteOpen);
-  const openNewProject = useUi((s) => s.setNewProjectOpen);
 
   const nav = (
     <nav aria-label={t('nav.label')} className="flex h-full flex-col gap-4">
@@ -73,12 +72,7 @@ export function Sidebar({ project, collapsed, onCollapsedChange }: SidebarProps)
           label={t('nav.allProjects')}
           collapsed={collapsed}
         />
-        <NavLinkItem
-          onClick={() => openNewProject(true)}
-          icon={<Plus />}
-          label={t('nav.newProject')}
-          collapsed={collapsed}
-        />
+        <NavLinkItem to="/novo" icon={<Plus />} label={t('nav.newProject')} collapsed={collapsed} />
         <NavLinkItem to="/lixeira" icon={<Trash2 />} label={t('nav.trash')} collapsed={collapsed} />
         <NavLinkItem
           to="/configuracoes"

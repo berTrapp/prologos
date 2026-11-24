@@ -1,13 +1,13 @@
 import { Plus } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router';
 import { useNow } from '@/hooks/useNow';
 import { useWorkspace } from '@/app/services';
 import { Button } from '@/components/ui/Button';
 import { EmptyState } from '@/components/ui/EmptyState';
 import { SegmentedControl } from '@/components/ui/SegmentedControl';
 import { filterProjects } from '@/domain/rules/project';
-import { useUi } from '@/features/shell/ui-store';
 import { useBreakpoint } from '@/hooks/useBreakpoint';
 import { usePersistentState } from '@/hooks/usePersistentState';
 import { dayPeriod, formatLongDate } from '@/lib/format';
@@ -23,7 +23,8 @@ type Filter = (typeof FILTERS)[number];
 export function HomePage() {
   const { t, i18n } = useTranslation();
   const phone = useBreakpoint() === 'phone';
-  const openNewProject = useUi((s) => s.setNewProjectOpen);
+  const navigate = useNavigate();
+  const openNewProject = () => navigate('/novo');
   const summaries = useWorkspace((s) => s.projects);
   const lastOpened = useWorkspace((s) => s.settings.lastOpenedProjectId);
   const [filter, setFilter] = usePersistentState<Filter>('prologos.homeFilter', 'all');
@@ -43,7 +44,7 @@ export function HomePage() {
   const hero = active.find((s) => s.project.id === lastOpened) ?? active[0];
 
   const newProject = (
-    <Button variant="primary" icon={<Plus />} onClick={() => openNewProject(true)}>
+    <Button variant="primary" icon={<Plus />} onClick={() => openNewProject()}>
       {t('nav.newProject')}
     </Button>
   );
@@ -119,7 +120,7 @@ export function HomePage() {
                   {showArchived ? null : (
                     <button
                       type="button"
-                      onClick={() => openNewProject(true)}
+                      onClick={() => openNewProject()}
                       className="flex min-h-72 flex-col items-center justify-center gap-3 rounded-card border border-dashed border-border-strong p-8 text-center transition-colors duration-(--duration-fast) hover:bg-fill-subtle focus-visible:outline-2 focus-visible:outline-ring"
                     >
                       <span className="grid size-11 place-items-center rounded-full text-text inset-ring inset-ring-stroke-strong">
@@ -153,7 +154,7 @@ export function HomePage() {
             variant="primary"
             size="touch"
             icon={<Plus />}
-            onClick={() => openNewProject(true)}
+            onClick={() => openNewProject()}
             className="shadow-raised"
           >
             {t('nav.newProject')}

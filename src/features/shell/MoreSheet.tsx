@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { Sheet } from '@/components/ui/Sheet';
 import { NavLinkItem } from './NavLinkItem';
 import { SaveIndicator } from './SaveIndicator';
-import { useUi } from './ui-store';
 
 /** "Mais" on the phone: everything that is not a tab (ux-ui 12). */
 export function MoreSheet({
@@ -14,7 +13,6 @@ export function MoreSheet({
   onOpenChange: (open: boolean) => void;
 }) {
   const { t } = useTranslation();
-  const openNewProject = useUi((s) => s.setNewProjectOpen);
   const close = () => onOpenChange(false);
 
   return (
@@ -28,10 +26,8 @@ export function MoreSheet({
           collapsed={false}
         />
         <NavLinkItem
-          onClick={() => {
-            close();
-            openNewProject(true);
-          }}
+          to="/novo"
+          onClick={close}
           icon={<Plus />}
           label={t('nav.newProject')}
           collapsed={false}

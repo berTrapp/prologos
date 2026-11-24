@@ -627,37 +627,37 @@
         "en": "Create the API",
         "es": "Crear la API"
       },
-      "command": "mkdir api && cd api && npm init -y && npm i express && npm i -D typescript tsx @types/express",
+      "command": "mkdir api && cd api && npm init -y && npm i express && npm i -D typescript tsx @types/express vitest",
       "ok": {
-        "pt-BR": "A pasta api/ tem package.json com express.",
-        "en": "The api/ folder has package.json with express.",
-        "es": "La carpeta api/ tiene package.json con express."
+        "pt-BR": "A pasta api/ tem package.json com express e vitest.",
+        "en": "The api/ folder has package.json with express and vitest.",
+        "es": "La carpeta api/ tiene package.json con express y vitest."
       }
     },
     {
       "title": {
-        "pt-BR": "Rodar os dois",
-        "en": "Run both",
-        "es": "Ejecutar ambos"
+        "pt-BR": "Rodar o front",
+        "en": "Run the front end",
+        "es": "Ejecutar el front-end"
       },
-      "command": "npm run dev",
+      "command": "cd web && npm install && npm run dev",
       "ok": {
-        "pt-BR": "localhost:5173 mostra o React e a API responde em localhost:3000.",
-        "en": "localhost:5173 shows React and the API answers on localhost:3000.",
-        "es": "localhost:5173 muestra React y la API responde en localhost:3000."
+        "pt-BR": "localhost:5173 mostra a página do React.",
+        "en": "localhost:5173 shows the React page.",
+        "es": "localhost:5173 muestra la página de React."
       }
     },
     {
       "title": {
-        "pt-BR": "Primeiro teste passando",
-        "en": "First test passing",
-        "es": "Primera prueba pasando"
+        "pt-BR": "Deixar os testes prontos",
+        "en": "Get the tests ready",
+        "es": "Dejar las pruebas listas"
       },
-      "command": "npx vitest run",
+      "command": "cd api && npx vitest run --passWithNoTests",
       "ok": {
-        "pt-BR": "O resumo mostra os testes em verde.",
-        "en": "The summary shows the tests in green.",
-        "es": "El resumen muestra las pruebas en verde."
+        "pt-BR": "O Vitest roda e termina sem erro. O primeiro teste você escreve junto com a primeira rota.",
+        "en": "Vitest runs and finishes without errors. You write the first test along with the first route.",
+        "es": "Vitest se ejecuta y termina sin errores. La primera prueba la escribes junto con la primera ruta."
       }
     }
   ],

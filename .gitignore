@@ -1,0 +1,33 @@
+# Dependências e build
+node_modules/
+dist/
+build/
+coverage/
+
+# Variáveis de ambiente
+.env
+.env.*
+!.env.example
+
+# Instruções e configurações do Claude
+CLAUDE.md
+CLAUDE.local.md
+.claude/
+
+# Arquivos de apoio que não vão para o repositório
+COMECE-AQUI.md
+PROMPT-INICIAL.md
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor e sistema
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# Locais
+*.local

@@ -31,7 +31,9 @@ Como o produto se comporta. Complementa `docs/ux-ui.md` (como ele se parece). De
 
 ## 4. Status do projeto
 
-Planejando · Em desenvolvimento · Pausado · Concluído · Arquivado. Arquivar tira o projeto da lista principal sem apagar.
+Planejando · Em desenvolvimento · Pausado · Concluído · Arquivado. Arquivar tira o projeto da lista principal sem apagar. No Início, o filtro mostra Todos, Planejando, Em desenvolvimento e Pausados; os concluídos aparecem em Todos e os arquivados num link "Ver arquivados" abaixo da lista.
+
+**Sem conta no MVP:** o Início cumprimenta só pela hora ("Boa tarde"), sem nome nem avatar, até existir login (regra 12).
 
 ## 5. Checklist de cobertura ("O que falta decidir")
 
@@ -129,7 +131,7 @@ Planejando · Em desenvolvimento · Pausado · Concluído · Arquivado. Arquivar
 
 - No MVP os projetos ficam **só neste navegador** (IndexedDB). Isso é dito com clareza: aviso fixo em Configurações e na primeira vez que a pessoa cria um projeto.
 - **Backup:** "Exportar tudo" gera um `.json` com todos os projetos; "Importar" restaura um projeto ou todos, sem apagar o que já existe (projeto com mesmo id pergunta se substitui ou cria cópia).
-- **Lembrete:** ligado por padrão; quando o último backup tem mais de 7 dias, o Início mostra um alerta em linha com o botão "Exportar agora". Pode ser desligado.
+- **Lembrete:** ligado por padrão; quando o último backup tem mais de 7 dias (ou nunca houve backup e existe pelo menos um projeto), o Início mostra um alerta em linha com "Exportar agora" e "Lembrar depois", que esconde o alerta por 1 dia. Pode ser desligado.
 - O app pede armazenamento persistente ao navegador (`navigator.storage.persist`) para reduzir o risco de limpeza automática.
 - O backup segue a regra 3: nenhum valor secreto.
 

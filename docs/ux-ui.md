@@ -117,6 +117,7 @@ O Prólogos é desenhado para três larguras: celular (até 759 px), tablet (760
 
 **Navegação**
 - Celular: barra de abas embaixo (Mapa, Checklist, Custos, GitHub, Mais), ao alcance do polegar. Variáveis, Histórico, Exportar, Lixeira e Configurações ficam em "Mais". A barra lateral não aparece.
+- **Só aparece o que já existe:** uma página entra na barra lateral, nas abas e na paleta junto com a fase que a constrói. Enquanto Custos e GitHub não existem, as abas do celular são Mapa, Checklist, Variáveis e Mais.
 - Tablet: a barra lateral começa recolhida (só ícones).
 - A aba ativa tem ícone mais forte e texto em negrito, não só cor.
 - Voltar fica sempre no canto superior esquerdo.
@@ -297,6 +298,17 @@ Tela ou área sem conteúdo (nenhum projeto, zona vazia, busca sem resultado) ou
 - **Ações:** no máximo duas; no máximo uma primária (só se a tela não tiver outra), as demais ghost.
 - **Variantes:** `empty` (convite) e `error` (ícone de triângulo; diz o que aconteceu e o que fazer).
 - **Regras:** nunca ilustração nem emoji; o texto não culpa a pessoa; busca sem resultado repete o termo buscado.
+
+### 13.18 Menu
+
+Lista de ações ancorada num botão (ações de um card de projeto, "Mais" no celular).
+
+- **Base:** Radix DropdownMenu. Abre com clique, toque, Enter, Espaço ou seta para baixo; setas navegam; `Esc` fecha e devolve o foco ao botão.
+- **Anatomia:** raio 12, fundo `surface-raised` com contorno 10%, padding 4 px, largura mínima 200 px. Item com 32 px (44 no toque), raio 8, ícone 16 px, texto 13 px; hover e foco com fundo branco 6%.
+- **Grupos:** separador de 1 px `border`; rótulo de grupo opcional em mono 11 px `faint`.
+- **Destrutivo:** sempre o último grupo, separado, texto e ícone em `danger`.
+- **Seleção:** item escolhível (status) mostra um check à direita; nunca só a cor.
+- O botão que abre o menu é um botão só ícone (13.7) com `aria-label`.
 
 ## 14. Quando usar toast
 

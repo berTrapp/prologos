@@ -169,6 +169,23 @@ describe('deleting goes to the trash with everything inside (RN 1, 11)', () => {
     expect(after.items).toHaveLength(2);
   });
 
+  it('deleting an item keeps costs and notes of other items', () => {
+    const { snapshot, redis, db } = project();
+    const cost = {
+      id: 'k1',
+      projectId: 'p1',
+      itemId: db.id,
+      name: 'Neon',
+      amount: 0,
+      currency: 'USD',
+      period: 'monthly' as const,
+      when: 'now' as const,
+    };
+    const { snapshot: after, removed } = removeItem({ ...snapshot, costs: [cost] }, redis.id);
+    expect(after.costs).toEqual([cost]);
+    expect(removed.costs).toEqual([]);
+  });
+
   it('deleting a connection takes only that connection', () => {
     const { snapshot, apiToDb } = project();
     const { snapshot: after, removed } = removeConnection(snapshot, apiToDb.id);

@@ -2,7 +2,7 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { KitSchema } from './kit';
+import { KitSchema, type Kit } from './kit';
 
 const KITS_DIR = join(process.cwd(), 'docs/kits');
 
@@ -53,5 +53,23 @@ describe('KitSchema', () => {
   it('rejects a flow step without a connection', () => {
     const flows = [{ id: 'x', name: valid.summary, path: ['kanban', 'database'] }];
     expect(KitSchema.safeParse({ ...valid, flows }).success).toBe(false);
+  });
+
+  it.each([
+    ['a duplicate item id', (k: Kit) => ({ ...k, items: [...k.items, k.items[0]] })],
+    ['an item in a zone the kit does not have', (k: Kit) => ({ ...k, zones: k.zones.slice(1) })],
+    ['an item with an unknown technology', (k: Kit) => ({ ...k, technologies: [] })],
+    [
+      'a connection to a missing item',
+      (k: Kit) => ({ ...k, connections: [{ from: 'kanban', to: 'gone' }] }),
+    ],
+    ['a checklist entry for a missing item', (k: Kit) => ({ ...k, checklist: { data: ['gone'] } })],
+    [
+      'options for a missing item',
+      (k: Kit) => ({ ...k, pendingOptions: { gone: k.pendingOptions.database } }),
+    ],
+  ])('rejects %s', (_label, mutate) => {
+    const kit = KitSchema.parse(valid);
+    expect(KitSchema.safeParse(mutate(kit)).success).toBe(false);
   });
 });

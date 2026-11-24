@@ -8,10 +8,10 @@ const PHRASES = ['prologue', 'dots', 'zones', 'variables', 'flows'] as const;
 
 /** Five points, in zone colors, joined in order by flow lines. */
 const POINTS: { x: number; y: number; zone: ZoneId }[] = [
-  { x: 14, y: 44, zone: 'methodology' },
-  { x: 46, y: 14, zone: 'interface' },
+  { x: 14, y: 44, zone: 'method' },
+  { x: 46, y: 14, zone: 'ui' },
   { x: 48, y: 74, zone: 'data' },
-  { x: 86, y: 44, zone: 'infrastructure' },
+  { x: 86, y: 44, zone: 'infra' },
   { x: 120, y: 20, zone: 'security' },
 ];
 

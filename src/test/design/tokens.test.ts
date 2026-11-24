@@ -31,17 +31,7 @@ const TEXT_ON_BACKGROUNDS = [
   'neutral',
 ];
 const BACKGROUNDS = ['bg', 'surface-from', 'surface-to', 'surface-raised-from'];
-const ZONES = [
-  'methodology',
-  'tools',
-  'interface',
-  'application',
-  'data',
-  'environment',
-  'infrastructure',
-  'security',
-  'observability',
-];
+const ZONES = ['method', 'tools', 'ui', 'app', 'data', 'env', 'infra', 'security', 'observability'];
 
 describe.each(Object.entries(themes))('%s theme (ux-ui 5: contrast AA)', (_name, tokens) => {
   const get = (name: string) => {

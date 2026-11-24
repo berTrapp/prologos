@@ -448,11 +448,11 @@ export function ComponentsPage() {
         <DevSection index={12} title={t('sections.mapItems')}>
           <Card className="flex flex-wrap gap-4 bg-fill-subtle">
             <MapItem zone="data" status="decided" name={t('mapItems.decided')} />
-            <MapItem zone="infrastructure" status="pending" name={t('mapItems.pending')} />
+            <MapItem zone="infra" status="pending" name={t('mapItems.pending')} />
             <MapItem zone="data" status="future" name={t('mapItems.future')} />
-            <MapItem zone="interface" status="decided" isNew name={t('mapItems.new')} />
+            <MapItem zone="ui" status="decided" isNew name={t('mapItems.new')} />
             <MapItem
-              zone="application"
+              zone="app"
               status="decided"
               selected={selectedItem}
               onSelect={() => setSelectedItem((s) => !s)}

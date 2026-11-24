@@ -75,7 +75,8 @@ No tema claro as cores de zona ficam um tom mais escuras para o texto e o traço
 - Erros de tela inteira dizem o que aconteceu, o que **não** foi afetado e o que fazer, com até duas ações ("Importar backup", "Tentar de novo").
 - **Opções com consequências:** quando a pessoa precisa escolher (banco, hospedagem), cada opção mostra o que implica em uma frase, e uma vem marcada "Recomendado para começar".
 - **Interface otimista:** mudanças simples (status, renomear, mover) aparecem na hora. Se o salvamento falhar, o valor volta ao anterior e aparece um toast de erro.
-- **Salvamento automático:** não gera toast. Um indicador discreto na barra lateral mostra "Salvo", "Salvando…" ou "Salvo neste navegador".
+- **Salvamento automático:** não gera toast. Um indicador discreto na barra lateral mostra o estado: no MVP, "Salvo neste navegador" (normal), "Salvando…" (gravando) e "Não foi possível salvar" (erro). "Salvo" fica para quando houver sincronização com o servidor.
+- **Desfazer:** pilha de 100 passos por projeto, só na memória (some ao recarregar a página); para voltar mais longe, o histórico de versões.
 - **Dados locais:** o aviso de que os projetos ficam só neste navegador aparece uma vez ao criar o primeiro projeto e fica fixo em Configurações; o lembrete de backup aparece no Início como alerta em linha (regras de negócio, seção 18).
 
 ## 8. Reversibilidade

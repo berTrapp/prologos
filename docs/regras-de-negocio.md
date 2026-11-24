@@ -10,9 +10,11 @@ Como o produto se comporta. Complementa `docs/ux-ui.md` (como ele se parece). De
 
 - **Hierarquia:** projeto → zona → subzona → item. No máximo dois níveis (zona e subzona).
 - **Item em uma zona só.** Para aparecer em outra, cria-se uma conexão.
-- **Excluir zona ou subzona:** os itens dentro vão juntos para a lixeira e voltam com Desfazer.
+- **Zonas:** todo projeto começa com as 9 zonas padrão (ids `method`, `tools`, `ui`, `app`, `data`, `env`, `infra`, `security`, `observability`). A pessoa pode adicionar zonas, excluir qualquer zona (inclusive as padrão) e criar subzonas livremente. Uma zona nova usa uma das 9 cores de zona; a cor nunca é um valor solto.
+- **Excluir zona ou subzona:** os itens dentro vão juntos para a lixeira, com as subzonas e as conexões que tocam neles, e voltam com Desfazer.
 - **Conexões:** direção obrigatória; tipo opcional (usa, depende de, envia para).
 - **Fluxos:** sequência ordenada de conexões existentes. Podem passar por itens futuros; na visão Hoje esse trecho aparece tracejado.
+- **Fluxo com item excluído:** o fluxo continua; o trecho cuja conexão foi para a lixeira aparece como lacuna. Restaurar o item (e suas conexões) reconstrói o fluxo.
 
 ## 2. Hoje / Completo
 

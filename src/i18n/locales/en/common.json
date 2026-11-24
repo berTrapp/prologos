@@ -21,13 +21,13 @@
     "openingProject": "Opening the project"
   },
   "zones": {
-    "methodology": "Methodology",
+    "method": "Methodology",
     "tools": "Tools",
-    "interface": "Interface",
-    "application": "Application",
+    "ui": "Interface",
+    "app": "Application",
     "data": "Data",
-    "environment": "Environment",
-    "infrastructure": "Infrastructure",
+    "env": "Environment",
+    "infra": "Infrastructure",
     "security": "Security",
     "observability": "Observability"
   },

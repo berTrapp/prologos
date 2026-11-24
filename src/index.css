@@ -42,13 +42,13 @@
   --color-count: var(--count);
   --color-count-fg: var(--count-fg);
   --color-ring: var(--ring);
-  --color-zone-methodology: var(--zone-methodology);
+  --color-zone-method: var(--zone-method);
   --color-zone-tools: var(--zone-tools);
-  --color-zone-interface: var(--zone-interface);
-  --color-zone-application: var(--zone-application);
+  --color-zone-ui: var(--zone-ui);
+  --color-zone-app: var(--zone-app);
   --color-zone-data: var(--zone-data);
-  --color-zone-environment: var(--zone-environment);
-  --color-zone-infrastructure: var(--zone-infrastructure);
+  --color-zone-env: var(--zone-env);
+  --color-zone-infra: var(--zone-infra);
   --color-zone-security: var(--zone-security);
   --color-zone-observability: var(--zone-observability);
 
@@ -190,17 +190,17 @@
 }
 
 /* Map loader: points light up in sequence while flow lines join them, 2.4 s loop (ux-ui 13.14). */
-.zone-methodology {
-  --zone: var(--zone-methodology);
+.zone-method {
+  --zone: var(--zone-method);
 }
-.zone-interface {
-  --zone: var(--zone-interface);
+.zone-ui {
+  --zone: var(--zone-ui);
 }
 .zone-data {
   --zone: var(--zone-data);
 }
-.zone-infrastructure {
-  --zone: var(--zone-infrastructure);
+.zone-infra {
+  --zone: var(--zone-infra);
 }
 .zone-security {
   --zone: var(--zone-security);

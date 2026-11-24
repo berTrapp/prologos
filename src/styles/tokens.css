@@ -60,13 +60,13 @@
   --shadow-segment: 0 1px 2px rgb(0 0 0 / 35%);
 
   /* Zones (ux-ui 2) */
-  --zone-methodology: #f472b6;
+  --zone-method: #f472b6;
   --zone-tools: #facc15;
-  --zone-interface: #7c5cff;
-  --zone-application: #60a5fa;
+  --zone-ui: #7c5cff;
+  --zone-app: #60a5fa;
   --zone-data: #34d399;
-  --zone-environment: #fb923c;
-  --zone-infrastructure: #22d3ee;
+  --zone-env: #fb923c;
+  --zone-infra: #22d3ee;
   --zone-security: #f87171;
   --zone-observability: #a3e635;
 }
@@ -120,13 +120,13 @@
   --shadow-raised: 0 12px 32px rgb(16 18 26 / 12%), 0 2px 6px rgb(16 18 26 / 8%);
   --shadow-segment: 0 1px 2px rgb(16 18 26 / 12%), 0 0 0 1px rgb(0 0 0 / 6%);
 
-  --zone-methodology: #db2777;
+  --zone-method: #db2777;
   --zone-tools: #a16207;
-  --zone-interface: #7c5cff;
-  --zone-application: #2563eb;
+  --zone-ui: #7c5cff;
+  --zone-app: #2563eb;
   --zone-data: #059669;
-  --zone-environment: #ea580c;
-  --zone-infrastructure: #0891b2;
+  --zone-env: #ea580c;
+  --zone-infra: #0891b2;
   --zone-security: #dc2626;
   --zone-observability: #4d7c0f;
 }

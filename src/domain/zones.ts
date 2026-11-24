@@ -1,12 +1,12 @@
 /** The nine map zones, in display order (ux-ui 2). */
 export const ZONE_IDS = [
-  'methodology',
+  'method',
   'tools',
-  'interface',
-  'application',
+  'ui',
+  'app',
   'data',
-  'environment',
-  'infrastructure',
+  'env',
+  'infra',
   'security',
   'observability',
 ] as const;

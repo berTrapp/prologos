@@ -164,3 +164,77 @@
     transform: scale(0.97);
   }
 }
+
+/* Toast timeline shrinks to nothing; hovering the stack pauses it, like the timer (ux-ui 13.12). */
+@keyframes toast-timeline {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+[data-sonner-toaster]:hover [data-toast-timeline] {
+  animation-play-state: paused;
+}
+/* Toasts rise 8 px in 200 ms (ux-ui 13.12). */
+[data-sonner-toast].prologos-toast {
+  width: 100%;
+  transition-duration: var(--duration-base) !important;
+}
+[data-sonner-toast].prologos-toast[data-mounted='false'] {
+  --y: translateY(8px) !important;
+}
+[data-sonner-toast].prologos-toast[data-y-position='top'][data-mounted='false'] {
+  --y: translateY(-8px) !important;
+}
+
+/* Map loader: points light up in sequence while flow lines join them, 2.4 s loop (ux-ui 13.14). */
+.zone-methodology {
+  --zone: var(--zone-methodology);
+}
+.zone-interface {
+  --zone: var(--zone-interface);
+}
+.zone-data {
+  --zone: var(--zone-data);
+}
+.zone-infrastructure {
+  --zone: var(--zone-infrastructure);
+}
+.zone-security {
+  --zone: var(--zone-security);
+}
+.map-loader-dot {
+  animation: map-loader-dot 2.4s ease-in-out infinite both;
+}
+.map-loader-line {
+  stroke: var(--muted);
+  stroke-dashoffset: 1;
+  animation: map-loader-line 2.4s ease-in-out infinite both;
+}
+@keyframes map-loader-dot {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  15%,
+  70% {
+    opacity: 1;
+  }
+}
+@keyframes map-loader-line {
+  0% {
+    stroke-dashoffset: 1;
+    opacity: 1;
+  }
+  25%,
+  70% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}

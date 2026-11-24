@@ -36,3 +36,27 @@ export const zoneTint: Record<ZoneId, string> = {
   security: 'bg-zone-security/5',
   observability: 'bg-zone-observability/5',
 };
+
+export const zoneText: Record<ZoneId, string> = {
+  method: 'text-zone-method',
+  tools: 'text-zone-tools',
+  ui: 'text-zone-ui',
+  app: 'text-zone-app',
+  data: 'text-zone-data',
+  env: 'text-zone-env',
+  infra: 'text-zone-infra',
+  security: 'text-zone-security',
+  observability: 'text-zone-observability',
+};
+
+export const zoneRing: Record<ZoneId, string> = {
+  method: 'inset-ring-zone-method/30',
+  tools: 'inset-ring-zone-tools/30',
+  ui: 'inset-ring-zone-ui/30',
+  app: 'inset-ring-zone-app/30',
+  data: 'inset-ring-zone-data/30',
+  env: 'inset-ring-zone-env/30',
+  infra: 'inset-ring-zone-infra/30',
+  security: 'inset-ring-zone-security/30',
+  observability: 'inset-ring-zone-observability/30',
+};

@@ -1,7 +1,71 @@
 import { createBrowserRouter, type RouteObject } from 'react-router';
-import { HomeRoute } from './routes/HomeRoute';
+import { AppShell } from '@/features/shell/AppShell';
+import { RootLayout } from './RootLayout';
 
-const routes: RouteObject[] = [{ path: '/', element: <HomeRoute /> }];
+export const routes: RouteObject[] = [
+  {
+    element: <RootLayout />,
+    children: [
+      {
+        index: true,
+        lazy: async () => ({ Component: (await import('@/features/home/HomePage')).HomePage }),
+      },
+      {
+        element: <AppShell />,
+        children: [
+          {
+            path: 'p/:projectId',
+            lazy: async () => ({
+              Component: (await import('@/features/project/ProjectLayout')).ProjectLayout,
+            }),
+            children: [
+              {
+                index: true,
+                lazy: async () => {
+                  const { ProjectPlaceholderPage } =
+                    await import('@/features/project/ProjectPlaceholderPage');
+                  return { Component: () => <ProjectPlaceholderPage page="map" /> };
+                },
+              },
+              {
+                path: 'checklist',
+                lazy: async () => {
+                  const { ProjectPlaceholderPage } =
+                    await import('@/features/project/ProjectPlaceholderPage');
+                  return { Component: () => <ProjectPlaceholderPage page="checklist" /> };
+                },
+              },
+              {
+                path: 'variaveis',
+                lazy: async () => {
+                  const { ProjectPlaceholderPage } =
+                    await import('@/features/project/ProjectPlaceholderPage');
+                  return { Component: () => <ProjectPlaceholderPage page="variables" /> };
+                },
+              },
+            ],
+          },
+          {
+            path: 'lixeira',
+            lazy: async () => ({
+              Component: (await import('@/features/trash/TrashPage')).TrashPage,
+            }),
+          },
+          {
+            path: 'configuracoes',
+            lazy: async () => ({
+              Component: (await import('@/features/settings/SettingsPage')).SettingsPage,
+            }),
+          },
+        ],
+      },
+      {
+        path: '*',
+        lazy: async () => ({ Component: (await import('@/features/home/HomePage')).HomePage }),
+      },
+    ],
+  },
+];
 
 // Dev-only pages never reach the public build (the branch is removed by Vite).
 if (import.meta.env.DEV) {

@@ -20,6 +20,8 @@ import type { ProjectStore } from './project-store';
 /** What the home and the navigation need to know about each project. */
 export type ProjectSummary = {
   project: Project;
+  /** Top-level zones in order; default ones carry their key, added ones their name. */
+  zones: { color: ZoneColor; key?: ZoneColor; name?: string }[];
   zoneColors: ZoneColor[];
   counts: { zones: number; items: number; flows: number };
 };
@@ -53,6 +55,7 @@ function summarize(snapshot: ProjectSnapshot): ProjectSummary {
     .sort((a, b) => a.order - b.order);
   return {
     project: snapshot.project,
+    zones: topZones.map(({ color, key, name }) => ({ color, key, name })),
     zoneColors: topZones.map((zone) => zone.color),
     counts: { zones: topZones.length, items: snapshot.items.length, flows: snapshot.flows.length },
   };

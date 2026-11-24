@@ -3,6 +3,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { SUPPORTED_LANGUAGES } from '@/i18n/languages';
+import type { KitName } from '@/domain/schemas/kit';
 import { KITS, KIT_ORDER, findKit } from './kits';
 
 const DOCS = join(process.cwd(), 'docs/kits');
@@ -13,7 +14,7 @@ function docBlock(file: string): unknown {
   return JSON.parse(block);
 }
 
-const names = (value: string | Record<string, string>) =>
+const names = (value: KitName) =>
   typeof value === 'string' ? [value] : SUPPORTED_LANGUAGES.map((lng) => value[lng]);
 
 describe('content kits (RN 14)', () => {

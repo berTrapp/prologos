@@ -7,6 +7,8 @@ export const PROJECT_TYPES = ['web', 'api', 'mobile', 'site', 'unknown'] as cons
 export const PROJECT_STATUSES = ['planning', 'developing', 'paused', 'done', 'archived'] as const;
 /** RN 2. */
 export const VIEWS = ['today', 'complete'] as const;
+/** RN 15: stacks a person can say they already know. */
+export const KNOWN_STACKS = ['laravel', 'node', 'spring', 'dotnet', 'django'] as const;
 /** RN 3: fixed environments; the person can add others. */
 export const DEFAULT_ENVIRONMENTS = ['development', 'staging', 'production'] as const;
 
@@ -17,6 +19,8 @@ export const ProjectSchema = z.object({
   type: z.enum(PROJECT_TYPES),
   status: z.enum(PROJECT_STATUSES),
   kitId: z.string().min(1).optional(),
+  /** RN 15: the stack the person already knows, for the equivalences. */
+  knownStack: z.enum(KNOWN_STACKS).optional(),
   view: z.enum(VIEWS),
   environments: z.array(Text(40)).min(1),
   createdAt: Timestamp,
@@ -27,3 +31,4 @@ export type Project = z.infer<typeof ProjectSchema>;
 export type ProjectType = Project['type'];
 export type ProjectStatus = Project['status'];
 export type View = Project['view'];
+export type KnownStack = (typeof KNOWN_STACKS)[number];

@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { SUPPORTED_LANGUAGES } from '@/i18n/languages';
 import { ZONE_IDS } from '../zones';
 import { CONNECTION_TYPES, ITEM_STATES, ITEM_WHEN } from './map';
-import { PROJECT_TYPES } from './project';
+import { KNOWN_STACKS, PROJECT_TYPES } from './project';
 
 /** Kit text exists in every supported language (RN 14, 17). */
 export const LocalizedText = z.object(
@@ -15,8 +15,7 @@ export const LocalizedText = z.object(
 const Name = z.union([z.string().min(1), LocalizedText]);
 const Url = z.url();
 
-/** RN 15: stacks a person can say they already know. */
-export const KNOWN_STACKS = ['laravel', 'node', 'spring', 'dotnet', 'django'] as const;
+export { KNOWN_STACKS };
 
 const KitItemSchema = z.object({
   id: z.string().min(1),
@@ -131,3 +130,5 @@ export const KitSchema = z
 
 export type Kit = z.infer<typeof KitSchema>;
 export type KitItem = z.infer<typeof KitItemSchema>;
+export type KitText = z.infer<typeof LocalizedText>;
+export type KitName = z.infer<typeof Name>;

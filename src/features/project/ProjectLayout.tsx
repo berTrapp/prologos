@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, Outlet, useParams } from 'react-router';
-import { projectStore, useProject, useWorkspace, workspaceStore } from '@/app/services';
+import { projectStore, useProject, workspaceStore } from '@/app/services';
 import { Button } from '@/components/ui/Button';
 import { EmptyState } from '@/components/ui/EmptyState';
-import { InlineAlert } from '@/components/ui/InlineAlert';
 
 /** Opens the project in the store while its pages are on screen. */
 export function ProjectLayout() {
@@ -12,7 +11,6 @@ export function ProjectLayout() {
   const { projectId = '' } = useParams();
   const [state, setState] = useState<'loading' | 'ready' | 'missing'>('loading');
   const openId = useProject((s) => s.snapshot?.project.id);
-  const noticeSeen = useWorkspace((s) => s.settings.dataNoticeSeen);
 
   useEffect(() => {
     let cancelled = false;
@@ -56,27 +54,5 @@ export function ProjectLayout() {
   // ux-ui 15: opening is fast; under 0.4 s nothing but the page itself.
   if (state === 'loading') return null;
 
-  return (
-    <>
-      {noticeSeen ? null : (
-        <InlineAlert
-          variant="info"
-          className="mb-6"
-          actions={
-            <Button
-              size="compact"
-              onClick={() =>
-                void workspaceStore.getState().updateSettings({ dataNoticeSeen: true })
-              }
-            >
-              {t('dataNotice.gotIt')}
-            </Button>
-          }
-        >
-          {t('dataNotice.body')}
-        </InlineAlert>
-      )}
-      <Outlet />
-    </>
-  );
+  return <Outlet />;
 }

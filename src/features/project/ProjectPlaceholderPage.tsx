@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useProject } from '@/app/services';
 import { EmptyState } from '@/components/ui/EmptyState';
 import { PageHeader } from '@/features/shell/PageHeader';
+import { DataNotice } from './DataNotice';
 
 const PAGES = {
   map: {
@@ -36,6 +37,7 @@ export function ProjectPlaceholderPage({ page }: { page: keyof typeof PAGES }) {
         title={page === 'map' ? name : t(config.nav)}
         subtitle={page === 'map' ? undefined : name}
       />
+      <DataNotice />
       <div className="rounded-card border border-dashed border-border-strong">
         <EmptyState icon={config.icon} title={t(config.title)} description={t(config.body)} />
       </div>

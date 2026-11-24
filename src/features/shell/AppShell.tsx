@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Outlet, useParams } from 'react-router';
 import { useWorkspace } from '@/app/services';
+import { isInMainList } from '@/domain/rules/project';
 import { useBreakpoint } from '@/hooks/useBreakpoint';
 import { usePersistentState } from '@/hooks/usePersistentState';
 import { MobileTabBar } from './MobileTabBar';
@@ -16,7 +17,10 @@ export function AppShell() {
   const lastOpened = useWorkspace((s) => s.settings.lastOpenedProjectId);
   const projects = useWorkspace((s) => s.projects);
   const currentId = projectId ?? lastOpened;
-  const project = projects.find((p) => p.project.id === currentId)?.project;
+  // Falls back to the most recent active project when the last one opened is gone.
+  const project =
+    projects.find((p) => p.project.id === currentId)?.project ??
+    (projectId ? undefined : projects.find((p) => isInMainList(p.project))?.project);
 
   // ux-ui 10, 12: remembered; on a tablet it starts collapsed.
   const [collapsed, setCollapsed] = usePersistentState(

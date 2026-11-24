@@ -20,16 +20,16 @@ Regras que toda tela do Prólogos segue. Valem para quem desenha, quem programa 
 | Zona | Escuro | Claro |
 |---|---|---|
 | Metodologia | #F472B6 | #DB2777 |
-| Ferramentas | #FACC15 | #CA8A04 |
+| Ferramentas | #FACC15 | #A16207 |
 | Interface | #7C5CFF | #7C5CFF |
 | Aplicação | #60A5FA | #2563EB |
 | Dados | #34D399 | #059669 |
 | Ambiente | #FB923C | #EA580C |
 | Infraestrutura | #22D3EE | #0891B2 |
 | Segurança | #F87171 | #DC2626 |
-| Observabilidade | #A3E635 | #65A30D |
+| Observabilidade | #A3E635 | #4D7C0F |
 
-No tema claro as cores de zona ficam um tom mais escuras para o texto e o traço manterem contraste AA. O gradiente da marca (#7C5CFF → #22D3EE) não muda entre os temas.
+No tema claro as cores de zona ficam um tom mais escuras para o texto e o traço manterem contraste AA (no mínimo 3:1 sobre `bg`; Ferramentas e Observabilidade usam o tom 700 por isso). O gradiente da marca (#7C5CFF → #22D3EE) não muda entre os temas.
 
 ## 3. Hierarquia e leitura
 
@@ -189,7 +189,7 @@ Número de pendências num item de navegação ou aba.
 
 - Pílula de 18 px (16 px no celular, sobre o ícone da aba) · padding 0 5 px · fundo `#FBBF24` sólido, texto `#1A1305` · Geist 11 px peso 700.
 - Só aparece com valor maior que zero; acima de 99 mostra "99+".
-- É o único elemento com fundo sólido amarelo no app.
+- É o único elemento com fundo sólido amarelo no app. Igual nos dois temas.
 
 ### 13.4 Status com ponto
 
@@ -202,7 +202,7 @@ Status de projeto ("Em desenvolvimento", "Planejando", "Pausado") e de conexão.
 
 Nome de tecnologia, chave, comando ou valor técnico (React, `DATABASE_URL`, `php artisan migrate`).
 
-- Altura 24 px · padding 0 8 px · raio 6 px · Geist Mono 11,5 px · fundo branco 4% + contorno interno 8% · texto #C3C8D6.
+- Altura 24 px · padding 0 8 px · raio 6 px · Geist Mono 11,5 px · fundo branco 4% + contorno interno 8% · texto #C3C8D6 (claro: fundo preto 4%, contorno 8%, texto #3A3F4C).
 - Com ação (remover, filtrar, sugestão clicável) ganha o estado hover e, para remover, um × de 12 px; sem ação, é estático.
 
 ### 13.6 Tag de zona
@@ -214,7 +214,7 @@ Identifica a zona do mapa (Metodologia, Infraestrutura…).
 
 ### 13.7 Botão
 
-- **Primário:** fundo sólido `#EDEEF2`, texto `#0B0D12` (invertido no claro). Um por tela.
+- **Primário:** fundo sólido `#EDEEF2`, texto `#0B0D12` (claro: fundo `#12141A`, texto `#FFFFFF`). Um por tela.
 - **Secundário (ghost):** fundo transparente com contorno interno branco 10%, texto `text`; hover ganha fundo branco 4%.
 - **Só ícone:** 32 × 32 px (44 no toque), com `aria-label` e dica.
 - **Destrutivo:** texto `danger` sobre ghost; nunca primário.
@@ -244,7 +244,7 @@ Trocas de vista com 2 a 4 opções (Hoje / Completo, Zonas / Mapa, Atual / Futur
 
 ### 13.11 Campos e seleção
 
-- **Campo de texto:** altura 36 px (44 no toque, com texto de 16 px), raio 8 px, fundo branco 3%, contorno 8%; foco com anel violeta de 2 px. Rótulo sempre visível acima, nunca só placeholder. Área de texto: raio 12 px, fundo #0A0C10.
+- **Campo de texto:** altura 36 px (44 no toque, com texto de 16 px), raio 8 px, fundo branco 3%, contorno 8%; foco com anel violeta de 2 px. Rótulo sempre visível acima, nunca só placeholder. Área de texto: raio 12 px, fundo #0A0C10 (claro: #F1F2F5).
 - **Interruptor:** trilho 34 × 20 px (raio 999), bolinha branca de 16 px a 2 px da borda; desligado em branco 15%, **ligado em verde #34D399**. O texto do rótulo fica à esquerda e todo o conjunto é clicável (`role="switch"`).
 - **Caixa de seleção:** 18 px, raio 6 px, marcada em verde `success` com check escuro; alvo clicável de 32 px em volta.
 
@@ -271,7 +271,7 @@ Aviso que pertence a uma área da tela e não some (segredo exposto no .env, dad
 Regra de quando usar cada um: seção 15.
 
 - **Spinner:** 16 px, anel de 2,5 px com trilho a 20% e arco na cor do texto, uma volta a cada 0,9 s.
-- **Barra de progresso:** 6 px de altura, raio 999, trilho branco 6%, preenchimento sólido `#EDEEF2`; só para progresso real.
+- **Barra de progresso:** 6 px de altura, raio 999, trilho branco 6%, preenchimento sólido `#EDEEF2` (claro: `#12141A`); só para progresso real.
 - **Anel de cobertura:** mesmo traço da barra, em círculo, com a porcentagem ao lado.
 - **Etapas:** lista vertical; cada etapa com círculo de 22 px (feita: check verde; atual: spinner; futura: contorno apagado), texto 13,5 px e detalhe mono à direita ("12/18 arquivos"). Embaixo, barra de progresso, uma frase de contexto e **Cancelar**.
 - **Skeleton:** blocos com raio 6 px e fundo branco 6%, **parados** (sem brilho passando), desenhando a forma real da tela. No mapa, os contornos das zonas aparecem tracejados nas cores delas.
@@ -285,8 +285,17 @@ Atalho de teclado (`Ctrl K`, `Esc`).
 
 ### 13.16 Item do mapa
 
-- Card de 168 × 48 px, raio 12 px, fundo #12151B, ponto de 8 px na cor da zona, nome 13 px peso 500 e situação 11,5 px abaixo ("Decidido", "A decidir", "Futuro").
+- Card de 168 × 48 px, raio 12 px, fundo #12151B (claro: #FFFFFF), ponto de 8 px na cor da zona, nome 13 px peso 500 e situação 11,5 px abaixo ("Decidido", "A decidir", "Futuro").
 - **Decidido:** contorno branco 12%. **A decidir:** contorno tracejado `warning`, situação em `warning`. **Futuro:** opacidade 60%. **Novo para você:** ponto `accent` de 7 px à direita. **Selecionado:** contorno 1,5 px `text` + halo de 4 px.
+
+### 13.17 Estado vazio
+
+Tela ou área sem conteúdo (nenhum projeto, zona vazia, busca sem resultado) ou que não abriu (erro). É um convite: diz o que falta e oferece a ação.
+
+- **Anatomia:** centralizado na área · ícone Lucide 16 px dentro de quadrado de 44 px (raio 12, fundo branco 4% / preto 4% no claro, contorno `border`) · título 16 px peso 600 em `text` · uma frase 13,5 px em `muted`, no máximo 2 linhas e 420 px de largura · ações 16 px abaixo.
+- **Ações:** no máximo duas; no máximo uma primária (só se a tela não tiver outra), as demais ghost.
+- **Variantes:** `empty` (convite) e `error` (ícone de triângulo; diz o que aconteceu e o que fazer).
+- **Regras:** nunca ilustração nem emoji; o texto não culpa a pessoa; busca sem resultado repete o termo buscado.
 
 ## 14. Quando usar toast
 

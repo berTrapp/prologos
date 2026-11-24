@@ -1,4 +1,120 @@
 @import 'tailwindcss';
-@import 'tw-animate-css';
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+@import './styles/tokens.css';
 
-/* Design tokens (ux-ui 13.1) arrive in phase 1. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/* Only tokens: the default Tailwind palette and radii are removed on purpose. */
+@theme inline {
+  --color-*: initial;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+  --color-accent: var(--accent);
+  --color-neutral: var(--neutral);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-fill-subtle: var(--fill-subtle);
+  --color-fill: var(--fill);
+  --color-fill-strong: var(--fill-strong);
+  --color-fill-active: var(--fill-active);
+  --color-stroke: var(--stroke);
+  --color-stroke-strong: var(--stroke-strong);
+  --color-switch-off: var(--switch-off);
+  --color-switch-on: var(--switch-on);
+  --color-knob: var(--knob);
+  --color-scrim: var(--scrim);
+  --color-primary: var(--primary);
+  --color-primary-fg: var(--primary-fg);
+  --color-primary-hover: var(--primary-hover);
+  --color-chip-fg: var(--chip-fg);
+  --color-textarea: var(--textarea);
+  --color-map-item: var(--map-item);
+  --color-progress: var(--progress);
+  --color-count: var(--count);
+  --color-count-fg: var(--count-fg);
+  --color-ring: var(--ring);
+  --color-zone-methodology: var(--zone-methodology);
+  --color-zone-tools: var(--zone-tools);
+  --color-zone-interface: var(--zone-interface);
+  --color-zone-application: var(--zone-application);
+  --color-zone-data: var(--zone-data);
+  --color-zone-environment: var(--zone-environment);
+  --color-zone-infrastructure: var(--zone-infrastructure);
+  --color-zone-security: var(--zone-security);
+  --color-zone-observability: var(--zone-observability);
+
+  --radius-*: initial;
+  --radius-tag: 2px;
+  --radius-badge: 6px;
+  --radius-control: 8px;
+  --radius-track: 10px;
+  --radius-inner: 12px;
+  --radius-card: 16px;
+  --radius-sheet: 20px;
+  --radius-full: 999px;
+
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, monospace;
+
+  --shadow-raised: var(--shadow-raised);
+  --shadow-segment: var(--shadow-segment);
+
+  --ease-out: var(--ease-out);
+}
+
+@layer base {
+  html {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+@utility surface {
+  background: linear-gradient(180deg, var(--surface-from), var(--surface-to));
+}
+
+@utility surface-raised {
+  background: linear-gradient(180deg, var(--surface-raised-from), var(--surface-raised-to));
+  box-shadow: var(--shadow-raised);
+}
+
+@utility hairline {
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+
+/* Movement responds to actions only; reduced motion removes displacement (ux-ui 6). */
+@media (prefers-reduced-motion: reduce) {
+  /* Spinners keep turning (data-allow-motion): rotation is a progress cue, not displacement. */
+  *:not([data-allow-motion]),
+  *:not([data-allow-motion])::before,
+  *:not([data-allow-motion])::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

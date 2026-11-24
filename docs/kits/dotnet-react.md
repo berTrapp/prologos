@@ -776,7 +776,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       }
     },
     {
-      "key": "ConnectionStrings__Default",
+      "key": "CONNECTIONSTRINGS__DEFAULT",
       "secret": true,
       "usedIn": [
         "back",
@@ -794,7 +794,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       }
     },
     {
-      "key": "Jwt__Key",
+      "key": "JWT__KEY",
       "secret": true,
       "usedIn": [
         "back"

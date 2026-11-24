@@ -34,6 +34,16 @@ export function Dialog({
       <DialogPrimitive.Portal>
         <DialogPrimitive.Overlay className="fixed inset-0 z-40 bg-scrim data-[state=closed]:animate-[fade-out_var(--duration-fast)_ease-in] data-[state=open]:animate-[fade-in_var(--duration-base)_var(--ease-out)]" />
         <DialogPrimitive.Content
+          onOpenAutoFocus={(event) => {
+            // Forms start on their first field, not on the close button.
+            const field = (event.currentTarget as HTMLElement | null)?.querySelector<HTMLElement>(
+              'input:not([type=hidden]):not([disabled]), textarea:not([disabled])',
+            );
+            if (field) {
+              event.preventDefault();
+              field.focus();
+            }
+          }}
           className={cn(
             'surface-raised fixed top-1/2 left-1/2 z-50 flex max-h-[calc(100dvh-32px)] w-[calc(100vw-32px)] -translate-x-1/2 -translate-y-1/2 flex-col inset-ring inset-ring-stroke-strong',
             size === 'large' ? 'max-w-[640px] rounded-sheet' : 'max-w-[440px] rounded-card',

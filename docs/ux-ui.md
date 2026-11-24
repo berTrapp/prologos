@@ -310,6 +310,15 @@ Lista de ações ancorada num botão (ações de um card de projeto, "Mais" no c
 - **Seleção:** item escolhível (status) mostra um check à direita; nunca só a cor.
 - O botão que abre o menu é um botão só ícone (13.7) com `aria-label`.
 
+### 13.19 Lista de opções
+
+Escolha única em telas de toque quando as opções não cabem num controle segmentado (idioma e tema nas Configurações do celular).
+
+- **Base:** Radix RadioGroup; setas mudam a escolha; o grupo tem nome (rótulo visível acima).
+- **Anatomia:** dentro de um card; rótulo do grupo 13 px peso 600 em `muted`; cada opção é uma linha de 48 px com o texto em 16 px à esquerda e o indicador à direita; linhas separadas por 1 px `border`.
+- **Indicador:** círculo de 22 px com contorno `stroke-strong`; marcado, fundo `text` com miolo `bg` de 8 px. Nunca só cor: a forma muda.
+- No desktop, a mesma escolha usa o controle segmentado (13.8).
+
 ## 14. Quando usar toast
 
 O toast confirma o resultado de uma ação **que não aparece sozinho na tela** ou que **pode ser desfeita**. Se o resultado já está visível, não há toast.

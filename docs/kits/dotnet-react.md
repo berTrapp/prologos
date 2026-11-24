@@ -1,0 +1,848 @@
+# Kit — C# + .NET
+
+Segue o formato do *Kit modelo — Laravel + React* (`docs/kits/laravel-react.md`). No repositório: `src/content/kits/dotnet-react.json`.
+
+- **Tipos de projeto:** web, api
+- **Recomendado quando a pessoa domina:** dotnet
+- **Prefixo de variável pública:** `VITE_`
+- **Arquivos que a leitura do GitHub usa:** `*.csproj`, `package.json`, `.env.example`, `docker-compose.yml`
+- **Itens:** 24 · pendentes no início: database, hosting, backup, error-tracking
+- **Trilha "Preparar o ambiente":** 5 passos
+- **Equivalências:** sim
+
+Validado automaticamente: referências entre itens, uma opção recomendada por pendência, nenhum segredo com exemplo ou com prefixo público, textos em pt-BR, en e es. Os comandos e links precisam ser conferidos numa máquina limpa antes de cada release (lista de validação do kit modelo).
+
+```json
+{
+  "id": "dotnet-react",
+  "version": "1.0.0",
+  "name": {
+    "pt-BR": "C# + .NET",
+    "en": "C# + .NET",
+    "es": "C# + .NET"
+  },
+  "summary": {
+    "pt-BR": "API em C# com ASP.NET Core e interface em React com Vite.",
+    "en": "C# API with ASP.NET Core and a React interface with Vite.",
+    "es": "API en C# con ASP.NET Core e interfaz en React con Vite."
+  },
+  "projectTypes": [
+    "web",
+    "api"
+  ],
+  "knownStack": "dotnet",
+  "publicEnvPrefix": "VITE_",
+  "dependencyFiles": [
+    "*.csproj",
+    "package.json",
+    ".env.example",
+    "docker-compose.yml"
+  ],
+  "technologies": [
+    {
+      "id": "csharp",
+      "name": "C#",
+      "what": {
+        "pt-BR": "A linguagem do back-end.",
+        "en": "The back-end language.",
+        "es": "El lenguaje del back-end."
+      },
+      "docs": "https://learn.microsoft.com/dotnet/csharp/"
+    },
+    {
+      "id": "dotnet",
+      "name": "ASP.NET Core",
+      "what": {
+        "pt-BR": "Framework do back-end: rotas, injeção de dependência, autenticação e configuração.",
+        "en": "Back-end framework: routing, dependency injection, authentication and configuration.",
+        "es": "Framework del back-end: rutas, inyección de dependencias, autenticación y configuración."
+      },
+      "docs": "https://learn.microsoft.com/aspnet/core/"
+    },
+    {
+      "id": "ts",
+      "name": "TypeScript",
+      "what": {
+        "pt-BR": "JavaScript com tipos, usado no front.",
+        "en": "JavaScript with types, used in the front end.",
+        "es": "JavaScript con tipos, usado en el front-end."
+      },
+      "docs": "https://www.typescriptlang.org/docs/"
+    },
+    {
+      "id": "react",
+      "name": "React",
+      "what": {
+        "pt-BR": "Biblioteca para montar a interface em componentes.",
+        "en": "Library for building the interface out of components.",
+        "es": "Biblioteca para construir la interfaz con componentes."
+      },
+      "docs": "https://react.dev"
+    }
+  ],
+  "zones": [
+    {
+      "id": "method",
+      "name": {
+        "pt-BR": "Metodologia",
+        "en": "Methodology",
+        "es": "Metodología"
+      },
+      "color": "#F472B6"
+    },
+    {
+      "id": "tools",
+      "name": {
+        "pt-BR": "Ferramentas",
+        "en": "Tools",
+        "es": "Herramientas"
+      },
+      "color": "#FACC15"
+    },
+    {
+      "id": "ui",
+      "name": {
+        "pt-BR": "Interface",
+        "en": "Interface",
+        "es": "Interfaz"
+      },
+      "color": "#7C5CFF"
+    },
+    {
+      "id": "app",
+      "name": {
+        "pt-BR": "Aplicação",
+        "en": "Application",
+        "es": "Aplicación"
+      },
+      "color": "#60A5FA"
+    },
+    {
+      "id": "data",
+      "name": {
+        "pt-BR": "Dados",
+        "en": "Data",
+        "es": "Datos"
+      },
+      "color": "#34D399"
+    },
+    {
+      "id": "env",
+      "name": {
+        "pt-BR": "Ambiente",
+        "en": "Environment",
+        "es": "Entorno"
+      },
+      "color": "#FB923C"
+    },
+    {
+      "id": "infra",
+      "name": {
+        "pt-BR": "Infraestrutura",
+        "en": "Infrastructure",
+        "es": "Infraestructura"
+      },
+      "color": "#22D3EE"
+    },
+    {
+      "id": "security",
+      "name": {
+        "pt-BR": "Segurança",
+        "en": "Security",
+        "es": "Seguridad"
+      },
+      "color": "#F87171"
+    },
+    {
+      "id": "observability",
+      "name": {
+        "pt-BR": "Observabilidade",
+        "en": "Observability",
+        "es": "Observabilidad"
+      },
+      "color": "#A3E635"
+    }
+  ],
+  "items": [
+    {
+      "id": "kanban",
+      "zone": "method",
+      "name": "Kanban",
+      "state": "decided",
+      "when": "now",
+      "why": {
+        "pt-BR": "Um quadro simples (a fazer, fazendo, feito) basta para quem trabalha sozinho.",
+        "en": "A simple board (to do, doing, done) is enough when working alone.",
+        "es": "Un tablero simple (por hacer, haciendo, hecho) basta para quien trabaja solo."
+      }
+    },
+    {
+      "id": "conventional-commits",
+      "zone": "method",
+      "name": "Conventional Commits",
+      "state": "decided",
+      "when": "now",
+      "why": {
+        "pt-BR": "Histórico legível e changelog automático.",
+        "en": "Readable history and automatic changelog.",
+        "es": "Historial legible y changelog automático."
+      },
+      "docs": "https://www.conventionalcommits.org"
+    },
+    {
+      "id": "git",
+      "zone": "tools",
+      "name": "Git + GitHub",
+      "state": "decided",
+      "when": "now",
+      "docs": "https://docs.github.com"
+    },
+    {
+      "id": "dotnet-cli",
+      "zone": "tools",
+      "name": ".NET CLI + NuGet",
+      "state": "decided",
+      "when": "now",
+      "tech": "dotnet",
+      "why": {
+        "pt-BR": "Cria, compila e roda o projeto; o NuGet instala os pacotes.",
+        "en": "Creates, builds and runs the project; NuGet installs packages.",
+        "es": "Crea, compila y ejecuta el proyecto; NuGet instala los paquetes."
+      },
+      "docs": "https://learn.microsoft.com/nuget/"
+    },
+    {
+      "id": "npm",
+      "zone": "tools",
+      "name": "npm",
+      "state": "decided",
+      "when": "now",
+      "tech": "ts",
+      "why": {
+        "pt-BR": "Instala os pacotes do front.",
+        "en": "Installs front-end packages.",
+        "es": "Instala los paquetes del front-end."
+      }
+    },
+    {
+      "id": "docker",
+      "zone": "tools",
+      "name": "Docker",
+      "state": "decided",
+      "when": "now",
+      "why": {
+        "pt-BR": "Sobe o banco igual em qualquer máquina.",
+        "en": "Runs the database the same on any machine.",
+        "es": "Levanta la base igual en cualquier máquina."
+      },
+      "docs": "https://docs.docker.com"
+    },
+    {
+      "id": "xunit",
+      "zone": "tools",
+      "name": "xUnit",
+      "state": "decided",
+      "when": "now",
+      "tech": "csharp",
+      "why": {
+        "pt-BR": "Testes automatizados do back-end.",
+        "en": "Automated back-end tests.",
+        "es": "Pruebas automatizadas del back-end."
+      },
+      "docs": "https://xunit.net"
+    },
+    {
+      "id": "react-vite",
+      "zone": "ui",
+      "name": "React + Vite",
+      "state": "decided",
+      "when": "now",
+      "tech": "react",
+      "why": {
+        "pt-BR": "Interface em componentes, com recarga instantânea.",
+        "en": "Component-based interface with instant reload.",
+        "es": "Interfaz en componentes, con recarga instantánea."
+      },
+      "docs": "https://vite.dev/guide/"
+    },
+    {
+      "id": "aspnet-app",
+      "zone": "app",
+      "name": "ASP.NET Core",
+      "state": "decided",
+      "when": "now",
+      "tech": "dotnet",
+      "why": {
+        "pt-BR": "Centro do back-end: recebe as requisições, aplica as regras e fala com o banco.",
+        "en": "Core of the back end: receives requests, applies rules and talks to the database.",
+        "es": "Centro del back-end: recibe las peticiones, aplica las reglas y habla con la base."
+      }
+    },
+    {
+      "id": "rest-api",
+      "zone": "app",
+      "name": "Web API (Controllers)",
+      "state": "decided",
+      "when": "now",
+      "tech": "dotnet",
+      "why": {
+        "pt-BR": "O front conversa com a API por controllers ou Minimal APIs.",
+        "en": "The front end talks to the API through controllers or Minimal APIs.",
+        "es": "El front habla con la API mediante controllers o Minimal APIs."
+      }
+    },
+    {
+      "id": "database",
+      "zone": "data",
+      "name": {
+        "pt-BR": "Banco de dados",
+        "en": "Database",
+        "es": "Base de datos"
+      },
+      "state": "pending",
+      "when": "now"
+    },
+    {
+      "id": "efcore",
+      "zone": "data",
+      "name": "Entity Framework Core",
+      "state": "decided",
+      "when": "now",
+      "tech": "dotnet",
+      "why": {
+        "pt-BR": "Tabelas viram classes C#; consultas em LINQ.",
+        "en": "Tables become C# classes; queries in LINQ.",
+        "es": "Las tablas se vuelven clases C#; consultas en LINQ."
+      },
+      "docs": "https://learn.microsoft.com/ef/core/"
+    },
+    {
+      "id": "migrations",
+      "zone": "data",
+      "name": "EF Core Migrations",
+      "state": "decided",
+      "when": "now",
+      "tech": "dotnet",
+      "why": {
+        "pt-BR": "Mudanças do banco geradas a partir das classes, em ordem.",
+        "en": "Database changes generated from the classes, in order.",
+        "es": "Cambios de la base generados a partir de las clases, en orden."
+      },
+      "docs": "https://learn.microsoft.com/ef/core/managing-schemas/migrations/"
+    },
+    {
+      "id": "env-example",
+      "zone": "env",
+      "name": ".env.example",
+      "state": "decided",
+      "when": "now",
+      "why": {
+        "pt-BR": "Lista as variáveis sem valores secretos, para quem clona o projeto saber o que preencher.",
+        "en": "Lists variables without secret values so whoever clones the project knows what to fill in.",
+        "es": "Lista las variables sin valores secretos para que quien clone el proyecto sepa qué completar."
+      }
+    },
+    {
+      "id": "environments",
+      "zone": "env",
+      "name": {
+        "pt-BR": "Desenvolvimento e produção",
+        "en": "Development and production",
+        "es": "Desarrollo y producción"
+      },
+      "state": "decided",
+      "when": "now"
+    },
+    {
+      "id": "hosting",
+      "zone": "infra",
+      "name": {
+        "pt-BR": "Hospedagem",
+        "en": "Hosting",
+        "es": "Hosting"
+      },
+      "state": "pending",
+      "when": "now"
+    },
+    {
+      "id": "github-actions",
+      "zone": "infra",
+      "name": "GitHub Actions",
+      "state": "decided",
+      "when": "now",
+      "why": {
+        "pt-BR": "Roda testes e build a cada push.",
+        "en": "Runs tests and build on every push.",
+        "es": "Ejecuta pruebas y build en cada push."
+      },
+      "docs": "https://docs.github.com/actions"
+    },
+    {
+      "id": "auth",
+      "zone": "security",
+      "name": "ASP.NET Core Identity",
+      "state": "decided",
+      "when": "now",
+      "tech": "dotnet",
+      "why": {
+        "pt-BR": "Contas, senhas e permissões prontas.",
+        "en": "Ready-made accounts, passwords and permissions.",
+        "es": "Cuentas, contraseñas y permisos listos."
+      },
+      "docs": "https://learn.microsoft.com/aspnet/core/security/authentication/identity"
+    },
+    {
+      "id": "https",
+      "zone": "security",
+      "name": "HTTPS",
+      "state": "decided",
+      "when": "now"
+    },
+    {
+      "id": "rate-limit",
+      "zone": "security",
+      "name": {
+        "pt-BR": "Limite de tentativas",
+        "en": "Rate limiting",
+        "es": "Límite de intentos"
+      },
+      "state": "decided",
+      "when": "now",
+      "tech": "dotnet",
+      "docs": "https://learn.microsoft.com/aspnet/core/performance/rate-limit"
+    },
+    {
+      "id": "backup",
+      "zone": "security",
+      "name": "Backup",
+      "state": "pending",
+      "when": "now"
+    },
+    {
+      "id": "logs",
+      "zone": "observability",
+      "name": "Logs (ILogger)",
+      "state": "decided",
+      "when": "now",
+      "tech": "dotnet"
+    },
+    {
+      "id": "health",
+      "zone": "observability",
+      "name": "Health checks",
+      "state": "decided",
+      "when": "now",
+      "tech": "dotnet",
+      "docs": "https://learn.microsoft.com/aspnet/core/host-and-deploy/health-checks"
+    },
+    {
+      "id": "error-tracking",
+      "zone": "observability",
+      "name": {
+        "pt-BR": "Captura de erros",
+        "en": "Error tracking",
+        "es": "Captura de errores"
+      },
+      "state": "pending",
+      "when": "later"
+    }
+  ],
+  "connections": [
+    {
+      "from": "react-vite",
+      "to": "rest-api",
+      "type": "calls"
+    },
+    {
+      "from": "rest-api",
+      "to": "aspnet-app",
+      "type": "uses"
+    },
+    {
+      "from": "aspnet-app",
+      "to": "efcore",
+      "type": "uses"
+    },
+    {
+      "from": "efcore",
+      "to": "database",
+      "type": "writes-to"
+    },
+    {
+      "from": "auth",
+      "to": "rest-api",
+      "type": "protects"
+    },
+    {
+      "from": "github-actions",
+      "to": "hosting",
+      "type": "deploys-to"
+    }
+  ],
+  "flows": [
+    {
+      "id": "save",
+      "name": {
+        "pt-BR": "Salvar um registro",
+        "en": "Save a record",
+        "es": "Guardar un registro"
+      },
+      "path": [
+        "react-vite",
+        "rest-api",
+        "aspnet-app",
+        "efcore",
+        "database"
+      ]
+    }
+  ],
+  "pendingOptions": {
+    "database": [
+      {
+        "name": "PostgreSQL",
+        "recommended": true,
+        "why": {
+          "pt-BR": "O mais completo e um ótimo padrão para produção. Precisa de um servidor de banco (um contêiner Docker resolve no desenvolvimento).",
+          "en": "The most complete and a great production default. Needs a database server (a Docker container covers development).",
+          "es": "El más completo y un gran estándar para producción. Necesita un servidor de base (un contenedor Docker resuelve el desarrollo)."
+        }
+      },
+      {
+        "name": "SQL Server",
+        "why": {
+          "pt-BR": "Padrão no ecossistema Microsoft e comum em empresas. Roda em contêiner Docker; a hospedagem gerenciada costuma ser paga.",
+          "en": "Default in the Microsoft ecosystem and common in companies. Runs in a Docker container; managed hosting is usually paid.",
+          "es": "Estándar en el ecosistema Microsoft y común en empresas. Corre en un contenedor Docker; el hosting gestionado suele ser pago."
+        }
+      },
+      {
+        "name": "SQLite",
+        "why": {
+          "pt-BR": "Um arquivo só, zero configuração. Ótimo para começar e para protótipos; limitado com muitas escritas ao mesmo tempo.",
+          "en": "A single file, zero setup. Great to start and for prototypes; limited under many concurrent writes.",
+          "es": "Un solo archivo, cero configuración. Ideal para empezar y prototipos; limitado con muchas escrituras simultáneas."
+        }
+      }
+    ],
+    "hosting": [
+      {
+        "name": {
+          "pt-BR": "Plataforma gerenciada (Azure App Service, Render)",
+          "en": "Managed platform (Azure App Service, Render)",
+          "es": "Plataforma gestionada (Azure App Service, Render)"
+        },
+        "recommended": true,
+        "why": {
+          "pt-BR": "Deploy a partir do GitHub, sem cuidar de servidor. Planos gratuitos têm limites.",
+          "en": "Deploy from GitHub without managing a server. Free plans have limits.",
+          "es": "Deploy desde GitHub sin administrar un servidor. Los planes gratuitos tienen límites."
+        }
+      },
+      {
+        "name": {
+          "pt-BR": "VPS (Oracle Always Free, Hetzner)",
+          "en": "VPS (Oracle Always Free, Hetzner)",
+          "es": "VPS (Oracle Always Free, Hetzner)"
+        },
+        "why": {
+          "pt-BR": "Controle total e custo baixo; você instala, atualiza e protege o servidor.",
+          "en": "Full control and low cost; you install, update and secure the server.",
+          "es": "Control total y bajo costo; tú instalas, actualizas y proteges el servidor."
+        }
+      },
+      {
+        "name": {
+          "pt-BR": "Só local por enquanto",
+          "en": "Local only for now",
+          "es": "Solo local por ahora"
+        },
+        "why": {
+          "pt-BR": "Roda na sua máquina; decide a hospedagem quando houver usuários.",
+          "en": "Runs on your machine; choose hosting once there are users.",
+          "es": "Corre en tu máquina; decide el hosting cuando haya usuarios."
+        }
+      }
+    ],
+    "backup": [
+      {
+        "name": {
+          "pt-BR": "Backup diário automático do banco",
+          "en": "Automatic daily database backup",
+          "es": "Backup diario automático de la base"
+        },
+        "recommended": true,
+        "why": {
+          "pt-BR": "A maioria das plataformas gerenciadas oferece; em VPS, uma tarefa agendada com pg_dump resolve.",
+          "en": "Most managed platforms offer it; on a VPS, a scheduled pg_dump job does it.",
+          "es": "La mayoría de las plataformas gestionadas lo ofrecen; en un VPS, una tarea programada con pg_dump lo resuelve."
+        }
+      }
+    ],
+    "error-tracking": [
+      {
+        "name": "Sentry",
+        "recommended": true,
+        "why": {
+          "pt-BR": "Avisa quando um erro acontece em produção, com a linha do código (Sentry.AspNetCore). Tem plano gratuito.",
+          "en": "Alerts you when an error happens in production, with the line of code (Sentry.AspNetCore). Has a free plan.",
+          "es": "Avisa cuando ocurre un error en producción, con la línea de código (Sentry.AspNetCore). Tiene plan gratuito."
+        }
+      },
+      {
+        "name": {
+          "pt-BR": "Só logs por enquanto",
+          "en": "Logs only for now",
+          "es": "Solo logs por ahora"
+        },
+        "why": {
+          "pt-BR": "Sem custo nem configuração; você só descobre o erro quando alguém reclama.",
+          "en": "No cost or setup; you only learn about errors when someone complains.",
+          "es": "Sin costo ni configuración; solo te enteras del error cuando alguien se queja."
+        }
+      }
+    ]
+  },
+  "checklist": {
+    "method": [
+      "kanban",
+      "conventional-commits"
+    ],
+    "tools": [
+      "git",
+      "dotnet-cli",
+      "xunit"
+    ],
+    "ui": [
+      "react-vite"
+    ],
+    "app": [
+      "aspnet-app",
+      "rest-api"
+    ],
+    "data": [
+      "database",
+      "migrations"
+    ],
+    "env": [
+      "env-example",
+      "environments"
+    ],
+    "infra": [
+      "hosting",
+      "github-actions"
+    ],
+    "security": [
+      "auth",
+      "https",
+      "rate-limit",
+      "backup"
+    ],
+    "observability": [
+      "logs",
+      "health",
+      "error-tracking"
+    ]
+  },
+  "prepTrail": [
+    {
+      "title": {
+        "pt-BR": "Instalar o .NET SDK (versão LTS)",
+        "en": "Install the .NET SDK (LTS version)",
+        "es": "Instalar el .NET SDK (versión LTS)"
+      },
+      "command": "dotnet --version",
+      "ok": {
+        "pt-BR": "O terminal mostra a versão do SDK.",
+        "en": "The terminal shows the SDK version.",
+        "es": "La terminal muestra la versión del SDK."
+      },
+      "docs": "https://dotnet.microsoft.com/download"
+    },
+    {
+      "title": {
+        "pt-BR": "Criar a API",
+        "en": "Create the API",
+        "es": "Crear la API"
+      },
+      "command": "dotnet new webapi -n Api",
+      "ok": {
+        "pt-BR": "A pasta Api/ tem Api.csproj e Program.cs.",
+        "en": "The Api/ folder has Api.csproj and Program.cs.",
+        "es": "La carpeta Api/ tiene Api.csproj y Program.cs."
+      }
+    },
+    {
+      "title": {
+        "pt-BR": "Rodar a API",
+        "en": "Run the API",
+        "es": "Ejecutar la API"
+      },
+      "command": "dotnet run --project Api",
+      "ok": {
+        "pt-BR": "O terminal mostra \"Now listening on: http://localhost:…\".",
+        "en": "The terminal shows \"Now listening on: http://localhost:…\".",
+        "es": "La terminal muestra \"Now listening on: http://localhost:…\"."
+      }
+    },
+    {
+      "title": {
+        "pt-BR": "Criar e rodar o front",
+        "en": "Create and run the front end",
+        "es": "Crear y ejecutar el front-end"
+      },
+      "command": "npm create vite@latest web -- --template react-ts && cd web && npm install && npm run dev",
+      "ok": {
+        "pt-BR": "localhost:5173 mostra a página do React.",
+        "en": "localhost:5173 shows the React page.",
+        "es": "localhost:5173 muestra la página de React."
+      }
+    },
+    {
+      "title": {
+        "pt-BR": "Primeiro teste passando",
+        "en": "First test passing",
+        "es": "Primera prueba pasando"
+      },
+      "command": "dotnet new xunit -n Api.Tests && dotnet test",
+      "ok": {
+        "pt-BR": "O resumo mostra \"Passed!\".",
+        "en": "The summary shows \"Passed!\".",
+        "es": "El resumen muestra \"Passed!\"."
+      }
+    }
+  ],
+  "folders": [
+    {
+      "path": "Api/Controllers",
+      "what": {
+        "pt-BR": "Recebem as requisições e devolvem respostas.",
+        "en": "Receive requests and return responses.",
+        "es": "Reciben las peticiones y devuelven respuestas."
+      }
+    },
+    {
+      "path": "Api/Services",
+      "what": {
+        "pt-BR": "Regras de negócio.",
+        "en": "Business rules.",
+        "es": "Reglas de negocio."
+      }
+    },
+    {
+      "path": "Api/Data",
+      "what": {
+        "pt-BR": "DbContext e entidades do Entity Framework.",
+        "en": "Entity Framework DbContext and entities.",
+        "es": "DbContext y entidades de Entity Framework."
+      }
+    },
+    {
+      "path": "Api/Migrations",
+      "what": {
+        "pt-BR": "Migrations geradas pelo EF Core.",
+        "en": "Migrations generated by EF Core.",
+        "es": "Migraciones generadas por EF Core."
+      }
+    },
+    {
+      "path": "Api/appsettings.json",
+      "what": {
+        "pt-BR": "Configuração; segredos vêm de variáveis de ambiente ou User Secrets.",
+        "en": "Configuration; secrets come from environment variables or User Secrets.",
+        "es": "Configuración; los secretos vienen de variables de entorno o User Secrets."
+      }
+    },
+    {
+      "path": "web/src",
+      "what": {
+        "pt-BR": "Código do front em React.",
+        "en": "React front-end code.",
+        "es": "Código del front-end en React."
+      }
+    }
+  ],
+  "envVars": [
+    {
+      "key": "ASPNETCORE_ENVIRONMENT",
+      "secret": false,
+      "example": "Development",
+      "usedIn": [
+        "back"
+      ],
+      "what": {
+        "pt-BR": "Ambiente atual (Development ou Production).",
+        "en": "Current environment (Development or Production).",
+        "es": "Entorno actual (Development o Production)."
+      }
+    },
+    {
+      "key": "ConnectionStrings__Default",
+      "secret": true,
+      "usedIn": [
+        "back",
+        "docker"
+      ],
+      "what": {
+        "pt-BR": "Conexão com o banco, com usuário e senha.",
+        "en": "Database connection, with user and password.",
+        "es": "Conexión con la base, con usuario y contraseña."
+      },
+      "howToGet": {
+        "pt-BR": "Montada a partir do banco que você criar. Em desenvolvimento, prefira dotnet user-secrets.",
+        "en": "Built from the database you create. In development, prefer dotnet user-secrets.",
+        "es": "Se arma con la base que crees. En desarrollo, prefiere dotnet user-secrets."
+      }
+    },
+    {
+      "key": "Jwt__Key",
+      "secret": true,
+      "usedIn": [
+        "back"
+      ],
+      "what": {
+        "pt-BR": "Assina os tokens de login.",
+        "en": "Signs login tokens.",
+        "es": "Firma los tokens de inicio."
+      },
+      "howToGet": {
+        "pt-BR": "openssl rand -base64 32",
+        "en": "openssl rand -base64 32",
+        "es": "openssl rand -base64 32"
+      }
+    },
+    {
+      "key": "VITE_API_URL",
+      "secret": false,
+      "example": "http://localhost:5000/api",
+      "usedIn": [
+        "front"
+      ],
+      "what": {
+        "pt-BR": "Endereço da API que o front chama. Fica visível no navegador.",
+        "en": "API address the front end calls. Visible in the browser.",
+        "es": "Dirección de la API que llama el front. Visible en el navegador."
+      }
+    }
+  ],
+  "equivalences": {
+    "orm": "Entity Framework Core",
+    "migrate": "dotnet ef database update",
+    "routes": "Controllers / Minimal APIs",
+    "packages": "NuGet",
+    "devServer": "dotnet watch",
+    "config": "appsettings.json + variáveis de ambiente",
+    "templates": "React (JSX) / Razor",
+    "auth": "ASP.NET Core Identity",
+    "tests": "dotnet test"
+  },
+  "dependencyMap": {
+    "Microsoft.EntityFrameworkCore": "efcore",
+    "Microsoft.EntityFrameworkCore.Design": "migrations",
+    "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "auth",
+    "Sentry.AspNetCore": "error-tracking",
+    "xunit": "xunit",
+    "react": "react-vite",
+    "vite": "react-vite"
+  }
+}
+```

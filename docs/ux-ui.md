@@ -155,7 +155,7 @@ Base no código: `src/components/ui/` (shadcn/ui + Tailwind). Cada componente te
 | `border` | branco 7,5% | preto 8% | bordas de 1 px |
 | `text` | #E6E8EE | #12141A | texto principal |
 | `muted` | #8F95A8 | #5B6070 | texto secundário |
-| `faint` | #7A8096 | #6B7080 | rótulos mono |
+| `faint` | #7F859B | #6B7080 | rótulos mono (AA também sobre `surface-raised`) |
 | `success` | #6EE7B7 | #047857 | concluído, novo, em dia |
 | `warning` | #FCD34D | #92400E | atenção, divergência, média, a decidir |
 | `danger` | #FCA5A5 | #B42318 | risco, erro, alta, inválido, segredo |

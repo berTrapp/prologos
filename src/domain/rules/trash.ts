@@ -12,9 +12,9 @@ export function isTrashExpired(entry: Pick<TrashEntry, 'deletedAt'>, now: number
   return now >= trashExpiresAt(entry);
 }
 
-/** Whole days left before the entry is deleted for good (0 on the last day). */
+/** Days left before the entry is deleted for good, counting today: 30 right after deleting, 0 once expired. */
 export function trashDaysLeft(entry: Pick<TrashEntry, 'deletedAt'>, now: number): number {
-  return Math.max(0, Math.floor((trashExpiresAt(entry) - now) / DAY));
+  return Math.max(0, Math.ceil((trashExpiresAt(entry) - now) / DAY));
 }
 
 export function partitionExpiredTrash<T extends Pick<TrashEntry, 'deletedAt'>>(

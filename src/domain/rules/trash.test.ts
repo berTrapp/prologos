@@ -14,7 +14,9 @@ describe('trash (RN 11)', () => {
 
   it('counts the days left', () => {
     expect(trashDaysLeft(entry, 1_000)).toBe(30);
-    expect(trashDaysLeft(entry, 1_000 + 29.5 * DAY)).toBe(0);
+    expect(trashDaysLeft(entry, 1_000 + 1)).toBe(30);
+    expect(trashDaysLeft(entry, 1_000 + 29.5 * DAY)).toBe(1);
+    expect(trashDaysLeft(entry, 1_000 + 30 * DAY)).toBe(0);
     expect(trashDaysLeft(entry, 1_000 + 40 * DAY)).toBe(0);
   });
 

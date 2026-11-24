@@ -2,5 +2,49 @@
   "app": {
     "name": "Prólogos",
     "tagline": "Planifica el proyecto antes de programar"
+  },
+  "ui": {
+    "close": "Cerrar",
+    "remove": "Quitar {{name}}",
+    "loading": "Cargando…",
+    "collapse": "Contraer",
+    "expand": "Expandir",
+    "cancel": "Cancelar",
+    "dismissNotification": "Cerrar aviso",
+    "dragToClose": "Arrastrar para cerrar",
+    "newForYou": "Nuevo para ti",
+    "progress": "{{value}}% completado",
+    "coverage": "{{value}}% de cobertura",
+    "stepDone": "Completada",
+    "stepCurrent": "En curso",
+    "stepUpcoming": "Pendiente",
+    "openingProject": "Abriendo el proyecto"
+  },
+  "zones": {
+    "methodology": "Metodología",
+    "tools": "Herramientas",
+    "interface": "Interfaz",
+    "application": "Aplicación",
+    "data": "Datos",
+    "environment": "Entorno",
+    "infrastructure": "Infraestructura",
+    "security": "Seguridad",
+    "observability": "Observabilidad"
+  },
+  "mapItem": {
+    "status": {
+      "decided": "Decidido",
+      "pending": "Por decidir",
+      "future": "Futuro"
+    }
+  },
+  "mapLoader": {
+    "phrases": {
+      "prologue": "Escribiendo el prólogo…",
+      "dots": "Uniendo los puntos…",
+      "zones": "Separando las zonas…",
+      "variables": "Contando las variables…",
+      "flows": "Dibujando los flujos…"
+    }
   }
 }

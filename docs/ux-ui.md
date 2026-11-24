@@ -319,6 +319,24 @@ Escolha única em telas de toque quando as opções não cabem num controle segm
 - **Indicador:** círculo de 22 px com contorno `stroke-strong`; marcado, fundo `text` com miolo `bg` de 8 px. Nunca só cor: a forma muda.
 - No desktop, a mesma escolha usa o controle segmentado (13.8).
 
+### 13.20 Cartão de escolha
+
+Escolha única entre opções que precisam de uma frase de explicação (tipo de projeto, kit, onde roda). Usado no início guiado.
+
+- **Base:** Radix RadioGroup; setas mudam a escolha; o grupo tem rótulo visível acima.
+- **Anatomia:** card de raio 12 px, fundo `surface`, contorno interno 1 px `border`, padding 14 × 16 px · indicador de rádio de 18 px à esquerda (mesma forma da 13.19) · título 14,5 px peso 500 em `text` · descrição 13 px em `muted`, até 2 linhas · selo opcional à direita do título (Badge `accent` "Recomendado para começar").
+- **Estados:** hover com contorno `stroke-strong`; **marcado** com contorno 1,5 px `text` e fundo `fill-subtle`, e o indicador preenchido (nunca só cor); foco com anel de 2 px.
+- **Layout:** grade de até 3 colunas no desktop; uma coluna no celular, com altura mínima de 56 px.
+
+### 13.21 Miniatura do mapa
+
+Prévia parada do mapa, sem interação (prévia do início guiado; mais tarde, o card do projeto).
+
+- **Anatomia:** grade de 3 colunas com as zonas na ordem do projeto · cada zona com raio 8 px, contorno e fundo na cor da zona (24% e 6%), nome 10,5 px peso 600 na cor da zona · itens como linhas de 18 px, raio 6 px, texto Geist 10,5 px.
+- **Itens:** decidido com contorno `border`; **pendente** com contorno tracejado `warning` e texto `warning`; **novo para você** com ponto `accent` de 5 px à direita. Itens futuros não aparecem (visão Hoje).
+- **Legenda** embaixo: Decidido · Pendente · Novo para você, com a mesma forma de cada um. Números em 22 px peso 600: decididos (`text`), a decidir (`warning`), novos para você (`accent`).
+- Zona com mais de 4 itens mostra "+N". Sem animação; muda na hora quando a resposta muda.
+
 ## 14. Quando usar toast
 
 O toast confirma o resultado de uma ação **que não aparece sozinho na tela** ou que **pode ser desfeita**. Se o resultado já está visível, não há toast.

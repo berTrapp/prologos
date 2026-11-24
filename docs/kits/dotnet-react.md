@@ -32,6 +32,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
   ],
   "knownStack": "dotnet",
   "publicEnvPrefix": "VITE_",
+  "runsOn": ["database", "hosting"],
   "dependencyFiles": [
     "*.csproj",
     "package.json",

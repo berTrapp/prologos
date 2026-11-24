@@ -31,6 +31,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
   ],
   "knownStack": null,
   "publicEnvPrefix": "EXPO_PUBLIC_",
+  "runsOn": ["backend", "stores"],
   "dependencyFiles": [
     "package.json",
     "app.json",

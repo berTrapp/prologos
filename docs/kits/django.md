@@ -32,6 +32,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
   ],
   "knownStack": "django",
   "publicEnvPrefix": null,
+  "runsOn": ["database", "hosting"],
   "dependencyFiles": [
     "requirements.txt",
     "pyproject.toml",

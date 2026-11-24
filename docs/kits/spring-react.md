@@ -32,6 +32,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
   ],
   "knownStack": "spring",
   "publicEnvPrefix": "VITE_",
+  "runsOn": ["database", "hosting"],
   "dependencyFiles": [
     "pom.xml",
     "build.gradle",

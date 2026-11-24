@@ -94,8 +94,10 @@ Planejando · Em desenvolvimento · Pausado · Concluído · Arquivado. Arquivar
 - Todo projeto novo começa por 5 passos: **ideia** (nome, objetivo em uma frase, tipo), **stack** (kit), **experiência**, **onde roda** (banco e hospedagem) e **resumo**. Todos podem ser pulados e respondidos depois no mapa.
 - **Tipos:** app web completo, só API, **app mobile**, site, ainda não sei.
 - **"Ainda não sei"** é sempre uma resposta válida: vira item pendente (tracejado em amarelo) e entra no checklist "O que falta decidir".
-- **Recomendação de kit:** site → site estático; app mobile → React Native se a pessoa domina Laravel ou Node (já conhece React), senão Flutter; demais tipos → o kit da stack que a pessoa já domina. A pessoa pode escolher outro para aprender.
-- O resultado é um mapa já montado com itens **decididos** e **pendentes**, e o **primeiro passo** em destaque, nesta ordem de prioridade: preparar o ambiente (se há tecnologia nova) → escolher o banco → escolher a hospedagem → desenhar o primeiro fluxo.
+- **Stack "Ainda não sei" (ou passo pulado):** o projeto nasce com as 9 zonas e três itens pendentes — Stack (Aplicação), Banco de dados (Dados) e Hospedagem (Infraestrutura). Pular todos os passos cria um projeto assim, com o nome "Projeto sem nome" se faltar nome.
+- **Onde roda:** o passo pergunta os itens pendentes que o kit lista em `runsOn` (banco e hospedagem nos kits web; back-end e lojas nos mobile; hospedagem e domínio no site), com as opções do kit e a recomendada marcada. "Ainda não sei" mantém o item pendente.
+- **Recomendação de kit:** site → site estático; app mobile → React Native se a pessoa domina Laravel ou Node (já conhece React), senão Flutter; demais tipos (inclusive "Ainda não sei") → o kit da stack que a pessoa já domina; sem stack dominada, nenhum kit vem recomendado e todos aparecem. A pessoa pode escolher outro para aprender. Sem IA no MVP, o tipo "Ainda não sei" não lê o objetivo: a decisão fica para depois, no mapa.
+- O resultado é um mapa já montado com itens **decididos** e **pendentes**, e o **primeiro passo** em destaque, nesta ordem de prioridade: escolher a stack (se não há kit) → preparar o ambiente (se há tecnologia nova) → escolher o banco → escolher a hospedagem → desenhar o primeiro fluxo.
 
 ## 14. Starter kits e conteúdo curado
 
@@ -126,6 +128,7 @@ Planejando · Em desenvolvimento · Pausado · Concluído · Arquivado. Arquivar
 - Datas, números e moedas formatados pelo idioma (Intl).
 - Nenhum texto fixo no código: tudo passa pelos arquivos de tradução; uma chave faltando em en ou es cai para pt-BR e é apontada no teste.
 - Dados do projeto (nomes, notas) ficam como a pessoa escreveu; trocar o idioma não os altera.
+- Itens e zonas que vieram de um kit mostram o nome do kit no idioma atual enquanto a pessoa não os renomeia; depois de renomeados, ficam como ela escreveu.
 
 ## 18. Dados locais e backup (MVP)
 

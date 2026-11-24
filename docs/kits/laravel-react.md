@@ -21,6 +21,7 @@ Modelo de conteúdo para os starter kits (RN 14). Os outros 7 kits seguem exatam
 | `name`, `summary` | Nome e uma frase sobre o kit |
 | `projectTypes` | Tipos de projeto em que o kit aparece no início guiado |
 | `knownStack` | Stack que, se a pessoa domina, faz este kit ser o recomendado |
+| `runsOn` | Itens pendentes perguntados no passo "Onde roda" do início guiado (RN 13) |
 | `publicEnvPrefix` | Prefixo de variável exposta ao navegador (RN 3) |
 | `dependencyFiles` | Arquivos que a leitura do GitHub usa para este kit (RN 7) |
 | `technologies` | Tecnologias do kit, com "o que é" e documentação; usadas no passo "Experiência" |
@@ -49,6 +50,7 @@ Modelo de conteúdo para os starter kits (RN 14). Os outros 7 kits seguem exatam
   "projectTypes": ["web", "api"],
   "knownStack": "laravel",
   "publicEnvPrefix": "VITE_",
+  "runsOn": ["database", "hosting"],
   "dependencyFiles": ["composer.json", "package.json", ".env.example", "docker-compose.yml"],
 
   "technologies": [
@@ -284,6 +286,7 @@ Modelo de conteúdo para os starter kits (RN 14). Os outros 7 kits seguem exatam
 - [ ] O schema aceita o arquivo (teste automático)
 - [ ] Todos os textos existem em pt-BR e en
 - [ ] Todo item `pending` tem `pendingOptions` com uma `recommended`
+- [ ] Todo id de `runsOn` é um item `pending` com `pendingOptions`
 - [ ] Todo id em `checklist`, `connections`, `flows` e `dependencyMap` existe em `items`
 - [ ] Nenhuma variável `secret: true` tem `example`
 - [ ] Os comandos da `prepTrail` foram executados numa máquina limpa e funcionam

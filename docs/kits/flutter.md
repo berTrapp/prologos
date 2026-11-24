@@ -31,6 +31,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
   ],
   "knownStack": null,
   "publicEnvPrefix": null,
+  "runsOn": ["backend", "stores"],
   "dependencyFiles": [
     "pubspec.yaml",
     ".env.example"
@@ -223,7 +224,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
     {
       "id": "widgets",
       "zone": "ui",
-      "name": "Widgets (Material 3)",
+      "name": "Widgets (Material Design)",
       "state": "decided",
       "when": "now",
       "tech": "flutter",

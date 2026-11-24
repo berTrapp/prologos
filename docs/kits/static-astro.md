@@ -31,6 +31,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
   ],
   "knownStack": null,
   "publicEnvPrefix": "PUBLIC_",
+  "runsOn": ["hosting", "domain"],
   "dependencyFiles": [
     "package.json",
     ".env.example"

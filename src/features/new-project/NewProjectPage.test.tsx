@@ -34,7 +34,11 @@ describe('guided start (RN 13, 15)', () => {
     for (let step = 0; step < 4; step += 1) {
       await user.click(screen.getByRole('button', { name: /Continuar/ }));
     }
-    expect(await heading('Tudo pronto para montar o mapa')).toBeInTheDocument();
+    await waitFor(() =>
+      expect(
+        screen.getByRole('heading', { level: 1, name: 'Tudo pronto para montar o mapa' }),
+      ).toBeInTheDocument(),
+    );
     expect(screen.getByText('Escolher a stack')).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: 'Criar projeto' }));
 
@@ -42,7 +46,11 @@ describe('guided start (RN 13, 15)', () => {
     const snapshot = await projectAt(router.state.location.pathname);
     expect(snapshot.project).toMatchObject({ name: 'Projeto sem nome', type: 'unknown' });
     expect(snapshot.items.map((item) => item.state)).toEqual(['pending', 'pending', 'pending']);
-    expect(await heading('Projeto sem nome')).toBeInTheDocument();
+    await waitFor(() =>
+      expect(
+        screen.getByRole('heading', { level: 1, name: 'Projeto sem nome' }),
+      ).toBeInTheDocument(),
+    );
   });
 
   it('builds the map from the answers, marking what is new for you', async () => {
@@ -110,7 +118,9 @@ describe('guided start (RN 13, 15)', () => {
     await user.click(screen.getByRole('button', { name: 'Fechar' }));
     await waitFor(() => expect(router.state.location.pathname).toBe('/'));
     await router.navigate('/novo');
-    expect(await heading('Com que stack?')).toBeInTheDocument();
+    await waitFor(() =>
+      expect(screen.getByRole('heading', { level: 1, name: 'Com que stack?' })).toBeInTheDocument(),
+    );
   });
 
   it('shows one step per screen on the phone, with the preview in a sheet', async () => {

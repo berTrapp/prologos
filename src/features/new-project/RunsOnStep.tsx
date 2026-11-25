@@ -1,11 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/Badge';
+import { badgeForState } from '@/lib/status-variants';
 import { ChoiceCard, ChoiceGroup } from '@/components/ui/ChoiceCard';
 import { kitText } from '@/domain/rules/kit';
 import { useGuided } from './guided-store';
 import { NoKitNotice } from './NoKitNotice';
 import { StepHeader } from './StepHeader';
 import { useGuidedModel } from './useGuidedModel';
+
+const recommendedBadge = badgeForState('label', 'recommended');
 
 const UNKNOWN = 'unknown';
 
@@ -57,7 +60,7 @@ export function RunsOnStep() {
                 description={kitText(option.why, language)}
                 badge={
                   option.recommended ? (
-                    <Badge variant="accent">{t('newProject.stack.recommended')}</Badge>
+                    <Badge {...recommendedBadge}>{t('newProject.stack.recommended')}</Badge>
                   ) : undefined
                 }
               />

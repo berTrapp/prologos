@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/Badge';
+import { badgeForState } from '@/lib/status-variants';
 import { Button } from '@/components/ui/Button';
 import { ChoiceCard, ChoiceGroup } from '@/components/ui/ChoiceCard';
 import { KITS } from '@/content/kits';
@@ -9,6 +10,8 @@ import { KNOWN_STACKS } from '@/domain/schemas/project';
 import { useGuided } from './guided-store';
 import { StepHeader } from './StepHeader';
 import { useGuidedModel } from './useGuidedModel';
+
+const recommendedBadge = badgeForState('label', 'recommended');
 
 const STACK_CHOICES = [...KNOWN_STACKS, 'none'] as const;
 type StackChoice = (typeof STACK_CHOICES)[number];
@@ -57,7 +60,7 @@ export function StackStep() {
               description={kitText(item.summary, language)}
               badge={
                 item === recommended ? (
-                  <Badge variant="accent">{t('newProject.stack.recommended')}</Badge>
+                  <Badge {...recommendedBadge}>{t('newProject.stack.recommended')}</Badge>
                 ) : undefined
               }
             />

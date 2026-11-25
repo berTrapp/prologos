@@ -21,6 +21,8 @@ export const ProjectSchema = z.object({
   kitId: z.string().min(1).optional(),
   /** RN 15: the stack the person already knows, for the equivalences. */
   knownStack: z.enum(KNOWN_STACKS).optional(),
+  /** RN 15: steps of "Preparar o ambiente" already done, by their position in the kit. */
+  prepDone: z.array(z.number().int().nonnegative()).optional(),
   view: z.enum(VIEWS),
   environments: z.array(Text(40)).min(1),
   createdAt: Timestamp,

@@ -5,6 +5,7 @@ import type { Connection, Flow, Item } from '../schemas/map';
 import type { KnownStack, ProjectType } from '../schemas/project';
 import type { ProjectSnapshot } from '../schemas/snapshot';
 import type { ZoneId } from '../zones';
+import { hasPrepTrail, notApplicableRefs, prepComplete } from './checklist';
 import { defaultExperience, kitText, type Experience } from './kit';
 import { createProjectSnapshot } from './project';
 
@@ -214,8 +215,16 @@ export type FirstStep =
 export function nextSteps(snapshot: ProjectSnapshot, kit: Kit | undefined): FirstStep[] {
   const steps: FirstStep[] = [];
   if (!snapshot.project.kitId) steps.push({ kind: 'choose-stack' });
-  if (snapshot.items.some((item) => item.newForYou)) steps.push({ kind: 'prepare-env' });
+  // RN 15: the trail stays a step until all of it is done (projects without kit content
+  // fall back to the "new for you" mark).
+  const prepPending = kit
+    ? hasPrepTrail(snapshot, kit) && !prepComplete(snapshot, kit)
+    : snapshot.items.some((item) => item.newForYou);
+  if (prepPending) steps.push({ kind: 'prepare-env' });
+  // RN 5: an item marked "Não se aplica" is never a next step.
+  const skipped = notApplicableRefs(snapshot.checklist);
   for (const ref of kit?.runsOn ?? NO_KIT_RUNS_ON) {
+    if (skipped.has(ref)) continue;
     const pending = snapshot.items.find((item) => item.kitRef === ref && item.state === 'pending');
     if (pending) steps.push({ kind: 'decide', itemId: pending.id });
   }

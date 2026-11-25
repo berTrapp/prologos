@@ -291,6 +291,7 @@ Atalho de teclado (`Ctrl K`, `Esc`).
 - **Decidido:** contorno branco 12%. **A decidir:** contorno tracejado `warning`, situação em `warning`. **Futuro:** opacidade 60%. **Novo para você:** ponto `accent` de 7 px à direita. **Selecionado:** contorno 1,5 px `text` + halo de 4 px.
 - **Notas e riscos** (com "Notas e riscos" ligado no mapa): selo de 10,5 px acima do canto direito do card, fundo `bg`, raio 6 px, com o ícone de nota e a contagem e, se houver risco aberto, o triângulo na cor da severidade mais alta (alta `danger`, média `warning`, baixa `muted`) e a contagem. O texto completo fica no painel de detalhes.
 - **Escolha feita:** um item pendente decidido por uma opção mostra a opção no lugar da situação ("PostgreSQL").
+- **Não se aplica** (RN 5): situação "Não se aplica" em `muted`, card com opacidade 50% e contorno `border`; não entra no próximo passo.
 
 ### 13.17 Estado vazio
 

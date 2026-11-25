@@ -44,6 +44,13 @@ Planejando · Em desenvolvimento · Pausado · Concluído · Arquivado. Arquivar
 - Os itens pendentes aparecem em ordem, com o **próximo passo** sempre visível no topo do mapa.
 - Qualquer item esperado pode ser marcado **Não se aplica**, com motivo curto; conta como coberto.
 - A porcentagem segue a visão ativa (Hoje ou Completo).
+- **Conta na porcentagem:** cada item esperado (decidido ou "Não se aplica" conta como resolvido) e cada passo de "Preparar o ambiente" quando a seção existe. 100% só com tudo resolvido.
+- **Na visão Hoje,** itens futuros não aparecem nem contam; no Completo, aparecem com "Futuro" e contam pela situação.
+- **Pendentes fora do kit** (criados pela pessoa ou de projeto sem kit) também aparecem, na zona deles; nada a decidir fica escondido.
+- **Item esperado que saiu do mapa** aparece como "Falta no mapa", com "Adicionar ao mapa", que traz o item do kit de volta.
+- **Ordem:** "Preparar o ambiente" primeiro; depois as zonas com pendência, na ordem do próximo passo (banco, hospedagem) e então na ordem das zonas; por fim as zonas resolvidas. Dentro da zona, pendentes antes dos resolvidos.
+- **Marcar no checklist reflete no mapa:** o círculo da linha alterna Decidido e A decidir; "Não se aplica" aparece no item do mapa, apagado, e o tira do próximo passo. O painel do mapa mostra o motivo e "Voltar a considerar".
+- **Passos de "Preparar o ambiente"** ficam marcados no projeto; com todos feitos, a seção sai do próximo passo.
 
 ## 6. Custos
 

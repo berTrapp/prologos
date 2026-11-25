@@ -3,7 +3,11 @@ import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
 type PopoverProps = {
-  trigger: ReactNode;
+  /** The element that opens it; or `anchorPoint` when it grows from a point on screen. */
+  trigger?: ReactNode;
+  anchorPoint?: { x: number; y: number };
+  /** Accessible name when there is no trigger to name it. */
+  label?: string;
   children: ReactNode;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
@@ -15,6 +19,8 @@ type PopoverProps = {
 /** Anchored to its origin, radius 12, raised surface; Esc closes (ux-ui 13.10). */
 export function Popover({
   trigger,
+  anchorPoint,
+  label,
   children,
   open,
   onOpenChange,
@@ -24,12 +30,23 @@ export function Popover({
 }: PopoverProps) {
   return (
     <PopoverPrimitive.Root open={open} onOpenChange={onOpenChange}>
-      <PopoverPrimitive.Trigger asChild>{trigger}</PopoverPrimitive.Trigger>
+      {trigger ? <PopoverPrimitive.Trigger asChild>{trigger}</PopoverPrimitive.Trigger> : null}
+      {anchorPoint ? (
+        <PopoverPrimitive.Anchor asChild>
+          {/* Zero-size anchor at the point the popover grows from (ux-ui 13.10). */}
+          <span
+            aria-hidden
+            className="pointer-events-none fixed size-0"
+            style={{ left: anchorPoint.x, top: anchorPoint.y }}
+          />
+        </PopoverPrimitive.Anchor>
+      ) : null}
       <PopoverPrimitive.Portal>
         <PopoverPrimitive.Content
           side={side}
           align={align}
           sideOffset={8}
+          aria-label={label}
           collisionPadding={16}
           className={cn(
             'surface-raised z-50 w-72 max-w-[calc(100vw-32px)] rounded-inner p-3 inset-ring inset-ring-stroke-strong',

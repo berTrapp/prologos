@@ -35,6 +35,13 @@ type MapItemProps = {
   isNew?: boolean;
   selected?: boolean;
   onSelect?: () => void;
+  /** Secondary line in place of the status ("PostgreSQL" on a decided pending item). */
+  detail?: ReactNode;
+  /**
+   * Inside the map canvas the node itself takes focus and selection, so the card is
+   * drawn without its own button.
+   */
+  inert?: boolean;
   className?: string;
 };
 
@@ -46,16 +53,14 @@ export function MapItem({
   isNew,
   selected = false,
   onSelect,
+  detail,
+  inert = false,
   className,
 }: MapItemProps) {
   const { t } = useTranslation();
-  return (
-    <button
-      type="button"
-      onClick={onSelect}
-      aria-pressed={selected}
-      className={cn(itemVariants({ status, selected }), className)}
-    >
+  const classes = cn(itemVariants({ status, selected }), className);
+  const content = (
+    <>
       <span aria-hidden className={cn('size-2 shrink-0 rounded-full', zoneBg[zone])} />
       <span className="flex min-w-0 flex-1 flex-col">
         <span className="truncate text-[13px] leading-tight font-medium text-text">{name}</span>
@@ -65,7 +70,7 @@ export function MapItem({
             status === 'pending' ? 'text-warning' : 'text-muted',
           )}
         >
-          {t(`mapItem.status.${status}`)}
+          {detail ?? t(`mapItem.status.${status}`)}
         </span>
       </span>
       {isNew ? (
@@ -73,6 +78,12 @@ export function MapItem({
           <span className="sr-only">{t('ui.newForYou')}</span>
         </span>
       ) : null}
+    </>
+  );
+  if (inert) return <div className={classes}>{content}</div>;
+  return (
+    <button type="button" onClick={onSelect} aria-pressed={selected} className={classes}>
+      {content}
     </button>
   );
 }

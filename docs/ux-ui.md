@@ -289,6 +289,8 @@ Atalho de teclado (`Ctrl K`, `Esc`).
 
 - Card de 168 × 48 px, raio 12 px, fundo #12151B (claro: #FFFFFF), ponto de 8 px na cor da zona, nome 13 px peso 500 e situação 11,5 px abaixo ("Decidido", "A decidir", "Futuro").
 - **Decidido:** contorno branco 12%. **A decidir:** contorno tracejado `warning`, situação em `warning`. **Futuro:** opacidade 60%. **Novo para você:** ponto `accent` de 7 px à direita. **Selecionado:** contorno 1,5 px `text` + halo de 4 px.
+- **Notas e riscos** (com "Notas e riscos" ligado no mapa): selo de 10,5 px acima do canto direito do card, fundo `bg`, raio 6 px, com o ícone de nota e a contagem e, se houver risco aberto, o triângulo na cor da severidade mais alta (alta `danger`, média `warning`, baixa `muted`) e a contagem. O texto completo fica no painel de detalhes.
+- **Escolha feita:** um item pendente decidido por uma opção mostra a opção no lugar da situação ("PostgreSQL").
 
 ### 13.17 Estado vazio
 

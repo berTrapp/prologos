@@ -15,6 +15,8 @@ type PanelProps = {
   /** Content of the 56 px rail shown while collapsed. */
   rail?: ReactNode;
   actions?: ReactNode;
+  /** Accessible name of the landmark when the title is not plain text. */
+  label?: string;
   children: ReactNode;
   className?: string;
 };
@@ -28,6 +30,7 @@ export function Panel({
   width = 264,
   rail,
   actions,
+  label,
   children,
   className,
 }: PanelProps) {
@@ -37,6 +40,7 @@ export function Panel({
 
   return (
     <aside
+      aria-label={label}
       style={{ width: collapsed ? 56 : width }}
       className={cn(
         'flex h-full shrink-0 flex-col overflow-hidden bg-bg transition-[width] duration-(--duration-base) ease-(--ease-out)',

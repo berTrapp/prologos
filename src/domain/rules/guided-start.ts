@@ -207,16 +207,23 @@ export type FirstStep =
   | { kind: 'draw-flow' };
 
 /**
- * RN 13: the first step, in priority order: choose the stack (no kit) → prepare the
+ * RN 13: the steps ahead, in priority order: choose the stack (no kit) → prepare the
  * environment (a new technology) → decide where it runs, in the kit's "Onde roda" order
- * (database, then hosting) → draw the first flow.
+ * (database, then hosting). With nothing left, draw the first flow.
  */
-export function firstStep(snapshot: ProjectSnapshot, kit: Kit | undefined): FirstStep {
-  if (!snapshot.project.kitId) return { kind: 'choose-stack' };
-  if (snapshot.items.some((item) => item.newForYou)) return { kind: 'prepare-env' };
+export function nextSteps(snapshot: ProjectSnapshot, kit: Kit | undefined): FirstStep[] {
+  const steps: FirstStep[] = [];
+  if (!snapshot.project.kitId) steps.push({ kind: 'choose-stack' });
+  if (snapshot.items.some((item) => item.newForYou)) steps.push({ kind: 'prepare-env' });
   for (const ref of kit?.runsOn ?? NO_KIT_RUNS_ON) {
     const pending = snapshot.items.find((item) => item.kitRef === ref && item.state === 'pending');
-    if (pending) return { kind: 'decide', itemId: pending.id };
+    if (pending) steps.push({ kind: 'decide', itemId: pending.id });
   }
-  return { kind: 'draw-flow' };
+  if (steps.length === 0) steps.push({ kind: 'draw-flow' });
+  return steps;
+}
+
+/** RN 13: the first of the next steps, shown in highlight. */
+export function firstStep(snapshot: ProjectSnapshot, kit: Kit | undefined): FirstStep {
+  return nextSteps(snapshot, kit)[0] ?? { kind: 'draw-flow' };
 }

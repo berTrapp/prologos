@@ -1,23 +1,12 @@
 import type { Language } from '@/i18n/languages';
-import type { Kit, KitName } from '../schemas/kit';
+import { EQUIVALENCE_CONCEPTS, type Kit, type KitName } from '../schemas/kit';
 import type { KnownStack, ProjectType } from '../schemas/project';
 
 /** RN 15: how well the person knows each technology of the kit. */
 export const EXPERIENCE_LEVELS = ['known', 'some', 'never'] as const;
 export type Experience = (typeof EXPERIENCE_LEVELS)[number];
 
-/** RN 15: concepts translated between stacks, in display order. */
-export const EQUIVALENCE_CONCEPTS = [
-  'orm',
-  'migrate',
-  'routes',
-  'packages',
-  'devServer',
-  'config',
-  'templates',
-  'auth',
-  'tests',
-] as const;
+export { EQUIVALENCE_CONCEPTS };
 export type EquivalenceConcept = (typeof EQUIVALENCE_CONCEPTS)[number];
 
 /** Kit text in the given language; technical names stay as written. */

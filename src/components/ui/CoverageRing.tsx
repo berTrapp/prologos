@@ -1,11 +1,17 @@
-import { useId } from 'react';
+import { useId, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
 
-type CoverageRingProps = { value: number; size?: number; className?: string };
+type CoverageRingProps = {
+  value: number;
+  size?: number;
+  /** Line under a large number ("6 de 13 resolvidos"); without it the number stays small. */
+  caption?: ReactNode;
+  className?: string;
+};
 
 /** Coverage ring: progress stroke in a circle, brand gradient, percentage beside (ux-ui 5, 13.14). */
-export function CoverageRing({ value, size = 44, className }: CoverageRingProps) {
+export function CoverageRing({ value, size = 44, caption, className }: CoverageRingProps) {
   const { t } = useTranslation();
   const gradientId = useId();
   const clamped = Math.min(100, Math.max(0, value));
@@ -46,9 +52,21 @@ export function CoverageRing({ value, size = 44, className }: CoverageRingProps)
           strokeDashoffset={circumference * (1 - clamped / 100)}
         />
       </svg>
-      <span aria-hidden className="text-[15px] font-semibold text-text tabular-nums">
-        {Math.round(clamped)}%
-      </span>
+      {caption ? (
+        <span className="flex flex-col gap-1 pl-2">
+          <span
+            aria-hidden
+            className="text-[32px] leading-none font-semibold text-text tabular-nums"
+          >
+            {Math.round(clamped)}%
+          </span>
+          <span className="text-[13.5px] text-muted">{caption}</span>
+        </span>
+      ) : (
+        <span aria-hidden className="text-[15px] font-semibold text-text tabular-nums">
+          {Math.round(clamped)}%
+        </span>
+      )}
     </div>
   );
 }

@@ -11,15 +11,17 @@ type ChipProps = {
   pressed?: boolean;
   /** Adds a 12 px × that removes the chip; its label is built from the chip text. */
   onRemove?: () => void;
+  /** Long commands break across lines instead of being cut (ux-ui 13.5). */
+  wrap?: boolean;
 };
 
 const base =
   'relative inline-flex h-6 max-w-full items-center gap-1 rounded-badge bg-fill px-2 font-mono text-[11.5px] text-chip-fg inset-ring inset-ring-stroke';
 
 /** Technology, key, command or technical value (ux-ui 13.5). */
-export function Chip({ children, className, onClick, pressed, onRemove }: ChipProps) {
+export function Chip({ children, className, onClick, pressed, onRemove, wrap = false }: ChipProps) {
   const { t } = useTranslation();
-  const label = <span className="truncate">{children}</span>;
+  const label = <span className={wrap ? 'break-all' : 'truncate'}>{children}</span>;
 
   if (onClick) {
     return (
@@ -42,7 +44,14 @@ export function Chip({ children, className, onClick, pressed, onRemove }: ChipPr
   }
 
   return (
-    <span className={cn(base, onRemove && 'pr-0.5', className)}>
+    <span
+      className={cn(
+        base,
+        onRemove && 'pr-0.5',
+        wrap && 'h-auto min-h-6 py-1 leading-snug',
+        className,
+      )}
+    >
       {label}
       {onRemove ? (
         <button

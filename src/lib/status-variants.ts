@@ -22,7 +22,13 @@ export const STATE_VARIANTS = {
   },
   severity: { high: 'danger', medium: 'warning', low: 'neutral' },
   task: { importing: 'info', done: 'success', cancelled: 'neutral' },
-  checklist: { decided: 'success', pending: 'warning', future: 'info', notApplicable: 'neutral' },
+  checklist: {
+    decided: 'success',
+    pending: 'warning',
+    future: 'info',
+    notApplicable: 'neutral',
+    missing: 'warning',
+  },
   variable: { secret: 'danger', public: 'info', config: 'neutral' },
   label: {
     newForYou: 'accent',

@@ -5,7 +5,7 @@ import type { ZoneId } from '@/domain/zones';
 import { zoneBg } from '@/lib/zone-colors';
 import { cn } from '@/lib/utils';
 
-export type MapItemStatus = 'decided' | 'pending' | 'future';
+export type MapItemStatus = 'decided' | 'pending' | 'future' | 'notApplicable';
 
 const itemVariants = cva(
   [
@@ -19,6 +19,7 @@ const itemVariants = cva(
         decided: 'inset-ring inset-ring-border-strong hover:inset-ring-stroke-strong',
         pending: 'border border-dashed border-warning/70',
         future: 'opacity-60 inset-ring inset-ring-border-strong',
+        notApplicable: 'opacity-50 inset-ring inset-ring-border',
       },
       selected: {
         true: 'shadow-[0_0_0_1.5px_var(--text),0_0_0_5.5px_color-mix(in_srgb,var(--text)_14%,transparent)]',

@@ -22,6 +22,7 @@ describe('badgeForState (ux-ui 13.2)', () => {
     ['checklist', 'pending', 'warning'],
     ['checklist', 'future', 'info'],
     ['checklist', 'notApplicable', 'neutral'],
+    ['checklist', 'missing', 'warning'],
     ['variable', 'secret', 'danger'],
     ['variable', 'public', 'info'],
     ['variable', 'config', 'neutral'],
@@ -38,7 +39,7 @@ describe('badgeForState (ux-ui 13.2)', () => {
 
   it('covers every mapped state in the table above', () => {
     const total = Object.values(STATE_VARIANTS).reduce((n, map) => n + Object.keys(map).length, 0);
-    expect(total).toBe(28);
+    expect(total).toBe(29);
   });
 
   it('shows a dot only on "Novo para você"', () => {

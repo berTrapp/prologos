@@ -179,7 +179,7 @@ Rótulo curto de estado ou categoria. Não é clicável.
   - Importação (.env e arquivos): nova → success · atualiza → info · igual / repetida → neutral · inválida → danger · conflito → warning
   - Severidade (checklist, riscos): alta → danger · média → warning · baixa → neutral
   - Tarefa em andamento: importando → info · concluído → success · cancelado → neutral
-  - Checklist: decidido → success · a decidir → warning · futuro → info · não se aplica → neutral
+  - Checklist: decidido → success · a decidir → warning · futuro → info · não se aplica → neutral · falta no mapa → warning
   - Variáveis: segredo → danger · pública → info · configuração → neutral
   - Novo para você → accent (com ponto) · Recomendado (para começar) → accent
   - Nota → info · Risco → danger · Futuro → planned · tipo do item na lixeira → neutral
@@ -206,6 +206,7 @@ Nome de tecnologia, chave, comando ou valor técnico (React, `DATABASE_URL`, `ph
 
 - Altura 24 px · padding 0 8 px · raio 6 px · Geist Mono 11,5 px · fundo branco 4% + contorno interno 8% · texto #C3C8D6 (claro: fundo preto 4%, contorno 8%, texto #3A3F4C).
 - Com ação (remover, filtrar, sugestão clicável) ganha o estado hover e, para remover, um × de 12 px; sem ação, é estático.
+- Comando longo (trilha "Preparar o ambiente") quebra em mais linhas em vez de ser cortado; a altura cresce, o resto não muda.
 
 ### 13.6 Tag de zona
 

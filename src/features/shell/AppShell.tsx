@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Outlet, useParams } from 'react-router';
+import { Outlet, useMatches, useParams } from 'react-router';
 import { useWorkspace } from '@/app/services';
 import { isInMainList } from '@/domain/rules/project';
 import { useBreakpoint } from '@/hooks/useBreakpoint';
@@ -29,6 +29,10 @@ export function AppShell() {
   );
   const [moreOpen, setMoreOpen] = useState(false);
   const phone = breakpoint === 'phone';
+  // Routes like the map take the whole area and handle their own spacing.
+  const fullBleed = useMatches().some(
+    (match) => (match.handle as { fullBleed?: boolean } | undefined)?.fullBleed,
+  );
 
   return (
     <div className="flex min-h-dvh bg-bg">
@@ -46,7 +50,15 @@ export function AppShell() {
       <main id="content" tabIndex={-1} className="min-w-0 flex-1 focus:outline-none">
         <div
           className={
-            phone ? (project ? 'px-4 pb-24' : 'px-4 pb-8') : 'mx-auto max-w-5xl px-10 py-12'
+            fullBleed
+              ? phone
+                ? 'pb-20'
+                : 'h-dvh'
+              : phone
+                ? project
+                  ? 'px-4 pb-24'
+                  : 'px-4 pb-8'
+                : 'mx-auto max-w-5xl px-10 py-12'
           }
         >
           <Outlet />

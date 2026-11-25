@@ -27,11 +27,11 @@ export const routes: RouteObject[] = [
             children: [
               {
                 index: true,
-                lazy: async () => {
-                  const { ProjectPlaceholderPage } =
-                    await import('@/features/project/ProjectPlaceholderPage');
-                  return { Component: () => <ProjectPlaceholderPage page="map" /> };
-                },
+                // The map uses the whole area next to the sidebar.
+                handle: { fullBleed: true },
+                lazy: async () => ({
+                  Component: (await import('@/features/map/MapPage')).MapPage,
+                }),
               },
               {
                 path: 'checklist',

@@ -4,14 +4,14 @@ import { Button } from '@/components/ui/Button';
 import { InlineAlert } from '@/components/ui/InlineAlert';
 
 /** RN 18: shown once, after the first project is created, until "Entendi". */
-export function DataNotice() {
+export function DataNotice({ className = 'mb-6' }: { className?: string }) {
   const { t } = useTranslation();
   const seen = useWorkspace((s) => s.settings.dataNoticeSeen);
   if (seen) return null;
   return (
     <InlineAlert
       variant="info"
-      className="mb-6"
+      className={className}
       actions={
         <Button
           size="compact"

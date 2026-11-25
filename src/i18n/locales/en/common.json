@@ -112,7 +112,10 @@
   },
   "keys": {
     "palette": "Ctrl K",
-    "escape": "Esc"
+    "escape": "Esc",
+    "undo": "Ctrl Z",
+    "redo": "Ctrl Shift Z",
+    "delete": "Delete"
   },
   "nav": {
     "label": "Main navigation",
@@ -470,5 +473,202 @@
     "more": "+{{count}}",
     "decided": "Decided",
     "pending": "Pending"
+  },
+  "map": {
+    "label": "Project map",
+    "loading": "Opening the map",
+    "view": {
+      "label": "View",
+      "today": "Today",
+      "complete": "Complete"
+    },
+    "annotations": "Notes and risks",
+    "filter": {
+      "button": "Tags",
+      "title": "Highlight zones",
+      "clear": "Show all",
+      "active_one": "{{count}} zone",
+      "active_other": "{{count}} zones"
+    },
+    "tools": {
+      "label": "Map tools",
+      "select": "Select",
+      "newItem": "New item",
+      "newZone": "New zone",
+      "connect": "Connect",
+      "undo": "Undo",
+      "redo": "Redo"
+    },
+    "connectHint": "Click the source item",
+    "connectToHint": "Now click the target item",
+    "connectFailed": "These two items are already connected.",
+    "zoom": {
+      "in": "Zoom in",
+      "out": "Zoom out",
+      "fit": "Fit view",
+      "level": "Zoom: {{value}}%"
+    },
+    "minimap": "Minimap",
+    "zone": {
+      "add": "Add item to {{name}}",
+      "menu": "{{name}} actions",
+      "rename": "Rename",
+      "addSub": "New subzone",
+      "delete": "Delete zone",
+      "collapse": "Collapse {{name}}",
+      "expand": "Expand {{name}}",
+      "items_zero": "No items",
+      "items_one": "{{count}} item",
+      "items_other": "{{count}} items",
+      "empty": "Use + or drag an item here"
+    },
+    "item": {
+      "aria": "{{name}}, {{zone}}, {{status}}",
+      "notes_one": "{{count}} note",
+      "notes_other": "{{count}} notes",
+      "risks_one": "{{count}} risk",
+      "risks_other": "{{count}} risks"
+    },
+    "edge": {
+      "count_one": "{{count}} connection",
+      "count_other": "{{count}} connections"
+    },
+    "connectionTypes": {
+      "uses": "uses",
+      "depends-on": "depends on",
+      "sends-to": "sends to",
+      "calls": "calls",
+      "writes-to": "writes to",
+      "reads-from": "reads from",
+      "protects": "protects",
+      "deploys-to": "deploys to",
+      "rendered-by": "rendered by"
+    },
+    "next": {
+      "label": "Next step",
+      "chooseStack": "Choose the stack",
+      "prepare": "Set up the environment",
+      "decide": "Choose: {{names}}",
+      "decideAfter": "choose: {{names}}",
+      "drawFlow": "Draw the first flow",
+      "then": ", then ",
+      "pending_zero": "Nothing pending",
+      "pending_one": "{{count}} pending",
+      "pending_other": "{{count}} pending"
+    },
+    "panel": {
+      "title": "Details",
+      "emptyTitle": "Nothing selected",
+      "emptyBody": "Click an item, a zone or a connection to see and edit it.",
+      "name": "Name",
+      "when": "When",
+      "now": "Current",
+      "later": "Future",
+      "state": "Status",
+      "decided": "Decided",
+      "pending": "Pending",
+      "what": "What it is",
+      "why": "Why it is here",
+      "equivalent": "In {{stack}}, the equivalent is",
+      "docs": "Official docs",
+      "options": "Options",
+      "optionsLead": "Pick one to decide. You can undo it.",
+      "chosen": "Chosen: {{choice}}",
+      "connections": "Connections",
+      "noConnections": "No connections yet.",
+      "connectTo": "Connect to…",
+      "connectSearch": "Search items",
+      "connectEmpty": "No items found",
+      "openItem": "Open {{name}}",
+      "annotations": "Notes and risks",
+      "addAnnotation": "Note or risk",
+      "kind": "Type",
+      "note": "Note",
+      "risk": "Risk",
+      "severity": "Severity",
+      "severities": {
+        "high": "High",
+        "medium": "Medium",
+        "low": "Low"
+      },
+      "notePlaceholder": "Write the note",
+      "riskPlaceholder": "Describe the risk",
+      "add": "Add",
+      "resolve": "Mark as resolved",
+      "removeNote": "Remove note",
+      "removeRisk": "Remove risk",
+      "delete": "Delete",
+      "zone": "Zone",
+      "subzone": "Subzone of {{name}}",
+      "color": "Color",
+      "type": "Type",
+      "noType": "No type",
+      "connection": "Connection",
+      "grouped": "{{count}} connections between {{from}} and {{to}}. Expand the zone to edit each one.",
+      "itemsIn_one": "{{count}} item",
+      "itemsIn_other": "{{count}} items",
+      "itemsIn_zero": "No items"
+    },
+    "newItem": {
+      "title": "New item",
+      "name": "Name",
+      "placeholder": "Redis",
+      "zone": "Zone",
+      "suggestions": "Kit suggestions",
+      "create": "Add",
+      "nameRequired": "Give the item a name."
+    },
+    "newZone": {
+      "title": "New zone",
+      "description": "Zones group items; subzones go at most one level down.",
+      "name": "Name",
+      "placeholder": "Delivery",
+      "color": "Color",
+      "parent": "Where it goes",
+      "top": "On the map",
+      "create": "Create zone",
+      "nameRequired": "Give the zone a name."
+    },
+    "flows": {
+      "label": "Flows",
+      "none": "No flows yet",
+      "new": "New flow",
+      "step": "{{current}}/{{total}}",
+      "play": "Play",
+      "pause": "Pause",
+      "prev": "Previous stretch",
+      "next": "Next stretch",
+      "gap": "Stretch removed",
+      "drawing": "Click the connections in order",
+      "drawingCount_zero": "No stretches",
+      "drawingCount_one": "{{count}} stretch",
+      "drawingCount_other": "{{count}} stretches",
+      "name": "Flow name",
+      "namePlaceholder": "Save a record",
+      "save": "Save flow",
+      "cancel": "Cancel",
+      "delete": "Delete flow",
+      "rename": "Rename",
+      "menu": "{{name}} actions",
+      "notContiguous": "The next stretch starts where the previous one ends."
+    },
+    "toast": {
+      "removed": {
+        "item": "Item removed",
+        "zone": "Zone removed",
+        "connection": "Connection removed"
+      },
+      "itemAdded": "Item added",
+      "optionChosen": "{{name}}: {{choice}}",
+      "flowRemoved": "Flow removed",
+      "riskResolved": "Risk resolved",
+      "noteRemoved": "Note removed",
+      "riskRemoved": "Risk removed"
+    },
+    "mobile": {
+      "views": "View",
+      "zones": "Zones",
+      "map": "Map"
+    }
   }
 }

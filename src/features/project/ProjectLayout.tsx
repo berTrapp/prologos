@@ -4,6 +4,7 @@ import { Link, Outlet, useParams } from 'react-router';
 import { projectStore, useProject, workspaceStore } from '@/app/services';
 import { Button } from '@/components/ui/Button';
 import { EmptyState } from '@/components/ui/EmptyState';
+import { MapLoader } from '@/components/ui/MapLoader';
 
 /** Opens the project in the store while its pages are on screen. */
 export function ProjectLayout() {
@@ -51,8 +52,13 @@ export function ProjectLayout() {
       </div>
     );
   }
-  // ux-ui 15: opening is fast; under 0.4 s nothing but the page itself.
-  if (state === 'loading') return null;
+  // ux-ui 15: under 0.4 s nothing shows; a heavier map gets the mini-map loader.
+  if (state === 'loading')
+    return (
+      <div className="grid min-h-[60dvh] place-items-center">
+        <MapLoader />
+      </div>
+    );
 
   return <Outlet />;
 }

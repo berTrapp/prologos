@@ -112,7 +112,10 @@
   },
   "keys": {
     "palette": "Ctrl K",
-    "escape": "Esc"
+    "escape": "Esc",
+    "undo": "Ctrl Z",
+    "redo": "Ctrl Shift Z",
+    "delete": "Delete"
   },
   "nav": {
     "label": "Navegación principal",
@@ -470,5 +473,202 @@
     "more": "+{{count}}",
     "decided": "Decidido",
     "pending": "Pendiente"
+  },
+  "map": {
+    "label": "Mapa del proyecto",
+    "loading": "Abriendo el mapa",
+    "view": {
+      "label": "Vista",
+      "today": "Hoy",
+      "complete": "Completo"
+    },
+    "annotations": "Notas y riesgos",
+    "filter": {
+      "button": "Tags",
+      "title": "Destacar zonas",
+      "clear": "Mostrar todas",
+      "active_one": "{{count}} zona",
+      "active_other": "{{count}} zonas"
+    },
+    "tools": {
+      "label": "Herramientas del mapa",
+      "select": "Seleccionar",
+      "newItem": "Nuevo ítem",
+      "newZone": "Nueva zona",
+      "connect": "Conectar",
+      "undo": "Deshacer",
+      "redo": "Rehacer"
+    },
+    "connectHint": "Haz clic en el ítem de origen",
+    "connectToHint": "Ahora haz clic en el ítem de destino",
+    "connectFailed": "Esos dos ítems ya están conectados.",
+    "zoom": {
+      "in": "Acercar",
+      "out": "Alejar",
+      "fit": "Ver todo",
+      "level": "Zoom: {{value}}%"
+    },
+    "minimap": "Minimapa",
+    "zone": {
+      "add": "Agregar ítem en {{name}}",
+      "menu": "Acciones de {{name}}",
+      "rename": "Renombrar",
+      "addSub": "Nueva subzona",
+      "delete": "Eliminar zona",
+      "collapse": "Contraer {{name}}",
+      "expand": "Expandir {{name}}",
+      "items_zero": "Ningún ítem",
+      "items_one": "{{count}} ítem",
+      "items_other": "{{count}} ítems",
+      "empty": "Usa + o arrastra un ítem aquí"
+    },
+    "item": {
+      "aria": "{{name}}, {{zone}}, {{status}}",
+      "notes_one": "{{count}} nota",
+      "notes_other": "{{count}} notas",
+      "risks_one": "{{count}} riesgo",
+      "risks_other": "{{count}} riesgos"
+    },
+    "edge": {
+      "count_one": "{{count}} conexión",
+      "count_other": "{{count}} conexiones"
+    },
+    "connectionTypes": {
+      "uses": "usa",
+      "depends-on": "depende de",
+      "sends-to": "envía a",
+      "calls": "llama",
+      "writes-to": "escribe en",
+      "reads-from": "lee de",
+      "protects": "protege",
+      "deploys-to": "publica en",
+      "rendered-by": "renderizado por"
+    },
+    "next": {
+      "label": "Próximo paso",
+      "chooseStack": "Elegir el stack",
+      "prepare": "Preparar el entorno",
+      "decide": "Elegir: {{names}}",
+      "decideAfter": "elegir: {{names}}",
+      "drawFlow": "Dibujar el primer flujo",
+      "then": ", después ",
+      "pending_zero": "Nada pendiente",
+      "pending_one": "{{count}} pendiente",
+      "pending_other": "{{count}} pendientes"
+    },
+    "panel": {
+      "title": "Detalles",
+      "emptyTitle": "Nada seleccionado",
+      "emptyBody": "Haz clic en un ítem, una zona o una conexión para verlo y editarlo.",
+      "name": "Nombre",
+      "when": "Cuándo",
+      "now": "Actual",
+      "later": "Futuro",
+      "state": "Situación",
+      "decided": "Decidido",
+      "pending": "Pendiente",
+      "what": "Qué es",
+      "why": "Por qué está aquí",
+      "equivalent": "En {{stack}}, el equivalente es",
+      "docs": "Documentación oficial",
+      "options": "Opciones",
+      "optionsLead": "Elige una para decidir. Se puede deshacer.",
+      "chosen": "Elegido: {{choice}}",
+      "connections": "Conexiones",
+      "noConnections": "Todavía no hay conexiones.",
+      "connectTo": "Conectar a…",
+      "connectSearch": "Buscar ítem",
+      "connectEmpty": "Ningún ítem encontrado",
+      "openItem": "Abrir {{name}}",
+      "annotations": "Notas y riesgos",
+      "addAnnotation": "Nota o riesgo",
+      "kind": "Tipo",
+      "note": "Nota",
+      "risk": "Riesgo",
+      "severity": "Severidad",
+      "severities": {
+        "high": "Alta",
+        "medium": "Media",
+        "low": "Baja"
+      },
+      "notePlaceholder": "Escribe la nota",
+      "riskPlaceholder": "Describe el riesgo",
+      "add": "Agregar",
+      "resolve": "Marcar como resuelto",
+      "removeNote": "Quitar nota",
+      "removeRisk": "Quitar riesgo",
+      "delete": "Eliminar",
+      "zone": "Zona",
+      "subzone": "Subzona de {{name}}",
+      "color": "Color",
+      "type": "Tipo",
+      "noType": "Sin tipo",
+      "connection": "Conexión",
+      "grouped": "{{count}} conexiones entre {{from}} y {{to}}. Expande la zona para editar cada una.",
+      "itemsIn_one": "{{count}} ítem",
+      "itemsIn_other": "{{count}} ítems",
+      "itemsIn_zero": "Ningún ítem"
+    },
+    "newItem": {
+      "title": "Nuevo ítem",
+      "name": "Nombre",
+      "placeholder": "Redis",
+      "zone": "Zona",
+      "suggestions": "Sugerencias del kit",
+      "create": "Agregar",
+      "nameRequired": "Ponle un nombre al ítem."
+    },
+    "newZone": {
+      "title": "Nueva zona",
+      "description": "Las zonas agrupan ítems; las subzonas van como máximo un nivel abajo.",
+      "name": "Nombre",
+      "placeholder": "Entrega",
+      "color": "Color",
+      "parent": "Dónde va",
+      "top": "En el mapa",
+      "create": "Crear zona",
+      "nameRequired": "Ponle un nombre a la zona."
+    },
+    "flows": {
+      "label": "Flujos",
+      "none": "Todavía no hay flujos",
+      "new": "Nuevo flujo",
+      "step": "{{current}}/{{total}}",
+      "play": "Reproducir",
+      "pause": "Pausar",
+      "prev": "Tramo anterior",
+      "next": "Siguiente tramo",
+      "gap": "Tramo eliminado",
+      "drawing": "Haz clic en las conexiones en orden",
+      "drawingCount_zero": "Ningún tramo",
+      "drawingCount_one": "{{count}} tramo",
+      "drawingCount_other": "{{count}} tramos",
+      "name": "Nombre del flujo",
+      "namePlaceholder": "Guardar un registro",
+      "save": "Guardar flujo",
+      "cancel": "Cancelar",
+      "delete": "Eliminar flujo",
+      "rename": "Renombrar",
+      "menu": "Acciones de {{name}}",
+      "notContiguous": "El siguiente tramo empieza donde termina el anterior."
+    },
+    "toast": {
+      "removed": {
+        "item": "Ítem eliminado",
+        "zone": "Zona eliminada",
+        "connection": "Conexión eliminada"
+      },
+      "itemAdded": "Ítem agregado",
+      "optionChosen": "{{name}}: {{choice}}",
+      "flowRemoved": "Flujo eliminado",
+      "riskResolved": "Riesgo resuelto",
+      "noteRemoved": "Nota eliminada",
+      "riskRemoved": "Riesgo eliminado"
+    },
+    "mobile": {
+      "views": "Vista",
+      "zones": "Zonas",
+      "map": "Mapa"
+    }
   }
 }

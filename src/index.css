@@ -2,6 +2,7 @@
 @import '@fontsource-variable/geist';
 @import '@fontsource-variable/geist-mono';
 @import './styles/tokens.css';
+@import '@xyflow/react/dist/base.css';
 
 @custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
 
@@ -240,5 +241,41 @@
   100% {
     stroke-dashoffset: 0;
     opacity: 0;
+  }
+}
+
+/* Map canvas (ux-ui 13.23, 13.24): React Flow only gets structure; every color is a token. */
+.react-flow {
+  --xy-background-color: transparent;
+  --xy-edge-stroke: var(--stroke-strong);
+  --xy-selection-background-color: color-mix(in srgb, var(--accent) 8%, transparent);
+  --xy-selection-border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  --xy-minimap-background-color: var(--surface);
+  --xy-minimap-mask-background-color: color-mix(in srgb, var(--bg) 60%, transparent);
+  --xy-minimap-mask-stroke-color: var(--stroke-strong);
+  --xy-minimap-node-stroke-color: transparent;
+}
+.react-flow__node:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+.react-flow__node-zone:focus-visible {
+  border-radius: 16px;
+}
+
+/* Active flow: dashes walk along the path; with reduced motion they stay still (ux-ui 6). */
+.map-flow-edge {
+  stroke-dasharray: 6 6;
+  animation: map-flow-dash 1.2s linear infinite;
+}
+@keyframes map-flow-dash {
+  to {
+    stroke-dashoffset: -12;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .map-flow-edge {
+    animation: none;
   }
 }

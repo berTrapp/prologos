@@ -11,6 +11,8 @@ type NavLinkItemProps = {
   label: string;
   collapsed: boolean;
   end?: boolean;
+  /** Short value on the right ("79%"), hidden when collapsed. */
+  meta?: ReactNode;
 };
 
 /** Sidebar link: real anchor, active state with weight and background, not color alone (ux-ui 9, 12). */
@@ -23,11 +25,16 @@ const base = (collapsed: boolean, active = false) =>
     active && 'bg-fill-active font-medium text-text shadow-segment',
   );
 
-export function NavLinkItem({ to, onClick, icon, label, collapsed, end }: NavLinkItemProps) {
+export function NavLinkItem({ to, onClick, icon, label, collapsed, end, meta }: NavLinkItemProps) {
   const content = (
     <>
       {icon}
       {collapsed ? null : <span className="truncate">{label}</span>}
+      {collapsed || !meta ? null : (
+        <span className="ml-auto shrink-0 text-[12px] font-normal text-faint tabular-nums">
+          {meta}
+        </span>
+      )}
     </>
   );
   const link =

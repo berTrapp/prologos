@@ -1,4 +1,4 @@
-import { ClipboardCheck, KeyRound } from 'lucide-react';
+import { KeyRound } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useProject } from '@/app/services';
 import { EmptyState } from '@/components/ui/EmptyState';
@@ -6,12 +6,6 @@ import { PageHeader } from '@/features/shell/PageHeader';
 import { DataNotice } from './DataNotice';
 
 const PAGES = {
-  checklist: {
-    icon: <ClipboardCheck />,
-    nav: 'nav.checklist',
-    title: 'projectPage.checklistTitle',
-    body: 'projectPage.checklistBody',
-  },
   variables: {
     icon: <KeyRound />,
     nav: 'nav.variables',
@@ -20,7 +14,7 @@ const PAGES = {
   },
 } as const;
 
-/** Project pages before their phases (6, 7) fill them in. */
+/** Project pages before their phases (7) fill them in. */
 export function ProjectPlaceholderPage({ page }: { page: keyof typeof PAGES }) {
   const { t } = useTranslation();
   const name = useProject((s) => s.snapshot?.project.name);

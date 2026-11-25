@@ -8,6 +8,7 @@ import {
   Settings,
   Trash2,
 } from 'lucide-react';
+import { Suspense, lazy } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Kbd } from '@/components/ui/Kbd';
 import { Logo } from '@/components/ui/Logo';
@@ -19,6 +20,11 @@ import { NavLinkItem } from './NavLinkItem';
 import { ProjectSwitcher } from './ProjectSwitcher';
 import { SaveIndicator } from './SaveIndicator';
 import { useUi } from './ui-store';
+
+// The share needs the kits, which load only with a project open (ux-ui 15).
+const ChecklistPercent = lazy(async () => ({
+  default: (await import('@/features/checklist/ChecklistPercent')).ChecklistPercent,
+}));
 
 type SidebarProps = {
   project: Project | undefined;
@@ -54,6 +60,11 @@ export function Sidebar({ project, collapsed, onCollapsedChange }: SidebarProps)
             icon={<ClipboardCheck />}
             label={t('nav.checklist')}
             collapsed={collapsed}
+            meta={
+              <Suspense fallback={null}>
+                <ChecklistPercent projectId={project.id} />
+              </Suspense>
+            }
           />
           <NavLinkItem
             to={`/p/${project.id}/variaveis`}

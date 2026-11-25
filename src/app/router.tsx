@@ -35,11 +35,9 @@ export const routes: RouteObject[] = [
               },
               {
                 path: 'checklist',
-                lazy: async () => {
-                  const { ProjectPlaceholderPage } =
-                    await import('@/features/project/ProjectPlaceholderPage');
-                  return { Component: () => <ProjectPlaceholderPage page="checklist" /> };
-                },
+                lazy: async () => ({
+                  Component: (await import('@/features/checklist/ChecklistPage')).ChecklistPage,
+                }),
               },
               {
                 path: 'variaveis',

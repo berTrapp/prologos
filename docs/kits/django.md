@@ -32,7 +32,10 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
   ],
   "knownStack": "django",
   "publicEnvPrefix": null,
-  "runsOn": ["database", "hosting"],
+  "runsOn": [
+    "database",
+    "hosting"
+  ],
   "dependencyFiles": [
     "requirements.txt",
     "pyproject.toml",
@@ -208,6 +211,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": "pip + venv",
       "state": "decided",
       "when": "now",
+      "concept": "packages",
       "tech": "python",
       "why": {
         "pt-BR": "Ambiente isolado por projeto e instalação dos pacotes.",
@@ -253,6 +257,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       },
       "state": "decided",
       "when": "now",
+      "concept": "templates",
       "tech": "tpl",
       "why": {
         "pt-BR": "O kit monta as telas no servidor, sem um front separado.",
@@ -331,6 +336,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": "Django ORM",
       "state": "decided",
       "when": "now",
+      "concept": "orm",
       "tech": "django",
       "why": {
         "pt-BR": "Classes Python viram tabelas e consultas.",
@@ -345,6 +351,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": "Migrations",
       "state": "decided",
       "when": "now",
+      "concept": "migrate",
       "tech": "django",
       "why": {
         "pt-BR": "O Django gera as mudanças do banco a partir dos modelos.",
@@ -359,6 +366,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": ".env.example",
       "state": "decided",
       "when": "now",
+      "concept": "config",
       "why": {
         "pt-BR": "Lista as variáveis sem valores secretos, para quem clona o projeto saber o que preencher.",
         "en": "Lists variables without secret values so whoever clones the project knows what to fill in.",
@@ -406,6 +414,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": "Django Auth",
       "state": "decided",
       "when": "now",
+      "concept": "auth",
       "tech": "django",
       "why": {
         "pt-BR": "Login, senhas e permissões que já vêm com o Django.",

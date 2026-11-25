@@ -32,7 +32,10 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
   ],
   "knownStack": "spring",
   "publicEnvPrefix": "VITE_",
-  "runsOn": ["database", "hosting"],
+  "runsOn": [
+    "database",
+    "hosting"
+  ],
   "dependencyFiles": [
     "pom.xml",
     "build.gradle",
@@ -205,6 +208,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": "Maven",
       "state": "decided",
       "when": "now",
+      "concept": "packages",
       "tech": "java",
       "why": {
         "pt-BR": "Baixa as dependências Java e compila o projeto; o ./mvnw já vem no projeto.",
@@ -245,6 +249,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": "JUnit",
       "state": "decided",
       "when": "now",
+      "concept": "tests",
       "tech": "java",
       "why": {
         "pt-BR": "Testes automatizados do back-end.",
@@ -286,6 +291,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": "API REST (@RestController)",
       "state": "decided",
       "when": "now",
+      "concept": "routes",
       "tech": "spring",
       "why": {
         "pt-BR": "O front conversa com o Spring por controllers anotados.",
@@ -324,6 +330,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": "Spring Data JPA",
       "state": "decided",
       "when": "now",
+      "concept": "orm",
       "tech": "spring",
       "why": {
         "pt-BR": "Tabelas viram classes Java; repositórios prontos para consultas comuns.",
@@ -338,6 +345,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": "Flyway",
       "state": "decided",
       "when": "now",
+      "concept": "migrate",
       "why": {
         "pt-BR": "Mudanças do banco em arquivos SQL numerados, aplicadas na subida.",
         "en": "Database changes as numbered SQL files, applied on startup.",
@@ -351,6 +359,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": ".env.example",
       "state": "decided",
       "when": "now",
+      "concept": "config",
       "why": {
         "pt-BR": "Lista as variáveis sem valores secretos, para quem clona o projeto saber o que preencher.",
         "en": "Lists variables without secret values so whoever clones the project knows what to fill in.",
@@ -398,6 +407,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": "Spring Security",
       "state": "decided",
       "when": "now",
+      "concept": "auth",
       "tech": "spring",
       "why": {
         "pt-BR": "Login, senhas e permissões por rota.",

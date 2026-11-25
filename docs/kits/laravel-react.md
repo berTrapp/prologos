@@ -101,7 +101,7 @@ Modelo de conteúdo para os starter kits (RN 14). Os outros 7 kits seguem exatam
       "docs": "https://www.conventionalcommits.org" },
 
     { "id": "git", "zone": "tools", "name": "Git + GitHub", "state": "decided", "when": "now", "docs": "https://docs.github.com" },
-    { "id": "composer", "zone": "tools", "name": "Composer", "tech": "php", "state": "decided", "when": "now",
+    { "id": "composer", "zone": "tools", "name": "Composer", "tech": "php", "state": "decided", "when": "now", "concept": "packages",
       "why": { "pt-BR": "Instala os pacotes PHP, como o próprio Laravel.", "en": "Installs PHP packages, including Laravel itself.", "es": "Instala los paquetes PHP, incluido el propio Laravel." },
       "docs": "https://getcomposer.org/doc/" },
     { "id": "npm", "zone": "tools", "name": "npm", "tech": "ts", "state": "decided", "when": "now",
@@ -117,21 +117,21 @@ Modelo de conteúdo para os starter kits (RN 14). Os outros 7 kits seguem exatam
 
     { "id": "laravel-app", "zone": "app", "name": "Laravel", "tech": "laravel", "state": "decided", "when": "now",
       "why": { "pt-BR": "Centro do back-end: recebe as requisições, aplica as regras e fala com o banco.", "en": "Core of the back end: receives requests, applies rules and talks to the database.", "es": "Centro del back-end: recibe las peticiones, aplica las reglas y habla con la base de datos." } },
-    { "id": "rest-api", "zone": "app", "name": "API REST", "tech": "laravel", "state": "decided", "when": "now",
+    { "id": "rest-api", "zone": "app", "name": "API REST", "tech": "laravel", "state": "decided", "when": "now", "concept": "routes",
       "why": { "pt-BR": "O front em React conversa com o Laravel por rotas em routes/api.php.", "en": "The React front end talks to Laravel through routes in routes/api.php.", "es": "El front-end en React habla con Laravel mediante rutas en routes/api.php." } },
     { "id": "queues", "zone": "app", "name": { "pt-BR": "Filas", "en": "Queues", "es": "Colas" }, "tech": "laravel", "state": "decided", "when": "later",
       "why": { "pt-BR": "Para e-mails e tarefas demoradas sem travar quem está usando.", "en": "For emails and slow tasks without blocking the user.", "es": "Para correos y tareas lentas sin bloquear a quien usa la app." },
       "docs": "https://laravel.com/docs/queues" },
 
     { "id": "database", "zone": "data", "name": { "pt-BR": "Banco de dados", "en": "Database", "es": "Base de datos" }, "state": "pending", "when": "now" },
-    { "id": "eloquent", "zone": "data", "name": "Eloquent", "tech": "laravel", "state": "decided", "when": "now",
+    { "id": "eloquent", "zone": "data", "name": "Eloquent", "tech": "laravel", "state": "decided", "when": "now", "concept": "orm",
       "why": { "pt-BR": "Transforma tabelas em classes PHP; evita SQL na mão para o básico.", "en": "Maps tables to PHP classes; avoids hand-written SQL for the basics.", "es": "Convierte tablas en clases PHP; evita escribir SQL a mano para lo básico." },
       "docs": "https://laravel.com/docs/eloquent" },
-    { "id": "migrations", "zone": "data", "name": "Migrations", "tech": "laravel", "state": "decided", "when": "now",
+    { "id": "migrations", "zone": "data", "name": "Migrations", "tech": "laravel", "state": "decided", "when": "now", "concept": "migrate",
       "why": { "pt-BR": "Mudanças do banco em arquivos, em ordem; qualquer pessoa recria o banco do zero.", "en": "Database changes as ordered files; anyone can rebuild the database from scratch.", "es": "Cambios de la base en archivos ordenados; cualquiera recrea la base desde cero." },
       "docs": "https://laravel.com/docs/migrations" },
 
-    { "id": "env-example", "zone": "env", "name": ".env.example", "state": "decided", "when": "now",
+    { "id": "env-example", "zone": "env", "name": ".env.example", "state": "decided", "when": "now", "concept": "config",
       "why": { "pt-BR": "Lista as variáveis sem valores secretos, para quem clona o projeto saber o que preencher.", "en": "Lists variables without secret values so whoever clones the project knows what to fill in.", "es": "Lista las variables sin valores secretos para que quien clone el proyecto sepa qué completar." } },
     { "id": "environments", "zone": "env", "name": { "pt-BR": "Desenvolvimento e produção", "en": "Development and production", "es": "Desarrollo y producción" }, "state": "decided", "when": "now" },
 
@@ -140,7 +140,7 @@ Modelo de conteúdo para os starter kits (RN 14). Os outros 7 kits seguem exatam
       "why": { "pt-BR": "Roda testes e build a cada push.", "en": "Runs tests and build on every push.", "es": "Ejecuta pruebas y build en cada push." },
       "docs": "https://docs.github.com/actions" },
 
-    { "id": "sanctum", "zone": "security", "name": "Laravel Sanctum", "tech": "laravel", "state": "decided", "when": "now",
+    { "id": "sanctum", "zone": "security", "name": "Laravel Sanctum", "tech": "laravel", "state": "decided", "when": "now", "concept": "auth",
       "why": { "pt-BR": "Login do front com o Laravel, por cookie de sessão ou token.", "en": "Front-end login with Laravel, via session cookie or token.", "es": "Inicio de sesión del front-end con Laravel, por cookie de sesión o token." },
       "docs": "https://laravel.com/docs/sanctum" },
     { "id": "https", "zone": "security", "name": "HTTPS", "state": "decided", "when": "now" },

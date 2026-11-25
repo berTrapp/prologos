@@ -32,7 +32,10 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
   ],
   "knownStack": "node",
   "publicEnvPrefix": "VITE_",
-  "runsOn": ["database", "hosting"],
+  "runsOn": [
+    "database",
+    "hosting"
+  ],
   "dependencyFiles": [
     "package.json",
     ".env.example",
@@ -213,6 +216,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": "npm",
       "state": "decided",
       "when": "now",
+      "concept": "packages",
       "tech": "node",
       "why": {
         "pt-BR": "Instala os pacotes das duas pontas.",
@@ -239,6 +243,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": "Vitest",
       "state": "decided",
       "when": "now",
+      "concept": "tests",
       "tech": "ts",
       "why": {
         "pt-BR": "Testes rápidos com a mesma configuração do Vite.",
@@ -288,6 +293,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": "API REST",
       "state": "decided",
       "when": "now",
+      "concept": "routes",
       "tech": "express",
       "why": {
         "pt-BR": "O front conversa com a API por rotas em /api.",
@@ -326,6 +332,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": "Prisma",
       "state": "decided",
       "when": "now",
+      "concept": "orm",
       "tech": "prisma",
       "why": {
         "pt-BR": "Tabelas viram modelos com tipos; evita SQL na mão para o básico.",
@@ -340,6 +347,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": "Prisma Migrate",
       "state": "decided",
       "when": "now",
+      "concept": "migrate",
       "tech": "prisma",
       "why": {
         "pt-BR": "Mudanças do banco em arquivos, em ordem.",
@@ -353,6 +361,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": ".env.example",
       "state": "decided",
       "when": "now",
+      "concept": "config",
       "why": {
         "pt-BR": "Lista as variáveis sem valores secretos, para quem clona o projeto saber o que preencher.",
         "en": "Lists variables without secret values so whoever clones the project knows what to fill in.",
@@ -400,6 +409,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": "Auth.js",
       "state": "decided",
       "when": "now",
+      "concept": "auth",
       "why": {
         "pt-BR": "Login com e-mail ou provedores (GitHub, Google) sem escrever criptografia na mão.",
         "en": "Login with email or providers (GitHub, Google) without hand-written crypto.",

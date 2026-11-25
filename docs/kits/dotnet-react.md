@@ -32,7 +32,10 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
   ],
   "knownStack": "dotnet",
   "publicEnvPrefix": "VITE_",
-  "runsOn": ["database", "hosting"],
+  "runsOn": [
+    "database",
+    "hosting"
+  ],
   "dependencyFiles": [
     "*.csproj",
     "package.json",
@@ -204,6 +207,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": ".NET CLI + NuGet",
       "state": "decided",
       "when": "now",
+      "concept": "packages",
       "tech": "dotnet",
       "why": {
         "pt-BR": "Cria, compila e roda o projeto; o NuGet instala os pacotes.",
@@ -244,6 +248,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": "xUnit",
       "state": "decided",
       "when": "now",
+      "concept": "tests",
       "tech": "csharp",
       "why": {
         "pt-BR": "Testes automatizados do back-end.",
@@ -285,6 +290,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": "Web API (Controllers)",
       "state": "decided",
       "when": "now",
+      "concept": "routes",
       "tech": "dotnet",
       "why": {
         "pt-BR": "O front conversa com a API por controllers ou Minimal APIs.",
@@ -309,6 +315,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": "Entity Framework Core",
       "state": "decided",
       "when": "now",
+      "concept": "orm",
       "tech": "dotnet",
       "why": {
         "pt-BR": "Tabelas viram classes C#; consultas em LINQ.",
@@ -323,6 +330,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": "EF Core Migrations",
       "state": "decided",
       "when": "now",
+      "concept": "migrate",
       "tech": "dotnet",
       "why": {
         "pt-BR": "Mudanças do banco geradas a partir das classes, em ordem.",
@@ -337,6 +345,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": ".env.example",
       "state": "decided",
       "when": "now",
+      "concept": "config",
       "why": {
         "pt-BR": "Lista as variáveis sem valores secretos, para quem clona o projeto saber o que preencher.",
         "en": "Lists variables without secret values so whoever clones the project knows what to fill in.",
@@ -384,6 +393,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       "name": "ASP.NET Core Identity",
       "state": "decided",
       "when": "now",
+      "concept": "auth",
       "tech": "dotnet",
       "why": {
         "pt-BR": "Contas, senhas e permissões prontas.",

@@ -182,6 +182,7 @@
       "tech": "php",
       "state": "decided",
       "when": "now",
+      "concept": "packages",
       "why": {
         "pt-BR": "Instala os pacotes PHP, como o próprio Laravel.",
         "en": "Installs PHP packages, including Laravel itself.",
@@ -257,6 +258,7 @@
       "tech": "laravel",
       "state": "decided",
       "when": "now",
+      "concept": "routes",
       "why": {
         "pt-BR": "O front em React conversa com o Laravel por rotas em routes/api.php.",
         "en": "The React front end talks to Laravel through routes in routes/api.php.",
@@ -299,6 +301,7 @@
       "tech": "laravel",
       "state": "decided",
       "when": "now",
+      "concept": "orm",
       "why": {
         "pt-BR": "Transforma tabelas em classes PHP; evita SQL na mão para o básico.",
         "en": "Maps tables to PHP classes; avoids hand-written SQL for the basics.",
@@ -313,6 +316,7 @@
       "tech": "laravel",
       "state": "decided",
       "when": "now",
+      "concept": "migrate",
       "why": {
         "pt-BR": "Mudanças do banco em arquivos, em ordem; qualquer pessoa recria o banco do zero.",
         "en": "Database changes as ordered files; anyone can rebuild the database from scratch.",
@@ -326,6 +330,7 @@
       "name": ".env.example",
       "state": "decided",
       "when": "now",
+      "concept": "config",
       "why": {
         "pt-BR": "Lista as variáveis sem valores secretos, para quem clona o projeto saber o que preencher.",
         "en": "Lists variables without secret values so whoever clones the project knows what to fill in.",
@@ -374,6 +379,7 @@
       "tech": "laravel",
       "state": "decided",
       "when": "now",
+      "concept": "auth",
       "why": {
         "pt-BR": "Login do front com o Laravel, por cookie de sessão ou token.",
         "en": "Front-end login with Laravel, via session cookie or token.",

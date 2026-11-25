@@ -17,6 +17,19 @@ const Url = z.url();
 
 export { KNOWN_STACKS };
 
+/** RN 15: concepts translated between stacks, in display order. */
+export const EQUIVALENCE_CONCEPTS = [
+  'orm',
+  'migrate',
+  'routes',
+  'packages',
+  'devServer',
+  'config',
+  'templates',
+  'auth',
+  'tests',
+] as const;
+
 const KitItemSchema = z.object({
   id: z.string().min(1),
   zone: z.enum(ZONE_IDS),
@@ -26,6 +39,8 @@ const KitItemSchema = z.object({
   tech: z.string().optional(),
   why: LocalizedText.optional(),
   docs: Url.optional(),
+  /** RN 15: the equivalence concept this item stands for, if any. */
+  concept: z.enum(EQUIVALENCE_CONCEPTS).optional(),
 });
 
 export const KitSchema = z

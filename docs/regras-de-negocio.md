@@ -13,7 +13,10 @@ Como o produto se comporta. Complementa `docs/ux-ui.md` (como ele se parece). De
 - **Zonas:** todo projeto começa com as 9 zonas padrão (ids `method`, `tools`, `ui`, `app`, `data`, `env`, `infra`, `security`, `observability`). A pessoa pode adicionar zonas, excluir qualquer zona (inclusive as padrão) e criar subzonas livremente. Uma zona nova usa uma das 9 cores de zona; a cor nunca é um valor solto.
 - **Excluir zona ou subzona:** os itens dentro vão juntos para a lixeira, com as subzonas e as conexões que tocam neles, e voltam com Desfazer.
 - **Conexões:** direção obrigatória; tipo opcional (usa, depende de, envia para).
-- **Fluxos:** sequência ordenada de conexões existentes. Podem passar por itens futuros; na visão Hoje esse trecho aparece tracejado.
+- **Layout automático:** zonas em grade, com o tamanho dado pelo conteúdo, e itens em fileiras dentro da zona, na ordem guardada. Arrastar um item muda a ordem ou a zona dele; não há posição livre nem redimensionamento à mão.
+- **Zona recolhida:** vira um card com o nome e a contagem de itens; as conexões que entram ou saem dela passam a apontar para o card, agrupadas por destino com a contagem.
+- **Filtro por zona ("Tags"):** destaca as zonas escolhidas e apaga as demais; não esconde nem altera nada.
+- **Fluxos:** sequência ordenada de conexões existentes. Podem passar por itens futuros; na visão Hoje esse trecho aparece tracejado. Cada passo é só a conexão: o player mostra "origem → destino · tipo", sem texto próprio por passo.
 - **Fluxo com item excluído:** o fluxo continua; o trecho cuja conexão foi para a lixeira aparece como lacuna. Restaurar o item (e suas conexões) reconstrói o fluxo.
 
 ## 2. Hoje / Completo
@@ -115,6 +118,7 @@ Planejando · Em desenvolvimento · Pausado · Concluído · Arquivado. Arquivar
 - Havendo tecnologia nova, o checklist ganha a seção **Preparar o ambiente**: instalar, criar o projeto, rodar o servidor, primeiro teste — cada passo com o comando e como saber que deu certo. Não é um módulo de tarefas.
 - **Equivalências:** a pessoa informa a stack que domina (Laravel/PHP, Node/JavaScript, Spring/Java, .NET/C#, Django/Python ou nenhuma) e os conceitos do kit escolhido aparecem traduzidos a partir dela (ORM, migrations, rotas, gerenciador de pacotes, servidor de desenvolvimento, configuração). Kits mobile e o site estático não têm tabela de equivalências no MVP.
 - Em escolhas com várias opções, uma vem marcada como **recomendada para começar**, com o que cada uma implica em linguagem simples.
+- **Equivalente no painel do item:** itens de kit com o campo `concept` (orm, migrate, routes, packages, devServer, config, templates, auth, tests) mostram o equivalente na stack que a pessoa domina ("No Laravel, o equivalente é Eloquent").
 
 ## 16. Pronto para codar
 

@@ -34,6 +34,7 @@ Modelo de conteúdo para os starter kits (RN 14). Os outros 7 kits seguem exatam
 | `envVars` | Variáveis do `.env.example` gerado |
 | `equivalences` | Conceitos desta stack, para traduzir a partir de outra (RN 15) |
 | `dependencyMap` | Pacote → item do mapa (RN 7) |
+| `items[].concept` | Opcional: conceito da tabela de equivalências que o item representa (RN 15) |
 
 ## Conteúdo
 

@@ -1,6 +1,6 @@
 # Prólogos — Regras de UX/UI
 
-Regras que toda tela do Prólogos segue. Valem para quem desenha, quem programa e para o Claude. Uma tela só está pronta quando passa no checklist do fim deste documento.
+Regras que toda tela do Prólogos segue. Valem para quem desenha e quem programa. Uma tela só está pronta quando passa no checklist do fim deste documento.
 
 ## 1. Posição: o controle fica junto do que ele controla
 
@@ -343,6 +343,23 @@ Navegação entre os passos de um fluxo guiado (início guiado). Não confundir 
 
 - **Lista (desktop):** coluna de linhas de 48 px, raio 10 px · número num círculo de 22 px com contorno `stroke-strong` (Geist Mono 11,5 px) · rótulo 14 px e, abaixo, a resposta dada em 12,5 px `muted`. Passo atual: fundo `fill-subtle`, círculo preenchido em `text` com número em `bg`, rótulo peso 600. Passos respondidos são clicáveis e voltam direto para eles; o atual tem `aria-current="step"`.
 - **Barra (celular e tablet):** um segmento de 4 px de altura por passo, raio 999, separados por 6 px; concluídos e atual em `text`, os próximos em `fill-strong`. Acompanha o texto "Passo 2 de 5" para leitores de tela.
+
+### 13.23 Zona do mapa
+
+Grupo que contém itens e subzonas no canvas (RN 1).
+
+- **Anatomia:** raio 16 px (subzona: 12 px) · contorno interno 1 px na cor da zona a 30% e fundo na cor a 5% · cabeçalho de 40 px com ponto de 8 px na cor da zona, nome 13,5 px peso 600 na cor da zona e contagem em `muted` · à direita do cabeçalho, "+" (novo item), o menu "…" (renomear, cor, nova subzona, excluir) e o botão Recolher/Expandir (ux-ui 1).
+- **Conteúdo:** itens em fileiras de 2 (168 px cada, 8 px entre eles) com 12 px de margem; subzonas ocupam a largura toda, abaixo dos itens.
+- **Recolhida:** vira um card de 48 px de altura com o nome, a contagem e o botão Expandir; as conexões apontam para ele, com um contador quando várias se juntam.
+- **Filtro:** zona fora do filtro fica com opacidade 35%.
+- **Soltar:** ao arrastar um item por cima, o contorno vai a 60% e a posição de chegada aparece como uma linha de 2 px na cor da zona.
+
+### 13.24 Conexão do mapa
+
+- Linha de 1,5 px em `stroke-strong`, curva suave, seta de 8 px no destino; rótulo do tipo em Geist Mono 11 px `muted`, sobre um fundo `bg` com raio 6 px.
+- **Selecionada:** linha em `text`. **Toca item futuro na visão Hoje dentro de um fluxo:** tracejada. **Lacuna de fluxo:** não desenha a linha; o player mostra "Trecho removido".
+- **Fluxo ativo:** traço de 2 px com o gradiente da marca e tracejado andando (1,2 s por ciclo); com `prefers-reduced-motion`, parado.
+- **Agrupada** (zona recolhida): rótulo com a contagem ("3 conexões").
 
 ## 14. Quando usar toast
 

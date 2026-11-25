@@ -25,6 +25,14 @@ describe('layoutMap (RN 1)', () => {
     expect(zones.every((z) => z.width === ZONE_WIDTH)).toBe(true);
   });
 
+  it('keeps each zone in its column when another one collapses', () => {
+    const { snapshot, zone } = withItems(6);
+    const before = layoutMap(snapshot.zones, snapshot.items).zones;
+    const zones = snapshot.zones.map((z) => (z.id === zone.id ? { ...z, collapsed: true } : z));
+    const after = layoutMap(zones, snapshot.items).zones;
+    expect(after.map((z) => z.x)).toEqual(before.map((z) => z.x));
+  });
+
   it('lays items in rows of two, in their order', () => {
     const { snapshot, zone } = withItems(3);
     const shuffled = [...snapshot.items].reverse();

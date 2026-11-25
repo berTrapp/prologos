@@ -128,15 +128,16 @@ export function layoutMap(zones: readonly Zone[], items: readonly Item[]): MapLa
     return entry.height;
   };
 
-  // Masonry: each top zone goes to the shortest column, in order.
+  // Columns by order (1st, 4th, 7th… in the first): collapsing a zone only moves the
+  // zones below it in the same column, so nothing jumps sideways (ux-ui 6).
   const columnHeights: number[] = Array.from({ length: LAYOUT.columns }, () => 0);
-  for (const zone of childrenOf.get(null) ?? []) {
-    const column = columnHeights.indexOf(Math.min(...columnHeights));
+  (childrenOf.get(null) ?? []).forEach((zone, index) => {
+    const column = index % LAYOUT.columns;
     const x = column * (ZONE_WIDTH + LAYOUT.zoneGap);
     const top = columnHeights[column] ?? 0;
     const height = place(zone, x, top, ZONE_WIDTH);
     columnHeights[column] = top + height + LAYOUT.zoneGap;
-  }
+  });
 
   return { zones: laidZones, items: laidItems, anchor };
 }

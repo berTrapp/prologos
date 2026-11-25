@@ -41,6 +41,9 @@ type MapUiState = {
   setFlowStep(step: number): void;
   setPlaying(playing: boolean): void;
   setDrawing(steps: string[] | undefined): void;
+  /** Project the state belongs to; opening another one starts clean. */
+  projectId: string | undefined;
+  openProject(projectId: string): void;
   reset(): void;
 };
 
@@ -55,6 +58,7 @@ const initial = {
   flowStep: 0,
   playing: false,
   drawing: undefined,
+  projectId: undefined as string | undefined,
 };
 
 /** Session state of the map screen; what must be remembered lives in usePersistentState. */
@@ -78,5 +82,7 @@ export const useMapUi = create<MapUiState>()((set) => ({
   setFlowStep: (flowStep) => set({ flowStep }),
   setPlaying: (playing) => set({ playing }),
   setDrawing: (drawing) => set({ drawing, playing: false }),
+  openProject: (projectId) =>
+    set((state) => (state.projectId === projectId ? {} : { ...initial, projectId })),
   reset: () => set(initial),
 }));

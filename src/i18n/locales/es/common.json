@@ -35,7 +35,8 @@
     "status": {
       "decided": "Decidido",
       "pending": "Por decidir",
-      "future": "Futuro"
+      "future": "Futuro",
+      "notApplicable": "No aplica"
     }
   },
   "mapLoader": {
@@ -75,7 +76,8 @@
       "decided": "Decidido",
       "pending": "Por decidir",
       "future": "Futuro",
-      "notApplicable": "No aplica"
+      "notApplicable": "No aplica",
+      "missing": "Falta en el mapa"
     },
     "variable": {
       "secret": "Secreto",
@@ -607,7 +609,9 @@
       "grouped": "{{count}} conexiones entre {{from}} y {{to}}. Expande la zona para editar cada una.",
       "itemsIn_one": "{{count}} ítem",
       "itemsIn_other": "{{count}} ítems",
-      "itemsIn_zero": "Ningún ítem"
+      "itemsIn_zero": "Ningún ítem",
+      "notApplicable": "No aplica",
+      "reconsider": "Volver a considerar"
     },
     "newItem": {
       "title": "Nuevo ítem",
@@ -669,6 +673,49 @@
       "views": "Vista",
       "zones": "Zonas",
       "map": "Mapa"
+    }
+  },
+  "checklist": {
+    "title": "Lo que falta decidir",
+    "lead": "En orden: lo que hay que resolver primero está arriba. Los ítems que no tienen sentido para este proyecto se pueden marcar como \"No aplica\".",
+    "resolved": "{{resolved}} de {{total}} resueltos",
+    "percentLabel": "{{value}}% resuelto",
+    "next": {
+      "label": "Próximo paso",
+      "prepBody_one": "Es parte de \"Preparar el entorno\", justo abajo. {{techs}} es nuevo para ti, así que el entorno va antes de las decisiones.",
+      "prepBody_other": "Es parte de \"Preparar el entorno\", justo abajo. {{techs}} son nuevos para ti, así que el entorno va antes de las decisiones.",
+      "decideBody": "Cada opción muestra lo que implica, con la recomendada para empezar.",
+      "doneTitle": "Todo resuelto",
+      "doneBody": "No queda nada por decidir en esta vista."
+    },
+    "prep": {
+      "title": "Preparar el entorno",
+      "count": "{{done}} de {{total}}",
+      "ok": "Funcionó cuando: {{text}}",
+      "docs": "Documentación de {{title}}"
+    },
+    "zone": {
+      "pending_one": "{{count}} por decidir",
+      "pending_other": "{{count}} por decidir",
+      "done": "Todo resuelto"
+    },
+    "row": {
+      "notApplicable": "No aplica",
+      "decideOnMap": "Decidir en el mapa",
+      "addToMap": "Agregar al mapa",
+      "reconsider": "Volver a considerar",
+      "markDecided": "Marcar {{name}} como decidido",
+      "markPending": "Marcar {{name}} como por decidir",
+      "reasonLabel": "Por qué no aplica",
+      "reasonPlaceholder": "Este proyecto no tiene login",
+      "save": "Marcar",
+      "reasonRequired": "Escribe un motivo corto.",
+      "reason": "Motivo: {{reason}}",
+      "naTitle": "{{name}} no aplica"
+    },
+    "toast": {
+      "notApplicable": "{{name}}: no aplica",
+      "reconsidered": "{{name}} vuelve a contar"
     }
   }
 }

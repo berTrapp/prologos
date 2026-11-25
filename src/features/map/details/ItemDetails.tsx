@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, ExternalLink, Trash2 } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ExternalLink, RotateCcw, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/Badge';
@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { ChoiceCard, ChoiceGroup } from '@/components/ui/ChoiceCard';
 import { Chip } from '@/components/ui/Chip';
+import { InlineAlert } from '@/components/ui/InlineAlert';
 import { Input } from '@/components/ui/Input';
 import { SegmentedControl } from '@/components/ui/SegmentedControl';
 import { itemKnowledge } from '@/domain/rules/kit-lookup';
@@ -48,6 +49,11 @@ export function ItemDetails({ item, model, actions, compact = false }: ItemDetai
       .filter((c) => c.from === item.id)
       .map((c) => ({ c, other: c.to, incoming: false })),
   ];
+
+  // RN 5: marked "Não se aplica" in the checklist; it can be considered again from here.
+  const notApplicable = item.kitRef
+    ? model.snapshot.checklist.find((row) => row.itemRef === item.kitRef && row.notApplicable)
+    : undefined;
 
   const commitName = () => {
     if (draft.trim() && draft.trim() !== name) actions.updateItem(item.id, { name: draft });
@@ -99,6 +105,24 @@ export function ItemDetails({ item, model, actions, compact = false }: ItemDetai
           </div>
         )}
       </div>
+
+      {notApplicable ? (
+        <InlineAlert
+          variant="info"
+          title={t('map.panel.notApplicable')}
+          actions={
+            <Button
+              size="compact"
+              icon={<RotateCcw />}
+              onClick={() => actions.setNotApplicable(notApplicable.id, undefined, name)}
+            >
+              {t('map.panel.reconsider')}
+            </Button>
+          }
+        >
+          {notApplicable.notApplicable?.reason}
+        </InlineAlert>
+      ) : null}
 
       {knowledge.options.length > 0 ? (
         <DetailsSection title={t('map.panel.options')} hint={t('map.panel.optionsLead')}>

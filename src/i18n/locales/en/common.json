@@ -35,7 +35,8 @@
     "status": {
       "decided": "Decided",
       "pending": "To decide",
-      "future": "Future"
+      "future": "Future",
+      "notApplicable": "Not applicable"
     }
   },
   "mapLoader": {
@@ -75,7 +76,8 @@
       "decided": "Decided",
       "pending": "To decide",
       "future": "Future",
-      "notApplicable": "Not applicable"
+      "notApplicable": "Not applicable",
+      "missing": "Missing from map"
     },
     "variable": {
       "secret": "Secret",
@@ -607,7 +609,9 @@
       "grouped": "{{count}} connections between {{from}} and {{to}}. Expand the zone to edit each one.",
       "itemsIn_one": "{{count}} item",
       "itemsIn_other": "{{count}} items",
-      "itemsIn_zero": "No items"
+      "itemsIn_zero": "No items",
+      "notApplicable": "Not applicable",
+      "reconsider": "Consider again"
     },
     "newItem": {
       "title": "New item",
@@ -669,6 +673,49 @@
       "views": "View",
       "zones": "Zones",
       "map": "Map"
+    }
+  },
+  "checklist": {
+    "title": "What is left to decide",
+    "lead": "In order: what to solve first is at the top. Items that make no sense for this project can be marked \"Not applicable\".",
+    "resolved": "{{resolved}} of {{total}} resolved",
+    "percentLabel": "{{value}}% resolved",
+    "next": {
+      "label": "Next step",
+      "prepBody_one": "Part of \"Set up the environment\", just below. {{techs}} is new to you, so the environment comes before the decisions.",
+      "prepBody_other": "Part of \"Set up the environment\", just below. {{techs}} are new to you, so the environment comes before the decisions.",
+      "decideBody": "Each option shows what it implies, with the one recommended to start.",
+      "doneTitle": "All resolved",
+      "doneBody": "Nothing is left to decide in this view."
+    },
+    "prep": {
+      "title": "Set up the environment",
+      "count": "{{done}} of {{total}}",
+      "ok": "It worked when: {{text}}",
+      "docs": "{{title}} docs"
+    },
+    "zone": {
+      "pending_one": "{{count}} to decide",
+      "pending_other": "{{count}} to decide",
+      "done": "All resolved"
+    },
+    "row": {
+      "notApplicable": "Not applicable",
+      "decideOnMap": "Decide on the map",
+      "addToMap": "Add to the map",
+      "reconsider": "Consider again",
+      "markDecided": "Mark {{name}} as decided",
+      "markPending": "Mark {{name}} as to decide",
+      "reasonLabel": "Why it does not apply",
+      "reasonPlaceholder": "This project has no login",
+      "save": "Mark",
+      "reasonRequired": "Write a short reason.",
+      "reason": "Reason: {{reason}}",
+      "naTitle": "{{name}} does not apply"
+    },
+    "toast": {
+      "notApplicable": "{{name}}: not applicable",
+      "reconsidered": "{{name}} counts again"
     }
   }
 }

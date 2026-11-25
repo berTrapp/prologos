@@ -1,6 +1,5 @@
 import { ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { mapItemStatus } from '@/domain/rules/view';
 import type { Item, Zone } from '@/domain/schemas/map';
 import { cn } from '@/lib/utils';
 import { zoneBg, zoneRing, zoneText } from '@/lib/zone-colors';
@@ -96,7 +95,7 @@ function ZoneRow({
       {expanded ? (
         <div id={panelId} className="flex flex-col gap-1 px-2 pb-2">
           {items.map((item) => {
-            const status = mapItemStatus(item);
+            const status = model.itemStatus(item);
             const choice = item.state === 'decided' ? model.choiceName(item) : undefined;
             return (
               <button
@@ -109,6 +108,7 @@ function ZoneRow({
                     ? 'border border-dashed border-warning/70'
                     : 'bg-fill-subtle',
                   status === 'future' && 'opacity-60',
+                  status === 'notApplicable' && 'opacity-50',
                 )}
               >
                 <span

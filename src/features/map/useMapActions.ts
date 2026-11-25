@@ -17,6 +17,7 @@ import {
   type NewZone,
   type ZonePatch,
 } from '@/domain/rules/edit';
+import { setNotApplicable, setPrepStep } from '@/domain/rules/checklist';
 import { addFlow, removeFlow, renameFlow, restoreFlow } from '@/domain/rules/flows';
 import {
   addNote,
@@ -157,6 +158,24 @@ export function useMapActions() {
         notify.success(t('map.toast.riskRemoved'), {
           action: { label: t('toast.undo'), onClick: () => apply((s) => restoreRisk(s, risk)) },
         });
+      },
+      /** RN 5, ux-ui 14: "Não se aplica" with Desfazer; reconsidering needs no toast. */
+      setNotApplicable(expectationId: string, reason: string | undefined, name: string) {
+        const previous = store().snapshot?.checklist.find((row) => row.id === expectationId)
+          ?.notApplicable?.reason;
+        apply((s) => setNotApplicable(s, expectationId, reason));
+        if (reason) {
+          notify.success(t('checklist.toast.notApplicable', { name }), {
+            action: {
+              label: t('toast.undo'),
+              onClick: () => apply((s) => setNotApplicable(s, expectationId, previous)),
+            },
+          });
+        }
+      },
+      /** RN 15: a step of "Preparar o ambiente"; no toast (ux-ui 14). */
+      setPrepStep(index: number, done: boolean) {
+        apply((s) => setPrepStep(s, index, done));
       },
       setView(view: 'today' | 'complete') {
         store().change((draft) => {

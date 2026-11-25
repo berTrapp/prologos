@@ -2,12 +2,14 @@ import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useProject } from '@/app/services';
 import { KITS, findKit } from '@/content/kits';
+import { notApplicableReason } from '@/domain/rules/checklist';
 import { NO_KIT_ITEMS, nextSteps } from '@/domain/rules/guided-start';
 import { kitForStack } from '@/domain/rules/kit';
 import { choiceDisplayName, followLanguage, itemDisplayName } from '@/domain/rules/kit-lookup';
 import { layoutMap, mapEdges, type MapEdge, type MapLayout } from '@/domain/rules/layout';
 import { annotationCount, annotationsByItem, type ItemAnnotations } from '@/domain/rules/notes';
-import { visibleMap } from '@/domain/rules/view';
+import { mapItemStatus, visibleMap } from '@/domain/rules/view';
+import type { MapItemStatus } from '@/components/ui/MapItem';
 import type { Kit } from '@/domain/schemas/kit';
 import type { Connection, Item, Zone } from '@/domain/schemas/map';
 import type { ProjectSnapshot } from '@/domain/schemas/snapshot';
@@ -24,6 +26,10 @@ export type MapModel = {
   edges: MapEdge[];
   annotations: Map<string, ItemAnnotations>;
   annotationTotal: number;
+  /** RN 5: items marked "Não se aplica" in the checklist, with the reason. */
+  notApplicable: Map<string, string>;
+  /** Card status, with "Não se aplica" over the item's own (ux-ui 13.16). */
+  itemStatus(item: Item): MapItemStatus;
   steps: ReturnType<typeof nextSteps>;
   pendingCount: number;
   zoneName(zone: Pick<Zone, 'key' | 'name'>): string;
@@ -64,6 +70,13 @@ export function useMapModel(): MapModel | undefined {
       return itemDisplayName(item, kit, language);
     };
 
+    const notApplicable = new Map(
+      snapshot.items.flatMap((item) => {
+        const reason = notApplicableReason(item, snapshot.checklist);
+        return reason ? [[item.id, reason] as const] : [];
+      }),
+    );
+
     return {
       snapshot,
       language,
@@ -75,6 +88,8 @@ export function useMapModel(): MapModel | undefined {
       edges: mapEdges(connections, layout),
       annotations: annotationsByItem(snapshot),
       annotationTotal: annotationCount(snapshot),
+      notApplicable,
+      itemStatus: (item) => (notApplicable.has(item.id) ? 'notApplicable' : mapItemStatus(item)),
       steps: nextSteps(snapshot, kit),
       pendingCount: items.filter((item) => item.state === 'pending').length,
       zoneName: (zone) => zone.name ?? (zone.key ? t(`zones.${zone.key}`) : ''),

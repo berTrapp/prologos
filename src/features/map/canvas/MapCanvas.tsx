@@ -16,7 +16,7 @@ import { canConnect } from '@/domain/rules/map';
 import { canAppendStep } from '@/domain/rules/flows';
 import { LAYOUT } from '@/domain/rules/layout';
 import { canCreateSubzone } from '@/domain/rules/map';
-import { isFuture, mapItemStatus } from '@/domain/rules/view';
+import { isFuture } from '@/domain/rules/view';
 import { cn } from '@/lib/utils';
 import { FIT_PADDING } from '../map-keys';
 import { useMapUi } from '../map-ui-store';
@@ -141,7 +141,7 @@ export function MapCanvas({
       const zone = model.zoneById.get(laid.zoneId);
       if (!item || !zone) throw new Error(`Missing item ${laid.id}`);
       const notes = model.annotations.get(item.id);
-      const status = mapItemStatus(item);
+      const status = model.itemStatus(item);
       const name = model.itemName(item);
       const choice = item.state === 'decided' ? model.choiceName(item) : undefined;
       return {

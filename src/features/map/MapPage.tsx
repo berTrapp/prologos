@@ -26,10 +26,13 @@ export function MapPage() {
   const actions = useMapActions();
   const phone = useBreakpoint() === 'phone';
   const projectId = model?.snapshot.project.id;
-  const reset = useMapUi((s) => s.reset);
+  const openProject = useMapUi((s) => s.openProject);
 
-  // A new project starts with a clean selection, tools and filter.
-  useEffect(() => reset(), [projectId, reset]);
+  // Another project starts with a clean selection, tools and filter; coming back to the
+  // same one (from the checklist, say) keeps what was picked.
+  useEffect(() => {
+    if (projectId) openProject(projectId);
+  }, [projectId, openProject]);
 
   if (!model) return null;
   if (phone) return <MobileMap model={model} actions={actions} />;

@@ -88,13 +88,17 @@ function DesktopMap({
 
   return (
     <div className="flex h-dvh min-w-0">
-      <div className="flex min-w-0 flex-1 flex-col">
-        <header className="flex h-16 shrink-0 items-center gap-3 border-b border-border px-6">
+      <div className="@container/main flex min-w-0 flex-1 flex-col">
+        {/* Narrow (both panels open at 1024 px): the next step drops to its own row (ux-ui 12). */}
+        <header className="flex min-h-16 shrink-0 flex-wrap items-center gap-x-3 gap-y-2 border-b border-border px-6 py-3 @min-[720px]/main:flex-nowrap @min-[720px]/main:py-0">
           <h1 className="min-w-0 shrink truncate text-[16px] font-semibold text-text">
             {model.snapshot.project.name}
           </h1>
           {kitName ? <Chip>{kitName}</Chip> : null}
-          <NextStepBar model={model} className="ml-3 max-w-[760px] flex-1" />
+          <NextStepBar
+            model={model}
+            className="max-w-[760px] basis-full @min-[720px]/main:ml-3 @min-[720px]/main:flex-1 @min-[720px]/main:basis-auto"
+          />
         </header>
         <DataNotice className="mx-6 mt-4 mb-0" />
         <div ref={canvasRef} className="@container/canvas relative min-h-0 flex-1">

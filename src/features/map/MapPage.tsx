@@ -97,7 +97,7 @@ function DesktopMap({
           <NextStepBar model={model} className="ml-3 max-w-[760px] flex-1" />
         </header>
         <DataNotice className="mx-6 mt-4 mb-0" />
-        <div ref={canvasRef} className="relative min-h-0 flex-1">
+        <div ref={canvasRef} className="@container/canvas relative min-h-0 flex-1">
           <ReactFlowProvider>
             <MapCanvas model={model} actions={actions} editable showAnnotations={showAnnotations}>
               <MapToolbar

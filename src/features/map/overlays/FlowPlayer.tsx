@@ -24,6 +24,16 @@ import type { MapModel } from '../useMapModel';
 
 const STEP_MS = 1800;
 
+/**
+ * The bar never covers the zoom controls (16 + 208 + 16 px wide, about 177 px tall):
+ * on a wide canvas it sits centered to their right; on a narrow one, right above them.
+ */
+const BAR_PANEL = cn(
+  'pointer-events-none m-0! right-4! left-4! bottom-[185px]! flex justify-start',
+  '@min-[640px]/canvas:bottom-4! @min-[640px]/canvas:left-[240px]! @min-[640px]/canvas:justify-center',
+);
+const BAR_WIDTH = 'pointer-events-auto w-full max-w-[560px]';
+
 /** Flows at the bottom of the map: pick one, play it stretch by stretch, or draw a new one. */
 export function FlowPlayer({
   model,
@@ -69,8 +79,13 @@ export function FlowPlayer({
         }`;
 
   return (
-    <Panel position="bottom-center" className="mb-4!">
-      <div className="surface-raised flex w-[min(560px,calc(100vw-560px))] min-w-[400px] flex-col gap-3 rounded-card p-3 inset-ring inset-ring-stroke-strong">
+    <Panel position="bottom-left" className={BAR_PANEL}>
+      <div
+        className={cn(
+          BAR_WIDTH,
+          'surface-raised flex flex-col gap-3 rounded-card p-3 inset-ring inset-ring-stroke-strong',
+        )}
+      >
         <div className="flex items-center gap-1.5">
           <div
             role="group"
@@ -227,11 +242,14 @@ function FlowDrawer({ actions }: { actions: MapActions }) {
   };
 
   return (
-    <Panel position="bottom-center" className="mb-4!">
+    <Panel position="bottom-left" className={BAR_PANEL}>
       <form
         noValidate
         onSubmit={submit}
-        className="surface-raised flex w-[min(560px,calc(100vw-560px))] min-w-[400px] flex-col gap-3 rounded-card p-3 inset-ring inset-ring-accent/30"
+        className={cn(
+          BAR_WIDTH,
+          'surface-raised flex flex-col gap-3 rounded-card p-3 inset-ring inset-ring-accent/30',
+        )}
       >
         <p
           role="status"

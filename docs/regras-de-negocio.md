@@ -179,3 +179,4 @@ Planejando · Em desenvolvimento · Pausado · Concluído · Arquivado. Arquivar
 - Antes de seguir para depois do MVP, pelo menos 5 pessoas do público principal criam um projeto do zero sem ajuda.
 - Métricas: tempo até o primeiro mapa (meta: menos de 10 min) e quantas chegam ao "Pronto para codar".
 - O que travar vira ajuste nos kits, no início guiado ou nestes docs.
+- Formato no MVP: cada pessoa usa sozinha, anota os próprios horários e responde a um questionário. "Chegar ao Pronto para codar" conta em dois níveis: abriu a tela, e fechou as decisões essenciais (RN 16). Roteiro, convite e tabela de resultados em `docs/validacao.md`.

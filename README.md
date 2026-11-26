@@ -4,6 +4,8 @@
 
 Prólogos ajuda você a sair do "tenho uma ideia" e chegar ao primeiro commit com tudo decidido: stack, ambiente, dados, infraestrutura, segurança e o que ainda falta resolver, num mapa visual do projeto.
 
+**Use agora:** [prologos-app.pages.dev](https://prologos-app.pages.dev). Sem conta e sem instalar nada.
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/prints/mapa-escuro.webp">
   <img src="docs/prints/mapa-claro.webp" alt="Mapa de um projeto Django no Prólogos, com um fluxo em destaque e os detalhes do item Django">

@@ -50,6 +50,10 @@ const ICONS: Record<ExportFormat, ReactNode> = {
 };
 
 const DEFAULT_OPTIONS: ExportOptions = { futures: false, notes: true };
+const IMAGE_TYPES = [
+  { value: 'png', label: 'PNG' },
+  { value: 'svg', label: 'SVG' },
+] as const satisfies readonly { value: ImageType; label: string }[];
 
 /** RN 10, 19: every export of the project, with a preview; secrets never leave. */
 export function ExportPage() {
@@ -144,23 +148,21 @@ export function ExportPage() {
 
         <Card padding="none" className="flex min-w-0 flex-col overflow-hidden">
           {format === 'image' || format === 'html' ? (
-            <div className="flex min-h-0 flex-col">
-              <div className="flex min-h-12 items-center gap-3 border-b border-border px-5">
-                <span className="min-w-0 truncate font-mono text-[13px] text-text">{name}</span>
-                <span className="shrink-0 font-mono text-[12px] text-faint">{meta}</span>
-                {format === 'image' ? (
+            <FilePreview
+              name={name}
+              meta={meta}
+              label={t('export.preview', { name })}
+              action={
+                format === 'image' ? (
                   <SegmentedControl<ImageType>
                     label={t('export.imageFormat')}
                     value={image}
                     onValueChange={setImage}
-                    options={[
-                      { value: 'png', label: 'PNG' },
-                      { value: 'svg', label: 'SVG' },
-                    ]}
-                    className="ml-auto"
+                    options={IMAGE_TYPES}
                   />
-                ) : null}
-              </div>
+                ) : undefined
+              }
+            >
               {format === 'image' ? (
                 <ImagePreview svg={text} label={t('export.preview', { name })} />
               ) : (
@@ -171,7 +173,7 @@ export function ExportPage() {
                   className="h-[360px] w-full border-0 bg-bg tablet:h-[540px]"
                 />
               )}
-            </div>
+            </FilePreview>
           ) : (
             <FilePreview
               name={name}

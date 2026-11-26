@@ -51,6 +51,18 @@ export const routes: RouteObject[] = [
                   Component: (await import('@/features/variables/ImportEnvPage')).ImportEnvPage,
                 }),
               },
+              {
+                path: 'pronto',
+                lazy: async () => ({
+                  Component: (await import('@/features/export/ReadyPage')).ReadyPage,
+                }),
+              },
+              {
+                path: 'exportar',
+                lazy: async () => ({
+                  Component: (await import('@/features/export/ExportPage')).ExportPage,
+                }),
+              },
             ],
           },
           {

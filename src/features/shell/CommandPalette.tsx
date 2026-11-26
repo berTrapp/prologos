@@ -1,11 +1,13 @@
 import { Command, useCommandState } from 'cmdk';
 import {
   Download,
+  FileDown,
   House,
   Languages,
   Monitor,
   Moon,
   Plus,
+  Rocket,
   Search,
   Settings,
   Sun,
@@ -14,7 +16,7 @@ import {
 import { Dialog as DialogPrimitive } from 'radix-ui';
 import { useEffect, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router';
+import { useMatch, useNavigate } from 'react-router';
 import { useWorkspace } from '@/app/services';
 import { Kbd } from '@/components/ui/Kbd';
 import { isInMainList } from '@/domain/rules/project';
@@ -95,6 +97,7 @@ export function CommandPalette() {
   const setOpen = useUi((s) => s.setPaletteOpen);
   const projects = useWorkspace((s) => s.projects);
   const { setPreference } = useTheme();
+  const projectId = useMatch('/p/:projectId/*')?.params.projectId;
   const [search, setSearch] = useState('');
 
   useEffect(() => {
@@ -162,6 +165,22 @@ export function CommandPalette() {
                 </Command.Group>
               ) : null}
               <Command.Group heading={t('palette.navigation')} className={groupClasses}>
+                {projectId ? (
+                  <>
+                    <Item
+                      icon={<FileDown />}
+                      label={t('palette.goExport')}
+                      hint={t('palette.navHint')}
+                      onSelect={run(() => navigate(`/p/${projectId}/exportar`))}
+                    />
+                    <Item
+                      icon={<Rocket />}
+                      label={t('palette.goReady')}
+                      hint={t('palette.navHint')}
+                      onSelect={run(() => navigate(`/p/${projectId}/pronto`))}
+                    />
+                  </>
+                ) : null}
                 <Item
                   icon={<House />}
                   label={t('palette.goHome')}

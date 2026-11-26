@@ -1,6 +1,7 @@
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Rocket } from 'lucide-react';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { CoverageRing } from '@/components/ui/CoverageRing';
@@ -53,6 +54,13 @@ export function ChecklistPage() {
   const techCount = new Set(model.snapshot.items.filter((i) => i.newForYou).map((i) => i.tech))
     .size;
 
+  // RN 16: the essential decisions and the repository start live one click away.
+  const readyLink = (
+    <Button asChild icon={<Rocket />}>
+      <Link to={`/p/${model.snapshot.project.id}/pronto`}>{t('nav.ready')}</Link>
+    </Button>
+  );
+
   const addToMap = (row: ChecklistRow) => {
     const source = model.kit?.items.find((i) => i.id === row.kitRef);
     const expectation = model.snapshot.checklist.find((c) => c.id === row.expectationId);
@@ -77,12 +85,22 @@ export function ChecklistPage() {
       <PageHeader
         title={t('checklist.title')}
         subtitle={t('checklist.lead')}
-        action={viewControl}
+        action={
+          <div className="flex flex-wrap items-center gap-2">
+            {readyLink}
+            {viewControl}
+          </div>
+        }
         phoneAction={<span />}
       />
       <DataNotice />
       <div className="flex flex-col gap-6">
-        {phone ? viewControl : null}
+        {phone ? (
+          <div className="flex flex-col gap-3">
+            {viewControl}
+            {readyLink}
+          </div>
+        ) : null}
         <div className="grid gap-4 desktop:grid-cols-[minmax(0,1fr)_340px]">
           <NextStepCard
             model={model}

@@ -1,5 +1,6 @@
 import {
   ClipboardCheck,
+  Download,
   FolderOpen,
   KeyRound,
   Map,
@@ -70,6 +71,12 @@ export function Sidebar({ project, collapsed, onCollapsedChange }: SidebarProps)
             to={`/p/${project.id}/variaveis`}
             icon={<KeyRound />}
             label={t('nav.variables')}
+            collapsed={collapsed}
+          />
+          <NavLinkItem
+            to={`/p/${project.id}/exportar`}
+            icon={<Download />}
+            label={t('nav.export')}
             collapsed={collapsed}
           />
         </div>

@@ -38,7 +38,11 @@ function Tab({
 export function MobileTabBar({ projectId, onMore }: { projectId: string; onMore: () => void }) {
   const { t } = useTranslation();
   const { pathname } = useLocation();
-  const inMore = pathname === '/lixeira' || pathname === '/configuracoes';
+  const inMore =
+    pathname === '/lixeira' ||
+    pathname === '/configuracoes' ||
+    pathname.endsWith('/exportar') ||
+    pathname.endsWith('/pronto');
 
   return (
     <nav

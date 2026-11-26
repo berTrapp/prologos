@@ -136,7 +136,9 @@
     "switchProject": "Cambiar de proyecto",
     "noProject": "Ningún proyecto abierto",
     "search": "Buscar",
-    "skipToContent": "Saltar al contenido"
+    "skipToContent": "Saltar al contenido",
+    "export": "Exportar",
+    "ready": "Listo para programar"
   },
   "save": {
     "saved": "Guardado en este navegador",
@@ -450,7 +452,9 @@
     "projectHint": "proyecto",
     "navHint": "página",
     "actionHint": "acción",
-    "results_zero": "Ningún resultado"
+    "results_zero": "Ningún resultado",
+    "goExport": "Exportar",
+    "goReady": "Listo para programar"
   },
   "firstStep": {
     "label": "Próximo paso",
@@ -928,6 +932,88 @@
       "zones": "Zonas",
       "flows": "Flujos",
       "footer": "Solo lectura. Hecho con Prólogos."
+    }
+  },
+  "ready": {
+    "title": "Casi listo para programar",
+    "titleReady": "Listo para programar",
+    "lead_one": "Falta {{count}} decisión esencial. Ya puedes ver cómo quedará el repositorio; los archivos se completan a medida que decides.",
+    "lead_other": "Faltan {{count}} decisiones esenciales. Ya puedes ver cómo quedará el repositorio; los archivos se completan a medida que decides.",
+    "leadReady": "Las decisiones esenciales están tomadas. Descarga el inicio del repositorio y haz el primer commit.",
+    "milestone": {
+      "missing_one": "Falta {{count}}",
+      "missing_other": "Faltan {{count}}",
+      "ready": "Listo"
+    },
+    "status_one": "Falta {{count}} decisión esencial",
+    "status_other": "Faltan {{count}} decisiones esenciales",
+    "statusReady": "Listo para programar",
+    "essentials": "Decisiones esenciales",
+    "openChecklist": "Abrir el checklist",
+    "essential": {
+      "stack": "Stack elegido",
+      "prep": "Entorno preparado",
+      "auth": "Autenticación",
+      "variables": "Variables documentadas"
+    },
+    "detail": {
+      "pending": "Por decidir",
+      "notApplicable": "No aplica",
+      "missing": "Falta en el mapa",
+      "decided": "Decidido",
+      "steps": "{{done}} de {{total}}",
+      "variables_one": "{{count}} variable",
+      "variables_other": "{{count}} variables",
+      "noVariables": "Ninguna variable",
+      "undocumented_one": "{{count}} sin descripción",
+      "undocumented_other": "{{count}} sin descripción"
+    },
+    "repo": "Inicio del repositorio",
+    "fileCount_one": "{{count}} archivo",
+    "fileCount_other": "{{count}} archivos",
+    "files": "Archivos del repositorio",
+    "download": "Descargar el inicio del repositorio",
+    "downloadAnyway": "Descargar de todos modos",
+    "downloading": "Generando el .zip…",
+    "commit": "Primer commit sugerido",
+    "noSecrets": "Sin valores secretos"
+  },
+  "export": {
+    "title": "Exportar",
+    "lead": "Convierte el mapa en archivos listos para el repositorio. Los secretos nunca salen: los valores sensibles quedan en blanco.",
+    "formats": "Formatos",
+    "format": {
+      "env": "Entorno → variables sin valores secretos",
+      "compose": "Infraestructura → servicios para desarrollo",
+      "readme": "Resumen del proyecto con diagrama Mermaid",
+      "mermaid": "El mapa en Mermaid, para cualquier editor",
+      "image": "Imagen del mapa en alta resolución (PNG o SVG)",
+      "html": "Página de solo lectura para publicar en tu portafolio",
+      "json": "Backup completo, para importarlo de vuelta"
+    },
+    "options": "Opciones",
+    "futures": "Incluir ítems futuros",
+    "notes": "Incluir notas y riesgos",
+    "hideSecrets": "Ocultar valores secretos (siempre)",
+    "lines_one": "{{count}} línea",
+    "lines_other": "{{count}} líneas",
+    "size": "{{width}} × {{height}}",
+    "preview": "Vista previa de {{name}}",
+    "imageFormat": "Formato de la imagen",
+    "htmlPreview": "Vista previa de mapa.html",
+    "download": "Descargar {{name}}",
+    "downloading": "Generando…",
+    "copy": "Copiar",
+    "readyLink": "Listo para programar",
+    "generatedNote": "Generado en el idioma de la interfaz. Sin valores secretos.",
+    "toast": {
+      "downloaded": "{{name}} descargado",
+      "copied": "Copiado",
+      "failed": "No se pudo generar {{name}}",
+      "failedBody": "No se descargó nada. Inténtalo de nuevo.",
+      "retry": "Intentar de nuevo",
+      "copyFailed": "No se pudo copiar",
+      "copyFailedBody": "El navegador bloqueó el portapapeles. Selecciona el texto en la vista previa."
     }
   }
 }

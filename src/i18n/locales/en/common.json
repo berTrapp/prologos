@@ -136,7 +136,9 @@
     "switchProject": "Switch project",
     "noProject": "No project open",
     "search": "Search",
-    "skipToContent": "Skip to content"
+    "skipToContent": "Skip to content",
+    "export": "Export",
+    "ready": "Ready to code"
   },
   "save": {
     "saved": "Saved in this browser",
@@ -450,7 +452,9 @@
     "projectHint": "project",
     "navHint": "page",
     "actionHint": "action",
-    "results_zero": "No results"
+    "results_zero": "No results",
+    "goExport": "Export",
+    "goReady": "Ready to code"
   },
   "firstStep": {
     "label": "Next step",
@@ -928,6 +932,88 @@
       "zones": "Zones",
       "flows": "Flows",
       "footer": "Read only. Made with Prólogos."
+    }
+  },
+  "ready": {
+    "title": "Almost ready to code",
+    "titleReady": "Ready to code",
+    "lead_one": "{{count}} essential decision left. You can already see how the repository will look; the files fill in as you decide.",
+    "lead_other": "{{count}} essential decisions left. You can already see how the repository will look; the files fill in as you decide.",
+    "leadReady": "The essential decisions are made. Download the repository start and make the first commit.",
+    "milestone": {
+      "missing_one": "{{count}} left",
+      "missing_other": "{{count}} left",
+      "ready": "Ready"
+    },
+    "status_one": "{{count}} essential decision left",
+    "status_other": "{{count}} essential decisions left",
+    "statusReady": "Ready to code",
+    "essentials": "Essential decisions",
+    "openChecklist": "Open the checklist",
+    "essential": {
+      "stack": "Stack chosen",
+      "prep": "Environment ready",
+      "auth": "Authentication",
+      "variables": "Variables documented"
+    },
+    "detail": {
+      "pending": "To decide",
+      "notApplicable": "Not applicable",
+      "missing": "Missing from the map",
+      "decided": "Decided",
+      "steps": "{{done}} of {{total}}",
+      "variables_one": "{{count}} variable",
+      "variables_other": "{{count}} variables",
+      "noVariables": "No variables",
+      "undocumented_one": "{{count}} without a description",
+      "undocumented_other": "{{count}} without a description"
+    },
+    "repo": "Repository start",
+    "fileCount_one": "{{count}} file",
+    "fileCount_other": "{{count}} files",
+    "files": "Repository files",
+    "download": "Download the repository start",
+    "downloadAnyway": "Download anyway",
+    "downloading": "Building the .zip…",
+    "commit": "Suggested first commit",
+    "noSecrets": "No secret values"
+  },
+  "export": {
+    "title": "Export",
+    "lead": "Turn the map into files ready for the repository. Secrets never leave: sensitive values become blanks.",
+    "formats": "Formats",
+    "format": {
+      "env": "Environment → variables without secret values",
+      "compose": "Infrastructure → development services",
+      "readme": "Project summary with a Mermaid diagram",
+      "mermaid": "The map in Mermaid, for any editor",
+      "image": "High-resolution map image (PNG or SVG)",
+      "html": "Read-only page to publish in your portfolio",
+      "json": "Full backup, to import back"
+    },
+    "options": "Options",
+    "futures": "Include future items",
+    "notes": "Include notes and risks",
+    "hideSecrets": "Hide secret values (always)",
+    "lines_one": "{{count}} line",
+    "lines_other": "{{count}} lines",
+    "size": "{{width}} × {{height}}",
+    "preview": "{{name}} preview",
+    "imageFormat": "Image format",
+    "htmlPreview": "mapa.html preview",
+    "download": "Download {{name}}",
+    "downloading": "Generating…",
+    "copy": "Copy",
+    "readyLink": "Ready to code",
+    "generatedNote": "Generated in the interface language. No secret values.",
+    "toast": {
+      "downloaded": "{{name}} downloaded",
+      "copied": "Copied",
+      "failed": "Could not generate {{name}}",
+      "failedBody": "Nothing was downloaded. Try again.",
+      "retry": "Try again",
+      "copyFailed": "Could not copy",
+      "copyFailedBody": "The browser blocked the clipboard. Select the text in the preview."
     }
   }
 }

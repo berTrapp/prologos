@@ -1,4 +1,4 @@
-import { FolderOpen, Plus, Settings, Trash2 } from 'lucide-react';
+import { Download, FolderOpen, Plus, Rocket, Settings, Trash2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Sheet } from '@/components/ui/Sheet';
 import { NavLinkItem } from './NavLinkItem';
@@ -6,9 +6,11 @@ import { SaveIndicator } from './SaveIndicator';
 
 /** "Mais" on the phone: everything that is not a tab (ux-ui 12). */
 export function MoreSheet({
+  projectId,
   open,
   onOpenChange,
 }: {
+  projectId: string;
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }) {
@@ -18,6 +20,21 @@ export function MoreSheet({
   return (
     <Sheet open={open} onOpenChange={onOpenChange} title={t('nav.more')}>
       <nav aria-label={t('nav.more')} className="flex flex-col gap-1">
+        <NavLinkItem
+          to={`/p/${projectId}/exportar`}
+          onClick={close}
+          icon={<Download />}
+          label={t('nav.export')}
+          collapsed={false}
+        />
+        <NavLinkItem
+          to={`/p/${projectId}/pronto`}
+          onClick={close}
+          icon={<Rocket />}
+          label={t('nav.ready')}
+          collapsed={false}
+        />
+        <div className="my-2 border-t border-border" />
         <NavLinkItem
           to="/"
           end

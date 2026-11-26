@@ -67,7 +67,7 @@ export function AppShell() {
       {phone && project ? (
         <>
           <MobileTabBar projectId={project.id} onMore={() => setMoreOpen(true)} />
-          <MoreSheet open={moreOpen} onOpenChange={setMoreOpen} />
+          <MoreSheet projectId={project.id} open={moreOpen} onOpenChange={setMoreOpen} />
         </>
       ) : null}
     </div>

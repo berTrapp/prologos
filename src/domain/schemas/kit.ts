@@ -14,6 +14,8 @@ export const LocalizedText = z.object(
 /** Technical names stay as a plain string; translatable names come per language. */
 const Name = z.union([z.string().min(1), LocalizedText]);
 const Url = z.url();
+const EnvKey = z.string().regex(/^[A-Z][A-Z0-9_]*$/);
+const RunStep = z.object({ title: LocalizedText, command: z.string().min(1) });
 
 export { KNOWN_STACKS };
 
@@ -84,9 +86,20 @@ export const KitSchema = z
       }),
     ),
     folders: z.array(z.object({ path: z.string().min(1), what: LocalizedText })),
+    /** RN 16: what to install before running, for the generated README. */
+    prerequisites: z.array(Name).min(1),
+    /** RN 16: "Como rodar localmente" for whoever clones the repository. */
+    runLocally: z.object({
+      install: z.array(RunStep),
+      run: z.array(RunStep).min(1),
+    }),
+    /** RN 16: keys the docker-compose.yml reads from .env; defaults to DB_USER, DB_PASSWORD, DB_NAME. */
+    dockerEnv: z.object({ user: EnvKey, password: EnvKey, database: EnvKey }).optional(),
+    /** RN 16: lines of the generated .gitignore. */
+    gitignore: z.array(z.string().min(1)).min(1),
     envVars: z.array(
       z.object({
-        key: z.string().regex(/^[A-Z][A-Z0-9_]*$/),
+        key: EnvKey,
         secret: z.boolean(),
         example: z.string().optional(),
         usedIn: z.array(z.string()).min(1),
@@ -137,6 +150,8 @@ export const KitSchema = z
       if (kit.items.find((i) => i.id === ref)?.state !== 'pending')
         issue(`runsOn ${ref} is not a pending item`);
     }
+    // RN 16: the generated .gitignore keeps .env out and .env.example in.
+    if (!kit.gitignore.includes('.env')) issue('gitignore does not ignore .env');
     // RN 3: secrets never carry an example value.
     for (const env of kit.envVars) {
       if (env.secret && env.example) issue(`Secret ${env.key} has an example value`);

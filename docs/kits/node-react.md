@@ -771,6 +771,66 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       }
     }
   ],
+  "prerequisites": [
+    "Node.js",
+    "Git"
+  ],
+  "runLocally": {
+    "install": [
+      {
+        "title": {
+          "pt-BR": "Instale as dependências da API",
+          "en": "Install the API dependencies",
+          "es": "Instala las dependencias de la API"
+        },
+        "command": "cd api && npm install"
+      },
+      {
+        "title": {
+          "pt-BR": "Instale as dependências do front",
+          "en": "Install the front-end dependencies",
+          "es": "Instala las dependencias del front"
+        },
+        "command": "cd web && npm install"
+      }
+    ],
+    "run": [
+      {
+        "title": {
+          "pt-BR": "Crie as tabelas do banco",
+          "en": "Create the database tables",
+          "es": "Crea las tablas de la base"
+        },
+        "command": "cd api && npx prisma migrate dev"
+      },
+      {
+        "title": {
+          "pt-BR": "Rode a API",
+          "en": "Run the API",
+          "es": "Ejecuta la API"
+        },
+        "command": "cd api && npm run dev"
+      },
+      {
+        "title": {
+          "pt-BR": "Rode o front em outro terminal",
+          "en": "Run the front end in another terminal",
+          "es": "Ejecuta el front en otra terminal"
+        },
+        "command": "cd web && npm run dev"
+      }
+    ]
+  },
+  "gitignore": [
+    "node_modules/",
+    "dist/",
+    "build/",
+    "coverage/",
+    ".env",
+    ".env.local",
+    "*.log",
+    ".DS_Store"
+  ],
   "envVars": [
     {
       "key": "PORT",

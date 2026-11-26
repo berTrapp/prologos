@@ -677,6 +677,51 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       }
     }
   ],
+  "prerequisites": [
+    "Flutter SDK",
+    "Git",
+    {
+      "pt-BR": "Android Studio (ou Xcode, no Mac)",
+      "en": "Android Studio (or Xcode, on a Mac)",
+      "es": "Android Studio (o Xcode, en Mac)"
+    }
+  ],
+  "runLocally": {
+    "install": [
+      {
+        "title": {
+          "pt-BR": "Instale as dependências",
+          "en": "Install the dependencies",
+          "es": "Instala las dependencias"
+        },
+        "command": "flutter pub get"
+      }
+    ],
+    "run": [
+      {
+        "title": {
+          "pt-BR": "Rode o app num emulador ou celular conectado",
+          "en": "Run the app on an emulator or a connected phone",
+          "es": "Ejecuta la app en un emulador o celular conectado"
+        },
+        "command": "flutter run"
+      }
+    ]
+  },
+  "gitignore": [
+    ".dart_tool/",
+    "build/",
+    ".flutter-plugins",
+    ".flutter-plugins-dependencies",
+    ".pub-cache/",
+    ".idea/",
+    "*.iml",
+    "android/.gradle/",
+    "android/local.properties",
+    "ios/Pods/",
+    ".env",
+    ".DS_Store"
+  ],
   "envVars": [
     {
       "key": "API_URL",

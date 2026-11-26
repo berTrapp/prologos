@@ -700,6 +700,74 @@
       }
     }
   ],
+  "prerequisites": ["PHP", "Composer", "Node.js", "Git"],
+  "runLocally": {
+    "install": [
+      {
+        "title": {
+          "pt-BR": "Instale as dependências do PHP",
+          "en": "Install the PHP dependencies",
+          "es": "Instala las dependencias de PHP"
+        },
+        "command": "composer install"
+      },
+      {
+        "title": {
+          "pt-BR": "Instale as dependências do front",
+          "en": "Install the front-end dependencies",
+          "es": "Instala las dependencias del front"
+        },
+        "command": "npm install"
+      }
+    ],
+    "run": [
+      {
+        "title": {
+          "pt-BR": "Gere a chave da aplicação",
+          "en": "Generate the application key",
+          "es": "Genera la clave de la aplicación"
+        },
+        "command": "php artisan key:generate"
+      },
+      {
+        "title": {
+          "pt-BR": "Crie as tabelas do banco",
+          "en": "Create the database tables",
+          "es": "Crea las tablas de la base"
+        },
+        "command": "php artisan migrate"
+      },
+      {
+        "title": {
+          "pt-BR": "Rode o projeto",
+          "en": "Run the project",
+          "es": "Ejecuta el proyecto"
+        },
+        "command": "composer run dev"
+      }
+    ]
+  },
+  "dockerEnv": {
+    "user": "DB_USERNAME",
+    "password": "DB_PASSWORD",
+    "database": "DB_DATABASE"
+  },
+  "gitignore": [
+    "/vendor",
+    "/node_modules",
+    "/public/build",
+    "/public/hot",
+    "/public/storage",
+    "/storage/*.key",
+    ".env",
+    ".env.backup",
+    ".env.production",
+    ".phpunit.result.cache",
+    "npm-debug.log",
+    "/.idea",
+    "/.vscode",
+    ".DS_Store"
+  ],
   "envVars": [
     {
       "key": "APP_KEY",

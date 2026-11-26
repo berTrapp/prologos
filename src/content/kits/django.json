@@ -722,6 +722,58 @@
       }
     }
   ],
+  "prerequisites": ["Python", "Git"],
+  "runLocally": {
+    "install": [
+      {
+        "title": {
+          "pt-BR": "Crie e ative o ambiente virtual (no Windows: .venv\\Scripts\\activate)",
+          "en": "Create and activate the virtual environment (on Windows: .venv\\Scripts\\activate)",
+          "es": "Crea y activa el entorno virtual (en Windows: .venv\\Scripts\\activate)"
+        },
+        "command": "python -m venv .venv && source .venv/bin/activate"
+      },
+      {
+        "title": {
+          "pt-BR": "Instale as dependências",
+          "en": "Install the dependencies",
+          "es": "Instala las dependencias"
+        },
+        "command": "pip install -r requirements.txt"
+      }
+    ],
+    "run": [
+      {
+        "title": {
+          "pt-BR": "Crie as tabelas do banco",
+          "en": "Create the database tables",
+          "es": "Crea las tablas de la base"
+        },
+        "command": "python manage.py migrate"
+      },
+      {
+        "title": {
+          "pt-BR": "Rode o servidor",
+          "en": "Run the server",
+          "es": "Ejecuta el servidor"
+        },
+        "command": "python manage.py runserver"
+      }
+    ]
+  },
+  "gitignore": [
+    ".venv/",
+    "__pycache__/",
+    "*.py[cod]",
+    "db.sqlite3",
+    ".env",
+    "staticfiles/",
+    "media/",
+    ".pytest_cache/",
+    ".ruff_cache/",
+    ".coverage",
+    ".DS_Store"
+  ],
   "envVars": [
     {
       "key": "SECRET_KEY",

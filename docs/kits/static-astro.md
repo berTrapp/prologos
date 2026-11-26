@@ -526,6 +526,41 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       }
     }
   ],
+  "prerequisites": [
+    "Node.js",
+    "Git"
+  ],
+  "runLocally": {
+    "install": [
+      {
+        "title": {
+          "pt-BR": "Instale as dependências",
+          "en": "Install the dependencies",
+          "es": "Instala las dependencias"
+        },
+        "command": "npm install"
+      }
+    ],
+    "run": [
+      {
+        "title": {
+          "pt-BR": "Rode o site",
+          "en": "Run the site",
+          "es": "Ejecuta el sitio"
+        },
+        "command": "npm run dev"
+      }
+    ]
+  },
+  "gitignore": [
+    "node_modules/",
+    "dist/",
+    ".astro/",
+    ".env",
+    ".env.production",
+    "npm-debug.log*",
+    ".DS_Store"
+  ],
   "envVars": [
     {
       "key": "PUBLIC_SITE_URL",

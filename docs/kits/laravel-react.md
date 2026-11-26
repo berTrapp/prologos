@@ -31,6 +31,10 @@ Modelo de conteúdo para os starter kits (RN 14). Os outros 7 kits seguem exatam
 | `checklist` | Itens esperados por zona (RN 5) |
 | `prepTrail` | Trilha "Preparar o ambiente" (RN 15) |
 | `folders` | Estrutura de pastas explicada |
+| `prerequisites` | O que instalar antes de rodar, no README gerado (RN 16); o Docker entra sozinho quando há `docker-compose.yml` |
+| `runLocally` | Passos de "Como rodar localmente" para quem clona o repositório: `install` antes de copiar o `.env`, `run` depois de subir o banco (RN 16) |
+| `dockerEnv` | Opcional: chaves de usuário, senha e nome do banco que o `docker-compose.yml` lê do `.env`; sem ele, `DB_USER`, `DB_PASSWORD` e `DB_NAME` |
+| `gitignore` | Linhas do `.gitignore` gerado para a stack |
 | `envVars` | Variáveis do `.env.example` gerado |
 | `equivalences` | Conceitos desta stack, para traduzir a partir de outra (RN 15) |
 | `dependencyMap` | Pacote → item do mapa (RN 7) |
@@ -234,6 +238,79 @@ Modelo de conteúdo para os starter kits (RN 14). Os outros 7 kits seguem exatam
     { "path": "resources/js", "what": { "pt-BR": "Código do front em React e TypeScript.", "en": "React and TypeScript front-end code.", "es": "Código del front-end en React y TypeScript." } },
     { "path": "tests", "what": { "pt-BR": "Testes automatizados.", "en": "Automated tests.", "es": "Pruebas automatizadas." } }
   ],
+  "prerequisites": [
+    "PHP",
+    "Composer",
+    "Node.js",
+    "Git"
+  ],
+  "runLocally": {
+    "install": [
+      {
+        "title": {
+          "pt-BR": "Instale as dependências do PHP",
+          "en": "Install the PHP dependencies",
+          "es": "Instala las dependencias de PHP"
+        },
+        "command": "composer install"
+      },
+      {
+        "title": {
+          "pt-BR": "Instale as dependências do front",
+          "en": "Install the front-end dependencies",
+          "es": "Instala las dependencias del front"
+        },
+        "command": "npm install"
+      }
+    ],
+    "run": [
+      {
+        "title": {
+          "pt-BR": "Gere a chave da aplicação",
+          "en": "Generate the application key",
+          "es": "Genera la clave de la aplicación"
+        },
+        "command": "php artisan key:generate"
+      },
+      {
+        "title": {
+          "pt-BR": "Crie as tabelas do banco",
+          "en": "Create the database tables",
+          "es": "Crea las tablas de la base"
+        },
+        "command": "php artisan migrate"
+      },
+      {
+        "title": {
+          "pt-BR": "Rode o projeto",
+          "en": "Run the project",
+          "es": "Ejecuta el proyecto"
+        },
+        "command": "composer run dev"
+      }
+    ]
+  },
+  "dockerEnv": {
+    "user": "DB_USERNAME",
+    "password": "DB_PASSWORD",
+    "database": "DB_DATABASE"
+  },
+  "gitignore": [
+    "/vendor",
+    "/node_modules",
+    "/public/build",
+    "/public/hot",
+    "/public/storage",
+    "/storage/*.key",
+    ".env",
+    ".env.backup",
+    ".env.production",
+    ".phpunit.result.cache",
+    "npm-debug.log",
+    "/.idea",
+    "/.vscode",
+    ".DS_Store"
+  ],
 
   "envVars": [
     { "key": "APP_KEY", "secret": true, "usedIn": ["back"],
@@ -291,4 +368,6 @@ Modelo de conteúdo para os starter kits (RN 14). Os outros 7 kits seguem exatam
 - [ ] Todo id em `checklist`, `connections`, `flows` e `dependencyMap` existe em `items`
 - [ ] Nenhuma variável `secret: true` tem `example`
 - [ ] Os comandos da `prepTrail` foram executados numa máquina limpa e funcionam
+- [ ] Os passos de `runLocally` funcionam num clone do repositório gerado
+- [ ] O `gitignore` ignora `.env` e não ignora `.env.example`
 - [ ] Os links de documentação abrem a página oficial certa

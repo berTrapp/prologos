@@ -726,6 +726,62 @@
       }
     }
   ],
+  "prerequisites": [
+    {
+      "pt-BR": "Java (JDK)",
+      "en": "Java (JDK)",
+      "es": "Java (JDK)"
+    },
+    "Node.js",
+    "Git"
+  ],
+  "runLocally": {
+    "install": [
+      {
+        "title": {
+          "pt-BR": "Instale as dependências do front",
+          "en": "Install the front-end dependencies",
+          "es": "Instala las dependencias del front"
+        },
+        "command": "cd web && npm install"
+      }
+    ],
+    "run": [
+      {
+        "title": {
+          "pt-BR": "Rode a API (as migrations do Flyway rodam ao iniciar)",
+          "en": "Run the API (Flyway migrations run on start)",
+          "es": "Ejecuta la API (las migraciones de Flyway corren al iniciar)"
+        },
+        "command": "cd api && ./mvnw spring-boot:run"
+      },
+      {
+        "title": {
+          "pt-BR": "Rode o front em outro terminal",
+          "en": "Run the front end in another terminal",
+          "es": "Ejecuta el front en otra terminal"
+        },
+        "command": "cd web && npm run dev"
+      }
+    ]
+  },
+  "dockerEnv": {
+    "user": "SPRING_DATASOURCE_USERNAME",
+    "password": "SPRING_DATASOURCE_PASSWORD",
+    "database": "DB_NAME"
+  },
+  "gitignore": [
+    "target/",
+    "!.mvn/wrapper/maven-wrapper.jar",
+    "node_modules/",
+    "dist/",
+    ".env",
+    "*.log",
+    ".idea/",
+    "*.iml",
+    ".vscode/",
+    ".DS_Store"
+  ],
   "envVars": [
     {
       "key": "SPRING_PROFILES_ACTIVE",

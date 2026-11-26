@@ -772,6 +772,70 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       }
     }
   ],
+  "prerequisites": [
+    ".NET SDK",
+    "Node.js",
+    "Git"
+  ],
+  "runLocally": {
+    "install": [
+      {
+        "title": {
+          "pt-BR": "Restaure os pacotes da API",
+          "en": "Restore the API packages",
+          "es": "Restaura los paquetes de la API"
+        },
+        "command": "dotnet restore Api"
+      },
+      {
+        "title": {
+          "pt-BR": "Instale as dependências do front",
+          "en": "Install the front-end dependencies",
+          "es": "Instala las dependencias del front"
+        },
+        "command": "cd web && npm install"
+      }
+    ],
+    "run": [
+      {
+        "title": {
+          "pt-BR": "Crie as tabelas do banco",
+          "en": "Create the database tables",
+          "es": "Crea las tablas de la base"
+        },
+        "command": "dotnet tool install --global dotnet-ef && dotnet ef database update --project Api"
+      },
+      {
+        "title": {
+          "pt-BR": "Rode a API",
+          "en": "Run the API",
+          "es": "Ejecuta la API"
+        },
+        "command": "dotnet run --project Api"
+      },
+      {
+        "title": {
+          "pt-BR": "Rode o front em outro terminal",
+          "en": "Run the front end in another terminal",
+          "es": "Ejecuta el front en otra terminal"
+        },
+        "command": "cd web && npm run dev"
+      }
+    ]
+  },
+  "gitignore": [
+    "bin/",
+    "obj/",
+    "*.user",
+    ".vs/",
+    "node_modules/",
+    "dist/",
+    ".env",
+    "*.log",
+    ".idea/",
+    ".vscode/",
+    ".DS_Store"
+  ],
   "envVars": [
     {
       "key": "ASPNETCORE_ENVIRONMENT",

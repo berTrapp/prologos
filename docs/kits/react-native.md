@@ -631,6 +631,54 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
       }
     }
   ],
+  "prerequisites": [
+    "Node.js",
+    "Git",
+    {
+      "pt-BR": "Expo Go no celular",
+      "en": "Expo Go on your phone",
+      "es": "Expo Go en el celular"
+    }
+  ],
+  "runLocally": {
+    "install": [
+      {
+        "title": {
+          "pt-BR": "Instale as dependências",
+          "en": "Install the dependencies",
+          "es": "Instala las dependencias"
+        },
+        "command": "npm install"
+      }
+    ],
+    "run": [
+      {
+        "title": {
+          "pt-BR": "Rode o app e leia o QR code com o Expo Go",
+          "en": "Run the app and scan the QR code with Expo Go",
+          "es": "Ejecuta la app y escanea el código QR con Expo Go"
+        },
+        "command": "npx expo start"
+      }
+    ]
+  },
+  "gitignore": [
+    "node_modules/",
+    ".expo/",
+    "dist/",
+    "web-build/",
+    "/ios",
+    "/android",
+    "*.jks",
+    "*.p8",
+    "*.p12",
+    "*.key",
+    "*.mobileprovision",
+    ".env",
+    ".env*.local",
+    "npm-debug.*",
+    ".DS_Store"
+  ],
   "envVars": [
     {
       "key": "EXPO_PUBLIC_API_URL",

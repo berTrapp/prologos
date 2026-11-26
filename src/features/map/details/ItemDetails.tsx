@@ -76,7 +76,8 @@ export function ItemDetails({ item, model, actions, compact = false }: ItemDetai
         />
       )}
 
-      <div className="grid grid-cols-1 gap-4 tablet:grid-cols-2">
+      {/* Stacked: side by side the two controls do not fit the panel width in every language. */}
+      <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-1.5">
           <span className="text-[12.5px] font-medium text-text">{t('map.panel.when')}</span>
           <SegmentedControl<Item['when']>
@@ -87,7 +88,7 @@ export function ItemDetails({ item, model, actions, compact = false }: ItemDetai
               { value: 'now', label: t('map.panel.now') },
               { value: 'later', label: t('map.panel.later') },
             ]}
-            className={compact ? 'w-full [&>*]:flex-1' : undefined}
+            className="w-full [&>*]:flex-1"
           />
         </div>
         {compact ? null : (
@@ -101,6 +102,7 @@ export function ItemDetails({ item, model, actions, compact = false }: ItemDetai
                 { value: 'decided', label: t('map.panel.decided') },
                 { value: 'pending', label: t('map.panel.pending') },
               ]}
+              className="w-full [&>*]:flex-1"
             />
           </div>
         )}

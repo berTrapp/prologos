@@ -51,6 +51,7 @@ describe('buildProjectFromAnswers', () => {
       expect(snapshot.items).toHaveLength(kit(kitId).items.length);
       expect(snapshot.flows).toHaveLength(kit(kitId).flows.length);
       expect(snapshot.checklist.length).toBeGreaterThan(0);
+      expect(snapshot.envVars).toHaveLength(kit(kitId).envVars.length * 3);
       expect(snapshot.project.kitId).toBe(kitId);
     },
   );

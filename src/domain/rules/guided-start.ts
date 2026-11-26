@@ -6,6 +6,7 @@ import type { KnownStack, ProjectType } from '../schemas/project';
 import type { ProjectSnapshot } from '../schemas/snapshot';
 import type { ZoneId } from '../zones';
 import { hasPrepTrail, notApplicableRefs, prepComplete } from './checklist';
+import { kitEnvVars } from './env';
 import { defaultExperience, kitText, type Experience } from './kit';
 import { createProjectSnapshot } from './project';
 
@@ -175,6 +176,9 @@ export function buildProjectFromAnswers(
       return step;
     }),
   }));
+
+  // RN 3: the kit's variables in the fixed environments, never with a secret value.
+  snapshot.envVars = kitEnvVars(kit, language, id, snapshot.project.environments, createId);
 
   snapshot.checklist = Object.entries(kit.checklist).flatMap(([zone, refs]) =>
     (refs ?? []).map((itemRef, order): ChecklistExpectation => ({

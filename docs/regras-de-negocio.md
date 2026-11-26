@@ -31,6 +31,9 @@ Como o produto se comporta. Complementa `docs/ux-ui.md` (como ele se parece). De
 - Ao importar um `.env`, os valores são lidos só para classificar e avisar, e depois descartados.
 - **Ambientes:** desenvolvimento, homologação e produção fixos; a pessoa pode adicionar outros.
 - **Validação:** chave em `MAIÚSCULAS_COM_UNDERSCORE`; não repete no mesmo ambiente; variáveis expostas ao cliente usam o prefixo público da stack (`VITE_` no Vite, `EXPO_PUBLIC_` no Expo…), definido pelo kit; aviso quando um segredo está numa variável pública.
+- **Tipo:** segredo (marcado), pública (chave com o prefixo público da stack) ou configuração (o resto).
+- **Variáveis do kit:** o início guiado cria as variáveis do kit nos três ambientes fixos, com o exemplo só em desenvolvimento e nunca em segredo; projetos sem elas ganham "Adicionar as variáveis do kit" na tela vazia.
+- **Importar .env:** a pessoa escolhe o destino (`.env · front`/`· app`, com o prefixo público, ou `.env · API`, no servidor; sem kit, só o servidor) e os ambientes. Cada linha vira nova, atualiza (já existe, mas muda onde é usada ou se é segredo), igual ou inválida. Segredo é detectado pelo nome da chave (SECRET, PASSWORD, TOKEN, KEY, PRIVATE, DSN…) ou pela marca do kit, e a pessoa pode trocar na prévia. Vêm marcadas as novas e as que atualizam; iguais e segredos indo para o cliente vêm desmarcados. **Todos os valores importados são descartados**, inclusive os não secretos.
 
 ## 4. Status do projeto
 

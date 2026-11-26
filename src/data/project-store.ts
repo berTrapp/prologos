@@ -8,6 +8,7 @@ import {
   restore,
   type Removal,
 } from '@/domain/rules/map';
+import { removeEnvVar } from '@/domain/rules/env';
 import type { TrashEntry, TrashKind } from '@/domain/schemas/history';
 import type { ProjectSnapshot } from '@/domain/schemas/snapshot';
 import { emptyUndo, pushUndo, takeRedo, takeUndo, type UndoStack } from '@/domain/undo';
@@ -41,7 +42,7 @@ export type ProjectActions = {
   redo(): void;
   /** RN 1, 11: moves a zone, item or connection (with what goes along) to the trash. */
   moveToTrash(
-    kind: Extract<TrashKind, 'zone' | 'item' | 'connection'>,
+    kind: Extract<TrashKind, 'zone' | 'item' | 'connection' | 'envVar'>,
     id: string,
     label: string,
   ): Promise<TrashEntry | undefined>;
@@ -66,6 +67,7 @@ const removers = {
   zone: removeZone,
   item: removeItem,
   connection: removeConnection,
+  envVar: removeEnvVar,
 } satisfies Record<string, (snapshot: ProjectSnapshot, id: string) => Removal>;
 
 export function createProjectStore({

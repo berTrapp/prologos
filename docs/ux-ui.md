@@ -394,6 +394,7 @@ Lista de arquivos gerados com a prévia do selecionado (Pronto para codar, Expor
 
 - **Lista:** Radix Tabs. Quando o card tem 560 px ou mais (container query, não a largura da tela), coluna de 208 px à esquerda com linhas de 36 px (44 no toque), raio 8 px, Geist Mono 13 px em `muted`; selecionada com fundo `fill-strong` e texto `text`. Mais estreito, a lista vira uma fileira rolável de abas em cima da prévia, sem barra de rolagem visível.
 - **Prévia:** fundo `textarea`, raio 12 px (dentro de card) · cabeçalho de 48 px com o nome do arquivo em Geist Mono 13 px, a contagem de linhas em Geist Mono 12 px `faint` e, à direita, "Copiar" (botão ghost compacto) · conteúdo em Geist Mono 12,5 px com entrelinha 1,7, `text`, padding 20 × 24 px, rolagem nos dois eixos, `tabindex="0"` para rolar pelo teclado.
+- Imagem e página (`mapa.png`, `mapa.html`) usam o mesmo cabeçalho, com a imagem ajustada à área ou a página num `iframe` isolado; no lugar de "Copiar", a imagem tem o controle segmentado PNG / SVG.
 - Somente leitura; copiar dá o toast "Copiado" (seção 14).
 
 ## 14. Quando usar toast

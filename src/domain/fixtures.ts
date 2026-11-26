@@ -1,5 +1,8 @@
 import type { Connection, Item, Zone } from './schemas/map';
 import type { ProjectSnapshot } from './schemas/snapshot';
+import { KITS, findKit } from '@/content/kits';
+import type { Language } from '@/i18n/languages';
+import { EMPTY_ANSWERS, buildProjectFromAnswers, type GuidedAnswers } from './rules/guided-start';
 import { createProjectSnapshot } from './rules/project';
 
 /** Test helpers: small projects built from the real factory. */
@@ -55,4 +58,30 @@ export function makeSubzone(parentId: string, patch: Partial<Zone> = {}): Zone {
     collapsed: false,
     ...patch,
   };
+}
+
+/** A project built by the guided start from a curated kit, or with no kit. */
+export function kitProject(
+  kitId: string | undefined,
+  answers: Partial<GuidedAnswers> = {},
+  language: Language = 'pt-BR',
+): ProjectSnapshot {
+  return buildProjectFromAnswers(
+    {
+      ...EMPTY_ANSWERS,
+      name: 'Agenda de aulas',
+      goal: 'Alunos marcam aulas e o professor confirma.',
+      ...answers,
+    },
+    findKit(kitId),
+    {
+      id: `p-${kitId ?? 'none'}`,
+      now: 0,
+      createId: testId,
+      language,
+      unnamed: 'Projeto sem nome',
+      noKitNames: { stack: 'Stack', database: 'Banco de dados', hosting: 'Hospedagem' },
+      kits: KITS,
+    },
+  );
 }

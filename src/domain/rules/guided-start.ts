@@ -42,7 +42,7 @@ export const NO_KIT_ITEMS = [
 export type NoKitItemRef = (typeof NO_KIT_ITEMS)[number]['ref'];
 
 /** "Onde roda" of a project with no kit: database, then hosting. */
-const NO_KIT_RUNS_ON = ['database', 'hosting'];
+export const NO_KIT_RUNS_ON = ['database', 'hosting'];
 
 type BuildContext = {
   id: string;

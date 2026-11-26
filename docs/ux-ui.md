@@ -331,6 +331,7 @@ Escolha única entre opções que precisam de uma frase de explicação (tipo de
 - **Anatomia:** card de raio 12 px, fundo `surface`, contorno interno 1 px `border`, padding 14 × 16 px · indicador de rádio de 18 px à esquerda (mesma forma da 13.19) · título 14,5 px peso 500 em `text` · descrição 13 px em `muted`, até 2 linhas · selo opcional à direita do título (Badge `accent` "Recomendado para começar").
 - **Estados:** hover com contorno `stroke-strong`; **marcado** com contorno 1,5 px `text` e fundo `fill-subtle`, e o indicador preenchido (nunca só cor); foco com anel de 2 px.
 - **Layout:** grade de até 3 colunas no desktop; uma coluna no celular, com altura mínima de 56 px.
+- **Com ícone** (formatos do Exportar): no lugar do indicador de rádio, um quadro de 32 px com raio 8 px, fundo `fill` e contorno `border`, com o ícone Lucide de 16 px na cor que identifica o formato (token de zona); título em Geist Mono 13,5 px. Marcado continua com contorno 1,5 px `text` e fundo `fill-subtle`.
 
 ### 13.21 Miniatura do mapa
 
@@ -364,6 +365,36 @@ Grupo que contém itens e subzonas no canvas (RN 1).
 - **Selecionada:** linha em `text`. **Toca item futuro na visão Hoje dentro de um fluxo:** tracejada. **Lacuna de fluxo:** não desenha a linha; o player mostra "Trecho removido".
 - **Fluxo ativo:** traço de 2 px com o gradiente da marca e tracejado andando (1,2 s por ciclo); com `prefers-reduced-motion`, parado.
 - **Agrupada** (zona recolhida): rótulo com a contagem ("3 conexões").
+
+### 13.25 Marca de decisão
+
+Círculo que diz se uma decisão está resolvida (checklist, decisões essenciais do Pronto para codar).
+
+- **Resolvida:** círculo de 18 px preenchido em `success`, com check de 12 px em `bg` (traço 3).
+- **Em aberto:** círculo de 18 px vazio, contorno 1,5 px `stroke-strong`.
+- A forma muda, não só a cor. É decorativa (`aria-hidden`): o texto da linha diz o estado.
+
+### 13.26 Linha de decisão
+
+Uma decisão essencial do Pronto para codar (RN 16).
+
+- **Anatomia:** linha de 48 px separada por 1 px `border` · marca de decisão (13.25) à esquerda · rótulo 14 px em `text` · detalhe à direita em 13 px: resolvida em `muted` (a escolha, "6 variáveis"), em aberto em `warning` ("A decidir", "1 de 4").
+- Não é clicável; o caminho para decidir é o "Abrir o checklist" embaixo da lista.
+
+### 13.27 Marco
+
+Mostra em que ponto o projeto está de um marco com duas etapas ("Faltam 3 · Pronto").
+
+- **Anatomia:** a mesma forma do controle segmentado (13.8), mas **não é clicável**: a etapa atual tem fundo `fill-active`, sombra leve e texto `text`; a outra fica em `faint`. Texto Geist 13 px peso 500, altura 32 px (44 no celular, ocupando a largura).
+- **Acessibilidade:** é um texto (`role="status"`), lido como "Faltam 3 decisões essenciais" ou "Pronto para codar"; as etapas são `aria-hidden`.
+
+### 13.28 Arquivos e prévia
+
+Lista de arquivos gerados com a prévia do selecionado (Pronto para codar, Exportar).
+
+- **Lista:** Radix Tabs. Quando o card tem 560 px ou mais (container query, não a largura da tela), coluna de 208 px à esquerda com linhas de 36 px (44 no toque), raio 8 px, Geist Mono 13 px em `muted`; selecionada com fundo `fill-strong` e texto `text`. Mais estreito, a lista vira uma fileira rolável de abas em cima da prévia, sem barra de rolagem visível.
+- **Prévia:** fundo `textarea`, raio 12 px (dentro de card) · cabeçalho de 48 px com o nome do arquivo em Geist Mono 13 px, a contagem de linhas em Geist Mono 12 px `faint` e, à direita, "Copiar" (botão ghost compacto) · conteúdo em Geist Mono 12,5 px com entrelinha 1,7, `text`, padding 20 × 24 px, rolagem nos dois eixos, `tabindex="0"` para rolar pelo teclado.
+- Somente leitura; copiar dá o toast "Copiado" (seção 14).
 
 ## 14. Quando usar toast
 

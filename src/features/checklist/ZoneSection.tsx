@@ -1,9 +1,10 @@
-import { ArrowRight, Check, Plus, RotateCcw } from 'lucide-react';
+import { ArrowRight, Plus, RotateCcw } from 'lucide-react';
 import { useState, type FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
+import { DecisionMark } from '@/components/ui/DecisionMark';
 import { Input } from '@/components/ui/Input';
 import { Popover } from '@/components/ui/Popover';
 import { ZoneTag } from '@/components/ui/ZoneTag';
@@ -119,11 +120,11 @@ function Row({
             }
             className="grid size-8 shrink-0 place-items-center rounded-full pointer-coarse:size-11 focus-visible:outline-2 focus-visible:outline-ring"
           >
-            <StatusCircle resolved={resolved} />
+            <DecisionMark resolved={resolved} />
           </button>
         ) : (
           <span className="grid size-8 shrink-0 place-items-center pointer-coarse:size-11">
-            <StatusCircle resolved={resolved} />
+            <DecisionMark resolved={resolved} />
           </span>
         )}
         <div className="flex min-w-0 flex-col">
@@ -168,23 +169,6 @@ function Row({
         ) : null}
       </div>
     </li>
-  );
-}
-
-/** Resolved: a filled check; open: an empty ring. The shape changes, not only the color. */
-function StatusCircle({ resolved }: { resolved: boolean }) {
-  return resolved ? (
-    <span
-      aria-hidden
-      className="grid size-[18px] place-items-center rounded-full bg-success text-bg"
-    >
-      <Check className="size-3" strokeWidth={3} />
-    </span>
-  ) : (
-    <span
-      aria-hidden
-      className="size-[18px] rounded-full inset-ring-[1.5px] inset-ring-stroke-strong"
-    />
   );
 }
 

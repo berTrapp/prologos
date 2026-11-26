@@ -52,11 +52,13 @@ type ChoiceCardProps = {
   description?: ReactNode;
   /** Optional badge next to the title ("Recomendado para começar"). */
   badge?: ReactNode;
+  /** Icon tile in place of the radio mark, for file formats; the title turns mono (ux-ui 13.20). */
+  icon?: ReactNode;
   className?: string;
 };
 
 /** One card of a ChoiceGroup: radio indicator, title and one sentence (ux-ui 13.20). */
-export function ChoiceCard({ value, title, description, badge, className }: ChoiceCardProps) {
+export function ChoiceCard({ value, title, description, badge, icon, className }: ChoiceCardProps) {
   return (
     <RadioGroup.Item
       value={value}
@@ -68,19 +70,37 @@ export function ChoiceCard({ value, title, description, badge, className }: Choi
         className,
       )}
     >
-      <span
-        aria-hidden
-        className="mt-px grid size-[18px] shrink-0 place-items-center rounded-full inset-ring-[1.5px] inset-ring-stroke-strong group-data-[state=checked]:bg-text group-data-[state=checked]:inset-ring-text"
-      >
-        <span className="size-1.5 rounded-full bg-bg opacity-0 group-data-[state=checked]:opacity-100" />
-      </span>
+      {icon ? (
+        <span
+          aria-hidden
+          className="grid size-8 shrink-0 place-items-center rounded-control bg-fill inset-ring inset-ring-border [&_svg]:size-4"
+        >
+          {icon}
+        </span>
+      ) : (
+        <span
+          aria-hidden
+          className="mt-px grid size-[18px] shrink-0 place-items-center rounded-full inset-ring-[1.5px] inset-ring-stroke-strong group-data-[state=checked]:bg-text group-data-[state=checked]:inset-ring-text"
+        >
+          <span className="size-1.5 rounded-full bg-bg opacity-0 group-data-[state=checked]:opacity-100" />
+        </span>
+      )}
       <span className="flex min-w-0 flex-1 flex-col gap-0.5">
         <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
-          <span className="text-[14.5px] leading-snug font-medium text-text">{title}</span>
+          <span
+            className={cn(
+              'leading-snug font-medium text-text',
+              icon ? 'font-mono text-[13.5px]' : 'text-[14.5px]',
+            )}
+          >
+            {title}
+          </span>
           {badge}
         </span>
         {description ? (
-          <span className="text-[13px] leading-snug text-muted">{description}</span>
+          <span className={cn('leading-snug text-muted', icon ? 'text-[12.5px]' : 'text-[13px]')}>
+            {description}
+          </span>
         ) : null}
       </span>
     </RadioGroup.Item>

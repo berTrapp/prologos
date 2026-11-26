@@ -41,7 +41,7 @@ describe('parseDotenv', () => {
   });
 
   it('keeps a # inside an unquoted value without spaces', () => {
-    expect(entries('COLOR=#7C5CFF')).toEqual([['COLOR', '#7C5CFF']]);
+    expect(entries('SLACK_CHANNEL=#deploys')).toEqual([['SLACK_CHANNEL', '#deploys']]);
   });
 
   it('unescapes newlines and quotes inside double quotes only', () => {

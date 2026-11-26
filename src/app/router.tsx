@@ -41,11 +41,15 @@ export const routes: RouteObject[] = [
               },
               {
                 path: 'variaveis',
-                lazy: async () => {
-                  const { ProjectPlaceholderPage } =
-                    await import('@/features/project/ProjectPlaceholderPage');
-                  return { Component: () => <ProjectPlaceholderPage page="variables" /> };
-                },
+                lazy: async () => ({
+                  Component: (await import('@/features/variables/VariablesPage')).VariablesPage,
+                }),
+              },
+              {
+                path: 'variaveis/importar',
+                lazy: async () => ({
+                  Component: (await import('@/features/variables/ImportEnvPage')).ImportEnvPage,
+                }),
               },
             ],
           },

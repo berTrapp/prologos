@@ -357,12 +357,6 @@
     "unknown": "Todavía no sé"
   },
   "projectPage": {
-    "mapTitle": "El mapa aparecerá aquí",
-    "mapBody": "Las zonas y los elementos de este proyecto tendrán su lienzo en la próxima etapa.",
-    "checklistTitle": "El checklist aparecerá aquí",
-    "checklistBody": "Lo que falta decidir en cada zona, con el próximo paso arriba.",
-    "variablesTitle": "Las variables aparecerán aquí",
-    "variablesBody": "Claves, entornos y dónde se usa cada variable, sin guardar secretos.",
     "notFoundTitle": "Proyecto no encontrado",
     "notFoundBody": "Puede haber ido a la papelera. Tus otros proyectos no se vieron afectados.",
     "goTrash": "Ver papelera",
@@ -717,5 +711,137 @@
       "notApplicable": "{{name}}: no aplica",
       "reconsidered": "{{name}} vuelve a contar"
     }
+  },
+  "env": {
+    "title": "Variables de entorno",
+    "lead": "Lo que el proyecto necesita para correr en cada entorno. Los valores secretos nunca quedan en Prólogos: solo la clave, para qué sirve y dónde conseguirla.",
+    "import": "Importar .env",
+    "add": "Agregar variable",
+    "addEnvironment": "Entorno",
+    "environments": {
+      "label": "Entorno",
+      "development": "Desarrollo",
+      "staging": "Homologación",
+      "production": "Producción"
+    },
+    "summary": "{{count}} variables · {{secrets}} secretos · {{warnings}} avisos",
+    "summary_vars_one": "{{count}} variable",
+    "summary_vars_other": "{{count}} variables",
+    "summary_secrets_one": "{{count}} secreto",
+    "summary_secrets_other": "{{count}} secretos",
+    "summary_warnings_one": "{{count}} aviso",
+    "summary_warnings_other": "{{count}} avisos",
+    "columns": {
+      "key": "Clave",
+      "what": "Para qué sirve",
+      "usedIn": "Usada en",
+      "type": "Tipo"
+    },
+    "lock": {
+      "mark": "Marcar {{key}} como secreto",
+      "unmark": "Desmarcar {{key}} como secreto"
+    },
+    "edit": "Editar {{key}}",
+    "issues": {
+      "invalid-key": "Usa MAYÚSCULAS_CON_GUION_BAJO.",
+      "duplicate-key": "Esta clave ya existe en este entorno.",
+      "missing-public-prefix": "Sin el prefijo {{prefix}}, el stack no expone esta variable al cliente.",
+      "secret-is-public": "Parece un secreto en una variable pública: quien use la app lo verá. Muévelo al back-end."
+    },
+    "publicNote": "Las variables públicas ({{prefix}}) terminan en el navegador o la app de quien la usa. Un secreto nunca debe estar en ellas.",
+    "empty": {
+      "title": "Ninguna variable en este entorno",
+      "body": "Empieza por las variables del kit o importa un .env; solo se guardan las claves.",
+      "kit": "Agregar las variables del kit"
+    },
+    "dialog": {
+      "addTitle": "Nueva variable",
+      "editTitle": "Editar variable",
+      "description": "Solo se guardan la clave y para qué sirve; un secreto nunca tiene valor aquí.",
+      "key": "Clave",
+      "keyPlaceholder": "DATABASE_URL",
+      "what": "Para qué sirve",
+      "whatPlaceholder": "Dirección de la base de datos",
+      "usedIn": "Usada en",
+      "secret": "Es secreto",
+      "secretHint": "Contraseña, token o clave privada: el valor nunca queda en Prólogos.",
+      "value": "Valor de ejemplo",
+      "valueHint": "Opcional, solo para lo que no es secreto.",
+      "environments": "Entornos",
+      "save": "Guardar",
+      "create": "Agregar",
+      "delete": "Eliminar",
+      "keyRequired": "Ponle una clave a la variable.",
+      "environmentsRequired": "Elige al menos un entorno."
+    },
+    "environmentDialog": {
+      "title": "Nuevo entorno",
+      "description": "Desarrollo, homologación y producción son fijos; agrega otros, como Preview.",
+      "name": "Nombre",
+      "placeholder": "Preview",
+      "create": "Crear entorno",
+      "nameRequired": "Ponle un nombre al entorno.",
+      "exists": "Ese entorno ya existe."
+    },
+    "toast": {
+      "added_one": "{{count}} variable agregada",
+      "added_other": "{{count}} variables agregadas",
+      "removed": "Variable eliminada",
+      "secret": "{{key}} ahora es secreto",
+      "secretDiscarded": "El valor guardado se borró.",
+      "imported": "{{added}} variables importadas · {{ignored}} ignoradas",
+      "kitAdded_one": "{{count}} variable del kit agregada",
+      "kitAdded_other": "{{count}} variables del kit agregadas"
+    },
+    "importPage": {
+      "back": "Variables",
+      "title": "Importar .env",
+      "lead": "Pega un .env o sube el archivo. Prólogos separa las variables, las compara con lo que ya existe y avisa antes de agregar. Los valores se descartan.",
+      "destination": "Destino",
+      "client": ".env · {{side}}",
+      "clientBody": "Va al {{where}}, con el prefijo {{prefix}}",
+      "server": ".env · API",
+      "serverBody": "Se queda en el servidor",
+      "where": {
+        "front": "navegador",
+        "app": "app"
+      },
+      "environments": "Entornos",
+      "content": "Contenido del .env",
+      "clear": "Limpiar",
+      "drop": "Arrastra un archivo .env o",
+      "choose": "elígelo en tu computadora",
+      "placeholder": "APP_ENV=local\nDB_HOST=127.0.0.1",
+      "preview": "Vista previa",
+      "emptyPreview": "Pega el contenido o sube un archivo para ver la vista previa.",
+      "select": "Incluir {{key}}",
+      "masked": "Valor oculto",
+      "warning": {
+        "secret-on-client": "Parece un secreto. En el {{side}} cualquiera lo ve; impórtalo por el .env de la API.",
+        "missing-public-prefix": "Sin el prefijo {{prefix}}, el stack no expone esta variable al cliente."
+      },
+      "selected": "{{selected}} de {{total}} seleccionadas · {{envs}}",
+      "envs_one": "{{count}} entorno",
+      "envs_other": "{{count}} entornos",
+      "submit_one": "Agregar {{count}} variable",
+      "submit_other": "Agregar {{count}} variables",
+      "submit_zero": "Nada para agregar",
+      "fileError": "No se pudo leer el archivo. Sube un .env en texto.",
+      "read_one": "{{count}} leídas",
+      "read_other": "{{count}} leídas",
+      "new_one": "{{count}} nuevas",
+      "new_other": "{{count}} nuevas",
+      "update_one": "{{count}} actualizan",
+      "update_other": "{{count}} actualizan",
+      "warnings_one": "{{count}} avisos",
+      "warnings_other": "{{count}} avisos",
+      "read_zero": "0 leídas",
+      "new_zero": "0 nuevas",
+      "update_zero": "0 actualizan",
+      "warnings_zero": "0 avisos"
+    },
+    "summary_vars_zero": "0 variables",
+    "summary_secrets_zero": "0 secretos",
+    "summary_warnings_zero": "0 avisos"
   }
 }

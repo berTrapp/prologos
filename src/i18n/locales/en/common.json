@@ -357,12 +357,6 @@
     "unknown": "Not sure yet"
   },
   "projectPage": {
-    "mapTitle": "The map will show up here",
-    "mapBody": "This project's zones and items get their canvas in the next step.",
-    "checklistTitle": "The checklist will show up here",
-    "checklistBody": "What is left to decide in each zone, with the next step on top.",
-    "variablesTitle": "Variables will show up here",
-    "variablesBody": "Keys, environments and where each variable is used, with no secrets stored.",
     "notFoundTitle": "Project not found",
     "notFoundBody": "It may have gone to the trash. Your other projects were not affected.",
     "goTrash": "See trash",
@@ -717,5 +711,137 @@
       "notApplicable": "{{name}}: not applicable",
       "reconsidered": "{{name}} counts again"
     }
+  },
+  "env": {
+    "title": "Environment variables",
+    "lead": "What the project needs to run in each environment. Secret values never stay in Prólogos: only the key, what it is for and where to get it.",
+    "import": "Import .env",
+    "add": "Add variable",
+    "addEnvironment": "Environment",
+    "environments": {
+      "label": "Environment",
+      "development": "Development",
+      "staging": "Staging",
+      "production": "Production"
+    },
+    "summary": "{{count}} variables · {{secrets}} secrets · {{warnings}} warnings",
+    "summary_vars_one": "{{count}} variable",
+    "summary_vars_other": "{{count}} variables",
+    "summary_secrets_one": "{{count}} secret",
+    "summary_secrets_other": "{{count}} secrets",
+    "summary_warnings_one": "{{count}} warning",
+    "summary_warnings_other": "{{count}} warnings",
+    "columns": {
+      "key": "Key",
+      "what": "What it is for",
+      "usedIn": "Used in",
+      "type": "Type"
+    },
+    "lock": {
+      "mark": "Mark {{key}} as secret",
+      "unmark": "Unmark {{key}} as secret"
+    },
+    "edit": "Edit {{key}}",
+    "issues": {
+      "invalid-key": "Use UPPER_CASE_WITH_UNDERSCORES.",
+      "duplicate-key": "This key already exists in this environment.",
+      "missing-public-prefix": "Without the {{prefix}} prefix, the stack does not expose this variable to the client.",
+      "secret-is-public": "Looks like a secret in a public variable: whoever uses the app will see it. Move it to the back end."
+    },
+    "publicNote": "Public variables ({{prefix}}) end up in the browser or app of whoever uses it. A secret must never be one of them.",
+    "empty": {
+      "title": "No variables in this environment",
+      "body": "Start with the kit variables or import a .env; only the keys are kept.",
+      "kit": "Add the kit variables"
+    },
+    "dialog": {
+      "addTitle": "New variable",
+      "editTitle": "Edit variable",
+      "description": "Only the key and what it is for are kept; a secret never has a value here.",
+      "key": "Key",
+      "keyPlaceholder": "DATABASE_URL",
+      "what": "What it is for",
+      "whatPlaceholder": "Database address",
+      "usedIn": "Used in",
+      "secret": "It is a secret",
+      "secretHint": "Password, token or private key: the value never stays in Prólogos.",
+      "value": "Example value",
+      "valueHint": "Optional, only for what is not secret.",
+      "environments": "Environments",
+      "save": "Save",
+      "create": "Add",
+      "delete": "Delete",
+      "keyRequired": "Give the variable a key.",
+      "environmentsRequired": "Choose at least one environment."
+    },
+    "environmentDialog": {
+      "title": "New environment",
+      "description": "Development, staging and production are fixed; add others, like Preview.",
+      "name": "Name",
+      "placeholder": "Preview",
+      "create": "Create environment",
+      "nameRequired": "Give the environment a name.",
+      "exists": "This environment already exists."
+    },
+    "toast": {
+      "added_one": "{{count}} variable added",
+      "added_other": "{{count}} variables added",
+      "removed": "Variable removed",
+      "secret": "{{key}} is now a secret",
+      "secretDiscarded": "The stored value was deleted.",
+      "imported": "{{added}} variables imported · {{ignored}} ignored",
+      "kitAdded_one": "{{count}} kit variable added",
+      "kitAdded_other": "{{count}} kit variables added"
+    },
+    "importPage": {
+      "back": "Variables",
+      "title": "Import .env",
+      "lead": "Paste a .env or upload the file. Prólogos splits the variables, compares them with what exists and warns before adding. The values are discarded.",
+      "destination": "Destination",
+      "client": ".env · {{side}}",
+      "clientBody": "Goes to the {{where}}, with the {{prefix}} prefix",
+      "server": ".env · API",
+      "serverBody": "Stays on the server",
+      "where": {
+        "front": "browser",
+        "app": "app"
+      },
+      "environments": "Environments",
+      "content": ".env content",
+      "clear": "Clear",
+      "drop": "Drop a .env file or",
+      "choose": "choose from your computer",
+      "placeholder": "APP_ENV=local\nDB_HOST=127.0.0.1",
+      "preview": "Preview",
+      "emptyPreview": "Paste the content or upload a file to see the preview.",
+      "select": "Include {{key}}",
+      "masked": "Hidden value",
+      "warning": {
+        "secret-on-client": "Looks like a secret. In the {{side}} anyone can see it; import it through the API .env.",
+        "missing-public-prefix": "Without the {{prefix}} prefix, the stack does not expose this variable to the client."
+      },
+      "selected": "{{selected}} of {{total}} selected · {{envs}}",
+      "envs_one": "{{count}} environment",
+      "envs_other": "{{count}} environments",
+      "submit_one": "Add {{count}} variable",
+      "submit_other": "Add {{count}} variables",
+      "submit_zero": "Nothing to add",
+      "fileError": "Could not read the file. Upload a .env as text.",
+      "read_one": "{{count}} read",
+      "read_other": "{{count}} read",
+      "new_one": "{{count}} new",
+      "new_other": "{{count}} new",
+      "update_one": "{{count}} update",
+      "update_other": "{{count}} update",
+      "warnings_one": "{{count}} warnings",
+      "warnings_other": "{{count}} warnings",
+      "read_zero": "0 read",
+      "new_zero": "0 new",
+      "update_zero": "0 update",
+      "warnings_zero": "0 warnings"
+    },
+    "summary_vars_zero": "0 variables",
+    "summary_secrets_zero": "0 secrets",
+    "summary_warnings_zero": "0 warnings"
   }
 }

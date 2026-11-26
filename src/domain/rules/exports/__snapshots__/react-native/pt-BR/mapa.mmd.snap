@@ -1,0 +1,49 @@
+%% Agenda de aulas — mapa do projeto (Completo)
+%% Gerado pelo Prólogos a partir do mapa do projeto.
+flowchart LR
+  subgraph z1["Metodologia"]
+    n1["Kanban"]
+    n2["Conventional Commits"]
+  end
+  subgraph z2["Ferramentas"]
+    n3["Git + GitHub"]
+    n4["npm"]
+    n5["Expo Go"]
+    n6["Jest + Testing Library"]
+  end
+  subgraph z3["Interface"]
+    n7["React Native"]
+    n8["Expo Router"]
+  end
+  subgraph z4["Aplicação"]
+    n9["Back-end (API): Supabase"]
+  end
+  subgraph z5["Dados"]
+    n10["expo-sqlite"]
+  end
+  subgraph z6["Ambiente"]
+    n11[".env.example"]
+    n12["Desenvolvimento e produção"]
+  end
+  subgraph z7["Infraestrutura"]
+    n13["EAS Build + Submit"]
+    n14["Contas nas lojas: Começar só com Android (futuro)"]
+  end
+  subgraph z8["Segurança"]
+    n15["expo-secure-store"]
+    n16["HTTPS"]
+  end
+  subgraph z9["Observabilidade"]
+    n17["Logs no Expo"]
+    n18["Captura de erros (futuro)"]
+  end
+  n8 -->|"usa"| n7
+  n7 -->|"chama"| n9
+  n7 -->|"grava em"| n10
+  n15 -->|"protege"| n9
+  n13 -->|"publica em"| n14
+  classDef pending stroke-dasharray: 5 4
+  classDef future stroke-dasharray: 2 4
+  classDef muted opacity: 0.5
+  class n14,n18 future
+  %% Fluxo "Salvar e sincronizar": React Native → expo-sqlite

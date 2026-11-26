@@ -1,0 +1,134 @@
+# Agenda de aulas
+
+Alunos marcam aulas e o professor confirma.
+
+Stack: Java + Spring Boot.
+
+## Como rodar localmente
+
+### Pré-requisitos
+
+- Java (JDK)
+- Node.js
+- Git
+- Docker
+
+### Passo a passo
+
+1. Clone o repositório e entre na pasta:
+   ```bash
+   git clone https://github.com/voce/agenda-de-aulas.git
+   cd agenda-de-aulas
+   ```
+2. Instale as dependências do front:
+   ```bash
+   cd web && npm install
+   ```
+3. Copie as variáveis e preencha os valores:
+   ```bash
+   cp .env.example .env
+   ```
+4. Suba o banco de dados:
+   ```bash
+   docker compose up -d
+   ```
+5. Rode a API (as migrations do Flyway rodam ao iniciar):
+   ```bash
+   cd api && ./mvnw spring-boot:run
+   ```
+6. Rode o front em outro terminal:
+   ```bash
+   cd web && npm run dev
+   ```
+
+### Variáveis de ambiente
+
+| Variável | Para que serve | Onde conseguir |
+| --- | --- | --- |
+| `SPRING_PROFILES_ACTIVE` | Perfil de configuração ativo (dev ou prod). | Exemplo: `dev` |
+| `SPRING_DATASOURCE_URL` | Endereço do banco no formato JDBC. | Exemplo: `jdbc:postgresql://localhost:5432/meu_projeto` |
+| `SPRING_DATASOURCE_USERNAME` | Usuário do banco. | Exemplo: `app` |
+| `SPRING_DATASOURCE_PASSWORD` (segredo) | Senha do banco. | Você define ao criar o banco. |
+| `JWT_SECRET` (segredo) | Assina os tokens de login. | openssl rand -base64 32 |
+| `VITE_API_URL` | Endereço da API que o front chama. Fica visível no navegador. | Exemplo: `http://localhost:8080/api` |
+| `DB_NAME` | Lida pelo docker-compose.yml para criar o banco. | Exemplo: `agenda_de_aulas` |
+
+Nenhum valor secreto fica no repositório: preencha os segredos só no seu .env.
+
+## Estrutura de pastas
+
+| Pasta | O que tem |
+| --- | --- |
+| `api/src/main/java/.../controller` | Recebem as requisições e devolvem respostas. |
+| `api/src/main/java/.../service` | Regras de negócio. |
+| `api/src/main/java/.../repository` | Acesso ao banco (Spring Data JPA). |
+| `api/src/main/resources/db/migration` | Migrations do Flyway (V1__inicio.sql…). |
+| `api/src/main/resources/application.yml` | Configuração, lendo as variáveis de ambiente. |
+| `web/src` | Código do front em React. |
+
+## Mapa do projeto
+
+```mermaid
+%% Agenda de aulas — mapa do projeto (Completo)
+%% Gerado pelo Prólogos a partir do mapa do projeto.
+flowchart LR
+  subgraph z1["Metodologia"]
+    n1["Kanban"]
+    n2["Conventional Commits"]
+  end
+  subgraph z2["Ferramentas"]
+    n3["Git + GitHub"]
+    n4["Maven"]
+    n5["npm"]
+    n6["Docker"]
+    n7["JUnit"]
+  end
+  subgraph z3["Interface"]
+    n8["React + Vite"]
+  end
+  subgraph z4["Aplicação"]
+    n9["Spring Boot"]
+    n10["API REST (@RestController)"]
+    n11["Bean Validation"]
+  end
+  subgraph z5["Dados"]
+    n12["Banco de dados: PostgreSQL"]
+    n13["Spring Data JPA"]
+    n14["Flyway"]
+  end
+  subgraph z6["Ambiente"]
+    n15[".env.example"]
+    n16["Desenvolvimento e produção"]
+  end
+  subgraph z7["Infraestrutura"]
+    n17["Hospedagem: Plataforma gerenciada (Render, Railway)"]
+    n18["GitHub Actions"]
+  end
+  subgraph z8["Segurança"]
+    n19["Spring Security"]
+    n20["HTTPS"]
+    n21["Backup (a decidir)"]
+  end
+  subgraph z9["Observabilidade"]
+    n22["Logs (Logback)"]
+    n23["Spring Boot Actuator"]
+    n24["Captura de erros (futuro)"]
+  end
+  n8 -->|"chama"| n10
+  n10 -->|"usa"| n9
+  n9 -->|"usa"| n13
+  n13 -->|"grava em"| n12
+  n14 -->|"grava em"| n12
+  n19 -->|"protege"| n10
+  n18 -->|"publica em"| n17
+  classDef pending stroke-dasharray: 5 4
+  classDef future stroke-dasharray: 2 4
+  classDef muted opacity: 0.5
+  class n21 pending
+  class n24 future
+  %% Fluxo "Salvar um registro": React + Vite → API REST (@RestController) → Spring Boot → Spring Data JPA → Banco de dados
+```
+
+---
+
+Planejado com o Prólogos.

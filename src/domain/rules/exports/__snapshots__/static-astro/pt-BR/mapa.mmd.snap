@@ -1,0 +1,39 @@
+%% Agenda de aulas — mapa do projeto (Completo)
+%% Gerado pelo Prólogos a partir do mapa do projeto.
+flowchart LR
+  subgraph z1["Metodologia"]
+    n1["Conventional Commits"]
+  end
+  subgraph z2["Ferramentas"]
+    n2["Git + GitHub"]
+    n3["npm"]
+  end
+  subgraph z3["Interface"]
+    n4["Astro"]
+    n5["CSS do Astro (com escopo)"]
+  end
+  subgraph z4["Aplicação"]
+    n6["Content Collections"]
+    n7["Formulário de contato (futuro)"]
+  end
+  subgraph z6["Ambiente"]
+    n8[".env.example"]
+  end
+  subgraph z7["Infraestrutura"]
+    n9["Hospedagem: Cloudflare Pages"]
+    n10["GitHub Actions"]
+    n11["Domínio próprio: Registro.br (.com.br) (futuro)"]
+  end
+  subgraph z8["Segurança"]
+    n12["HTTPS"]
+  end
+  subgraph z9["Observabilidade"]
+    n13["Estatísticas de visita (futuro)"]
+  end
+  n6 -->|"renderizado por"| n4
+  n10 -->|"publica em"| n9
+  classDef pending stroke-dasharray: 5 4
+  classDef future stroke-dasharray: 2 4
+  classDef muted opacity: 0.5
+  class n7,n11,n13 future
+  %% Fluxo "Publicar um post": Content Collections → Astro

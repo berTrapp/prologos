@@ -1,0 +1,19 @@
+# Agenda de aulas — serviços para desenvolvimento
+# Gerado pelo Prólogos. As senhas vêm do .env; nenhuma fica neste arquivo.
+# A imagem usa a versão mais recente; fixe a versão antes de ir para produção.
+
+services:
+  db:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${SPRING_DATASOURCE_USERNAME}
+      POSTGRES_PASSWORD: "${SPRING_DATASOURCE_PASSWORD:?defina SPRING_DATASOURCE_PASSWORD no .env}"
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql
+
+volumes:
+  db-data:

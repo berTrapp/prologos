@@ -1,0 +1,13 @@
+# Files kept out of the repository. .env stays out; .env.example goes in.
+.dart_tool/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.idea/
+*.iml
+android/.gradle/
+android/local.properties
+ios/Pods/
+.env
+.DS_Store

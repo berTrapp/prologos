@@ -1,0 +1,144 @@
+# Agenda de aulas
+
+Alunos marcam aulas e o professor confirma.
+
+Stack: Laravel + React.
+
+## Como rodar localmente
+
+### Pré-requisitos
+
+- PHP
+- Composer
+- Node.js
+- Git
+- Docker
+
+### Passo a passo
+
+1. Clone o repositório e entre na pasta:
+   ```bash
+   git clone https://github.com/voce/agenda-de-aulas.git
+   cd agenda-de-aulas
+   ```
+2. Instale as dependências do PHP:
+   ```bash
+   composer install
+   ```
+3. Instale as dependências do front:
+   ```bash
+   npm install
+   ```
+4. Copie as variáveis e preencha os valores:
+   ```bash
+   cp .env.example .env
+   ```
+5. Suba o banco de dados:
+   ```bash
+   docker compose up -d
+   ```
+6. Gere a chave da aplicação:
+   ```bash
+   php artisan key:generate
+   ```
+7. Crie as tabelas do banco:
+   ```bash
+   php artisan migrate
+   ```
+8. Rode o projeto:
+   ```bash
+   composer run dev
+   ```
+
+### Variáveis de ambiente
+
+| Variável | Para que serve | Onde conseguir |
+| --- | --- | --- |
+| `APP_KEY` (segredo) | Criptografa sessões e cookies. | php artisan key:generate |
+| `APP_ENV` | Ambiente atual: local ou production. | Exemplo: `local` |
+| `APP_URL` | Endereço público do app. | Exemplo: `http://localhost:8000` |
+| `DB_CONNECTION` | Qual banco o Laravel usa. | Exemplo: `pgsql` |
+| `DB_HOST` | Endereço do banco. | Exemplo: `127.0.0.1` |
+| `DB_DATABASE` | Nome do banco. | Exemplo: `meu_projeto` |
+| `DB_USERNAME` | Usuário do banco. | Exemplo: `sail` |
+| `DB_PASSWORD` (segredo) | Senha do banco. | Você define ao criar o banco; com Sail, o padrão local é password. |
+| `VITE_API_URL` | Endereço da API que o front chama. Fica visível no navegador. | Exemplo: `http://localhost:8000/api` |
+
+Nenhum valor secreto fica no repositório: preencha os segredos só no seu .env.
+
+## Estrutura de pastas
+
+| Pasta | O que tem |
+| --- | --- |
+| `app/Models` | Classes que representam as tabelas (Eloquent). |
+| `app/Http/Controllers` | Recebem as requisições e devolvem respostas. |
+| `routes/api.php` | Endereços da API que o React chama. |
+| `database/migrations` | Mudanças do banco, em ordem. |
+| `resources/js` | Código do front em React e TypeScript. |
+| `tests` | Testes automatizados. |
+
+## Mapa do projeto
+
+```mermaid
+%% Agenda de aulas — mapa do projeto (Completo)
+%% Gerado pelo Prólogos a partir do mapa do projeto.
+flowchart LR
+  subgraph z1["Metodologia"]
+    n1["Kanban"]
+    n2["Conventional Commits"]
+  end
+  subgraph z2["Ferramentas"]
+    n3["Git + GitHub"]
+    n4["Composer"]
+    n5["npm"]
+    n6["Docker (Laravel Sail)"]
+  end
+  subgraph z3["Interface"]
+    n7["React + Vite"]
+    n8["Tailwind CSS"]
+  end
+  subgraph z4["Aplicação"]
+    n9["Laravel"]
+    n10["API REST"]
+    n11["Filas (futuro)"]
+  end
+  subgraph z5["Dados"]
+    n12["Banco de dados: PostgreSQL"]
+    n13["Eloquent"]
+    n14["Migrations"]
+  end
+  subgraph z6["Ambiente"]
+    n15[".env.example"]
+    n16["Desenvolvimento e produção"]
+  end
+  subgraph z7["Infraestrutura"]
+    n17["Hospedagem: Plataforma gerenciada (Laravel Cloud, Render)"]
+    n18["GitHub Actions"]
+  end
+  subgraph z8["Segurança"]
+    n19["Laravel Sanctum"]
+    n20["HTTPS"]
+    n21["Limite de tentativas"]
+    n22["Backup (a decidir)"]
+  end
+  subgraph z9["Observabilidade"]
+    n23["Logs"]
+    n24["Captura de erros (futuro)"]
+  end
+  n7 -->|"chama"| n10
+  n10 -->|"usa"| n9
+  n9 -->|"usa"| n13
+  n13 -->|"grava em"| n12
+  n19 -->|"protege"| n10
+  n18 -->|"publica em"| n17
+  classDef pending stroke-dasharray: 5 4
+  classDef future stroke-dasharray: 2 4
+  classDef muted opacity: 0.5
+  class n22 pending
+  class n11,n24 future
+  %% Fluxo "Salvar um registro": React + Vite → API REST → Laravel → Eloquent → Banco de dados
+```
+
+---
+
+Planejado com o Prólogos.

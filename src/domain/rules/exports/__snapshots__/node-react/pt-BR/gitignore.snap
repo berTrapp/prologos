@@ -1,0 +1,9 @@
+# Arquivos que não vão para o repositório. O .env fica fora; o .env.example entra.
+node_modules/
+dist/
+build/
+coverage/
+.env
+.env.local
+*.log
+.DS_Store

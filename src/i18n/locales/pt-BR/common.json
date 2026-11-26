@@ -843,5 +843,91 @@
     "summary_vars_zero": "0 variáveis",
     "summary_secrets_zero": "0 segredos",
     "summary_warnings_zero": "0 avisos"
+  },
+  "files": {
+    "generated": "Gerado pelo Prólogos a partir do mapa do projeto.",
+    "commit": "chore: estrutura inicial do projeto",
+    "view": {
+      "today": "Hoje",
+      "complete": "Completo"
+    },
+    "env": {
+      "title": "{{name}} — variáveis de ambiente",
+      "generated": "Gerado pelo Prólogos. Segredos ficam em branco: preencha só no seu .env, que não vai para o repositório.",
+      "empty": "O projeto ainda não tem variáveis.",
+      "dockerDescription": "Lida pelo docker-compose.yml para criar o banco.",
+      "group": {
+        "front": "Front (vai para o navegador: nada secreto aqui)",
+        "app": "App (vai para o celular: nada secreto aqui)",
+        "back": "API (fica no servidor)",
+        "docker": "Docker (lidas pelo docker-compose.yml)",
+        "other": "Outras"
+      }
+    },
+    "compose": {
+      "title": "{{name}} — serviços para desenvolvimento",
+      "generated": "Gerado pelo Prólogos. As senhas vêm do .env; nenhuma fica neste arquivo.",
+      "version": "A imagem usa a versão mais recente; fixe a versão antes de ir para produção.",
+      "required": "defina {{key}} no .env",
+      "pending": "O banco de dados ainda está a decidir. Decida no mapa e gere este arquivo de novo.",
+      "notApplicable": "O projeto marcou o banco de dados como \"Não se aplica\", então não há serviço para subir.",
+      "sqlite": "O banco é SQLite: um arquivo dentro do projeto, sem serviço para subir.",
+      "unknown": "O Prólogos ainda não gera o serviço de {{choice}}. Acrescente o serviço à mão."
+    },
+    "gitignore": {
+      "title": "Arquivos que não vão para o repositório. O .env fica fora; o .env.example entra."
+    },
+    "readme": {
+      "stack": "Stack: {{kit}}.",
+      "runLocally": "Como rodar localmente",
+      "prerequisites": "Pré-requisitos",
+      "steps": "Passo a passo",
+      "clone": "Clone o repositório e entre na pasta:",
+      "githubUser": "voce",
+      "copyEnv": "Copie as variáveis e preencha os valores:",
+      "startDatabase": "Suba o banco de dados:",
+      "noStack": "Os comandos para instalar e rodar dependem da stack, que ainda falta decidir no mapa.",
+      "variables": "Variáveis de ambiente",
+      "noVariables": "O projeto ainda não tem variáveis de ambiente.",
+      "table": {
+        "key": "Variável",
+        "what": "Para que serve",
+        "howToGet": "Onde conseguir",
+        "path": "Pasta",
+        "contains": "O que tem"
+      },
+      "example": "Exemplo: {{value}}",
+      "secret": "(segredo)",
+      "noSecrets": "Nenhum valor secreto fica no repositório: preencha os segredos só no seu .env.",
+      "folders": "Estrutura de pastas",
+      "map": "Mapa do projeto",
+      "notes": "Notas",
+      "risks": "Riscos",
+      "footer": "Planejado com o Prólogos.",
+      "localPassword": "Escolha uma senha para o banco no seu computador."
+    },
+    "mermaid": {
+      "title": "{{name}} — mapa do projeto ({{view}})",
+      "flow": "Fluxo \"{{name}}\": {{path}}"
+    },
+    "svg": {
+      "label": "Mapa do projeto {{name}}"
+    },
+    "html": {
+      "title": "{{name}} · mapa do projeto",
+      "tools": "Visualização",
+      "view": "Visão",
+      "zoomOut": "Diminuir o zoom",
+      "zoomIn": "Aumentar o zoom",
+      "fit": "Ajustar",
+      "canvas": "Mapa do projeto. Arraste para mover; use + e - para o zoom.",
+      "canvasRole": "mapa",
+      "close": "Fechar os detalhes",
+      "notes": "Notas e riscos",
+      "legend": "Zonas e fluxos",
+      "zones": "Zonas",
+      "flows": "Fluxos",
+      "footer": "Somente leitura. Feito com o Prólogos."
+    }
   }
 }

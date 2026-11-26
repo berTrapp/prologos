@@ -1,0 +1,19 @@
+# Agenda de aulas — serviços para desenvolvimento
+# Gerado pelo Prólogos. As senhas vêm do .env; nenhuma fica neste arquivo.
+# A imagem usa a versão mais recente; fixe a versão antes de ir para produção.
+
+services:
+  db:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: "${DB_PASSWORD:?defina DB_PASSWORD no .env}"
+      POSTGRES_DB: ${DB_DATABASE}
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql
+
+volumes:
+  db-data:

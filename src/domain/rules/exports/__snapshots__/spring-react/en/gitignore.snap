@@ -1,0 +1,11 @@
+# Files kept out of the repository. .env stays out; .env.example goes in.
+target/
+!.mvn/wrapper/maven-wrapper.jar
+node_modules/
+dist/
+.env
+*.log
+.idea/
+*.iml
+.vscode/
+.DS_Store

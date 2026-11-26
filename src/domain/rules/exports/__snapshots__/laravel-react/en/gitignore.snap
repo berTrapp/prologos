@@ -1,0 +1,15 @@
+# Files kept out of the repository. .env stays out; .env.example goes in.
+/vendor
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+npm-debug.log
+/.idea
+/.vscode
+.DS_Store

@@ -1,0 +1,52 @@
+%% Agenda de aulas — mapa do projeto (Completo)
+%% Gerado pelo Prólogos a partir do mapa do projeto.
+flowchart LR
+  subgraph z1["Metodologia"]
+    n1["Kanban"]
+    n2["Conventional Commits"]
+  end
+  subgraph z2["Ferramentas"]
+    n3["Git + GitHub"]
+    n4["pub"]
+    n5["Android Studio"]
+    n6["flutter test"]
+  end
+  subgraph z3["Interface"]
+    n7["Widgets (Material Design)"]
+    n8["go_router"]
+  end
+  subgraph z4["Aplicação"]
+    n9["Riverpod"]
+    n10["Back-end (API): Firebase"]
+  end
+  subgraph z5["Dados"]
+    n11["sqflite"]
+  end
+  subgraph z6["Ambiente"]
+    n12[".env.example"]
+    n13["Desenvolvimento e produção"]
+  end
+  subgraph z7["Infraestrutura"]
+    n14["Build de release"]
+    n15["Contas nas lojas: Começar só com Android (futuro)"]
+    n16["GitHub Actions"]
+  end
+  subgraph z8["Segurança"]
+    n17["flutter_secure_storage"]
+    n18["HTTPS"]
+  end
+  subgraph z9["Observabilidade"]
+    n19["Logs (logging)"]
+    n20["Captura de erros (futuro)"]
+  end
+  n8 -->|"usa"| n7
+  n7 -->|"usa"| n9
+  n9 -->|"chama"| n10
+  n9 -->|"grava em"| n11
+  n17 -->|"protege"| n10
+  n14 -->|"publica em"| n15
+  classDef pending stroke-dasharray: 5 4
+  classDef future stroke-dasharray: 2 4
+  classDef muted opacity: 0.5
+  class n15,n20 future
+  %% Fluxo "Salvar e sincronizar": Widgets (Material Design) → Riverpod → sqflite

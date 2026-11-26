@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Prólogos">
+<title>Agenda de aulas · mapa do projeto</title>
+<style>
+:root{color-scheme:dark;--bg:#0b0d12;--surface:#121419;--text:#e6e8ee;--muted:#8f95a8;--faint:#7f859b;--border:rgb(255 255 255 / 7.5%);--border-strong:rgb(255 255 255 / 12%);--fill:rgb(255 255 255 / 4%);--fill-strong:rgb(255 255 255 / 6%);--map-item:#12151b;--warning:#fcd34d;--danger:#fca5a5;--ring:#7c5cff;--brand-from:#7c5cff;--brand-to:#22d3ee;--zone-method:#f472b6;--zone-tools:#facc15;--zone-ui:#7c5cff;--zone-app:#60a5fa;--zone-data:#34d399;--zone-env:#fb923c;--zone-infra:#22d3ee;--zone-security:#f87171;--zone-observability:#a3e635;}
+@media (prefers-color-scheme: light){:root{color-scheme:light;--bg:#f6f7f9;--surface:#ffffff;--text:#12141a;--muted:#5b6070;--faint:#6b7080;--border:rgb(0 0 0 / 8%);--border-strong:rgb(0 0 0 / 14%);--fill:rgb(0 0 0 / 4%);--fill-strong:rgb(0 0 0 / 6%);--map-item:#ffffff;--warning:#92400e;--danger:#b42318;--ring:#7c5cff;--brand-from:#7c5cff;--brand-to:#22d3ee;--zone-method:#db2777;--zone-tools:#a16207;--zone-ui:#7c5cff;--zone-app:#2563eb;--zone-data:#059669;--zone-env:#ea580c;--zone-infra:#0891b2;--zone-security:#dc2626;--zone-observability:#4d7c0f;}}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{display:flex;flex-direction:column;background:var(--bg);color:var(--text);font:14px/1.5 Geist,'Geist Variable',ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;padding:20px 24px 16px;border-bottom:1px solid var(--border)}
+h1{margin:0;font-size:24px;line-height:1.2;font-weight:600;letter-spacing:-0.01em}
+header p{margin:4px 0 0;color:var(--muted);max-width:60ch}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.segmented{display:inline-flex;padding:3px;gap:2px;border-radius:10px;background:var(--fill);box-shadow:inset 0 0 0 1px var(--border)}
+button{font:inherit;color:inherit;cursor:pointer;min-height:32px;padding:0 12px;border-radius:8px;border:0;background:transparent}
+button:hover{background:var(--fill-strong)}
+button[aria-pressed=true]{background:var(--surface);box-shadow:inset 0 0 0 1px var(--border-strong);font-weight:500}
+.ghost{box-shadow:inset 0 0 0 1px var(--border-strong);min-width:32px;padding:0 10px}
+:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+main{position:relative;flex:1;min-height:0;display:flex}
+.canvas{position:relative;flex:1;overflow:hidden;cursor:grab;touch-action:none}
+.canvas.dragging{cursor:grabbing}
+.stage{position:absolute;left:0;top:0;transform-origin:0 0}
+.stage svg{display:block}
+.item{cursor:pointer}
+.item:focus{outline:none}
+.item:focus-visible rect{stroke:var(--ring);stroke-width:2}
+.zone,.item,.edge{transition:opacity 150ms}
+.filtering .zone:not(.on),.filtering .item:not(.on),.filtering .edge:not(.on){opacity:.18}
+.flowing .edge:not(.on),.flowing .item:not(.on){opacity:.2}
+.flowing .edge.on{stroke:var(--brand-to);stroke-opacity:1;stroke-width:2.5}
+aside{width:320px;max-width:100%;border-left:1px solid var(--border);background:var(--surface);padding:20px;overflow:auto}
+aside h2{margin:0 0 4px;font-size:17px;font-weight:600}
+aside .meta{margin:0 0 12px;color:var(--muted);font-size:13px}
+aside h3{margin:16px 0 6px;font-size:12px;font-weight:500;color:var(--faint);text-transform:uppercase;letter-spacing:.08em}
+aside ul{margin:0;padding-left:18px}
+aside .close{float:right;margin:-6px -6px 0 0}
+nav{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;padding:10px 24px;border-top:1px solid var(--border)}
+nav .group{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+nav .label{color:var(--faint);font-size:12px;margin-right:4px}
+nav button{min-height:32px;font-size:13px;color:var(--muted)}
+nav button[aria-pressed=true]{color:var(--text)}
+.dot{display:inline-block;width:8px;height:8px;border-radius:999px;margin-right:6px;vertical-align:middle}
+footer{padding:8px 24px 14px;color:var(--faint);font-size:12px}
+[hidden]{display:none!important}
+@media (max-width:759px){header{padding:16px}h1{font-size:20px}aside{position:absolute;inset:auto 0 0 0;width:auto;max-height:60%;border-left:0;border-top:1px solid var(--border);border-radius:20px 20px 0 0}nav{padding:10px 16px}footer{padding:8px 16px 14px}button{min-height:44px}nav button{min-height:44px}}
+@media (prefers-reduced-motion:reduce){.zone,.item,.edge{transition:none}}
+</style>
+</head>
+<body>
+<header>
+<div><h1>Agenda de aulas</h1><p>Alunos marcam aulas e o professor confirma.</p></div>
+<div class="tools" role="toolbar" aria-label="Visualização">
+<div class="segmented" role="group" aria-label="Visão"><button type="button" data-view-button="today" aria-pressed="false">Hoje</button><button type="button" data-view-button="complete" aria-pressed="true">Completo</button></div>
+<button type="button" class="ghost" id="zoom-out" aria-label="Diminuir o zoom">−</button>
+<button type="button" class="ghost" id="zoom-fit">Ajustar</button>
+<button type="button" class="ghost" id="zoom-in" aria-label="Aumentar o zoom">+</button>
+</div>
+</header>
+<main>
+<div class="canvas" id="canvas" tabindex="0" role="application" aria-label="Mapa do projeto. Arraste para mover; use + e - para o zoom." aria-roledescription="mapa">
+<div class="stage" data-view="complete"><svg xmlns="http://www.w3.org/2000/svg" width="1264" height="580" viewBox="0 0 1264 580" font-family="Geist, 'Geist Variable', ui-sans-serif, system-ui, sans-serif" role="img" aria-label="Mapa do projeto Agenda de aulas">
+<defs><marker id="c-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9 z" fill="var(--muted)"/></marker></defs>
+<rect width="100%" height="100%" fill="var(--bg)"/>
+<g class="zone" data-zone="z1">
+<rect x="32" y="32" width="384" height="100" rx="16" fill="var(--surface)" stroke="var(--zone-method)" stroke-opacity="0.35"/>
+<rect x="32" y="32" width="384" height="100" rx="16" fill="var(--zone-method)" fill-opacity="0.05"/>
+<circle cx="56" cy="52" r="4" fill="var(--zone-method)"/>
+<text x="68" y="56.5" font-size="12.5" font-weight="600" fill="var(--text)">Metodologia<tspan fill="var(--faint)" font-weight="400">  2</tspan></text>
+</g>
+<g class="zone" data-zone="z2">
+<rect x="440" y="32" width="384" height="156" rx="16" fill="var(--surface)" stroke="var(--zone-tools)" stroke-opacity="0.35"/>
+<rect x="440" y="32" width="384" height="156" rx="16" fill="var(--zone-tools)" fill-opacity="0.05"/>
+<circle cx="464" cy="52" r="4" fill="var(--zone-tools)"/>
+<text x="476" y="56.5" font-size="12.5" font-weight="600" fill="var(--text)">Ferramentas<tspan fill="var(--faint)" font-weight="400">  4</tspan></text>
+</g>
+<g class="zone" data-zone="z3">
+<rect x="848" y="32" width="384" height="100" rx="16" fill="var(--surface)" stroke="var(--zone-ui)" stroke-opacity="0.35"/>
+<rect x="848" y="32" width="384" height="100" rx="16" fill="var(--zone-ui)" fill-opacity="0.05"/>
+<circle cx="872" cy="52" r="4" fill="var(--zone-ui)"/>
+<text x="884" y="56.5" font-size="12.5" font-weight="600" fill="var(--text)">Interface<tspan fill="var(--faint)" font-weight="400">  2</tspan></text>
+</g>
+<g class="zone" data-zone="z4">
+<rect x="32" y="156" width="384" height="156" rx="16" fill="var(--surface)" stroke="var(--zone-app)" stroke-opacity="0.35"/>
+<rect x="32" y="156" width="384" height="156" rx="16" fill="var(--zone-app)" fill-opacity="0.05"/>
+<circle cx="56" cy="176" r="4" fill="var(--zone-app)"/>
+<text x="68" y="180.5" font-size="12.5" font-weight="600" fill="var(--text)">Aplicação<tspan fill="var(--faint)" font-weight="400">  3</tspan></text>
+</g>
+<g class="zone" data-zone="z5">
+<rect x="440" y="212" width="384" height="156" rx="16" fill="var(--surface)" stroke="var(--zone-data)" stroke-opacity="0.35"/>
+<rect x="440" y="212" width="384" height="156" rx="16" fill="var(--zone-data)" fill-opacity="0.05"/>
+<circle cx="464" cy="232" r="4" fill="var(--zone-data)"/>
+<text x="476" y="236.5" font-size="12.5" font-weight="600" fill="var(--text)">Dados<tspan fill="var(--faint)" font-weight="400">  3</tspan></text>
+</g>
+<g class="zone" data-zone="z6">
+<rect x="848" y="156" width="384" height="100" rx="16" fill="var(--surface)" stroke="var(--zone-env)" stroke-opacity="0.35"/>
+<rect x="848" y="156" width="384" height="100" rx="16" fill="var(--zone-env)" fill-opacity="0.05"/>
+<circle cx="872" cy="176" r="4" fill="var(--zone-env)"/>
+<text x="884" y="180.5" font-size="12.5" font-weight="600" fill="var(--text)">Ambiente<tspan fill="var(--faint)" font-weight="400">  2</tspan></text>
+</g>
+<g class="zone" data-zone="z7">
+<rect x="32" y="336" width="384" height="100" rx="16" fill="var(--surface)" stroke="var(--zone-infra)" stroke-opacity="0.35"/>
+<rect x="32" y="336" width="384" height="100" rx="16" fill="var(--zone-infra)" fill-opacity="0.05"/>
+<circle cx="56" cy="356" r="4" fill="var(--zone-infra)"/>
+<text x="68" y="360.5" font-size="12.5" font-weight="600" fill="var(--text)">Infraestrutura<tspan fill="var(--faint)" font-weight="400">  2</tspan></text>
+</g>
+<g class="zone" data-zone="z8">
+<rect x="440" y="392" width="384" height="156" rx="16" fill="var(--surface)" stroke="var(--zone-security)" stroke-opacity="0.35"/>
+<rect x="440" y="392" width="384" height="156" rx="16" fill="var(--zone-security)" fill-opacity="0.05"/>
+<circle cx="464" cy="412" r="4" fill="var(--zone-security)"/>
+<text x="476" y="416.5" font-size="12.5" font-weight="600" fill="var(--text)">Segurança<tspan fill="var(--faint)" font-weight="400">  4</tspan></text>
+</g>
+<g class="zone" data-zone="z9">
+<rect x="848" y="280" width="384" height="100" rx="16" fill="var(--surface)" stroke="var(--zone-observability)" stroke-opacity="0.35"/>
+<rect x="848" y="280" width="384" height="100" rx="16" fill="var(--zone-observability)" fill-opacity="0.05"/>
+<circle cx="872" cy="300" r="4" fill="var(--zone-observability)"/>
+<text x="884" y="304.5" font-size="12.5" font-weight="600" fill="var(--text)">Observabilidade<tspan fill="var(--faint)" font-weight="400">  2</tspan></text>
+</g>
+<path class="edge" data-edge="e1" data-ends="n7 n9" d="M868 96 C544 96 544 220 220 220" fill="none" stroke="var(--muted)" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#c-arrow)"><title>renderizado por</title></path>
+<path class="edge" data-edge="e2" data-ends="n8 n9" d="M1044 96 C632 96 632 220 220 220" fill="none" stroke="var(--muted)" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#c-arrow)"><title>chama</title></path>
+<path class="edge" data-edge="e3" data-ends="n9 n13" d="M220 220 C428 220 428 276 636 276" fill="none" stroke="var(--muted)" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#c-arrow)"><title>usa</title></path>
+<path class="edge" data-edge="e4" data-ends="n13 n12" d="M636 276 C612 276 652 276 628 276" fill="none" stroke="var(--muted)" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#c-arrow)"><title>grava em</title></path>
+<path class="edge" data-edge="e5" data-ends="n19 n9" d="M460 456 C340 456 340 220 220 220" fill="none" stroke="var(--muted)" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#c-arrow)"><title>protege</title></path>
+<path class="edge" data-edge="e6" data-ends="n18 n17" d="M228 400 C204 400 244 400 220 400" fill="none" stroke="var(--muted)" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#c-arrow)"><title>publica em</title></path>
+<g class="item" data-item="n1" tabindex="0" role="button" aria-label="Kanban">
+<title>Kanban</title>
+<rect x="52" y="72" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="64" y="101" font-size="13" font-weight="500" fill="var(--text)">Kanban</text>
+</g>
+<g class="item" data-item="n2" tabindex="0" role="button" aria-label="Conventional Commits">
+<title>Conventional Commits</title>
+<rect x="228" y="72" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="240" y="101" font-size="13" font-weight="500" fill="var(--text)">Conventional Commits</text>
+</g>
+<g class="item" data-item="n3" tabindex="0" role="button" aria-label="Git + GitHub">
+<title>Git + GitHub</title>
+<rect x="460" y="72" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="472" y="101" font-size="13" font-weight="500" fill="var(--text)">Git + GitHub</text>
+</g>
+<g class="item" data-item="n4" tabindex="0" role="button" aria-label="pip + venv">
+<title>pip + venv</title>
+<rect x="636" y="72" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="648" y="101" font-size="13" font-weight="500" fill="var(--text)">pip + venv</text>
+</g>
+<g class="item" data-item="n5" tabindex="0" role="button" aria-label="Docker">
+<title>Docker</title>
+<rect x="460" y="128" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="472" y="157" font-size="13" font-weight="500" fill="var(--text)">Docker</text>
+</g>
+<g class="item" data-item="n6" tabindex="0" role="button" aria-label="Ruff">
+<title>Ruff</title>
+<rect x="636" y="128" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="648" y="157" font-size="13" font-weight="500" fill="var(--text)">Ruff</text>
+</g>
+<g class="item" data-item="n7" tabindex="0" role="button" aria-label="Templates do Django">
+<title>Templates do Django</title>
+<rect x="868" y="72" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="880" y="101" font-size="13" font-weight="500" fill="var(--text)">Templates do Django</text>
+</g>
+<g class="item" data-item="n8" tabindex="0" role="button" aria-label="HTMX">
+<title>HTMX</title>
+<rect x="1044" y="72" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="1056" y="101" font-size="13" font-weight="500" fill="var(--text)">HTMX</text>
+</g>
+<g class="item" data-item="n9" tabindex="0" role="button" aria-label="Django">
+<title>Django</title>
+<rect x="52" y="196" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="64" y="225" font-size="13" font-weight="500" fill="var(--text)">Django</text>
+</g>
+<g class="item" data-item="n10" tabindex="0" role="button" aria-label="Django Admin">
+<title>Django Admin</title>
+<rect x="228" y="196" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="240" y="225" font-size="13" font-weight="500" fill="var(--text)">Django Admin</text>
+</g>
+<g class="item" data-item="n11" opacity="0.75" tabindex="0" role="button" aria-label="Django REST Framework">
+<title>Django REST Framework</title>
+<rect x="52" y="252" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--faint)" stroke-dasharray="5 4"/>
+<text x="64" y="272" font-size="13" font-weight="500" fill="var(--text)">Django REST Framework</text>
+<text x="64" y="289" font-size="11.5" fill="var(--muted)">Futuro</text>
+</g>
+<g class="item" data-item="n12" tabindex="0" role="button" aria-label="Banco de dados">
+<title>Banco de dados</title>
+<rect x="460" y="252" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="472" y="272" font-size="13" font-weight="500" fill="var(--text)">Banco de dados</text>
+<text x="472" y="289" font-size="11.5" fill="var(--muted)">PostgreSQL</text>
+</g>
+<g class="item" data-item="n13" tabindex="0" role="button" aria-label="Django ORM">
+<title>Django ORM</title>
+<rect x="636" y="252" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="648" y="281" font-size="13" font-weight="500" fill="var(--text)">Django ORM</text>
+</g>
+<g class="item" data-item="n14" tabindex="0" role="button" aria-label="Migrations">
+<title>Migrations</title>
+<rect x="460" y="308" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="472" y="337" font-size="13" font-weight="500" fill="var(--text)">Migrations</text>
+</g>
+<g class="item" data-item="n15" tabindex="0" role="button" aria-label=".env.example">
+<title>.env.example</title>
+<rect x="868" y="196" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="880" y="225" font-size="13" font-weight="500" fill="var(--text)">.env.example</text>
+</g>
+<g class="item" data-item="n16" tabindex="0" role="button" aria-label="Desenvolvimento e produção">
+<title>Desenvolvimento e produção</title>
+<rect x="1044" y="196" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="1056" y="225" font-size="13" font-weight="500" fill="var(--text)">Desenvolvimento e pr…</text>
+</g>
+<g class="item" data-item="n17" tabindex="0" role="button" aria-label="Hospedagem">
+<title>Hospedagem</title>
+<rect x="52" y="376" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="64" y="396" font-size="13" font-weight="500" fill="var(--text)">Hospedagem</text>
+<text x="64" y="413" font-size="11.5" fill="var(--muted)">Plataforma gerenciada (R…</text>
+</g>
+<g class="item" data-item="n18" tabindex="0" role="button" aria-label="GitHub Actions">
+<title>GitHub Actions</title>
+<rect x="228" y="376" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="240" y="405" font-size="13" font-weight="500" fill="var(--text)">GitHub Actions</text>
+</g>
+<g class="item" data-item="n19" tabindex="0" role="button" aria-label="Django Auth">
+<title>Django Auth</title>
+<rect x="460" y="432" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="472" y="461" font-size="13" font-weight="500" fill="var(--text)">Django Auth</text>
+</g>
+<g class="item" data-item="n20" tabindex="0" role="button" aria-label="HTTPS">
+<title>HTTPS</title>
+<rect x="636" y="432" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="648" y="461" font-size="13" font-weight="500" fill="var(--text)">HTTPS</text>
+</g>
+<g class="item" data-item="n21" tabindex="0" role="button" aria-label="manage.py check --deploy">
+<title>manage.py check --deploy</title>
+<rect x="460" y="488" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="472" y="517" font-size="13" font-weight="500" fill="var(--text)">manage.py check --de…</text>
+</g>
+<g class="item" data-item="n22" tabindex="0" role="button" aria-label="Backup">
+<title>Backup</title>
+<rect x="636" y="488" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--warning)" stroke-dasharray="5 4"/>
+<text x="648" y="508" font-size="13" font-weight="500" fill="var(--text)">Backup</text>
+<text x="648" y="525" font-size="11.5" fill="var(--warning)">A decidir</text>
+</g>
+<g class="item" data-item="n23" tabindex="0" role="button" aria-label="Logs">
+<title>Logs</title>
+<rect x="868" y="320" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="880" y="349" font-size="13" font-weight="500" fill="var(--text)">Logs</text>
+</g>
+<g class="item" data-item="n24" opacity="0.75" tabindex="0" role="button" aria-label="Captura de erros">
+<title>Captura de erros</title>
+<rect x="1044" y="320" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--faint)" stroke-dasharray="5 4"/>
+<text x="1056" y="340" font-size="13" font-weight="500" fill="var(--text)">Captura de erros</text>
+<text x="1056" y="357" font-size="11.5" fill="var(--muted)">Futuro</text>
+</g>
+</svg></div>
+<div class="stage" data-view="today" hidden><svg xmlns="http://www.w3.org/2000/svg" width="1264" height="580" viewBox="0 0 1264 580" font-family="Geist, 'Geist Variable', ui-sans-serif, system-ui, sans-serif" role="img" aria-label="Mapa do projeto Agenda de aulas">
+<defs><marker id="t-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9 z" fill="var(--muted)"/></marker></defs>
+<rect width="100%" height="100%" fill="var(--bg)"/>
+<g class="zone" data-zone="z1">
+<rect x="32" y="32" width="384" height="100" rx="16" fill="var(--surface)" stroke="var(--zone-method)" stroke-opacity="0.35"/>
+<rect x="32" y="32" width="384" height="100" rx="16" fill="var(--zone-method)" fill-opacity="0.05"/>
+<circle cx="56" cy="52" r="4" fill="var(--zone-method)"/>
+<text x="68" y="56.5" font-size="12.5" font-weight="600" fill="var(--text)">Metodologia<tspan fill="var(--faint)" font-weight="400">  2</tspan></text>
+</g>
+<g class="zone" data-zone="z2">
+<rect x="440" y="32" width="384" height="156" rx="16" fill="var(--surface)" stroke="var(--zone-tools)" stroke-opacity="0.35"/>
+<rect x="440" y="32" width="384" height="156" rx="16" fill="var(--zone-tools)" fill-opacity="0.05"/>
+<circle cx="464" cy="52" r="4" fill="var(--zone-tools)"/>
+<text x="476" y="56.5" font-size="12.5" font-weight="600" fill="var(--text)">Ferramentas<tspan fill="var(--faint)" font-weight="400">  4</tspan></text>
+</g>
+<g class="zone" data-zone="z3">
+<rect x="848" y="32" width="384" height="100" rx="16" fill="var(--surface)" stroke="var(--zone-ui)" stroke-opacity="0.35"/>
+<rect x="848" y="32" width="384" height="100" rx="16" fill="var(--zone-ui)" fill-opacity="0.05"/>
+<circle cx="872" cy="52" r="4" fill="var(--zone-ui)"/>
+<text x="884" y="56.5" font-size="12.5" font-weight="600" fill="var(--text)">Interface<tspan fill="var(--faint)" font-weight="400">  2</tspan></text>
+</g>
+<g class="zone" data-zone="z4">
+<rect x="32" y="156" width="384" height="100" rx="16" fill="var(--surface)" stroke="var(--zone-app)" stroke-opacity="0.35"/>
+<rect x="32" y="156" width="384" height="100" rx="16" fill="var(--zone-app)" fill-opacity="0.05"/>
+<circle cx="56" cy="176" r="4" fill="var(--zone-app)"/>
+<text x="68" y="180.5" font-size="12.5" font-weight="600" fill="var(--text)">Aplicação<tspan fill="var(--faint)" font-weight="400">  2</tspan></text>
+</g>
+<g class="zone" data-zone="z5">
+<rect x="440" y="212" width="384" height="156" rx="16" fill="var(--surface)" stroke="var(--zone-data)" stroke-opacity="0.35"/>
+<rect x="440" y="212" width="384" height="156" rx="16" fill="var(--zone-data)" fill-opacity="0.05"/>
+<circle cx="464" cy="232" r="4" fill="var(--zone-data)"/>
+<text x="476" y="236.5" font-size="12.5" font-weight="600" fill="var(--text)">Dados<tspan fill="var(--faint)" font-weight="400">  3</tspan></text>
+</g>
+<g class="zone" data-zone="z6">
+<rect x="848" y="156" width="384" height="100" rx="16" fill="var(--surface)" stroke="var(--zone-env)" stroke-opacity="0.35"/>
+<rect x="848" y="156" width="384" height="100" rx="16" fill="var(--zone-env)" fill-opacity="0.05"/>
+<circle cx="872" cy="176" r="4" fill="var(--zone-env)"/>
+<text x="884" y="180.5" font-size="12.5" font-weight="600" fill="var(--text)">Ambiente<tspan fill="var(--faint)" font-weight="400">  2</tspan></text>
+</g>
+<g class="zone" data-zone="z7">
+<rect x="32" y="280" width="384" height="100" rx="16" fill="var(--surface)" stroke="var(--zone-infra)" stroke-opacity="0.35"/>
+<rect x="32" y="280" width="384" height="100" rx="16" fill="var(--zone-infra)" fill-opacity="0.05"/>
+<circle cx="56" cy="300" r="4" fill="var(--zone-infra)"/>
+<text x="68" y="304.5" font-size="12.5" font-weight="600" fill="var(--text)">Infraestrutura<tspan fill="var(--faint)" font-weight="400">  2</tspan></text>
+</g>
+<g class="zone" data-zone="z8">
+<rect x="440" y="392" width="384" height="156" rx="16" fill="var(--surface)" stroke="var(--zone-security)" stroke-opacity="0.35"/>
+<rect x="440" y="392" width="384" height="156" rx="16" fill="var(--zone-security)" fill-opacity="0.05"/>
+<circle cx="464" cy="412" r="4" fill="var(--zone-security)"/>
+<text x="476" y="416.5" font-size="12.5" font-weight="600" fill="var(--text)">Segurança<tspan fill="var(--faint)" font-weight="400">  4</tspan></text>
+</g>
+<g class="zone" data-zone="z9">
+<rect x="848" y="280" width="384" height="100" rx="16" fill="var(--surface)" stroke="var(--zone-observability)" stroke-opacity="0.35"/>
+<rect x="848" y="280" width="384" height="100" rx="16" fill="var(--zone-observability)" fill-opacity="0.05"/>
+<circle cx="872" cy="300" r="4" fill="var(--zone-observability)"/>
+<text x="884" y="304.5" font-size="12.5" font-weight="600" fill="var(--text)">Observabilidade<tspan fill="var(--faint)" font-weight="400">  1</tspan></text>
+</g>
+<path class="edge" data-edge="e1" data-ends="n7 n9" d="M868 96 C544 96 544 220 220 220" fill="none" stroke="var(--muted)" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#t-arrow)"><title>renderizado por</title></path>
+<path class="edge" data-edge="e2" data-ends="n8 n9" d="M1044 96 C632 96 632 220 220 220" fill="none" stroke="var(--muted)" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#t-arrow)"><title>chama</title></path>
+<path class="edge" data-edge="e3" data-ends="n9 n13" d="M220 220 C428 220 428 276 636 276" fill="none" stroke="var(--muted)" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#t-arrow)"><title>usa</title></path>
+<path class="edge" data-edge="e4" data-ends="n13 n12" d="M636 276 C612 276 652 276 628 276" fill="none" stroke="var(--muted)" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#t-arrow)"><title>grava em</title></path>
+<path class="edge" data-edge="e5" data-ends="n19 n9" d="M460 456 C340 456 340 220 220 220" fill="none" stroke="var(--muted)" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#t-arrow)"><title>protege</title></path>
+<path class="edge" data-edge="e6" data-ends="n18 n17" d="M228 344 C204 344 244 344 220 344" fill="none" stroke="var(--muted)" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#t-arrow)"><title>publica em</title></path>
+<g class="item" data-item="n1" tabindex="0" role="button" aria-label="Kanban">
+<title>Kanban</title>
+<rect x="52" y="72" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="64" y="101" font-size="13" font-weight="500" fill="var(--text)">Kanban</text>
+</g>
+<g class="item" data-item="n2" tabindex="0" role="button" aria-label="Conventional Commits">
+<title>Conventional Commits</title>
+<rect x="228" y="72" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="240" y="101" font-size="13" font-weight="500" fill="var(--text)">Conventional Commits</text>
+</g>
+<g class="item" data-item="n3" tabindex="0" role="button" aria-label="Git + GitHub">
+<title>Git + GitHub</title>
+<rect x="460" y="72" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="472" y="101" font-size="13" font-weight="500" fill="var(--text)">Git + GitHub</text>
+</g>
+<g class="item" data-item="n4" tabindex="0" role="button" aria-label="pip + venv">
+<title>pip + venv</title>
+<rect x="636" y="72" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="648" y="101" font-size="13" font-weight="500" fill="var(--text)">pip + venv</text>
+</g>
+<g class="item" data-item="n5" tabindex="0" role="button" aria-label="Docker">
+<title>Docker</title>
+<rect x="460" y="128" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="472" y="157" font-size="13" font-weight="500" fill="var(--text)">Docker</text>
+</g>
+<g class="item" data-item="n6" tabindex="0" role="button" aria-label="Ruff">
+<title>Ruff</title>
+<rect x="636" y="128" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="648" y="157" font-size="13" font-weight="500" fill="var(--text)">Ruff</text>
+</g>
+<g class="item" data-item="n7" tabindex="0" role="button" aria-label="Templates do Django">
+<title>Templates do Django</title>
+<rect x="868" y="72" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="880" y="101" font-size="13" font-weight="500" fill="var(--text)">Templates do Django</text>
+</g>
+<g class="item" data-item="n8" tabindex="0" role="button" aria-label="HTMX">
+<title>HTMX</title>
+<rect x="1044" y="72" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="1056" y="101" font-size="13" font-weight="500" fill="var(--text)">HTMX</text>
+</g>
+<g class="item" data-item="n9" tabindex="0" role="button" aria-label="Django">
+<title>Django</title>
+<rect x="52" y="196" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="64" y="225" font-size="13" font-weight="500" fill="var(--text)">Django</text>
+</g>
+<g class="item" data-item="n10" tabindex="0" role="button" aria-label="Django Admin">
+<title>Django Admin</title>
+<rect x="228" y="196" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="240" y="225" font-size="13" font-weight="500" fill="var(--text)">Django Admin</text>
+</g>
+<g class="item" data-item="n12" tabindex="0" role="button" aria-label="Banco de dados">
+<title>Banco de dados</title>
+<rect x="460" y="252" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="472" y="272" font-size="13" font-weight="500" fill="var(--text)">Banco de dados</text>
+<text x="472" y="289" font-size="11.5" fill="var(--muted)">PostgreSQL</text>
+</g>
+<g class="item" data-item="n13" tabindex="0" role="button" aria-label="Django ORM">
+<title>Django ORM</title>
+<rect x="636" y="252" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="648" y="281" font-size="13" font-weight="500" fill="var(--text)">Django ORM</text>
+</g>
+<g class="item" data-item="n14" tabindex="0" role="button" aria-label="Migrations">
+<title>Migrations</title>
+<rect x="460" y="308" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="472" y="337" font-size="13" font-weight="500" fill="var(--text)">Migrations</text>
+</g>
+<g class="item" data-item="n15" tabindex="0" role="button" aria-label=".env.example">
+<title>.env.example</title>
+<rect x="868" y="196" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="880" y="225" font-size="13" font-weight="500" fill="var(--text)">.env.example</text>
+</g>
+<g class="item" data-item="n16" tabindex="0" role="button" aria-label="Desenvolvimento e produção">
+<title>Desenvolvimento e produção</title>
+<rect x="1044" y="196" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="1056" y="225" font-size="13" font-weight="500" fill="var(--text)">Desenvolvimento e pr…</text>
+</g>
+<g class="item" data-item="n17" tabindex="0" role="button" aria-label="Hospedagem">
+<title>Hospedagem</title>
+<rect x="52" y="320" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="64" y="340" font-size="13" font-weight="500" fill="var(--text)">Hospedagem</text>
+<text x="64" y="357" font-size="11.5" fill="var(--muted)">Plataforma gerenciada (R…</text>
+</g>
+<g class="item" data-item="n18" tabindex="0" role="button" aria-label="GitHub Actions">
+<title>GitHub Actions</title>
+<rect x="228" y="320" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="240" y="349" font-size="13" font-weight="500" fill="var(--text)">GitHub Actions</text>
+</g>
+<g class="item" data-item="n19" tabindex="0" role="button" aria-label="Django Auth">
+<title>Django Auth</title>
+<rect x="460" y="432" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="472" y="461" font-size="13" font-weight="500" fill="var(--text)">Django Auth</text>
+</g>
+<g class="item" data-item="n20" tabindex="0" role="button" aria-label="HTTPS">
+<title>HTTPS</title>
+<rect x="636" y="432" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="648" y="461" font-size="13" font-weight="500" fill="var(--text)">HTTPS</text>
+</g>
+<g class="item" data-item="n21" tabindex="0" role="button" aria-label="manage.py check --deploy">
+<title>manage.py check --deploy</title>
+<rect x="460" y="488" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="472" y="517" font-size="13" font-weight="500" fill="var(--text)">manage.py check --de…</text>
+</g>
+<g class="item" data-item="n22" tabindex="0" role="button" aria-label="Backup">
+<title>Backup</title>
+<rect x="636" y="488" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--warning)" stroke-dasharray="5 4"/>
+<text x="648" y="508" font-size="13" font-weight="500" fill="var(--text)">Backup</text>
+<text x="648" y="525" font-size="11.5" fill="var(--warning)">A decidir</text>
+</g>
+<g class="item" data-item="n23" tabindex="0" role="button" aria-label="Logs">
+<title>Logs</title>
+<rect x="868" y="320" width="168" height="48" rx="10" fill="var(--map-item)" stroke="var(--border-strong)"/>
+<text x="880" y="349" font-size="13" font-weight="500" fill="var(--text)">Logs</text>
+</g>
+</svg></div>
+</div>
+<aside id="details" hidden aria-labelledby="d-name">
+<button type="button" class="ghost close" id="d-close" aria-label="Fechar os detalhes">×</button>
+<h2 id="d-name"></h2>
+<p class="meta" id="d-meta"></p>
+<p id="d-choice"></p>
+<p id="d-description"></p>
+<div><h3>Notas e riscos</h3><ul id="d-notes"></ul></div>
+</aside>
+</main>
+<nav aria-label="Zonas e fluxos">
+<div class="group" role="group" aria-label="Zonas"><span class="label">Zonas</span><button type="button" data-zone-button="z1" aria-pressed="false"><span class="dot" style="background:var(--zone-method)"></span>Metodologia</button><button type="button" data-zone-button="z2" aria-pressed="false"><span class="dot" style="background:var(--zone-tools)"></span>Ferramentas</button><button type="button" data-zone-button="z3" aria-pressed="false"><span class="dot" style="background:var(--zone-ui)"></span>Interface</button><button type="button" data-zone-button="z4" aria-pressed="false"><span class="dot" style="background:var(--zone-app)"></span>Aplicação</button><button type="button" data-zone-button="z5" aria-pressed="false"><span class="dot" style="background:var(--zone-data)"></span>Dados</button><button type="button" data-zone-button="z6" aria-pressed="false"><span class="dot" style="background:var(--zone-env)"></span>Ambiente</button><button type="button" data-zone-button="z7" aria-pressed="false"><span class="dot" style="background:var(--zone-infra)"></span>Infraestrutura</button><button type="button" data-zone-button="z8" aria-pressed="false"><span class="dot" style="background:var(--zone-security)"></span>Segurança</button><button type="button" data-zone-button="z9" aria-pressed="false"><span class="dot" style="background:var(--zone-observability)"></span>Observabilidade</button></div>
+<div class="group" role="group" aria-label="Fluxos"><span class="label">Fluxos</span><button type="button" data-flow="0" aria-pressed="false">Enviar um formulário</button></div>
+</nav>
+<footer>Somente leitura. Feito com o Prólogos.</footer>
+<script type="application/json" id="map-data">{"items":{"n1":{"name":"Kanban","meta":"Metodologia · Decidido","choice":"","description":"","notes":[]},"n2":{"name":"Conventional Commits","meta":"Metodologia · Decidido","choice":"","description":"","notes":[]},"n3":{"name":"Git + GitHub","meta":"Ferramentas · Decidido","choice":"","description":"","notes":[]},"n4":{"name":"pip + venv","meta":"Ferramentas · Decidido","choice":"","description":"","notes":[]},"n5":{"name":"Docker","meta":"Ferramentas · Decidido","choice":"","description":"","notes":[]},"n6":{"name":"Ruff","meta":"Ferramentas · Decidido","choice":"","description":"","notes":[]},"n7":{"name":"Templates do Django","meta":"Interface · Decidido","choice":"","description":"","notes":[]},"n8":{"name":"HTMX","meta":"Interface · Decidido","choice":"","description":"","notes":[]},"n9":{"name":"Django","meta":"Aplicação · Decidido","choice":"","description":"","notes":[]},"n10":{"name":"Django Admin","meta":"Aplicação · Decidido","choice":"","description":"","notes":[]},"n11":{"name":"Django REST Framework","meta":"Aplicação · Futuro","choice":"","description":"","notes":[]},"n12":{"name":"Banco de dados","meta":"Dados · Decidido","choice":"PostgreSQL","description":"","notes":[]},"n13":{"name":"Django ORM","meta":"Dados · Decidido","choice":"","description":"","notes":[]},"n14":{"name":"Migrations","meta":"Dados · Decidido","choice":"","description":"","notes":[]},"n15":{"name":".env.example","meta":"Ambiente · Decidido","choice":"","description":"","notes":[]},"n16":{"name":"Desenvolvimento e produção","meta":"Ambiente · Decidido","choice":"","description":"","notes":[]},"n17":{"name":"Hospedagem","meta":"Infraestrutura · Decidido","choice":"Plataforma gerenciada (Render, PythonAnywhere)","description":"","notes":[]},"n18":{"name":"GitHub Actions","meta":"Infraestrutura · Decidido","choice":"","description":"","notes":[]},"n19":{"name":"Django Auth","meta":"Segurança · Decidido","choice":"","description":"","notes":[]},"n20":{"name":"HTTPS","meta":"Segurança · Decidido","choice":"","description":"","notes":[]},"n21":{"name":"manage.py check --deploy","meta":"Segurança · Decidido","choice":"","description":"","notes":[]},"n22":{"name":"Backup","meta":"Segurança · A decidir","choice":"","description":"","notes":[]},"n23":{"name":"Logs","meta":"Observabilidade · Decidido","choice":"","description":"","notes":[]},"n24":{"name":"Captura de erros","meta":"Observabilidade · Futuro","choice":"","description":"","notes":[]}},"flows":[{"name":"Enviar um formulário","pairs":["n8 n9","n9 n13","n13 n12"],"items":["n8","n9","n13","n12"]}],"zoneItems":{"z1":["n1","n2"],"z2":["n3","n4","n5","n6"],"z3":["n7","n8"],"z4":["n9","n10","n11"],"z5":["n12","n13","n14"],"z6":["n15","n16"],"z7":["n17","n18"],"z8":["n19","n20","n21","n22"],"z9":["n23","n24"]}}</script>
+<script>(function(){
+var data=JSON.parse(document.getElementById('map-data').textContent);
+var canvas=document.getElementById('canvas');
+var views=[].slice.call(document.querySelectorAll('.stage'));
+var stage=views[0];var scale=1,x=0,y=0,drag=null,flow=-1,zones={};
+function apply(){stage.style.transform='translate('+x+'px,'+y+'px) scale('+scale+')';}
+function fit(){var svg=stage.querySelector('svg');var w=Number(svg.getAttribute('width')),h=Number(svg.getAttribute('height'));var cw=canvas.clientWidth||w,ch=canvas.clientHeight||h;scale=Math.min(1,cw/w,ch/h)||1;x=(cw-w*scale)/2;y=Math.max(0,(ch-h*scale)/2);apply();}
+function zoom(f,cx,cy){var n=Math.min(2.5,Math.max(0.2,scale*f));if(cx===undefined){cx=canvas.clientWidth/2;cy=canvas.clientHeight/2;}x=cx-(cx-x)*(n/scale);y=cy-(cy-y)*(n/scale);scale=n;apply();}
+canvas.addEventListener('pointerdown',function(e){if(e.target.closest('.item'))return;drag={px:e.clientX,py:e.clientY,x:x,y:y};canvas.classList.add('dragging');canvas.setPointerCapture(e.pointerId);});
+canvas.addEventListener('pointermove',function(e){if(!drag)return;x=drag.x+e.clientX-drag.px;y=drag.y+e.clientY-drag.py;apply();});
+function stop(){drag=null;canvas.classList.remove('dragging');}
+canvas.addEventListener('pointerup',stop);canvas.addEventListener('pointercancel',stop);
+canvas.addEventListener('wheel',function(e){e.preventDefault();var r=canvas.getBoundingClientRect();zoom(e.deltaY<0?1.1:1/1.1,e.clientX-r.left,e.clientY-r.top);},{passive:false});
+canvas.addEventListener('keydown',function(e){var k=e.key;if(k==='+'||k==='=')zoom(1.2);else if(k==='-')zoom(1/1.2);else if(k==='0')fit();else if(k==='ArrowLeft'){x+=40;apply();}else if(k==='ArrowRight'){x-=40;apply();}else if(k==='ArrowUp'){y+=40;apply();}else if(k==='ArrowDown'){y-=40;apply();}else return;e.preventDefault();});
+document.getElementById('zoom-in').onclick=function(){zoom(1.2);};
+document.getElementById('zoom-out').onclick=function(){zoom(1/1.2);};
+document.getElementById('zoom-fit').onclick=fit;
+function press(list,on){list.forEach(function(b){b.setAttribute('aria-pressed',String(b===on));});}
+var viewButtons=[].slice.call(document.querySelectorAll('[data-view-button]'));
+viewButtons.forEach(function(b){b.onclick=function(){views.forEach(function(v){v.hidden=v.getAttribute('data-view')!==b.getAttribute('data-view-button');});stage=views.filter(function(v){return !v.hidden;})[0];press(viewButtons,b);paint();fit();};});
+var flowButtons=[].slice.call(document.querySelectorAll('[data-flow]'));
+flowButtons.forEach(function(b){b.onclick=function(){var i=Number(b.getAttribute('data-flow'));flow=flow===i?-1:i;flowButtons.forEach(function(o){o.setAttribute('aria-pressed',String(Number(o.getAttribute('data-flow'))===flow));});paint();};});
+var zoneButtons=[].slice.call(document.querySelectorAll('[data-zone-button]'));
+zoneButtons.forEach(function(b){b.onclick=function(){var z=b.getAttribute('data-zone-button');zones[z]=!zones[z];b.setAttribute('aria-pressed',String(!!zones[z]));paint();};});
+function paint(){views.forEach(function(v){var picked=Object.keys(zones).filter(function(z){return zones[z];});v.classList.toggle('filtering',picked.length>0);[].forEach.call(v.querySelectorAll('.zone'),function(g){g.classList.toggle('on',picked.indexOf(g.getAttribute('data-zone'))>=0);});var inZone={};picked.forEach(function(z){(data.zoneItems[z]||[]).forEach(function(n){inZone[n]=true;});});[].forEach.call(v.querySelectorAll('.item'),function(g){g.classList.toggle('on',!!inZone[g.getAttribute('data-item')]||(flow>=0&&data.flows[flow].items.indexOf(g.getAttribute('data-item'))>=0));});var pairs=flow>=0?data.flows[flow].pairs:[];v.classList.toggle('flowing',flow>=0);[].forEach.call(v.querySelectorAll('.edge'),function(p){var ends=p.getAttribute('data-ends');var on=pairs.indexOf(ends)>=0;if(!on&&picked.length){var e=ends.split(' ');on=!!inZone[e[0]]&&!!inZone[e[1]];}p.classList.toggle('on',on);});});}
+var aside=document.getElementById('details');
+function text(id,value){var el=document.getElementById(id);el.textContent=value||'';el.hidden=!value;}
+function list(id,values){var ul=document.getElementById(id);ul.textContent='';values.forEach(function(v){var li=document.createElement('li');li.textContent=v;ul.appendChild(li);});ul.parentNode.hidden=values.length===0;}
+var opener=null;
+function open(ref,from){var item=data.items[ref];if(!item)return;opener=from;text('d-name',item.name);text('d-meta',item.meta);text('d-choice',item.choice);text('d-description',item.description);list('d-notes',item.notes);aside.hidden=false;document.getElementById('d-close').focus();}
+function close(){aside.hidden=true;if(opener)opener.focus();}
+document.getElementById('d-close').onclick=close;
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!aside.hidden)close();});
+[].forEach.call(document.querySelectorAll('.item'),function(g){g.addEventListener('click',function(){open(g.getAttribute('data-item'),g);});g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(g.getAttribute('data-item'),g);}});});
+window.addEventListener('resize',fit);
+fit();
+})();</script>
+</body>
+</html>

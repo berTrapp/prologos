@@ -1,0 +1,12 @@
+# Files kept out of the repository. .env stays out; .env.example goes in.
+bin/
+obj/
+*.user
+.vs/
+node_modules/
+dist/
+.env
+*.log
+.idea/
+.vscode/
+.DS_Store

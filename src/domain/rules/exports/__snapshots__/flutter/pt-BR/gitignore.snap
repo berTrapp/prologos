@@ -1,0 +1,13 @@
+# Arquivos que não vão para o repositório. O .env fica fora; o .env.example entra.
+.dart_tool/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.idea/
+*.iml
+android/.gradle/
+android/local.properties
+ios/Pods/
+.env
+.DS_Store

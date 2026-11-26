@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1264" height="532" viewBox="0 0 1264 532" font-family="Geist, 'Geist Variable', ui-sans-serif, system-ui, sans-serif" role="img" aria-label="Mapa do projeto Agenda de aulas">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9 z" fill="#8f95a8"/></marker></defs>
+<rect width="100%" height="100%" fill="#0b0d12"/>
+<text x="32" y="54" font-size="22" font-weight="600" fill="#e6e8ee">Agenda de aulas</text>
+<text x="32" y="78" font-size="13" fill="#8f95a8">Alunos marcam aulas e o professor confirma.</text>
+<g class="zone" data-zone="z1">
+<rect x="32" y="96" width="384" height="100" rx="16" fill="#121419" stroke="#f472b6" stroke-opacity="0.35"/>
+<rect x="32" y="96" width="384" height="100" rx="16" fill="#f472b6" fill-opacity="0.05"/>
+<circle cx="56" cy="116" r="4" fill="#f472b6"/>
+<text x="68" y="120.5" font-size="12.5" font-weight="600" fill="#e6e8ee">Metodologia<tspan fill="#7f859b" font-weight="400">  2</tspan></text>
+</g>
+<g class="zone" data-zone="z2">
+<rect x="440" y="96" width="384" height="156" rx="16" fill="#121419" stroke="#facc15" stroke-opacity="0.35"/>
+<rect x="440" y="96" width="384" height="156" rx="16" fill="#facc15" fill-opacity="0.05"/>
+<circle cx="464" cy="116" r="4" fill="#facc15"/>
+<text x="476" y="120.5" font-size="12.5" font-weight="600" fill="#e6e8ee">Ferramentas<tspan fill="#7f859b" font-weight="400">  4</tspan></text>
+</g>
+<g class="zone" data-zone="z3">
+<rect x="848" y="96" width="384" height="100" rx="16" fill="#121419" stroke="#7c5cff" stroke-opacity="0.35"/>
+<rect x="848" y="96" width="384" height="100" rx="16" fill="#7c5cff" fill-opacity="0.05"/>
+<circle cx="872" cy="116" r="4" fill="#7c5cff"/>
+<text x="884" y="120.5" font-size="12.5" font-weight="600" fill="#e6e8ee">Interface<tspan fill="#7f859b" font-weight="400">  2</tspan></text>
+</g>
+<g class="zone" data-zone="z4">
+<rect x="32" y="220" width="384" height="100" rx="16" fill="#121419" stroke="#60a5fa" stroke-opacity="0.35"/>
+<rect x="32" y="220" width="384" height="100" rx="16" fill="#60a5fa" fill-opacity="0.05"/>
+<circle cx="56" cy="240" r="4" fill="#60a5fa"/>
+<text x="68" y="244.5" font-size="12.5" font-weight="600" fill="#e6e8ee">Aplicação<tspan fill="#7f859b" font-weight="400">  1</tspan></text>
+</g>
+<g class="zone" data-zone="z5">
+<rect x="440" y="276" width="384" height="100" rx="16" fill="#121419" stroke="#34d399" stroke-opacity="0.35"/>
+<rect x="440" y="276" width="384" height="100" rx="16" fill="#34d399" fill-opacity="0.05"/>
+<circle cx="464" cy="296" r="4" fill="#34d399"/>
+<text x="476" y="300.5" font-size="12.5" font-weight="600" fill="#e6e8ee">Dados<tspan fill="#7f859b" font-weight="400">  1</tspan></text>
+</g>
+<g class="zone" data-zone="z6">
+<rect x="848" y="220" width="384" height="100" rx="16" fill="#121419" stroke="#fb923c" stroke-opacity="0.35"/>
+<rect x="848" y="220" width="384" height="100" rx="16" fill="#fb923c" fill-opacity="0.05"/>
+<circle cx="872" cy="240" r="4" fill="#fb923c"/>
+<text x="884" y="244.5" font-size="12.5" font-weight="600" fill="#e6e8ee">Ambiente<tspan fill="#7f859b" font-weight="400">  2</tspan></text>
+</g>
+<g class="zone" data-zone="z7">
+<rect x="32" y="344" width="384" height="100" rx="16" fill="#121419" stroke="#22d3ee" stroke-opacity="0.35"/>
+<rect x="32" y="344" width="384" height="100" rx="16" fill="#22d3ee" fill-opacity="0.05"/>
+<circle cx="56" cy="364" r="4" fill="#22d3ee"/>
+<text x="68" y="368.5" font-size="12.5" font-weight="600" fill="#e6e8ee">Infraestrutura<tspan fill="#7f859b" font-weight="400">  2</tspan></text>
+</g>
+<g class="zone" data-zone="z8">
+<rect x="440" y="400" width="384" height="100" rx="16" fill="#121419" stroke="#f87171" stroke-opacity="0.35"/>
+<rect x="440" y="400" width="384" height="100" rx="16" fill="#f87171" fill-opacity="0.05"/>
+<circle cx="464" cy="420" r="4" fill="#f87171"/>
+<text x="476" y="424.5" font-size="12.5" font-weight="600" fill="#e6e8ee">Segurança<tspan fill="#7f859b" font-weight="400">  2</tspan></text>
+</g>
+<g class="zone" data-zone="z9">
+<rect x="848" y="344" width="384" height="100" rx="16" fill="#121419" stroke="#a3e635" stroke-opacity="0.35"/>
+<rect x="848" y="344" width="384" height="100" rx="16" fill="#a3e635" fill-opacity="0.05"/>
+<circle cx="872" cy="364" r="4" fill="#a3e635"/>
+<text x="884" y="368.5" font-size="12.5" font-weight="600" fill="#e6e8ee">Observabilidade<tspan fill="#7f859b" font-weight="400">  2</tspan></text>
+</g>
+<path class="edge" data-edge="e1" data-ends="n8 n7" d="M1044 160 C1020 160 1060 160 1036 160" fill="none" stroke="#8f95a8" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#arrow)"><title>usa</title></path>
+<path class="edge" data-edge="e2" data-ends="n7 n9" d="M868 160 C544 160 544 284 220 284" fill="none" stroke="#8f95a8" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#arrow)"><title>chama</title></path>
+<path class="edge" data-edge="e3" data-ends="n7 n10" d="M868 160 C748 160 748 340 628 340" fill="none" stroke="#8f95a8" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#arrow)"><title>grava em</title></path>
+<path class="edge" data-edge="e4" data-ends="n15 n9" d="M460 464 C340 464 340 284 220 284" fill="none" stroke="#8f95a8" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#arrow)"><title>protege</title></path>
+<path class="edge" data-edge="e5" data-ends="n13 n14" d="M220 408 C244 408 204 408 228 408" fill="none" stroke="#8f95a8" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#arrow)"><title>publica em</title></path>
+<g class="item" data-item="n1">
+<title>Kanban</title>
+<rect x="52" y="136" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="64" y="165" font-size="13" font-weight="500" fill="#e6e8ee">Kanban</text>
+</g>
+<g class="item" data-item="n2">
+<title>Conventional Commits</title>
+<rect x="228" y="136" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="240" y="165" font-size="13" font-weight="500" fill="#e6e8ee">Conventional Commits</text>
+</g>
+<g class="item" data-item="n3">
+<title>Git + GitHub</title>
+<rect x="460" y="136" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="472" y="165" font-size="13" font-weight="500" fill="#e6e8ee">Git + GitHub</text>
+</g>
+<g class="item" data-item="n4">
+<title>npm</title>
+<rect x="636" y="136" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="648" y="165" font-size="13" font-weight="500" fill="#e6e8ee">npm</text>
+</g>
+<g class="item" data-item="n5">
+<title>Expo Go</title>
+<rect x="460" y="192" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="472" y="221" font-size="13" font-weight="500" fill="#e6e8ee">Expo Go</text>
+</g>
+<g class="item" data-item="n6">
+<title>Jest + Testing Library</title>
+<rect x="636" y="192" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="648" y="221" font-size="13" font-weight="500" fill="#e6e8ee">Jest + Testing Libra…</text>
+</g>
+<g class="item" data-item="n7">
+<title>React Native</title>
+<rect x="868" y="136" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="880" y="165" font-size="13" font-weight="500" fill="#e6e8ee">React Native</text>
+</g>
+<g class="item" data-item="n8">
+<title>Expo Router</title>
+<rect x="1044" y="136" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="1056" y="165" font-size="13" font-weight="500" fill="#e6e8ee">Expo Router</text>
+</g>
+<g class="item" data-item="n9">
+<title>Back-end (API)</title>
+<rect x="52" y="260" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="64" y="280" font-size="13" font-weight="500" fill="#e6e8ee">Back-end (API)</text>
+<text x="64" y="297" font-size="11.5" fill="#8f95a8">Supabase</text>
+</g>
+<g class="item" data-item="n10">
+<title>expo-sqlite</title>
+<rect x="460" y="316" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="472" y="345" font-size="13" font-weight="500" fill="#e6e8ee">expo-sqlite</text>
+</g>
+<g class="item" data-item="n11">
+<title>.env.example</title>
+<rect x="868" y="260" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="880" y="289" font-size="13" font-weight="500" fill="#e6e8ee">.env.example</text>
+</g>
+<g class="item" data-item="n12">
+<title>Desenvolvimento e produção</title>
+<rect x="1044" y="260" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="1056" y="289" font-size="13" font-weight="500" fill="#e6e8ee">Desenvolvimento e pr…</text>
+</g>
+<g class="item" data-item="n13">
+<title>EAS Build + Submit</title>
+<rect x="52" y="384" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="64" y="413" font-size="13" font-weight="500" fill="#e6e8ee">EAS Build + Submit</text>
+</g>
+<g class="item" data-item="n14" opacity="0.75">
+<title>Contas nas lojas</title>
+<rect x="228" y="384" width="168" height="48" rx="10" fill="#12151b" stroke="#7f859b" stroke-dasharray="5 4"/>
+<text x="240" y="404" font-size="13" font-weight="500" fill="#e6e8ee">Contas nas lojas</text>
+<text x="240" y="421" font-size="11.5" fill="#8f95a8">Futuro</text>
+</g>
+<g class="item" data-item="n15">
+<title>expo-secure-store</title>
+<rect x="460" y="440" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="472" y="469" font-size="13" font-weight="500" fill="#e6e8ee">expo-secure-store</text>
+</g>
+<g class="item" data-item="n16">
+<title>HTTPS</title>
+<rect x="636" y="440" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="648" y="469" font-size="13" font-weight="500" fill="#e6e8ee">HTTPS</text>
+</g>
+<g class="item" data-item="n17">
+<title>Logs no Expo</title>
+<rect x="868" y="384" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="880" y="413" font-size="13" font-weight="500" fill="#e6e8ee">Logs no Expo</text>
+</g>
+<g class="item" data-item="n18" opacity="0.75">
+<title>Captura de erros</title>
+<rect x="1044" y="384" width="168" height="48" rx="10" fill="#12151b" stroke="#7f859b" stroke-dasharray="5 4"/>
+<text x="1056" y="404" font-size="13" font-weight="500" fill="#e6e8ee">Captura de erros</text>
+<text x="1056" y="421" font-size="11.5" fill="#8f95a8">Futuro</text>
+</g>
+</svg>

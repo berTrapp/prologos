@@ -1,0 +1,111 @@
+# Agenda de aulas
+
+Alunos marcam aulas e o professor confirma.
+
+Stack: React Native (Expo).
+
+## Como rodar localmente
+
+### Pré-requisitos
+
+- Node.js
+- Git
+- Expo Go no celular
+
+### Passo a passo
+
+1. Clone o repositório e entre na pasta:
+   ```bash
+   git clone https://github.com/voce/agenda-de-aulas.git
+   cd agenda-de-aulas
+   ```
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+3. Copie as variáveis e preencha os valores:
+   ```bash
+   cp .env.example .env
+   ```
+4. Rode o app e leia o QR code com o Expo Go:
+   ```bash
+   npx expo start
+   ```
+
+### Variáveis de ambiente
+
+| Variável | Para que serve | Onde conseguir |
+| --- | --- | --- |
+| `EXPO_PUBLIC_API_URL` | Endereço da API. Vai dentro do app: qualquer pessoa pode ler. | Exemplo: `https://api.exemplo.com` |
+| `EXPO_PUBLIC_SUPABASE_URL` | Endereço do projeto Supabase, se for o back-end escolhido. | Exemplo: `https://xxxx.supabase.co` |
+| `EXPO_PUBLIC_SUPABASE_ANON_KEY` | Chave pública do Supabase; pode ir no app porque o acesso é controlado pelas regras do banco. | Exemplo: `(chave pública do painel)` |
+
+Nenhum valor secreto fica no repositório: preencha os segredos só no seu .env.
+
+## Estrutura de pastas
+
+| Pasta | O que tem |
+| --- | --- |
+| `src/app/` | Telas; cada arquivo vira uma rota (Expo Router). |
+| `src/components/` | Peças de interface reutilizáveis. |
+| `src/lib/` | Acesso à API e ao armazenamento local. |
+| `assets/` | Ícone, tela de abertura e imagens. |
+| `app.json` | Nome, ícone e permissões do app. |
+
+## Mapa do projeto
+
+```mermaid
+%% Agenda de aulas — mapa do projeto (Completo)
+%% Gerado pelo Prólogos a partir do mapa do projeto.
+flowchart LR
+  subgraph z1["Metodologia"]
+    n1["Kanban"]
+    n2["Conventional Commits"]
+  end
+  subgraph z2["Ferramentas"]
+    n3["Git + GitHub"]
+    n4["npm"]
+    n5["Expo Go"]
+    n6["Jest + Testing Library"]
+  end
+  subgraph z3["Interface"]
+    n7["React Native"]
+    n8["Expo Router"]
+  end
+  subgraph z4["Aplicação"]
+    n9["Back-end (API): Supabase"]
+  end
+  subgraph z5["Dados"]
+    n10["expo-sqlite"]
+  end
+  subgraph z6["Ambiente"]
+    n11[".env.example"]
+    n12["Desenvolvimento e produção"]
+  end
+  subgraph z7["Infraestrutura"]
+    n13["EAS Build + Submit"]
+    n14["Contas nas lojas: Começar só com Android (futuro)"]
+  end
+  subgraph z8["Segurança"]
+    n15["expo-secure-store"]
+    n16["HTTPS"]
+  end
+  subgraph z9["Observabilidade"]
+    n17["Logs no Expo"]
+    n18["Captura de erros (futuro)"]
+  end
+  n8 -->|"usa"| n7
+  n7 -->|"chama"| n9
+  n7 -->|"grava em"| n10
+  n15 -->|"protege"| n9
+  n13 -->|"publica em"| n14
+  classDef pending stroke-dasharray: 5 4
+  classDef future stroke-dasharray: 2 4
+  classDef muted opacity: 0.5
+  class n14,n18 future
+  %% Fluxo "Salvar e sincronizar": React Native → expo-sqlite
+```
+
+---
+
+Planejado com o Prólogos.

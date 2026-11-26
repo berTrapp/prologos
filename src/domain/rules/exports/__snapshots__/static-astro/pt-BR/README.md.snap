@@ -1,0 +1,98 @@
+# Agenda de aulas
+
+Alunos marcam aulas e o professor confirma.
+
+Stack: Site estático.
+
+## Como rodar localmente
+
+### Pré-requisitos
+
+- Node.js
+- Git
+
+### Passo a passo
+
+1. Clone o repositório e entre na pasta:
+   ```bash
+   git clone https://github.com/voce/agenda-de-aulas.git
+   cd agenda-de-aulas
+   ```
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+3. Copie as variáveis e preencha os valores:
+   ```bash
+   cp .env.example .env
+   ```
+4. Rode o site:
+   ```bash
+   npm run dev
+   ```
+
+### Variáveis de ambiente
+
+| Variável | Para que serve | Onde conseguir |
+| --- | --- | --- |
+| `PUBLIC_SITE_URL` | Endereço final do site, usado em links e SEO. Fica visível no navegador. | Exemplo: `https://meusite.com.br` |
+
+Nenhum valor secreto fica no repositório: preencha os segredos só no seu .env.
+
+## Estrutura de pastas
+
+| Pasta | O que tem |
+| --- | --- |
+| `src/pages/` | Cada arquivo vira uma página do site. |
+| `src/components/` | Peças reutilizáveis (cabeçalho, rodapé, cards). |
+| `src/content/` | Posts e textos em Markdown. |
+| `public/` | Imagens e arquivos copiados como estão. |
+| `dist/` | Site gerado para publicar (não vai para o Git). |
+
+## Mapa do projeto
+
+```mermaid
+%% Agenda de aulas — mapa do projeto (Completo)
+%% Gerado pelo Prólogos a partir do mapa do projeto.
+flowchart LR
+  subgraph z1["Metodologia"]
+    n1["Conventional Commits"]
+  end
+  subgraph z2["Ferramentas"]
+    n2["Git + GitHub"]
+    n3["npm"]
+  end
+  subgraph z3["Interface"]
+    n4["Astro"]
+    n5["CSS do Astro (com escopo)"]
+  end
+  subgraph z4["Aplicação"]
+    n6["Content Collections"]
+    n7["Formulário de contato (futuro)"]
+  end
+  subgraph z6["Ambiente"]
+    n8[".env.example"]
+  end
+  subgraph z7["Infraestrutura"]
+    n9["Hospedagem: Cloudflare Pages"]
+    n10["GitHub Actions"]
+    n11["Domínio próprio: Registro.br (.com.br) (futuro)"]
+  end
+  subgraph z8["Segurança"]
+    n12["HTTPS"]
+  end
+  subgraph z9["Observabilidade"]
+    n13["Estatísticas de visita (futuro)"]
+  end
+  n6 -->|"renderizado por"| n4
+  n10 -->|"publica em"| n9
+  classDef pending stroke-dasharray: 5 4
+  classDef future stroke-dasharray: 2 4
+  classDef muted opacity: 0.5
+  class n7,n11,n13 future
+  %% Fluxo "Publicar um post": Content Collections → Astro
+```
+
+---
+
+Planejado com o Prólogos.

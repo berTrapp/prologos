@@ -8,6 +8,8 @@ export default mergeConfig(
       environment: 'jsdom',
       globals: true,
       setupFiles: ['./src/test/setup.ts'],
+      // Exported maps read the token values from tokens.css?raw (RN 10).
+      css: { include: [/tokens\.css/] },
       // Whole-app tests (routes, Dexie on fake IndexedDB) are slower under coverage.
       testTimeout: 15_000,
       include: ['src/**/*.test.{ts,tsx}'],

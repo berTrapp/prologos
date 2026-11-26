@@ -1,0 +1,12 @@
+# Arquivos que não vão para o repositório. O .env fica fora; o .env.example entra.
+.venv/
+__pycache__/
+*.py[cod]
+db.sqlite3
+.env
+staticfiles/
+media/
+.pytest_cache/
+.ruff_cache/
+.coverage
+.DS_Store

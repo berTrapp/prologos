@@ -1,0 +1,57 @@
+%% Agenda de aulas — mapa do projeto (Completo)
+%% Gerado pelo Prólogos a partir do mapa do projeto.
+flowchart LR
+  subgraph z1["Metodologia"]
+    n1["Kanban"]
+    n2["Conventional Commits"]
+  end
+  subgraph z2["Ferramentas"]
+    n3["Git + GitHub"]
+    n4[".NET CLI + NuGet"]
+    n5["npm"]
+    n6["Docker"]
+    n7["xUnit"]
+  end
+  subgraph z3["Interface"]
+    n8["React + Vite"]
+  end
+  subgraph z4["Aplicação"]
+    n9["ASP.NET Core"]
+    n10["Web API (Controllers)"]
+  end
+  subgraph z5["Dados"]
+    n11["Banco de dados: PostgreSQL"]
+    n12["Entity Framework Core"]
+    n13["EF Core Migrations"]
+  end
+  subgraph z6["Ambiente"]
+    n14[".env.example"]
+    n15["Desenvolvimento e produção"]
+  end
+  subgraph z7["Infraestrutura"]
+    n16["Hospedagem: Plataforma gerenciada (Azure App Service, Render)"]
+    n17["GitHub Actions"]
+  end
+  subgraph z8["Segurança"]
+    n18["ASP.NET Core Identity"]
+    n19["HTTPS"]
+    n20["Limite de tentativas"]
+    n21["Backup (a decidir)"]
+  end
+  subgraph z9["Observabilidade"]
+    n22["Logs (ILogger)"]
+    n23["Health checks"]
+    n24["Captura de erros (futuro)"]
+  end
+  n8 -->|"chama"| n10
+  n10 -->|"usa"| n9
+  n9 -->|"usa"| n12
+  n12 -->|"grava em"| n11
+  n18 -->|"protege"| n10
+  n17 -->|"publica em"| n16
+  classDef pending stroke-dasharray: 5 4
+  classDef future stroke-dasharray: 2 4
+  classDef muted opacity: 0.5
+  class n21 pending
+  class n24 future
+  %% Fluxo "Salvar um registro": React + Vite → Web API (Controllers) → ASP.NET Core → Entity Framework Core → Banco de dados

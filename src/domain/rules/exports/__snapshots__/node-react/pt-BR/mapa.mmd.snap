@@ -1,0 +1,57 @@
+%% Agenda de aulas — mapa do projeto (Completo)
+%% Gerado pelo Prólogos a partir do mapa do projeto.
+flowchart LR
+  subgraph z1["Metodologia"]
+    n1["Kanban"]
+    n2["Conventional Commits"]
+  end
+  subgraph z2["Ferramentas"]
+    n3["Git + GitHub"]
+    n4["npm"]
+    n5["Docker"]
+    n6["Vitest"]
+  end
+  subgraph z3["Interface"]
+    n7["React + Vite"]
+    n8["Tailwind CSS"]
+  end
+  subgraph z4["Aplicação"]
+    n9["Express"]
+    n10["API REST"]
+    n11["Zod"]
+  end
+  subgraph z5["Dados"]
+    n12["Banco de dados: PostgreSQL"]
+    n13["Prisma"]
+    n14["Prisma Migrate"]
+  end
+  subgraph z6["Ambiente"]
+    n15[".env.example"]
+    n16["Desenvolvimento e produção"]
+  end
+  subgraph z7["Infraestrutura"]
+    n17["Hospedagem: Plataforma gerenciada (Render, Railway)"]
+    n18["GitHub Actions"]
+  end
+  subgraph z8["Segurança"]
+    n19["Auth.js"]
+    n20["HTTPS"]
+    n21["Helmet + rate limit"]
+    n22["Backup (a decidir)"]
+  end
+  subgraph z9["Observabilidade"]
+    n23["Logs (pino)"]
+    n24["Captura de erros (futuro)"]
+  end
+  n7 -->|"chama"| n10
+  n10 -->|"usa"| n9
+  n9 -->|"usa"| n13
+  n13 -->|"grava em"| n12
+  n19 -->|"protege"| n10
+  n18 -->|"publica em"| n17
+  classDef pending stroke-dasharray: 5 4
+  classDef future stroke-dasharray: 2 4
+  classDef muted opacity: 0.5
+  class n22 pending
+  class n24 future
+  %% Fluxo "Salvar um registro": React + Vite → API REST → Express → Prisma → Banco de dados

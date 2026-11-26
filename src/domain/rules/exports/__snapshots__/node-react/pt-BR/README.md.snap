@@ -1,0 +1,139 @@
+# Agenda de aulas
+
+Alunos marcam aulas e o professor confirma.
+
+Stack: Node + React.
+
+## Como rodar localmente
+
+### Pré-requisitos
+
+- Node.js
+- Git
+- Docker
+
+### Passo a passo
+
+1. Clone o repositório e entre na pasta:
+   ```bash
+   git clone https://github.com/voce/agenda-de-aulas.git
+   cd agenda-de-aulas
+   ```
+2. Instale as dependências da API:
+   ```bash
+   cd api && npm install
+   ```
+3. Instale as dependências do front:
+   ```bash
+   cd web && npm install
+   ```
+4. Copie as variáveis e preencha os valores:
+   ```bash
+   cp .env.example .env
+   ```
+5. Suba o banco de dados:
+   ```bash
+   docker compose up -d
+   ```
+6. Crie as tabelas do banco:
+   ```bash
+   cd api && npx prisma migrate dev
+   ```
+7. Rode a API:
+   ```bash
+   cd api && npm run dev
+   ```
+8. Rode o front em outro terminal:
+   ```bash
+   cd web && npm run dev
+   ```
+
+### Variáveis de ambiente
+
+| Variável | Para que serve | Onde conseguir |
+| --- | --- | --- |
+| `PORT` | Porta da API. | Exemplo: `3000` |
+| `DATABASE_URL` (segredo) | Endereço completo do banco, com usuário e senha. | Montado a partir do banco que você criar: postgresql://usuario:senha@host:5432/nome |
+| `AUTH_SECRET` (segredo) | Assina as sessões de login. | npx auth secret |
+| `VITE_API_URL` | Endereço da API que o front chama. Fica visível no navegador. | Exemplo: `http://localhost:3000/api` |
+| `DB_USER` | Lida pelo docker-compose.yml para criar o banco. | Exemplo: `app` |
+| `DB_NAME` | Lida pelo docker-compose.yml para criar o banco. | Exemplo: `agenda_de_aulas` |
+| `DB_PASSWORD` (segredo) | Lida pelo docker-compose.yml para criar o banco. | Escolha uma senha para o banco no seu computador. |
+
+Nenhum valor secreto fica no repositório: preencha os segredos só no seu .env.
+
+## Estrutura de pastas
+
+| Pasta | O que tem |
+| --- | --- |
+| `web/src` | Código do front em React. |
+| `api/src/routes` | Rotas da API, uma por assunto. |
+| `api/src/services` | Regras de negócio, sem saber de HTTP. |
+| `api/prisma/schema.prisma` | Modelo do banco e migrations. |
+| `api/tests` | Testes da API. |
+
+## Mapa do projeto
+
+```mermaid
+%% Agenda de aulas — mapa do projeto (Completo)
+%% Gerado pelo Prólogos a partir do mapa do projeto.
+flowchart LR
+  subgraph z1["Metodologia"]
+    n1["Kanban"]
+    n2["Conventional Commits"]
+  end
+  subgraph z2["Ferramentas"]
+    n3["Git + GitHub"]
+    n4["npm"]
+    n5["Docker"]
+    n6["Vitest"]
+  end
+  subgraph z3["Interface"]
+    n7["React + Vite"]
+    n8["Tailwind CSS"]
+  end
+  subgraph z4["Aplicação"]
+    n9["Express"]
+    n10["API REST"]
+    n11["Zod"]
+  end
+  subgraph z5["Dados"]
+    n12["Banco de dados: PostgreSQL"]
+    n13["Prisma"]
+    n14["Prisma Migrate"]
+  end
+  subgraph z6["Ambiente"]
+    n15[".env.example"]
+    n16["Desenvolvimento e produção"]
+  end
+  subgraph z7["Infraestrutura"]
+    n17["Hospedagem: Plataforma gerenciada (Render, Railway)"]
+    n18["GitHub Actions"]
+  end
+  subgraph z8["Segurança"]
+    n19["Auth.js"]
+    n20["HTTPS"]
+    n21["Helmet + rate limit"]
+    n22["Backup (a decidir)"]
+  end
+  subgraph z9["Observabilidade"]
+    n23["Logs (pino)"]
+    n24["Captura de erros (futuro)"]
+  end
+  n7 -->|"chama"| n10
+  n10 -->|"usa"| n9
+  n9 -->|"usa"| n13
+  n13 -->|"grava em"| n12
+  n19 -->|"protege"| n10
+  n18 -->|"publica em"| n17
+  classDef pending stroke-dasharray: 5 4
+  classDef future stroke-dasharray: 2 4
+  classDef muted opacity: 0.5
+  class n22 pending
+  class n24 future
+  %% Fluxo "Salvar um registro": React + Vite → API REST → Express → Prisma → Banco de dados
+```
+
+---
+
+Planejado com o Prólogos.

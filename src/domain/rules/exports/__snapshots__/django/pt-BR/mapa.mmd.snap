@@ -1,0 +1,57 @@
+%% Agenda de aulas — mapa do projeto (Completo)
+%% Gerado pelo Prólogos a partir do mapa do projeto.
+flowchart LR
+  subgraph z1["Metodologia"]
+    n1["Kanban"]
+    n2["Conventional Commits"]
+  end
+  subgraph z2["Ferramentas"]
+    n3["Git + GitHub"]
+    n4["pip + venv"]
+    n5["Docker"]
+    n6["Ruff"]
+  end
+  subgraph z3["Interface"]
+    n7["Templates do Django"]
+    n8["HTMX"]
+  end
+  subgraph z4["Aplicação"]
+    n9["Django"]
+    n10["Django Admin"]
+    n11["Django REST Framework (futuro)"]
+  end
+  subgraph z5["Dados"]
+    n12["Banco de dados: PostgreSQL"]
+    n13["Django ORM"]
+    n14["Migrations"]
+  end
+  subgraph z6["Ambiente"]
+    n15[".env.example"]
+    n16["Desenvolvimento e produção"]
+  end
+  subgraph z7["Infraestrutura"]
+    n17["Hospedagem: Plataforma gerenciada (Render, PythonAnywhere)"]
+    n18["GitHub Actions"]
+  end
+  subgraph z8["Segurança"]
+    n19["Django Auth"]
+    n20["HTTPS"]
+    n21["manage.py check --deploy"]
+    n22["Backup (a decidir)"]
+  end
+  subgraph z9["Observabilidade"]
+    n23["Logs"]
+    n24["Captura de erros (futuro)"]
+  end
+  n7 -->|"renderizado por"| n9
+  n8 -->|"chama"| n9
+  n9 -->|"usa"| n13
+  n13 -->|"grava em"| n12
+  n19 -->|"protege"| n9
+  n18 -->|"publica em"| n17
+  classDef pending stroke-dasharray: 5 4
+  classDef future stroke-dasharray: 2 4
+  classDef muted opacity: 0.5
+  class n22 pending
+  class n11,n24 future
+  %% Fluxo "Enviar um formulário": HTMX → Django → Django ORM → Banco de dados

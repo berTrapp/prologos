@@ -1,0 +1,141 @@
+# Agenda de aulas
+
+Alunos marcam aulas e o professor confirma.
+
+Stack: C# + .NET.
+
+## Como rodar localmente
+
+### Pré-requisitos
+
+- .NET SDK
+- Node.js
+- Git
+- Docker
+
+### Passo a passo
+
+1. Clone o repositório e entre na pasta:
+   ```bash
+   git clone https://github.com/voce/agenda-de-aulas.git
+   cd agenda-de-aulas
+   ```
+2. Restaure os pacotes da API:
+   ```bash
+   dotnet restore Api
+   ```
+3. Instale as dependências do front:
+   ```bash
+   cd web && npm install
+   ```
+4. Copie as variáveis e preencha os valores:
+   ```bash
+   cp .env.example .env
+   ```
+5. Suba o banco de dados:
+   ```bash
+   docker compose up -d
+   ```
+6. Crie as tabelas do banco:
+   ```bash
+   dotnet tool install --global dotnet-ef && dotnet ef database update --project Api
+   ```
+7. Rode a API:
+   ```bash
+   dotnet run --project Api
+   ```
+8. Rode o front em outro terminal:
+   ```bash
+   cd web && npm run dev
+   ```
+
+### Variáveis de ambiente
+
+| Variável | Para que serve | Onde conseguir |
+| --- | --- | --- |
+| `ASPNETCORE_ENVIRONMENT` | Ambiente atual (Development ou Production). | Exemplo: `Development` |
+| `CONNECTIONSTRINGS__DEFAULT` (segredo) | Conexão com o banco, com usuário e senha. | Montada a partir do banco que você criar. Em desenvolvimento, prefira dotnet user-secrets. |
+| `JWT__KEY` (segredo) | Assina os tokens de login. | openssl rand -base64 32 |
+| `VITE_API_URL` | Endereço da API que o front chama. Fica visível no navegador. | Exemplo: `http://localhost:5000/api` |
+| `DB_USER` | Lida pelo docker-compose.yml para criar o banco. | Exemplo: `app` |
+| `DB_NAME` | Lida pelo docker-compose.yml para criar o banco. | Exemplo: `agenda_de_aulas` |
+| `DB_PASSWORD` (segredo) | Lida pelo docker-compose.yml para criar o banco. | Escolha uma senha para o banco no seu computador. |
+
+Nenhum valor secreto fica no repositório: preencha os segredos só no seu .env.
+
+## Estrutura de pastas
+
+| Pasta | O que tem |
+| --- | --- |
+| `Api/Controllers` | Recebem as requisições e devolvem respostas. |
+| `Api/Services` | Regras de negócio. |
+| `Api/Data` | DbContext e entidades do Entity Framework. |
+| `Api/Migrations` | Migrations geradas pelo EF Core. |
+| `Api/appsettings.json` | Configuração; segredos vêm de variáveis de ambiente ou User Secrets. |
+| `web/src` | Código do front em React. |
+
+## Mapa do projeto
+
+```mermaid
+%% Agenda de aulas — mapa do projeto (Completo)
+%% Gerado pelo Prólogos a partir do mapa do projeto.
+flowchart LR
+  subgraph z1["Metodologia"]
+    n1["Kanban"]
+    n2["Conventional Commits"]
+  end
+  subgraph z2["Ferramentas"]
+    n3["Git + GitHub"]
+    n4[".NET CLI + NuGet"]
+    n5["npm"]
+    n6["Docker"]
+    n7["xUnit"]
+  end
+  subgraph z3["Interface"]
+    n8["React + Vite"]
+  end
+  subgraph z4["Aplicação"]
+    n9["ASP.NET Core"]
+    n10["Web API (Controllers)"]
+  end
+  subgraph z5["Dados"]
+    n11["Banco de dados: PostgreSQL"]
+    n12["Entity Framework Core"]
+    n13["EF Core Migrations"]
+  end
+  subgraph z6["Ambiente"]
+    n14[".env.example"]
+    n15["Desenvolvimento e produção"]
+  end
+  subgraph z7["Infraestrutura"]
+    n16["Hospedagem: Plataforma gerenciada (Azure App Service, Render)"]
+    n17["GitHub Actions"]
+  end
+  subgraph z8["Segurança"]
+    n18["ASP.NET Core Identity"]
+    n19["HTTPS"]
+    n20["Limite de tentativas"]
+    n21["Backup (a decidir)"]
+  end
+  subgraph z9["Observabilidade"]
+    n22["Logs (ILogger)"]
+    n23["Health checks"]
+    n24["Captura de erros (futuro)"]
+  end
+  n8 -->|"chama"| n10
+  n10 -->|"usa"| n9
+  n9 -->|"usa"| n12
+  n12 -->|"grava em"| n11
+  n18 -->|"protege"| n10
+  n17 -->|"publica em"| n16
+  classDef pending stroke-dasharray: 5 4
+  classDef future stroke-dasharray: 2 4
+  classDef muted opacity: 0.5
+  class n21 pending
+  class n24 future
+  %% Fluxo "Salvar um registro": React + Vite → Web API (Controllers) → ASP.NET Core → Entity Framework Core → Banco de dados
+```
+
+---
+
+Planejado com o Prólogos.

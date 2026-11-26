@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1264" height="700" viewBox="0 0 1264 700" font-family="Geist, 'Geist Variable', ui-sans-serif, system-ui, sans-serif" role="img" aria-label="Agenda de aulas project map">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9 z" fill="#8f95a8"/></marker></defs>
+<rect width="100%" height="100%" fill="#0b0d12"/>
+<text x="32" y="54" font-size="22" font-weight="600" fill="#e6e8ee">Agenda de aulas</text>
+<text x="32" y="78" font-size="13" fill="#8f95a8">Alunos marcam aulas e o professor confirma.</text>
+<g class="zone" data-zone="z1">
+<rect x="32" y="96" width="384" height="100" rx="16" fill="#121419" stroke="#f472b6" stroke-opacity="0.35"/>
+<rect x="32" y="96" width="384" height="100" rx="16" fill="#f472b6" fill-opacity="0.05"/>
+<circle cx="56" cy="116" r="4" fill="#f472b6"/>
+<text x="68" y="120.5" font-size="12.5" font-weight="600" fill="#e6e8ee">Methodology<tspan fill="#7f859b" font-weight="400">  2</tspan></text>
+</g>
+<g class="zone" data-zone="z2">
+<rect x="440" y="96" width="384" height="212" rx="16" fill="#121419" stroke="#facc15" stroke-opacity="0.35"/>
+<rect x="440" y="96" width="384" height="212" rx="16" fill="#facc15" fill-opacity="0.05"/>
+<circle cx="464" cy="116" r="4" fill="#facc15"/>
+<text x="476" y="120.5" font-size="12.5" font-weight="600" fill="#e6e8ee">Tools<tspan fill="#7f859b" font-weight="400">  5</tspan></text>
+</g>
+<g class="zone" data-zone="z3">
+<rect x="848" y="96" width="384" height="100" rx="16" fill="#121419" stroke="#7c5cff" stroke-opacity="0.35"/>
+<rect x="848" y="96" width="384" height="100" rx="16" fill="#7c5cff" fill-opacity="0.05"/>
+<circle cx="872" cy="116" r="4" fill="#7c5cff"/>
+<text x="884" y="120.5" font-size="12.5" font-weight="600" fill="#e6e8ee">Interface<tspan fill="#7f859b" font-weight="400">  1</tspan></text>
+</g>
+<g class="zone" data-zone="z4">
+<rect x="32" y="220" width="384" height="156" rx="16" fill="#121419" stroke="#60a5fa" stroke-opacity="0.35"/>
+<rect x="32" y="220" width="384" height="156" rx="16" fill="#60a5fa" fill-opacity="0.05"/>
+<circle cx="56" cy="240" r="4" fill="#60a5fa"/>
+<text x="68" y="244.5" font-size="12.5" font-weight="600" fill="#e6e8ee">Application<tspan fill="#7f859b" font-weight="400">  3</tspan></text>
+</g>
+<g class="zone" data-zone="z5">
+<rect x="440" y="332" width="384" height="156" rx="16" fill="#121419" stroke="#34d399" stroke-opacity="0.35"/>
+<rect x="440" y="332" width="384" height="156" rx="16" fill="#34d399" fill-opacity="0.05"/>
+<circle cx="464" cy="352" r="4" fill="#34d399"/>
+<text x="476" y="356.5" font-size="12.5" font-weight="600" fill="#e6e8ee">Data<tspan fill="#7f859b" font-weight="400">  3</tspan></text>
+</g>
+<g class="zone" data-zone="z6">
+<rect x="848" y="220" width="384" height="100" rx="16" fill="#121419" stroke="#fb923c" stroke-opacity="0.35"/>
+<rect x="848" y="220" width="384" height="100" rx="16" fill="#fb923c" fill-opacity="0.05"/>
+<circle cx="872" cy="240" r="4" fill="#fb923c"/>
+<text x="884" y="244.5" font-size="12.5" font-weight="600" fill="#e6e8ee">Environment<tspan fill="#7f859b" font-weight="400">  2</tspan></text>
+</g>
+<g class="zone" data-zone="z7">
+<rect x="32" y="400" width="384" height="100" rx="16" fill="#121419" stroke="#22d3ee" stroke-opacity="0.35"/>
+<rect x="32" y="400" width="384" height="100" rx="16" fill="#22d3ee" fill-opacity="0.05"/>
+<circle cx="56" cy="420" r="4" fill="#22d3ee"/>
+<text x="68" y="424.5" font-size="12.5" font-weight="600" fill="#e6e8ee">Infrastructure<tspan fill="#7f859b" font-weight="400">  2</tspan></text>
+</g>
+<g class="zone" data-zone="z8">
+<rect x="440" y="512" width="384" height="156" rx="16" fill="#121419" stroke="#f87171" stroke-opacity="0.35"/>
+<rect x="440" y="512" width="384" height="156" rx="16" fill="#f87171" fill-opacity="0.05"/>
+<circle cx="464" cy="532" r="4" fill="#f87171"/>
+<text x="476" y="536.5" font-size="12.5" font-weight="600" fill="#e6e8ee">Security<tspan fill="#7f859b" font-weight="400">  3</tspan></text>
+</g>
+<g class="zone" data-zone="z9">
+<rect x="848" y="344" width="384" height="156" rx="16" fill="#121419" stroke="#a3e635" stroke-opacity="0.35"/>
+<rect x="848" y="344" width="384" height="156" rx="16" fill="#a3e635" fill-opacity="0.05"/>
+<circle cx="872" cy="364" r="4" fill="#a3e635"/>
+<text x="884" y="368.5" font-size="12.5" font-weight="600" fill="#e6e8ee">Observability<tspan fill="#7f859b" font-weight="400">  3</tspan></text>
+</g>
+<path class="edge" data-edge="e1" data-ends="n8 n10" d="M868 160 C632 160 632 284 396 284" fill="none" stroke="#8f95a8" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#arrow)"><title>calls</title></path>
+<path class="edge" data-edge="e2" data-ends="n10 n9" d="M228 284 C204 284 244 284 220 284" fill="none" stroke="#8f95a8" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#arrow)"><title>uses</title></path>
+<path class="edge" data-edge="e3" data-ends="n9 n13" d="M220 284 C428 284 428 396 636 396" fill="none" stroke="#8f95a8" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#arrow)"><title>uses</title></path>
+<path class="edge" data-edge="e4" data-ends="n13 n12" d="M636 396 C612 396 652 396 628 396" fill="none" stroke="#8f95a8" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#arrow)"><title>writes to</title></path>
+<path class="edge" data-edge="e5" data-ends="n14 n12" d="M544 428 C544 404 544 444 544 420" fill="none" stroke="#8f95a8" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#arrow)"><title>writes to</title></path>
+<path class="edge" data-edge="e6" data-ends="n19 n10" d="M460 576 C428 576 428 284 396 284" fill="none" stroke="#8f95a8" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#arrow)"><title>protects</title></path>
+<path class="edge" data-edge="e7" data-ends="n18 n17" d="M228 464 C204 464 244 464 220 464" fill="none" stroke="#8f95a8" stroke-opacity="0.7" stroke-width="1.5" marker-end="url(#arrow)"><title>deploys to</title></path>
+<g class="item" data-item="n1">
+<title>Kanban</title>
+<rect x="52" y="136" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="64" y="165" font-size="13" font-weight="500" fill="#e6e8ee">Kanban</text>
+</g>
+<g class="item" data-item="n2">
+<title>Conventional Commits</title>
+<rect x="228" y="136" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="240" y="165" font-size="13" font-weight="500" fill="#e6e8ee">Conventional Commits</text>
+</g>
+<g class="item" data-item="n3">
+<title>Git + GitHub</title>
+<rect x="460" y="136" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="472" y="165" font-size="13" font-weight="500" fill="#e6e8ee">Git + GitHub</text>
+</g>
+<g class="item" data-item="n4">
+<title>Maven</title>
+<rect x="636" y="136" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="648" y="165" font-size="13" font-weight="500" fill="#e6e8ee">Maven</text>
+</g>
+<g class="item" data-item="n5">
+<title>npm</title>
+<rect x="460" y="192" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="472" y="221" font-size="13" font-weight="500" fill="#e6e8ee">npm</text>
+</g>
+<g class="item" data-item="n6">
+<title>Docker</title>
+<rect x="636" y="192" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="648" y="221" font-size="13" font-weight="500" fill="#e6e8ee">Docker</text>
+</g>
+<g class="item" data-item="n7">
+<title>JUnit</title>
+<rect x="460" y="248" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="472" y="277" font-size="13" font-weight="500" fill="#e6e8ee">JUnit</text>
+</g>
+<g class="item" data-item="n8">
+<title>React + Vite</title>
+<rect x="868" y="136" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="880" y="165" font-size="13" font-weight="500" fill="#e6e8ee">React + Vite</text>
+</g>
+<g class="item" data-item="n9">
+<title>Spring Boot</title>
+<rect x="52" y="260" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="64" y="289" font-size="13" font-weight="500" fill="#e6e8ee">Spring Boot</text>
+</g>
+<g class="item" data-item="n10">
+<title>API REST (@RestController)</title>
+<rect x="228" y="260" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="240" y="289" font-size="13" font-weight="500" fill="#e6e8ee">API REST (@RestContr…</text>
+</g>
+<g class="item" data-item="n11">
+<title>Bean Validation</title>
+<rect x="52" y="316" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="64" y="345" font-size="13" font-weight="500" fill="#e6e8ee">Bean Validation</text>
+</g>
+<g class="item" data-item="n12">
+<title>Database</title>
+<rect x="460" y="372" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="472" y="392" font-size="13" font-weight="500" fill="#e6e8ee">Database</text>
+<text x="472" y="409" font-size="11.5" fill="#8f95a8">PostgreSQL</text>
+</g>
+<g class="item" data-item="n13">
+<title>Spring Data JPA</title>
+<rect x="636" y="372" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="648" y="401" font-size="13" font-weight="500" fill="#e6e8ee">Spring Data JPA</text>
+</g>
+<g class="item" data-item="n14">
+<title>Flyway</title>
+<rect x="460" y="428" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="472" y="457" font-size="13" font-weight="500" fill="#e6e8ee">Flyway</text>
+</g>
+<g class="item" data-item="n15">
+<title>.env.example</title>
+<rect x="868" y="260" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="880" y="289" font-size="13" font-weight="500" fill="#e6e8ee">.env.example</text>
+</g>
+<g class="item" data-item="n16">
+<title>Development and production</title>
+<rect x="1044" y="260" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="1056" y="289" font-size="13" font-weight="500" fill="#e6e8ee">Development and prod…</text>
+</g>
+<g class="item" data-item="n17">
+<title>Hosting</title>
+<rect x="52" y="440" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="64" y="460" font-size="13" font-weight="500" fill="#e6e8ee">Hosting</text>
+<text x="64" y="477" font-size="11.5" fill="#8f95a8">Managed platform (Render…</text>
+</g>
+<g class="item" data-item="n18">
+<title>GitHub Actions</title>
+<rect x="228" y="440" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="240" y="469" font-size="13" font-weight="500" fill="#e6e8ee">GitHub Actions</text>
+</g>
+<g class="item" data-item="n19">
+<title>Spring Security</title>
+<rect x="460" y="552" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="472" y="581" font-size="13" font-weight="500" fill="#e6e8ee">Spring Security</text>
+</g>
+<g class="item" data-item="n20">
+<title>HTTPS</title>
+<rect x="636" y="552" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="648" y="581" font-size="13" font-weight="500" fill="#e6e8ee">HTTPS</text>
+</g>
+<g class="item" data-item="n21">
+<title>Backup</title>
+<rect x="460" y="608" width="168" height="48" rx="10" fill="#12151b" stroke="#fcd34d" stroke-dasharray="5 4"/>
+<text x="472" y="628" font-size="13" font-weight="500" fill="#e6e8ee">Backup</text>
+<text x="472" y="645" font-size="11.5" fill="#fcd34d">To decide</text>
+</g>
+<g class="item" data-item="n22">
+<title>Logs (Logback)</title>
+<rect x="868" y="384" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="880" y="413" font-size="13" font-weight="500" fill="#e6e8ee">Logs (Logback)</text>
+</g>
+<g class="item" data-item="n23">
+<title>Spring Boot Actuator</title>
+<rect x="1044" y="384" width="168" height="48" rx="10" fill="#12151b" stroke="rgb(255 255 255 / 12%)"/>
+<text x="1056" y="413" font-size="13" font-weight="500" fill="#e6e8ee">Spring Boot Actuator</text>
+</g>
+<g class="item" data-item="n24" opacity="0.75">
+<title>Error tracking</title>
+<rect x="868" y="440" width="168" height="48" rx="10" fill="#12151b" stroke="#7f859b" stroke-dasharray="5 4"/>
+<text x="880" y="460" font-size="13" font-weight="500" fill="#e6e8ee">Error tracking</text>
+<text x="880" y="477" font-size="11.5" fill="#8f95a8">Future</text>
+</g>
+</svg>

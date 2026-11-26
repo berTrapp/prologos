@@ -1,0 +1,12 @@
+# Arquivos que não vão para o repositório. O .env fica fora; o .env.example entra.
+bin/
+obj/
+*.user
+.vs/
+node_modules/
+dist/
+.env
+*.log
+.idea/
+.vscode/
+.DS_Store

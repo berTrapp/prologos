@@ -843,5 +843,91 @@
     "summary_vars_zero": "0 variables",
     "summary_secrets_zero": "0 secretos",
     "summary_warnings_zero": "0 avisos"
+  },
+  "files": {
+    "generated": "Generado por Prólogos a partir del mapa del proyecto.",
+    "commit": "chore: estructura inicial del proyecto",
+    "view": {
+      "today": "Hoy",
+      "complete": "Completo"
+    },
+    "env": {
+      "title": "{{name}} — variables de entorno",
+      "generated": "Generado por Prólogos. Los secretos quedan en blanco: complétalos solo en tu .env, que no va al repositorio.",
+      "empty": "El proyecto todavía no tiene variables.",
+      "dockerDescription": "La lee docker-compose.yml para crear la base de datos.",
+      "group": {
+        "front": "Front (va al navegador: nada secreto aquí)",
+        "app": "App (va al celular: nada secreto aquí)",
+        "back": "API (queda en el servidor)",
+        "docker": "Docker (las lee docker-compose.yml)",
+        "other": "Otras"
+      }
+    },
+    "compose": {
+      "title": "{{name}} — servicios para desarrollo",
+      "generated": "Generado por Prólogos. Las contraseñas vienen del .env; ninguna queda en este archivo.",
+      "version": "La imagen usa la versión más reciente; fija la versión antes de ir a producción.",
+      "required": "define {{key}} en el .env",
+      "pending": "La base de datos todavía está por decidir. Decídela en el mapa y genera este archivo de nuevo.",
+      "notApplicable": "El proyecto marcó la base de datos como \"No aplica\", así que no hay servicio que levantar.",
+      "sqlite": "La base es SQLite: un archivo dentro del proyecto, sin servicio que levantar.",
+      "unknown": "Prólogos todavía no genera el servicio de {{choice}}. Agrega el servicio a mano."
+    },
+    "gitignore": {
+      "title": "Archivos que no van al repositorio. El .env queda fuera; el .env.example entra."
+    },
+    "readme": {
+      "stack": "Stack: {{kit}}.",
+      "runLocally": "Cómo ejecutarlo localmente",
+      "prerequisites": "Requisitos previos",
+      "steps": "Paso a paso",
+      "clone": "Clona el repositorio y entra en la carpeta:",
+      "githubUser": "tu-usuario",
+      "copyEnv": "Copia las variables y completa los valores:",
+      "startDatabase": "Levanta la base de datos:",
+      "noStack": "Los comandos para instalar y ejecutar dependen del stack, que todavía falta decidir en el mapa.",
+      "variables": "Variables de entorno",
+      "noVariables": "El proyecto todavía no tiene variables de entorno.",
+      "table": {
+        "key": "Variable",
+        "what": "Para qué sirve",
+        "howToGet": "Dónde conseguirla",
+        "path": "Carpeta",
+        "contains": "Qué contiene"
+      },
+      "example": "Ejemplo: {{value}}",
+      "secret": "(secreto)",
+      "noSecrets": "Ningún valor secreto queda en el repositorio: completa los secretos solo en tu .env.",
+      "folders": "Estructura de carpetas",
+      "map": "Mapa del proyecto",
+      "notes": "Notas",
+      "risks": "Riesgos",
+      "footer": "Planificado con Prólogos.",
+      "localPassword": "Elige una contraseña para la base en tu computadora."
+    },
+    "mermaid": {
+      "title": "{{name}} — mapa del proyecto ({{view}})",
+      "flow": "Flujo \"{{name}}\": {{path}}"
+    },
+    "svg": {
+      "label": "Mapa del proyecto {{name}}"
+    },
+    "html": {
+      "title": "{{name}} · mapa del proyecto",
+      "tools": "Visualización",
+      "view": "Vista",
+      "zoomOut": "Alejar",
+      "zoomIn": "Acercar",
+      "fit": "Ajustar",
+      "canvas": "Mapa del proyecto. Arrastra para moverlo; usa + y - para el zoom.",
+      "canvasRole": "mapa",
+      "close": "Cerrar los detalles",
+      "notes": "Notas y riesgos",
+      "legend": "Zonas y flujos",
+      "zones": "Zonas",
+      "flows": "Flujos",
+      "footer": "Solo lectura. Hecho con Prólogos."
+    }
   }
 }

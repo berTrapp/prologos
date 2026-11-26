@@ -1,0 +1,112 @@
+# Agenda de aulas
+
+Alunos marcam aulas e o professor confirma.
+
+Stack: Flutter.
+
+## Como rodar localmente
+
+### Pré-requisitos
+
+- Flutter SDK
+- Git
+- Android Studio (ou Xcode, no Mac)
+
+### Passo a passo
+
+1. Clone o repositório e entre na pasta:
+   ```bash
+   git clone https://github.com/voce/agenda-de-aulas.git
+   cd agenda-de-aulas
+   ```
+2. Instale as dependências:
+   ```bash
+   flutter pub get
+   ```
+3. Copie as variáveis e preencha os valores:
+   ```bash
+   cp .env.example .env
+   ```
+4. Rode o app num emulador ou celular conectado:
+   ```bash
+   flutter run
+   ```
+
+### Variáveis de ambiente
+
+| Variável | Para que serve | Onde conseguir |
+| --- | --- | --- |
+| `API_URL` | Endereço da API, passado com --dart-define. Vai dentro do app: qualquer pessoa pode ler. | Exemplo: `https://api.exemplo.com` |
+
+Nenhum valor secreto fica no repositório: preencha os segredos só no seu .env.
+
+## Estrutura de pastas
+
+| Pasta | O que tem |
+| --- | --- |
+| `lib/main.dart` | Ponto de entrada do app. |
+| `lib/features/` | Uma pasta por funcionalidade, com telas e lógica. |
+| `lib/data/` | Acesso à API e ao banco local. |
+| `test/` | Testes. |
+| `pubspec.yaml` | Dependências, ícones e fontes. |
+
+## Mapa do projeto
+
+```mermaid
+%% Agenda de aulas — mapa do projeto (Completo)
+%% Gerado pelo Prólogos a partir do mapa do projeto.
+flowchart LR
+  subgraph z1["Metodologia"]
+    n1["Kanban"]
+    n2["Conventional Commits"]
+  end
+  subgraph z2["Ferramentas"]
+    n3["Git + GitHub"]
+    n4["pub"]
+    n5["Android Studio"]
+    n6["flutter test"]
+  end
+  subgraph z3["Interface"]
+    n7["Widgets (Material Design)"]
+    n8["go_router"]
+  end
+  subgraph z4["Aplicação"]
+    n9["Riverpod"]
+    n10["Back-end (API): Firebase"]
+  end
+  subgraph z5["Dados"]
+    n11["sqflite"]
+  end
+  subgraph z6["Ambiente"]
+    n12[".env.example"]
+    n13["Desenvolvimento e produção"]
+  end
+  subgraph z7["Infraestrutura"]
+    n14["Build de release"]
+    n15["Contas nas lojas: Começar só com Android (futuro)"]
+    n16["GitHub Actions"]
+  end
+  subgraph z8["Segurança"]
+    n17["flutter_secure_storage"]
+    n18["HTTPS"]
+  end
+  subgraph z9["Observabilidade"]
+    n19["Logs (logging)"]
+    n20["Captura de erros (futuro)"]
+  end
+  n8 -->|"usa"| n7
+  n7 -->|"usa"| n9
+  n9 -->|"chama"| n10
+  n9 -->|"grava em"| n11
+  n17 -->|"protege"| n10
+  n14 -->|"publica em"| n15
+  classDef pending stroke-dasharray: 5 4
+  classDef future stroke-dasharray: 2 4
+  classDef muted opacity: 0.5
+  class n15,n20 future
+  %% Fluxo "Salvar e sincronizar": Widgets (Material Design) → Riverpod → sqflite
+```
+
+---
+
+Planejado com o Prólogos.

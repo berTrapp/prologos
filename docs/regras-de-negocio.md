@@ -87,6 +87,10 @@ Planejando · Em desenvolvimento · Pausado · Concluído · Arquivado. Arquivar
 - Nunca exporta valores secretos (pela regra 3, eles nem existem no Prólogos).
 - Formatos: `.env.example`, `docker-compose.yml`, README com Mermaid, `mapa.mmd`, PNG/SVG, **`mapa.html`** (regra 19) e `prologos.json` (backup que pode ser importado de volta).
 - Arquivos gerados saem no idioma escolhido.
+- **Opções:** "Incluir itens futuros" (desligada: o mapa sai na visão Hoje; ligada: Completo, e o `mapa.html` ganha Hoje/Completo) e "Incluir notas e riscos" (notas públicas e riscos em aberto). "Esconder valores secretos" aparece sempre ligada e travada. As escolhas ficam lembradas.
+- O `.env.example` traz só chaves, agrupadas por onde vão (front ou app, API, Docker); segredo fica em branco e só valores não secretos de desenvolvimento aparecem.
+- O `docker-compose.yml` sai nos kits que usam Docker, com o serviço do banco escolhido (PostgreSQL, MySQL ou SQL Server), senha lida do `.env` e imagem sem versão fixa, com o aviso de fixar antes de produção. Com SQLite, banco a decidir ou "Não se aplica", o arquivo explica o que falta.
+- PNG e SVG saem do mesmo desenho, com o tema atual; o PNG em dobro da resolução.
 
 ## 11. Lixeira
 
@@ -133,6 +137,9 @@ Planejando · Em desenvolvimento · Pausado · Concluído · Arquivado. Arquivar
 ## 16. Pronto para codar
 
 - Quando as decisões essenciais estão fechadas, o projeto atinge o marco **Pronto para codar** e oferece o kit de início do repositório: README com "Como rodar localmente" (pré-requisitos, variáveis explicadas e onde conseguir cada valor, comandos em ordem), `.env.example`, `docker-compose.yml` (quando o kit usa), `.gitignore` e estrutura de pastas.
+- **Decisões essenciais, nesta ordem:** stack escolhida (há kit, ou o item Stack decidido); ambiente preparado (todos os passos da trilha, quando ela existe); cada item de "Onde roda" do kit decidido ou "Não se aplica"; autenticação (o item do kit com o conceito `auth`, quando existe) decidida ou "Não se aplica"; variáveis documentadas (ao menos uma, e todas com descrição). Item essencial que saiu do mapa conta como em aberto.
+- O kit de início pode ser baixado antes do marco ("Baixar mesmo assim"): os arquivos se completam conforme as decisões. Sai num `.zip` com uma pasta com o nome do projeto. A estrutura de pastas é explicada no README, sem pastas vazias no `.zip`, porque o comando de criação de cada stack cria as pastas.
+- O README e o `.zip` usam a visão Hoje e não levam notas. Sugere o primeiro commit `chore: estrutura inicial do projeto` (no idioma escolhido).
 
 ## 17. Idioma
 
@@ -157,6 +164,7 @@ Planejando · Em desenvolvimento · Pausado · Concluído · Arquivado. Arquivar
 - Exportar `mapa.html`: **um arquivo só**, somente leitura, com o mapa interativo (arrastar, zoom, zonas, fluxos, Hoje/Completo) e sem nenhuma capacidade de edição.
 - Feito para publicar no portfólio (GitHub Pages, Netlify) ou mandar para alguém abrir no navegador.
 - Sem valores de variáveis, sem notas marcadas como privadas e sem dados de outros projetos.
+- Sem rede: nenhum recurso externo, fonte do sistema, os dois temas pelo `prefers-color-scheme`. Itens abrem um painel de detalhes; zonas e fluxos se destacam pela legenda.
 - Substituído pelo link público (regra 12) quando houver backend; os dois podem coexistir.
 
 ## 20. Salvar como kit (logo após o MVP)

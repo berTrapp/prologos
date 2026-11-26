@@ -119,6 +119,10 @@ O Prólogos é desenhado para três larguras: celular (até 759 px), tablet (760
 - Celular: barra de abas embaixo (Mapa, Checklist, Custos, GitHub, Mais), ao alcance do polegar. Variáveis, Histórico, Exportar, Lixeira e Configurações ficam em "Mais". A barra lateral não aparece.
 - **Só aparece o que já existe:** uma página entra na barra lateral, nas abas e na paleta junto com a fase que a constrói. Enquanto Custos e GitHub não existem, as abas do celular são Mapa, Checklist, Variáveis e Mais.
 - Tablet: a barra lateral começa recolhida (só ícones).
+- **Mapa com pouco espaço** (por exemplo, os dois painéis abertos em 1024 px), decidido pela largura do mapa, não da janela:
+  - o próximo passo desce para uma segunda linha do cabeçalho;
+  - "Notas e riscos" e "Tags" ficam só com ícone e contagem, e o nome vai para a dica e para o leitor de tela;
+  - a barra de fluxos sobe para cima do zoom em vez de ficar ao lado.
 - A aba ativa tem ícone mais forte e texto em negrito, não só cor.
 - Voltar fica sempre no canto superior esquerdo.
 

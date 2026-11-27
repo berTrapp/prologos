@@ -1,5 +1,6 @@
 import { createBrowserRouter, type RouteObject } from 'react-router';
 import { AppShell } from '@/features/shell/AppShell';
+import { pages } from './pages';
 import { RootLayout } from './RootLayout';
 
 export const routes: RouteObject[] = [
@@ -8,12 +9,12 @@ export const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        lazy: async () => ({ Component: (await import('@/features/home/HomePage')).HomePage }),
+        lazy: async () => ({ Component: (await pages.home()).HomePage }),
       },
       {
         path: 'novo',
         lazy: async () => ({
-          Component: (await import('@/features/new-project/NewProjectPage')).NewProjectPage,
+          Component: (await pages.newProject()).NewProjectPage,
         }),
       },
       {
@@ -22,7 +23,7 @@ export const routes: RouteObject[] = [
           {
             path: 'p/:projectId',
             lazy: async () => ({
-              Component: (await import('@/features/project/ProjectLayout')).ProjectLayout,
+              Component: (await pages.project()).ProjectLayout,
             }),
             children: [
               {
@@ -30,37 +31,37 @@ export const routes: RouteObject[] = [
                 // The map uses the whole area next to the sidebar.
                 handle: { fullBleed: true },
                 lazy: async () => ({
-                  Component: (await import('@/features/map/MapPage')).MapPage,
+                  Component: (await pages.map()).MapPage,
                 }),
               },
               {
                 path: 'checklist',
                 lazy: async () => ({
-                  Component: (await import('@/features/checklist/ChecklistPage')).ChecklistPage,
+                  Component: (await pages.checklist()).ChecklistPage,
                 }),
               },
               {
                 path: 'variaveis',
                 lazy: async () => ({
-                  Component: (await import('@/features/variables/VariablesPage')).VariablesPage,
+                  Component: (await pages.variables()).VariablesPage,
                 }),
               },
               {
                 path: 'variaveis/importar',
                 lazy: async () => ({
-                  Component: (await import('@/features/variables/ImportEnvPage')).ImportEnvPage,
+                  Component: (await pages.importEnv()).ImportEnvPage,
                 }),
               },
               {
                 path: 'pronto',
                 lazy: async () => ({
-                  Component: (await import('@/features/export/ReadyPage')).ReadyPage,
+                  Component: (await pages.ready()).ReadyPage,
                 }),
               },
               {
                 path: 'exportar',
                 lazy: async () => ({
-                  Component: (await import('@/features/export/ExportPage')).ExportPage,
+                  Component: (await pages.export()).ExportPage,
                 }),
               },
             ],
@@ -68,20 +69,20 @@ export const routes: RouteObject[] = [
           {
             path: 'lixeira',
             lazy: async () => ({
-              Component: (await import('@/features/trash/TrashPage')).TrashPage,
+              Component: (await pages.trash()).TrashPage,
             }),
           },
           {
             path: 'configuracoes',
             lazy: async () => ({
-              Component: (await import('@/features/settings/SettingsPage')).SettingsPage,
+              Component: (await pages.settings()).SettingsPage,
             }),
           },
         ],
       },
       {
         path: '*',
-        lazy: async () => ({ Component: (await import('@/features/home/HomePage')).HomePage }),
+        lazy: async () => ({ Component: (await pages.home()).HomePage }),
       },
     ],
   },

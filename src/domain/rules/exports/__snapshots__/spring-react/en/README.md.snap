@@ -46,7 +46,7 @@ Stack: Java + Spring Boot.
 | Variable | What it is for | Where to get it |
 | --- | --- | --- |
 | `SPRING_PROFILES_ACTIVE` | Active configuration profile (dev or prod). | Example: `dev` |
-| `SPRING_DATASOURCE_URL` | Database address in JDBC format. | Example: `jdbc:postgresql://localhost:5432/meu_projeto` |
+| `SPRING_DATASOURCE_URL` | Database address in JDBC format. | jdbc:postgresql://localhost:5432/DB_NAME. Spring Boot fills it in while compose.yaml is running. |
 | `SPRING_DATASOURCE_USERNAME` | Database user. | Example: `app` |
 | `SPRING_DATASOURCE_PASSWORD` (secret) | Database password. | You set it when creating the database. |
 | `JWT_SECRET` (secret) | Signs login tokens. | openssl rand -base64 32 |

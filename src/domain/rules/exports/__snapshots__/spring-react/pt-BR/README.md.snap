@@ -46,7 +46,7 @@ Stack: Java + Spring Boot.
 | Variável | Para que serve | Onde conseguir |
 | --- | --- | --- |
 | `SPRING_PROFILES_ACTIVE` | Perfil de configuração ativo (dev ou prod). | Exemplo: `dev` |
-| `SPRING_DATASOURCE_URL` | Endereço do banco no formato JDBC. | Exemplo: `jdbc:postgresql://localhost:5432/meu_projeto` |
+| `SPRING_DATASOURCE_URL` | Endereço do banco no formato JDBC. | jdbc:postgresql://localhost:5432/DB_NAME. O Spring Boot preenche sozinho enquanto o compose.yaml está rodando. |
 | `SPRING_DATASOURCE_USERNAME` | Usuário do banco. | Exemplo: `app` |
 | `SPRING_DATASOURCE_PASSWORD` (segredo) | Senha do banco. | Você define ao criar o banco. |
 | `JWT_SECRET` (segredo) | Assina os tokens de login. | openssl rand -base64 32 |

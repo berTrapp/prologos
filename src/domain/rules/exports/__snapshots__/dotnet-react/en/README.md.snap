@@ -54,7 +54,7 @@ Stack: C# + .NET.
 | Variable | What it is for | Where to get it |
 | --- | --- | --- |
 | `ASPNETCORE_ENVIRONMENT` | Current environment (Development or Production). | Example: `Development` |
-| `CONNECTIONSTRINGS__DEFAULT` (secret) | Database connection, with user and password. | Built from the database you create. In development, prefer dotnet user-secrets. |
+| `CONNECTIONSTRINGS__DEFAULT` (secret) | Database connection, with user and password. | Host=localhost;Port=5432;Database=DB_NAME;Username=DB_USER;Password=DB_PASSWORD, with the values from your .env. In development, store it with dotnet user-secrets set ConnectionStrings:Default "…" --project Api. |
 | `JWT__KEY` (secret) | Signs login tokens. | openssl rand -base64 32 |
 | `VITE_API_URL` | API address the front end calls. Visible in the browser. | Example: `http://localhost:5000/api` |
 | `DB_USER` | Read by docker-compose.yml to create the database. | Example: `app` |

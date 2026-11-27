@@ -530,6 +530,15 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
           "pt-BR": "O mais completo e um ótimo padrão para produção. Precisa de um servidor de banco (um contêiner Docker resolve no desenvolvimento).",
           "en": "The most complete and a great production default. Needs a database server (a Docker container covers development).",
           "es": "El más completo y un gran estándar para producción. Necesita un servidor de base (un contenedor Docker resuelve el desarrollo)."
+        },
+        "env": {
+          "SPRING_DATASOURCE_URL": {
+            "howToGet": {
+              "pt-BR": "jdbc:postgresql://localhost:5432/DB_NAME. O Spring Boot preenche sozinho enquanto o compose.yaml está rodando.",
+              "en": "jdbc:postgresql://localhost:5432/DB_NAME. Spring Boot fills it in while compose.yaml is running.",
+              "es": "jdbc:postgresql://localhost:5432/DB_NAME. Spring Boot la completa solo mientras el compose.yaml está en marcha."
+            }
+          }
         }
       },
       {
@@ -538,6 +547,15 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
           "pt-BR": "Muito comum em hospedagens. Funciona bem; tem menos recursos avançados que o PostgreSQL.",
           "en": "Very common on hosting providers. Works well; fewer advanced features than PostgreSQL.",
           "es": "Muy común en hostings. Funciona bien; tiene menos funciones avanzadas que PostgreSQL."
+        },
+        "env": {
+          "SPRING_DATASOURCE_URL": {
+            "howToGet": {
+              "pt-BR": "jdbc:mysql://localhost:3306/DB_NAME. O Spring Boot preenche sozinho enquanto o compose.yaml está rodando.",
+              "en": "jdbc:mysql://localhost:3306/DB_NAME. Spring Boot fills it in while compose.yaml is running.",
+              "es": "jdbc:mysql://localhost:3306/DB_NAME. Spring Boot la completa solo mientras el compose.yaml está en marcha."
+            }
+          }
         }
       },
       {
@@ -546,6 +564,15 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
           "pt-BR": "Um arquivo só, zero configuração. Ótimo para começar e para protótipos; limitado com muitas escritas ao mesmo tempo.",
           "en": "A single file, zero setup. Great to start and for prototypes; limited under many concurrent writes.",
           "es": "Un solo archivo, cero configuración. Ideal para empezar y prototipos; limitado con muchas escrituras simultáneas."
+        },
+        "env": {
+          "SPRING_DATASOURCE_URL": {
+            "howToGet": {
+              "pt-BR": "jdbc:sqlite:app.db: o banco é um arquivo na pasta api/.",
+              "en": "jdbc:sqlite:app.db: the database is a file in the api/ folder.",
+              "es": "jdbc:sqlite:app.db: la base es un archivo en la carpeta api/."
+            }
+          }
         }
       }
     ],

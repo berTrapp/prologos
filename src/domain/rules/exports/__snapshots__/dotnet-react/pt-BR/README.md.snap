@@ -54,7 +54,7 @@ Stack: C# + .NET.
 | Variável | Para que serve | Onde conseguir |
 | --- | --- | --- |
 | `ASPNETCORE_ENVIRONMENT` | Ambiente atual (Development ou Production). | Exemplo: `Development` |
-| `CONNECTIONSTRINGS__DEFAULT` (segredo) | Conexão com o banco, com usuário e senha. | Montada a partir do banco que você criar. Em desenvolvimento, prefira dotnet user-secrets. |
+| `CONNECTIONSTRINGS__DEFAULT` (segredo) | Conexão com o banco, com usuário e senha. | Host=localhost;Port=5432;Database=DB_NAME;Username=DB_USER;Password=DB_PASSWORD, com os valores do seu .env. Em desenvolvimento, guarde com dotnet user-secrets set ConnectionStrings:Default "…" --project Api. |
 | `JWT__KEY` (segredo) | Assina os tokens de login. | openssl rand -base64 32 |
 | `VITE_API_URL` | Endereço da API que o front chama. Fica visível no navegador. | Exemplo: `http://localhost:5000/api` |
 | `DB_USER` | Lida pelo docker-compose.yml para criar o banco. | Exemplo: `app` |

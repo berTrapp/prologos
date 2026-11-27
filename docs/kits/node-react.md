@@ -527,6 +527,44 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
           "pt-BR": "O mais completo e um ótimo padrão para produção. Precisa de um servidor de banco (um contêiner Docker resolve no desenvolvimento).",
           "en": "The most complete and a great production default. Needs a database server (a Docker container covers development).",
           "es": "El más completo y un gran estándar para producción. Necesita un servidor de base (un contenedor Docker resuelve el desarrollo)."
+        },
+        "setup": [
+          {
+            "title": {
+              "pt-BR": "Subir o PostgreSQL",
+              "en": "Start PostgreSQL",
+              "es": "Levantar PostgreSQL"
+            },
+            "command": "docker compose up -d",
+            "ok": {
+              "pt-BR": "Com o docker-compose.yml e o .env do Pronto para codar na pasta do projeto, docker compose ps mostra o serviço db rodando.",
+              "en": "With the docker-compose.yml and .env from Ready to code in the project folder, docker compose ps shows the db service running.",
+              "es": "Con el docker-compose.yml y el .env de Listo para programar en la carpeta del proyecto, docker compose ps muestra el servicio db en marcha."
+            }
+          },
+          {
+            "title": {
+              "pt-BR": "Ligar a API ao PostgreSQL com o Prisma",
+              "en": "Connect the API to PostgreSQL with Prisma",
+              "es": "Conectar la API a PostgreSQL con Prisma"
+            },
+            "command": "cd api && npm i @prisma/client@7 && npm i -D prisma@7 dotenv && npx prisma init --datasource-provider postgresql && rm .env",
+            "ok": {
+              "pt-BR": "Em api/prisma7.config.ts, troque import \"dotenv/config\" por import { config } from \"dotenv\"; config({ path: \"../.env\" }), para ler o .env da raiz; com um model no schema, npx prisma migrate dev --name init cria as tabelas.",
+              "en": "In api/prisma7.config.ts, replace import \"dotenv/config\" with import { config } from \"dotenv\"; config({ path: \"../.env\" }), to read the .env at the root; with a model in the schema, npx prisma migrate dev --name init creates the tables.",
+              "es": "En api/prisma7.config.ts, cambia import \"dotenv/config\" por import { config } from \"dotenv\"; config({ path: \"../.env\" }), para leer el .env de la raíz; con un model en el schema, npx prisma migrate dev --name init crea las tablas."
+            },
+            "docs": "https://www.prisma.io/docs/orm/reference/prisma-config-reference"
+          }
+        ],
+        "env": {
+          "DATABASE_URL": {
+            "howToGet": {
+              "pt-BR": "postgresql://DB_USER:DB_PASSWORD@localhost:5432/DB_NAME, com os valores do seu .env.",
+              "en": "postgresql://DB_USER:DB_PASSWORD@localhost:5432/DB_NAME, with the values from your .env.",
+              "es": "postgresql://DB_USER:DB_PASSWORD@localhost:5432/DB_NAME, con los valores de tu .env."
+            }
+          }
         }
       },
       {
@@ -535,6 +573,15 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
           "pt-BR": "Muito comum em hospedagens. Funciona bem; tem menos recursos avançados que o PostgreSQL.",
           "en": "Very common on hosting providers. Works well; fewer advanced features than PostgreSQL.",
           "es": "Muy común en hostings. Funciona bien; tiene menos funciones avanzadas que PostgreSQL."
+        },
+        "env": {
+          "DATABASE_URL": {
+            "howToGet": {
+              "pt-BR": "mysql://DB_USER:DB_PASSWORD@localhost:3306/DB_NAME, com os valores do seu .env.",
+              "en": "mysql://DB_USER:DB_PASSWORD@localhost:3306/DB_NAME, with the values from your .env.",
+              "es": "mysql://DB_USER:DB_PASSWORD@localhost:3306/DB_NAME, con los valores de tu .env."
+            }
+          }
         }
       },
       {
@@ -543,6 +590,15 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
           "pt-BR": "Um arquivo só, zero configuração. Ótimo para começar e para protótipos; limitado com muitas escritas ao mesmo tempo.",
           "en": "A single file, zero setup. Great to start and for prototypes; limited under many concurrent writes.",
           "es": "Un solo archivo, cero configuración. Ideal para empezar y prototipos; limitado con muchas escrituras simultáneas."
+        },
+        "env": {
+          "DATABASE_URL": {
+            "howToGet": {
+              "pt-BR": "file:./dev.db: o banco é um arquivo na pasta api/.",
+              "en": "file:./dev.db: the database is a file in the api/ folder.",
+              "es": "file:./dev.db: la base es un archivo en la carpeta api/."
+            }
+          }
         }
       }
     ],

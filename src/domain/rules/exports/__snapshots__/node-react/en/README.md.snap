@@ -53,7 +53,7 @@ Stack: Node + React.
 | Variable | What it is for | Where to get it |
 | --- | --- | --- |
 | `PORT` | API port. | Example: `3000` |
-| `DATABASE_URL` (secret) | Full database address, with user and password. | Built from the database you create: postgresql://user:password@host:5432/name |
+| `DATABASE_URL` (secret) | Full database address, with user and password. | postgresql://DB_USER:DB_PASSWORD@localhost:5432/DB_NAME, with the values from your .env. |
 | `AUTH_SECRET` (secret) | Signs login sessions. | npx auth secret |
 | `VITE_API_URL` | API address the front end calls. Visible in the browser. | Example: `http://localhost:3000/api` |
 | `DB_USER` | Read by docker-compose.yml to create the database. | Example: `app` |

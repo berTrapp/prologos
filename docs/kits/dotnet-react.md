@@ -520,6 +520,44 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
           "pt-BR": "O mais completo e um ótimo padrão para produção. Precisa de um servidor de banco (um contêiner Docker resolve no desenvolvimento).",
           "en": "The most complete and a great production default. Needs a database server (a Docker container covers development).",
           "es": "El más completo y un gran estándar para producción. Necesita un servidor de base (un contenedor Docker resuelve el desarrollo)."
+        },
+        "setup": [
+          {
+            "title": {
+              "pt-BR": "Subir o PostgreSQL",
+              "en": "Start PostgreSQL",
+              "es": "Levantar PostgreSQL"
+            },
+            "command": "docker compose up -d",
+            "ok": {
+              "pt-BR": "Com o docker-compose.yml e o .env do Pronto para codar na pasta do projeto, docker compose ps mostra o serviço db rodando.",
+              "en": "With the docker-compose.yml and .env from Ready to code in the project folder, docker compose ps shows the db service running.",
+              "es": "Con el docker-compose.yml y el .env de Listo para programar en la carpeta del proyecto, docker compose ps muestra el servicio db en marcha."
+            }
+          },
+          {
+            "title": {
+              "pt-BR": "Ligar a API ao PostgreSQL",
+              "en": "Connect the API to PostgreSQL",
+              "es": "Conectar la API a PostgreSQL"
+            },
+            "command": "dotnet add Api package Npgsql.EntityFrameworkCore.PostgreSQL && dotnet add Api package Microsoft.EntityFrameworkCore.Design && dotnet tool install --global dotnet-ef",
+            "ok": {
+              "pt-BR": "Program.cs registra o DbContext com UseNpgsql(builder.Configuration.GetConnectionString(\"Default\")), a conexão fica em dotnet user-secrets e dotnet ef migrations add Inicial --project Api seguido de dotnet ef database update --project Api cria as tabelas.",
+              "en": "Program.cs registers the DbContext with UseNpgsql(builder.Configuration.GetConnectionString(\"Default\")), the connection lives in dotnet user-secrets, and dotnet ef migrations add Initial --project Api followed by dotnet ef database update --project Api creates the tables.",
+              "es": "Program.cs registra el DbContext con UseNpgsql(builder.Configuration.GetConnectionString(\"Default\")), la conexión queda en dotnet user-secrets y dotnet ef migrations add Inicial --project Api seguido de dotnet ef database update --project Api crea las tablas."
+            },
+            "docs": "https://www.npgsql.org/efcore/"
+          }
+        ],
+        "env": {
+          "CONNECTIONSTRINGS__DEFAULT": {
+            "howToGet": {
+              "pt-BR": "Host=localhost;Port=5432;Database=DB_NAME;Username=DB_USER;Password=DB_PASSWORD, com os valores do seu .env. Em desenvolvimento, guarde com dotnet user-secrets set ConnectionStrings:Default \"…\" --project Api.",
+              "en": "Host=localhost;Port=5432;Database=DB_NAME;Username=DB_USER;Password=DB_PASSWORD, with the values from your .env. In development, store it with dotnet user-secrets set ConnectionStrings:Default \"…\" --project Api.",
+              "es": "Host=localhost;Port=5432;Database=DB_NAME;Username=DB_USER;Password=DB_PASSWORD, con los valores de tu .env. En desarrollo, guárdala con dotnet user-secrets set ConnectionStrings:Default \"…\" --project Api."
+            }
+          }
         }
       },
       {
@@ -528,6 +566,15 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
           "pt-BR": "Padrão no ecossistema Microsoft e comum em empresas. Roda em contêiner Docker; a hospedagem gerenciada costuma ser paga.",
           "en": "Default in the Microsoft ecosystem and common in companies. Runs in a Docker container; managed hosting is usually paid.",
           "es": "Estándar en el ecosistema Microsoft y común en empresas. Corre en un contenedor Docker; el hosting gestionado suele ser pago."
+        },
+        "env": {
+          "CONNECTIONSTRINGS__DEFAULT": {
+            "howToGet": {
+              "pt-BR": "Server=localhost,1433;Database=DB_NAME;User Id=sa;Password=DB_PASSWORD;TrustServerCertificate=True, com os valores do seu .env.",
+              "en": "Server=localhost,1433;Database=DB_NAME;User Id=sa;Password=DB_PASSWORD;TrustServerCertificate=True, with the values from your .env.",
+              "es": "Server=localhost,1433;Database=DB_NAME;User Id=sa;Password=DB_PASSWORD;TrustServerCertificate=True, con los valores de tu .env."
+            }
+          }
         }
       },
       {
@@ -536,6 +583,15 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
           "pt-BR": "Um arquivo só, zero configuração. Ótimo para começar e para protótipos; limitado com muitas escritas ao mesmo tempo.",
           "en": "A single file, zero setup. Great to start and for prototypes; limited under many concurrent writes.",
           "es": "Un solo archivo, cero configuración. Ideal para empezar y prototipos; limitado con muchas escrituras simultáneas."
+        },
+        "env": {
+          "CONNECTIONSTRINGS__DEFAULT": {
+            "howToGet": {
+              "pt-BR": "Data Source=app.db: o banco é um arquivo na pasta Api/.",
+              "en": "Data Source=app.db: the database is a file in the Api/ folder.",
+              "es": "Data Source=app.db: la base es un archivo en la carpeta Api/."
+            }
+          }
         }
       }
     ],

@@ -53,7 +53,7 @@ Stack: Node + React.
 | Variável | Para que serve | Onde conseguir |
 | --- | --- | --- |
 | `PORT` | Porta da API. | Exemplo: `3000` |
-| `DATABASE_URL` (segredo) | Endereço completo do banco, com usuário e senha. | Montado a partir do banco que você criar: postgresql://usuario:senha@host:5432/nome |
+| `DATABASE_URL` (segredo) | Endereço completo do banco, com usuário e senha. | postgresql://DB_USER:DB_PASSWORD@localhost:5432/DB_NAME, com os valores do seu .env. |
 | `AUTH_SECRET` (segredo) | Assina as sessões de login. | npx auth secret |
 | `VITE_API_URL` | Endereço da API que o front chama. Fica visível no navegador. | Exemplo: `http://localhost:3000/api` |
 | `DB_USER` | Lida pelo docker-compose.yml para criar o banco. | Exemplo: `app` |

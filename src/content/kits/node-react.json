@@ -543,6 +543,35 @@
           "en": "Very common on hosting providers. Works well; fewer advanced features than PostgreSQL.",
           "es": "Muy común en hostings. Funciona bien; tiene menos funciones avanzadas que PostgreSQL."
         },
+        "setup": [
+          {
+            "title": {
+              "pt-BR": "Subir o MySQL",
+              "en": "Start MySQL",
+              "es": "Levantar MySQL"
+            },
+            "command": "docker compose up -d",
+            "ok": {
+              "pt-BR": "Com o docker-compose.yml e o .env do Pronto para codar na pasta do projeto, docker compose ps mostra o serviço db rodando.",
+              "en": "With the docker-compose.yml and .env from Ready to code in the project folder, docker compose ps shows the db service running.",
+              "es": "Con el docker-compose.yml y el .env de Listo para programar en la carpeta del proyecto, docker compose ps muestra el servicio db en marcha."
+            }
+          },
+          {
+            "title": {
+              "pt-BR": "Ligar a API ao MySQL com o Prisma",
+              "en": "Connect the API to MySQL with Prisma",
+              "es": "Conectar la API a MySQL con Prisma"
+            },
+            "command": "cd api && npm i @prisma/client@7 && npm i -D prisma@7 dotenv && npx prisma init --datasource-provider mysql && rm .env",
+            "ok": {
+              "pt-BR": "Em api/prisma7.config.ts, troque import \"dotenv/config\" por import { config } from \"dotenv\"; config({ path: \"../.env\" }), para ler o .env da raiz; com um model no schema, npx prisma migrate dev --name init cria as tabelas.",
+              "en": "In api/prisma7.config.ts, replace import \"dotenv/config\" with import { config } from \"dotenv\"; config({ path: \"../.env\" }), to read the .env at the root; with a model in the schema, npx prisma migrate dev --name init creates the tables.",
+              "es": "En api/prisma7.config.ts, cambia import \"dotenv/config\" por import { config } from \"dotenv\"; config({ path: \"../.env\" }), para leer el .env de la raíz; con un model en el schema, npx prisma migrate dev --name init crea las tablas."
+            },
+            "docs": "https://www.prisma.io/docs/orm/overview/databases/mysql"
+          }
+        ],
         "env": {
           "DATABASE_URL": {
             "howToGet": {

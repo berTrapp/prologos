@@ -36,7 +36,7 @@ flowchart LR
   subgraph z8["Security"]
     n19["Spring Security"]
     n20["HTTPS"]
-    n21["Backup (to decide)"]
+    n21["Database backup (to decide)"]
   end
   subgraph z9["Observability"]
     n22["Logs (Logback)"]

@@ -114,7 +114,7 @@ flowchart LR
     n19["Auth.js"]
     n20["HTTPS"]
     n21["Helmet + rate limit"]
-    n22["Backup (a decidir)"]
+    n22["Backup do banco (a decidir)"]
   end
   subgraph z9["Observabilidade"]
     n23["Logs (pino)"]

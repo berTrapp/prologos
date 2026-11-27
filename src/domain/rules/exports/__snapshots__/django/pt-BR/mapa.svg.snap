@@ -172,9 +172,9 @@
 <text x="472" y="581" font-size="13" font-weight="500" fill="#e6e8ee">manage.py check --de…</text>
 </g>
 <g class="item" data-item="n22">
-<title>Backup</title>
+<title>Backup do banco</title>
 <rect x="636" y="552" width="168" height="48" rx="10" fill="#12151b" stroke="#fcd34d" stroke-dasharray="5 4"/>
-<text x="648" y="572" font-size="13" font-weight="500" fill="#e6e8ee">Backup</text>
+<text x="648" y="572" font-size="13" font-weight="500" fill="#e6e8ee">Backup do banco</text>
 <text x="648" y="589" font-size="11.5" fill="#fcd34d">A decidir</text>
 </g>
 <g class="item" data-item="n23">

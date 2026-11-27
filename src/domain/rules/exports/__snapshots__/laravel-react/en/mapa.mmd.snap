@@ -37,7 +37,7 @@ flowchart LR
     n19["Laravel Sanctum"]
     n20["HTTPS"]
     n21["Rate limiting"]
-    n22["Backup (to decide)"]
+    n22["Database backup (to decide)"]
   end
   subgraph z9["Observability"]
     n23["Logs"]

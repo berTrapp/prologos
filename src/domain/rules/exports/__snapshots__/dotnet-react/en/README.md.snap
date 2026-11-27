@@ -115,7 +115,7 @@ flowchart LR
     n18["ASP.NET Core Identity"]
     n19["HTTPS"]
     n20["Rate limiting"]
-    n21["Backup (to decide)"]
+    n21["Database backup (to decide)"]
   end
   subgraph z9["Observability"]
     n22["Logs (ILogger)"]

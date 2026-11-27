@@ -116,7 +116,7 @@ describe('checklist (RN 5, 15)', () => {
     await renderApp(`/p/${project.project.id}/checklist`);
     await screen.findByRole('heading', { level: 1, name: 'O que falta decidir' });
 
-    await user.click(within(row('Backup')).getByRole('button', { name: 'Não se aplica' }));
+    await user.click(within(row('Backup do banco')).getByRole('button', { name: 'Não se aplica' }));
     const popover = await screen.findByRole('dialog');
     await user.click(within(popover).getByRole('button', { name: 'Marcar' }));
     expect(within(popover).getByText('Escreva um motivo curto.')).toBeInTheDocument();
@@ -125,8 +125,8 @@ describe('checklist (RN 5, 15)', () => {
       'Sem dados reais{Enter}',
     );
 
-    const toast = await screen.findByText('Backup: não se aplica');
-    expect(within(row('Backup')).getByText('Motivo: Sem dados reais')).toBeInTheDocument();
+    const toast = await screen.findByText('Backup do banco: não se aplica');
+    expect(within(row('Backup do banco')).getByText('Motivo: Sem dados reais')).toBeInTheDocument();
     await waitFor(async () => {
       const expectation = (await saved(project.project.id)).checklist.find(
         (c) => c.itemRef === 'backup',

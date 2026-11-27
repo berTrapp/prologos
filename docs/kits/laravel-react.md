@@ -150,7 +150,7 @@ Modelo de conteúdo para os starter kits (RN 14). Os outros 7 kits seguem exatam
     { "id": "https", "zone": "security", "name": "HTTPS", "state": "decided", "when": "now" },
     { "id": "rate-limit", "zone": "security", "name": { "pt-BR": "Limite de tentativas", "en": "Rate limiting", "es": "Límite de intentos" }, "tech": "laravel", "state": "decided", "when": "now",
       "docs": "https://laravel.com/docs/rate-limiting" },
-    { "id": "backup", "zone": "security", "name": "Backup", "state": "pending", "when": "now" },
+    { "id": "backup", "zone": "security", "name": { "pt-BR": "Backup do banco", "en": "Database backup", "es": "Backup de la base" }, "state": "pending", "when": "now" },
 
     { "id": "logs", "zone": "observability", "name": "Logs", "tech": "laravel", "state": "decided", "when": "now", "docs": "https://laravel.com/docs/logging" },
     { "id": "error-tracking", "zone": "observability", "name": { "pt-BR": "Captura de erros", "en": "Error tracking", "es": "Captura de errores" }, "state": "pending", "when": "later" }
@@ -192,7 +192,8 @@ Modelo de conteúdo para os starter kits (RN 14). Os outros 7 kits seguem exatam
     ],
     "backup": [
       { "name": { "pt-BR": "Backup diário automático do banco", "en": "Automatic daily database backup", "es": "Backup diario automático de la base" }, "recommended": true,
-        "why": { "pt-BR": "A maioria das plataformas gerenciadas oferece; em VPS, um cron com pg_dump resolve.", "en": "Most managed platforms offer it; on a VPS, a cron job with pg_dump does it.", "es": "La mayoría de las plataformas gestionadas lo ofrecen; en un VPS, un cron con pg_dump lo resuelve." } }
+        "why": { "pt-BR": "Uma cópia diária de todos os dados do banco, guardada fora do servidor. A maioria das plataformas gerenciadas oferece; em VPS, um cron com pg_dump resolve.", "en": "A daily copy of all the database data, kept off the server. Most managed platforms offer it; on a VPS, a cron job with pg_dump does it.", "es": "Una copia diaria de todos los datos de la base, guardada fuera del servidor. La mayoría de las plataformas gestionadas lo ofrecen; en un VPS, un cron con pg_dump lo resuelve." } },
+      { "name": { "pt-BR": "Manual por enquanto", "en": "Manual for now", "es": "Manual por ahora" }, "why": { "pt-BR": "Antes de uma mudança grande, você exporta o banco (pg_dump, mysqldump…) e guarda o arquivo fora do servidor. Serve enquanto ninguém depende do app.", "en": "Before a big change, you export the database (pg_dump, mysqldump…) and keep the file off the server. Fine while nobody depends on the app.", "es": "Antes de un cambio grande, exportas la base (pg_dump, mysqldump…) y guardas el archivo fuera del servidor. Sirve mientras nadie dependa de la app." } }
     ],
     "error-tracking": [
       { "name": "Sentry", "recommended": true,

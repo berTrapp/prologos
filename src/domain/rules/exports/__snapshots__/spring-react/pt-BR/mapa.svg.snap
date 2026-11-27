@@ -167,9 +167,9 @@
 <text x="648" y="581" font-size="13" font-weight="500" fill="#e6e8ee">HTTPS</text>
 </g>
 <g class="item" data-item="n21">
-<title>Backup</title>
+<title>Backup do banco</title>
 <rect x="460" y="608" width="168" height="48" rx="10" fill="#12151b" stroke="#fcd34d" stroke-dasharray="5 4"/>
-<text x="472" y="628" font-size="13" font-weight="500" fill="#e6e8ee">Backup</text>
+<text x="472" y="628" font-size="13" font-weight="500" fill="#e6e8ee">Backup do banco</text>
 <text x="472" y="645" font-size="11.5" fill="#fcd34d">A decidir</text>
 </g>
 <g class="item" data-item="n22">

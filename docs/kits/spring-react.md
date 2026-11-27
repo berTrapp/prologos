@@ -426,7 +426,11 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
     {
       "id": "backup",
       "zone": "security",
-      "name": { "pt-BR": "Backup do banco", "en": "Database backup", "es": "Backup de la base" },
+      "name": {
+        "pt-BR": "Backup do banco",
+        "en": "Database backup",
+        "es": "Backup de la base"
+      },
       "state": "pending",
       "when": "now"
     },
@@ -598,7 +602,18 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
           "es": "Una copia diaria de todos los datos de la base, guardada fuera del servidor. La mayoría de las plataformas gestionadas lo ofrecen; en un VPS, una tarea programada con pg_dump lo resuelve."
         }
       },
-      { "name": { "pt-BR": "Manual por enquanto", "en": "Manual for now", "es": "Manual por ahora" }, "why": { "pt-BR": "Antes de uma mudança grande, você exporta o banco (pg_dump, mysqldump…) e guarda o arquivo fora do servidor. Serve enquanto ninguém depende do app.", "en": "Before a big change, you export the database (pg_dump, mysqldump…) and keep the file off the server. Fine while nobody depends on the app.", "es": "Antes de un cambio grande, exportas la base (pg_dump, mysqldump…) y guardas el archivo fuera del servidor. Sirve mientras nadie dependa de la app." } }
+      {
+        "name": {
+          "pt-BR": "Manual por enquanto",
+          "en": "Manual for now",
+          "es": "Manual por ahora"
+        },
+        "why": {
+          "pt-BR": "Antes de uma mudança grande, você exporta o banco (pg_dump, mysqldump…) e guarda o arquivo fora do servidor. Serve enquanto ninguém depende do app.",
+          "en": "Before a big change, you export the database (pg_dump, mysqldump…) and keep the file off the server. Fine while nobody depends on the app.",
+          "es": "Antes de un cambio grande, exportas la base (pg_dump, mysqldump…) y guardas el archivo fuera del servidor. Sirve mientras nadie dependa de la app."
+        }
+      }
     ],
     "error-tracking": [
       {
@@ -936,7 +951,11 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
     "routes": "@RestController + @GetMapping",
     "packages": "Maven",
     "devServer": "./mvnw spring-boot:run",
-    "config": { "pt-BR": "application.yml + variáveis de ambiente", "en": "application.yml + environment variables", "es": "application.yml + variables de entorno" },
+    "config": {
+      "pt-BR": "application.yml + variáveis de ambiente",
+      "en": "application.yml + environment variables",
+      "es": "application.yml + variables de entorno"
+    },
     "templates": "React (JSX) / Thymeleaf",
     "auth": "Spring Security",
     "tests": "./mvnw test"

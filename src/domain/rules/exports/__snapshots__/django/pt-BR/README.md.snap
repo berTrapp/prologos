@@ -51,7 +51,7 @@ Stack: Python + Django.
 | `SECRET_KEY` (segredo) | Assina sessões, cookies e tokens. | python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())" |
 | `DEBUG` | Mostra erros detalhados. True só no seu computador. | Exemplo: `True` |
 | `ALLOWED_HOSTS` | Domínios que podem acessar o app. | Exemplo: `localhost,127.0.0.1` |
-| `DATABASE_URL` (segredo) | Endereço completo do banco. | sqlite:///db.sqlite3 para começar; em produção, o endereço do banco criado. |
+| `DATABASE_URL` (segredo) | Endereço completo do banco. | postgres://DB_USER:DB_PASSWORD@localhost:5432/DB_NAME, com os valores do seu .env. |
 | `DB_USER` | Lida pelo docker-compose.yml para criar o banco. | Exemplo: `app` |
 | `DB_NAME` | Lida pelo docker-compose.yml para criar o banco. | Exemplo: `agenda_de_aulas` |
 | `DB_PASSWORD` (segredo) | Lida pelo docker-compose.yml para criar o banco. | Escolha uma senha para o banco no seu computador. |

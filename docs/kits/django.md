@@ -447,7 +447,11 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
     {
       "id": "backup",
       "zone": "security",
-      "name": { "pt-BR": "Backup do banco", "en": "Database backup", "es": "Backup de la base" },
+      "name": {
+        "pt-BR": "Backup do banco",
+        "en": "Database backup",
+        "es": "Backup de la base"
+      },
       "state": "pending",
       "when": "now"
     },
@@ -527,6 +531,44 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
           "pt-BR": "O mais completo e um ótimo padrão para produção. Precisa de um servidor de banco (um contêiner Docker resolve no desenvolvimento).",
           "en": "The most complete and a great production default. Needs a database server (a Docker container covers development).",
           "es": "El más completo y un gran estándar para producción. Necesita un servidor de base (un contenedor Docker resuelve el desarrollo)."
+        },
+        "setup": [
+          {
+            "title": {
+              "pt-BR": "Subir o PostgreSQL",
+              "en": "Start PostgreSQL",
+              "es": "Levantar PostgreSQL"
+            },
+            "command": "docker compose up -d",
+            "ok": {
+              "pt-BR": "Com o docker-compose.yml e o .env do Pronto para codar na pasta do projeto, docker compose ps mostra o serviço db rodando.",
+              "en": "With the docker-compose.yml and .env from Ready to code in the project folder, docker compose ps shows the db service running.",
+              "es": "Con el docker-compose.yml y el .env de Listo para programar en la carpeta del proyecto, docker compose ps muestra el servicio db en marcha."
+            }
+          },
+          {
+            "title": {
+              "pt-BR": "Ligar o Django ao PostgreSQL",
+              "en": "Connect Django to PostgreSQL",
+              "es": "Conectar Django a PostgreSQL"
+            },
+            "command": "pip install \"psycopg[binary]\" django-environ",
+            "ok": {
+              "pt-BR": "Em config/settings.py, o .env é lido com django-environ e DATABASES = {\"default\": env.db()}; python manage.py migrate cria as tabelas no PostgreSQL.",
+              "en": "In config/settings.py, the .env is read with django-environ and DATABASES = {\"default\": env.db()}; python manage.py migrate creates the tables in PostgreSQL.",
+              "es": "En config/settings.py, el .env se lee con django-environ y DATABASES = {\"default\": env.db()}; python manage.py migrate crea las tablas en PostgreSQL."
+            },
+            "docs": "https://django-environ.readthedocs.io/en/latest/quickstart.html"
+          }
+        ],
+        "env": {
+          "DATABASE_URL": {
+            "howToGet": {
+              "pt-BR": "postgres://DB_USER:DB_PASSWORD@localhost:5432/DB_NAME, com os valores do seu .env.",
+              "en": "postgres://DB_USER:DB_PASSWORD@localhost:5432/DB_NAME, with the values from your .env.",
+              "es": "postgres://DB_USER:DB_PASSWORD@localhost:5432/DB_NAME, con los valores de tu .env."
+            }
+          }
         }
       },
       {
@@ -535,6 +577,15 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
           "pt-BR": "Muito comum em hospedagens. Funciona bem; tem menos recursos avançados que o PostgreSQL.",
           "en": "Very common on hosting providers. Works well; fewer advanced features than PostgreSQL.",
           "es": "Muy común en hostings. Funciona bien; tiene menos funciones avanzadas que PostgreSQL."
+        },
+        "env": {
+          "DATABASE_URL": {
+            "howToGet": {
+              "pt-BR": "mysql://DB_USER:DB_PASSWORD@localhost:3306/DB_NAME, com os valores do seu .env.",
+              "en": "mysql://DB_USER:DB_PASSWORD@localhost:3306/DB_NAME, with the values from your .env.",
+              "es": "mysql://DB_USER:DB_PASSWORD@localhost:3306/DB_NAME, con los valores de tu .env."
+            }
+          }
         }
       },
       {
@@ -543,6 +594,15 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
           "pt-BR": "Um arquivo só, zero configuração. Ótimo para começar e para protótipos; limitado com muitas escritas ao mesmo tempo.",
           "en": "A single file, zero setup. Great to start and for prototypes; limited under many concurrent writes.",
           "es": "Un solo archivo, cero configuración. Ideal para empezar y prototipos; limitado con muchas escrituras simultáneas."
+        },
+        "env": {
+          "DATABASE_URL": {
+            "howToGet": {
+              "pt-BR": "sqlite:///db.sqlite3: o banco é um arquivo na pasta do projeto.",
+              "en": "sqlite:///db.sqlite3: the database is a file in the project folder.",
+              "es": "sqlite:///db.sqlite3: la base es un archivo en la carpeta del proyecto."
+            }
+          }
         }
       }
     ],
@@ -599,7 +659,18 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
           "es": "Una copia diaria de todos los datos de la base, guardada fuera del servidor. La mayoría de las plataformas gestionadas lo ofrecen; en un VPS, una tarea programada con pg_dump lo resuelve."
         }
       },
-      { "name": { "pt-BR": "Manual por enquanto", "en": "Manual for now", "es": "Manual por ahora" }, "why": { "pt-BR": "Antes de uma mudança grande, você exporta o banco (pg_dump, mysqldump…) e guarda o arquivo fora do servidor. Serve enquanto ninguém depende do app.", "en": "Before a big change, you export the database (pg_dump, mysqldump…) and keep the file off the server. Fine while nobody depends on the app.", "es": "Antes de un cambio grande, exportas la base (pg_dump, mysqldump…) y guardas el archivo fuera del servidor. Sirve mientras nadie dependa de la app." } }
+      {
+        "name": {
+          "pt-BR": "Manual por enquanto",
+          "en": "Manual for now",
+          "es": "Manual por ahora"
+        },
+        "why": {
+          "pt-BR": "Antes de uma mudança grande, você exporta o banco (pg_dump, mysqldump…) e guarda o arquivo fora do servidor. Serve enquanto ninguém depende do app.",
+          "en": "Before a big change, you export the database (pg_dump, mysqldump…) and keep the file off the server. Fine while nobody depends on the app.",
+          "es": "Antes de un cambio grande, exportas la base (pg_dump, mysqldump…) y guardas el archivo fuera del servidor. Sirve mientras nadie dependa de la app."
+        }
+      }
     ],
     "error-tracking": [
       {
@@ -907,8 +978,16 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
     "routes": "urls.py",
     "packages": "pip",
     "devServer": "python manage.py runserver",
-    "config": { "pt-BR": "settings.py + variáveis de ambiente", "en": "settings.py + environment variables", "es": "settings.py + variables de entorno" },
-    "templates": { "pt-BR": "Templates do Django", "en": "Django templates", "es": "Plantillas de Django" },
+    "config": {
+      "pt-BR": "settings.py + variáveis de ambiente",
+      "en": "settings.py + environment variables",
+      "es": "settings.py + variables de entorno"
+    },
+    "templates": {
+      "pt-BR": "Templates do Django",
+      "en": "Django templates",
+      "es": "Plantillas de Django"
+    },
     "auth": "Django Auth",
     "tests": "python manage.py test"
   },

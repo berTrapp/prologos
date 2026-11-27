@@ -399,7 +399,11 @@
     {
       "id": "backup",
       "zone": "security",
-      "name": { "pt-BR": "Backup do banco", "en": "Database backup", "es": "Backup de la base" },
+      "name": {
+        "pt-BR": "Backup do banco",
+        "en": "Database backup",
+        "es": "Backup de la base"
+      },
       "state": "pending",
       "when": "now"
     },

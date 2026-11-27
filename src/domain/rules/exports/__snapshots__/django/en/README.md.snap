@@ -51,7 +51,7 @@ Stack: Python + Django.
 | `SECRET_KEY` (secret) | Signs sessions, cookies and tokens. | python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())" |
 | `DEBUG` | Shows detailed errors. True only on your computer. | Example: `True` |
 | `ALLOWED_HOSTS` | Domains allowed to access the app. | Example: `localhost,127.0.0.1` |
-| `DATABASE_URL` (secret) | Full database address. | sqlite:///db.sqlite3 to start; in production, the created database address. |
+| `DATABASE_URL` (secret) | Full database address. | postgres://DB_USER:DB_PASSWORD@localhost:5432/DB_NAME, with the values from your .env. |
 | `DB_USER` | Read by docker-compose.yml to create the database. | Example: `app` |
 | `DB_NAME` | Read by docker-compose.yml to create the database. | Example: `agenda_de_aulas` |
 | `DB_PASSWORD` (secret) | Read by docker-compose.yml to create the database. | Pick a password for the database on your computer. |

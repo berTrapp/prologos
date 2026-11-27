@@ -57,7 +57,7 @@ Stack: Laravel + React.
 | `APP_KEY` (secret) | Encrypts sessions and cookies. | php artisan key:generate |
 | `APP_ENV` | Current environment: local or production. | Example: `local` |
 | `APP_URL` | Public address of the app. | Example: `http://localhost:8000` |
-| `DB_CONNECTION` | Which database Laravel uses. | Example: `pgsql` |
+| `DB_CONNECTION` | Which database Laravel uses. | pgsql, for PostgreSQL. |
 | `DB_HOST` | Database host. | Example: `127.0.0.1` |
 | `DB_DATABASE` | Database name. | Example: `meu_projeto` |
 | `DB_USERNAME` | Database user. | Example: `sail` |

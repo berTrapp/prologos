@@ -57,7 +57,7 @@ Stack: Laravel + React.
 | `APP_KEY` (segredo) | Criptografa sessões e cookies. | php artisan key:generate |
 | `APP_ENV` | Ambiente atual: local ou production. | Exemplo: `local` |
 | `APP_URL` | Endereço público do app. | Exemplo: `http://localhost:8000` |
-| `DB_CONNECTION` | Qual banco o Laravel usa. | Exemplo: `pgsql` |
+| `DB_CONNECTION` | Qual banco o Laravel usa. | pgsql, para o PostgreSQL. |
 | `DB_HOST` | Endereço do banco. | Exemplo: `127.0.0.1` |
 | `DB_DATABASE` | Nome do banco. | Exemplo: `meu_projeto` |
 | `DB_USERNAME` | Usuário do banco. | Exemplo: `sail` |

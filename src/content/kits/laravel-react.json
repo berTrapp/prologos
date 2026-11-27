@@ -410,7 +410,11 @@
     {
       "id": "backup",
       "zone": "security",
-      "name": { "pt-BR": "Backup do banco", "en": "Database backup", "es": "Backup de la base" },
+      "name": {
+        "pt-BR": "Backup do banco",
+        "en": "Database backup",
+        "es": "Backup de la base"
+      },
       "state": "pending",
       "when": "now"
     },
@@ -487,6 +491,44 @@
           "pt-BR": "O mais completo e muito usado com Laravel em produção. Precisa de um servidor de banco (o Sail já sobe um).",
           "en": "The most complete and widely used with Laravel in production. Needs a database server (Sail starts one).",
           "es": "El más completo y muy usado con Laravel en producción. Necesita un servidor de base (Sail ya levanta uno)."
+        },
+        "setup": [
+          {
+            "title": {
+              "pt-BR": "Subir o PostgreSQL",
+              "en": "Start PostgreSQL",
+              "es": "Levantar PostgreSQL"
+            },
+            "command": "docker compose up -d",
+            "ok": {
+              "pt-BR": "Com o docker-compose.yml e o .env do Pronto para codar na pasta do projeto, docker compose ps mostra o serviço db rodando.",
+              "en": "With the docker-compose.yml and .env from Ready to code in the project folder, docker compose ps shows the db service running.",
+              "es": "Con el docker-compose.yml y el .env de Listo para programar en la carpeta del proyecto, docker compose ps muestra el servicio db en marcha."
+            }
+          },
+          {
+            "title": {
+              "pt-BR": "Ligar o Laravel ao PostgreSQL",
+              "en": "Connect Laravel to PostgreSQL",
+              "es": "Conectar Laravel a PostgreSQL"
+            },
+            "command": "php artisan migrate",
+            "ok": {
+              "pt-BR": "No .env, DB_CONNECTION=pgsql, DB_HOST=127.0.0.1 e DB_PORT=5432; as tabelas aparecem no PostgreSQL. Se faltar o driver, ative a extensão pdo_pgsql do PHP.",
+              "en": "In .env, DB_CONNECTION=pgsql, DB_HOST=127.0.0.1 and DB_PORT=5432; the tables show up in PostgreSQL. If the driver is missing, enable PHP's pdo_pgsql extension.",
+              "es": "En el .env, DB_CONNECTION=pgsql, DB_HOST=127.0.0.1 y DB_PORT=5432; las tablas aparecen en PostgreSQL. Si falta el driver, activa la extensión pdo_pgsql de PHP."
+            },
+            "docs": "https://laravel.com/docs/database#configuration"
+          }
+        ],
+        "env": {
+          "DB_CONNECTION": {
+            "howToGet": {
+              "pt-BR": "pgsql, para o PostgreSQL.",
+              "en": "pgsql, for PostgreSQL.",
+              "es": "pgsql, para PostgreSQL."
+            }
+          }
         }
       },
       {
@@ -495,6 +537,15 @@
           "pt-BR": "Padrão em muitas hospedagens compartilhadas. Funciona bem; tem menos recursos avançados.",
           "en": "Default on many shared hosts. Works well; fewer advanced features.",
           "es": "Predeterminado en muchos hostings compartidos. Funciona bien; tiene menos funciones avanzadas."
+        },
+        "env": {
+          "DB_CONNECTION": {
+            "howToGet": {
+              "pt-BR": "mysql, para o MySQL.",
+              "en": "mysql, for MySQL.",
+              "es": "mysql, para MySQL."
+            }
+          }
         }
       },
       {
@@ -503,6 +554,15 @@
           "pt-BR": "Um arquivo só, zero configuração. Ótimo para protótipo; limitado com muitos acessos ao mesmo tempo.",
           "en": "A single file, zero setup. Great for prototypes; limited under many concurrent writes.",
           "es": "Un solo archivo, cero configuración. Ideal para prototipos; limitado con muchos accesos simultáneos."
+        },
+        "env": {
+          "DB_CONNECTION": {
+            "howToGet": {
+              "pt-BR": "sqlite: o banco é o arquivo database/database.sqlite e as outras DB_ não são usadas.",
+              "en": "sqlite: the database is the database/database.sqlite file and the other DB_ keys are not used.",
+              "es": "sqlite: la base es el archivo database/database.sqlite y las demás DB_ no se usan."
+            }
+          }
         }
       }
     ],

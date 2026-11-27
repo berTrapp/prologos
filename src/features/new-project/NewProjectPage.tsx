@@ -39,6 +39,11 @@ export function NewProjectPage() {
   const scroller = useRef<HTMLDivElement>(null);
   const StepView = STEP_VIEWS[step] ?? IdeaStep;
 
+  // The draft is cleared when this screen goes away after creating, never before:
+  // clearing it while the map is still loading flashes an empty first step.
+  const created = useRef(false);
+  useEffect(() => () => void (created.current && reset()), [reset]);
+
   useEffect(() => {
     scroller.current?.scrollTo({ top: 0 });
     window.scrollTo({ top: 0 });
@@ -57,10 +62,9 @@ export function NewProjectPage() {
         createId: () => crypto.randomUUID(),
       });
       const id = await workspaceStore.getState().addProject(snapshot);
-      // ux-ui 14: the new project opens on screen, so no toast is needed. The draft is
-      // cleared only once the map is showing, or the empty first step flashes meanwhile.
+      // ux-ui 14: the new project opens on screen, so no toast is needed.
+      created.current = true;
       await navigate(`/p/${id}`, { replace: true });
-      reset();
     } finally {
       setBusy(false);
     }

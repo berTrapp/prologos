@@ -321,13 +321,15 @@
       "project": "Projeto",
       "type": "Tipo",
       "kit": "Kit",
+      "runsOn": "Onde roda",
       "noKit": "Ainda não sei",
       "unnamed": "Projeto sem nome",
       "pending": "O que falta decidir",
       "newForYou": "Novo para você",
       "nothing": "Nada por enquanto",
       "edit": "Alterar {{step}}",
-      "change": "Alterar"
+      "change": "Alterar",
+      "undecided": "{{name}} a decidir"
     },
     "preview": {
       "label": "Prévia do mapa",

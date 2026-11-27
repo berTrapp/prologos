@@ -25,6 +25,23 @@ export function SummaryStep() {
       value: kit ? kitText(kit.name, language) : t('newProject.summary.noKit'),
       step: 1,
     },
+    // What was chosen in step 4, so nothing answered disappears from the review (RN 13).
+    ...(kit
+      ? [
+          {
+            label: t('newProject.summary.runsOn'),
+            value: kit.runsOn
+              .flatMap((ref) => preview.items.filter((item) => item.kitRef === ref))
+              .map((item) =>
+                item.state === 'decided'
+                  ? (item.choice ?? item.name)
+                  : t('newProject.summary.undecided', { name: item.name }),
+              )
+              .join(' · '),
+            step: 3,
+          },
+        ]
+      : []),
   ];
 
   return (

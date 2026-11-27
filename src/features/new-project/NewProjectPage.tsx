@@ -187,7 +187,10 @@ export function NewProjectPage() {
             </div>
           </main>
           <footer className="flex h-[72px] shrink-0 items-center gap-3 border-t border-border px-12">
-            <p className="min-w-0 flex-1 text-[13px] text-muted">{t('newProject.skipHint')}</p>
+            {/* On the summary there is nothing left to skip: only create. */}
+            <p className="min-w-0 flex-1 text-[13px] text-muted">
+              {step === LAST ? null : t('newProject.skipHint')}
+            </p>
             {back}
             {primary}
           </footer>

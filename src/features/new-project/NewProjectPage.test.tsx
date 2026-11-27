@@ -90,6 +90,9 @@ describe('guided start (RN 13, 15)', () => {
     // 5. Resumo.
     await heading('Tudo pronto para montar o mapa');
     expect(screen.getByText('Preparar o ambiente')).toBeInTheDocument();
+    // The review shows what was chosen in "Onde roda", and nothing is left to skip.
+    expect(screen.getByText('PostgreSQL · Hospedagem a decidir')).toBeInTheDocument();
+    expect(screen.queryByText('Dá para pular e responder depois.')).not.toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: 'Criar projeto' }));
 
     await waitFor(() => expect(router.state.location.pathname).toMatch(/^\/p\//));

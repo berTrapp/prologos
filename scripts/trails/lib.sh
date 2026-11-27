@@ -32,5 +32,8 @@ log_has() { # log_has "<title>" "<text>" <command...>: runs until the log shows 
   done
   tail -40 /tmp/serve.log; RESULTS+=("FAIL  $title"); kill_tree $pid
 }
+retry() { # retry <command...>: a database that just started takes a few seconds to accept connections
+  for _ in $(seq 1 30); do "$@" && return 0; sleep 1; done; return 1
+}
 kill_tree() { pkill -P "$1" 2>/dev/null; kill "$1" 2>/dev/null; sleep 1; }
 report() { echo; echo "##### RESULT"; printf '%s\n' "${RESULTS[@]}"; }

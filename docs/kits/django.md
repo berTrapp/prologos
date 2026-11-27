@@ -906,8 +906,8 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
     "routes": "urls.py",
     "packages": "pip",
     "devServer": "python manage.py runserver",
-    "config": "settings.py + variáveis de ambiente",
-    "templates": "Templates do Django",
+    "config": { "pt-BR": "settings.py + variáveis de ambiente", "en": "settings.py + environment variables", "es": "settings.py + variables de entorno" },
+    "templates": { "pt-BR": "Templates do Django", "en": "Django templates", "es": "Plantillas de Django" },
     "auth": "Django Auth",
     "tests": "python manage.py test"
   },

@@ -846,7 +846,13 @@
     },
     "summary_vars_zero": "0 variables",
     "summary_secrets_zero": "0 secretos",
-    "summary_warnings_zero": "0 avisos"
+    "summary_warnings_zero": "0 avisos",
+    "side": {
+      "front": "Front-end",
+      "back": "Back-end",
+      "app": "App",
+      "docker": "Docker"
+    }
   },
   "files": {
     "generated": "Generado por Prólogos a partir del mapa del proyecto.",

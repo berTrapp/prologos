@@ -107,7 +107,8 @@ export const KitSchema = z
         howToGet: LocalizedText.optional(),
       }),
     ),
-    equivalences: z.record(z.string(), z.string()).optional(),
+    // Commands and names stay plain; a value with words comes per language (RN 17).
+    equivalences: z.record(z.string(), Name).optional(),
   })
   .superRefine((kit, ctx) => {
     const issue = (message: string) => ctx.addIssue({ code: 'custom', message });

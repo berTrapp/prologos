@@ -105,7 +105,7 @@ function EnvVarForm({
               pressed={usedIn.includes(side)}
               onClick={() => setUsedIn(toggle(usedIn, side))}
             >
-              {side}
+              {t(`env.side.${side}`)}
             </Chip>
           ))}
         </div>

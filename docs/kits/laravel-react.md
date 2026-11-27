@@ -36,7 +36,7 @@ Modelo de conteúdo para os starter kits (RN 14). Os outros 7 kits seguem exatam
 | `dockerEnv` | Opcional: chaves de usuário, senha e nome do banco que o `docker-compose.yml` lê do `.env`; sem ele, `DB_USER`, `DB_PASSWORD` e `DB_NAME` |
 | `gitignore` | Linhas do `.gitignore` gerado para a stack |
 | `envVars` | Variáveis do `.env.example` gerado |
-| `equivalences` | Conceitos desta stack, para traduzir a partir de outra (RN 15) |
+| `equivalences` | Conceitos desta stack, para traduzir a partir de outra (RN 15). Comando ou nome técnico fica em texto simples; valor com palavras vem nos 3 idiomas (RN 17) |
 | `dependencyMap` | Pacote → item do mapa (RN 7) |
 | `items[].concept` | Opcional: conceito da tabela de equivalências que o item representa (RN 15) |
 

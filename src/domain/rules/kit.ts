@@ -62,13 +62,17 @@ export type EquivalenceRow = { concept: EquivalenceConcept; from: string; to: st
  * RN 15: the chosen kit's concepts, explained from the stack the person knows.
  * Empty when the person knows that same stack, or when either kit has no table (mobile, site).
  */
-export function equivalenceRows(from: Kit | undefined, to: Kit): EquivalenceRow[] {
+export function equivalenceRows(
+  from: Kit | undefined,
+  to: Kit,
+  language: Language,
+): EquivalenceRow[] {
   if (!from || from.id === to.id || !from.equivalences || !to.equivalences) return [];
   const source = from.equivalences;
   const target = to.equivalences;
   return EQUIVALENCE_CONCEPTS.flatMap((concept) => {
     const a = source[concept];
     const b = target[concept];
-    return a && b ? [{ concept, from: a, to: b }] : [];
+    return a && b ? [{ concept, from: kitText(a, language), to: kitText(b, language) }] : [];
   });
 }

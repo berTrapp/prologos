@@ -33,7 +33,7 @@ export function ExperienceStep() {
   }
 
   const levels = effectiveExperience(answers, kit, KITS);
-  const rows = equivalenceRows(knownKit, kit);
+  const rows = equivalenceRows(knownKit, kit, language);
   const options = EXPERIENCE_LEVELS.map((level) => ({
     value: level,
     label: t(`newProject.experience.levels.${level}`),

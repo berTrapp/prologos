@@ -81,7 +81,7 @@ export function itemKnowledge(
   const concept = source?.concept;
   const value =
     concept && knownKit && knownKit.id !== kit?.id ? knownKit.equivalences?.[concept] : undefined;
-  if (concept && value) knowledge.equivalent = { concept, value };
+  if (concept && value) knowledge.equivalent = { concept, value: kitText(value, language) };
   return knowledge;
 }
 

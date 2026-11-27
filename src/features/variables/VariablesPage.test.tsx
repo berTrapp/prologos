@@ -52,6 +52,9 @@ describe('variables (RN 3)', () => {
     if (!row) throw new Error('row');
     expect(within(row).getByText('Segredo')).toBeInTheDocument();
     expect(within(row).getByText('php artisan key:generate')).toBeInTheDocument();
+    // Where it is used, in words: never the raw "back".
+    expect(within(row).getByText('Back-end')).toBeInTheDocument();
+    expect(within(row).queryByText('back')).not.toBeInTheDocument();
     expect(screen.getByText(/9 variáveis · 2 segredos/)).toBeInTheDocument();
     expect(screen.getByText(/Variáveis públicas \(VITE_\)/)).toBeInTheDocument();
   });

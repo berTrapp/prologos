@@ -905,7 +905,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
     "routes": "Controllers / Minimal APIs",
     "packages": "NuGet",
     "devServer": "dotnet watch",
-    "config": "appsettings.json + variáveis de ambiente",
+    "config": { "pt-BR": "appsettings.json + variáveis de ambiente", "en": "appsettings.json + environment variables", "es": "appsettings.json + variables de entorno" },
     "templates": "React (JSX) / Razor",
     "auth": "ASP.NET Core Identity",
     "tests": "dotnet test"

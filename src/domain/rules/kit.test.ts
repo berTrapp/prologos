@@ -93,7 +93,7 @@ describe('defaultExperience (RN 15)', () => {
 
 describe('equivalenceRows (RN 15)', () => {
   it('translates the concepts of the chosen kit from the known one', () => {
-    const rows = equivalenceRows(kit('laravel-react'), kit('django'));
+    const rows = equivalenceRows(kit('laravel-react'), kit('django'), 'pt-BR');
     expect(rows[0]).toEqual({ concept: 'orm', from: 'Eloquent', to: 'Django ORM' });
     expect(rows.map((row) => row.concept)).toEqual([
       'orm',
@@ -108,15 +108,26 @@ describe('equivalenceRows (RN 15)', () => {
     ]);
   });
 
+  it('shows each value in the interface language (RN 17)', () => {
+    const config = (lng: 'pt-BR' | 'en' | 'es') =>
+      equivalenceRows(kit('laravel-react'), kit('django'), lng).find((r) => r.concept === 'config');
+    expect(config('pt-BR')?.to).toBe('settings.py + variáveis de ambiente');
+    expect(config('en')?.to).toBe('settings.py + environment variables');
+    expect(config('es')?.to).toBe('settings.py + variables de entorno');
+  });
+
   it('is empty for the same stack, no known stack, or kits without a table', () => {
-    expect(equivalenceRows(kit('django'), kit('django'))).toEqual([]);
-    expect(equivalenceRows(undefined, kit('django'))).toEqual([]);
-    expect(equivalenceRows(kit('laravel-react'), kit('flutter'))).toEqual([]);
+    expect(equivalenceRows(kit('django'), kit('django'), 'pt-BR')).toEqual([]);
+    expect(equivalenceRows(undefined, kit('django'), 'pt-BR')).toEqual([]);
+    expect(equivalenceRows(kit('laravel-react'), kit('flutter'), 'pt-BR')).toEqual([]);
   });
 
   it('skips a concept one of the kits does not have', () => {
     const from = { ...kit('laravel-react'), equivalences: { orm: 'Eloquent', auth: 'Sanctum' } };
-    expect(equivalenceRows(from, kit('django')).map((r) => r.concept)).toEqual(['orm', 'auth']);
+    expect(equivalenceRows(from, kit('django'), 'pt-BR').map((r) => r.concept)).toEqual([
+      'orm',
+      'auth',
+    ]);
   });
 });
 

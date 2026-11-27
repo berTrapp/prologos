@@ -194,7 +194,7 @@ export function VariablesPage() {
                       <td className="px-3 py-3.5">
                         <div className="flex flex-wrap gap-1.5">
                           {envVar.usedIn.map((side) => (
-                            <Chip key={side}>{side}</Chip>
+                            <Chip key={side}>{t(`env.side.${side}`, { defaultValue: side })}</Chip>
                           ))}
                         </div>
                       </td>
@@ -325,7 +325,7 @@ function VarCard({
         </div>
         <div className="flex flex-wrap gap-1.5">
           {envVar.usedIn.map((side) => (
-            <Chip key={side}>{side}</Chip>
+            <Chip key={side}>{t(`env.side.${side}`, { defaultValue: side })}</Chip>
           ))}
         </div>
       </div>

@@ -935,7 +935,7 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
     "routes": "@RestController + @GetMapping",
     "packages": "Maven",
     "devServer": "./mvnw spring-boot:run",
-    "config": "application.yml + variáveis de ambiente",
+    "config": { "pt-BR": "application.yml + variáveis de ambiente", "en": "application.yml + environment variables", "es": "application.yml + variables de entorno" },
     "templates": "React (JSX) / Thymeleaf",
     "auth": "Spring Security",
     "tests": "./mvnw test"

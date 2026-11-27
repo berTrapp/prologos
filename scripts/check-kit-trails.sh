@@ -18,13 +18,17 @@ declare -A image=(
   [laravel-postgres]=composer:latest
   [node-postgres]=node:lts
   [dotnet-postgres]=mcr.microsoft.com/dotnet/sdk:latest
+  [django-mysql]=python:3
+  [laravel-mysql]=composer:latest
+  [node-mysql]=node:lts
+  [dotnet-sqlserver]=mcr.microsoft.com/dotnet/sdk:latest
 )
-kits=("$@"); [ ${#kits[@]} -eq 0 ] && kits=(django laravel-react node-react spring-react dotnet-react web-vite flutter react-native static-astro django-postgres laravel-postgres node-postgres dotnet-postgres)
+kits=("$@"); [ ${#kits[@]} -eq 0 ] && kits=(django laravel-react node-react spring-react dotnet-react web-vite flutter react-native static-astro django-postgres laravel-postgres node-postgres dotnet-postgres django-mysql laravel-mysql node-mysql dotnet-sqlserver)
 for kit in "${kits[@]}"; do
   echo ">>> $kit (${image[$kit]})"
   extra=()
-  # Spring and the database setups start PostgreSQL through Docker: share the host's Docker and network.
-  case $kit in spring-react | *-postgres) extra=(--network host -v /var/run/docker.sock:/var/run/docker.sock) ;; esac
+  # Spring and the database setups start the database through Docker: share the host's Docker and network.
+  case $kit in spring-react | *-postgres | *-mysql | *-sqlserver) extra=(--network host -v /var/run/docker.sock:/var/run/docker.sock) ;; esac
   docker run --rm "${extra[@]}" -v "$dir:/trails:ro" --entrypoint sh "${image[$kit]}" -c "command -v bash >/dev/null || apk add -q bash; bash /trails/$kit.sh" > "$logs/$kit.log" 2>&1
   sed -n '/##### RESULT/,$p' "$logs/$kit.log" | tail -n +2
 done

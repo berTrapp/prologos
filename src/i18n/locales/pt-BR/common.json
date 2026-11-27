@@ -871,7 +871,7 @@
       "group": {
         "front": "Front (vai para o navegador: nada secreto aqui)",
         "app": "App (vai para o celular: nada secreto aqui)",
-        "back": "API (fica no servidor)",
+        "back": "Back-end (fica no servidor)",
         "docker": "Docker (lidas pelo docker-compose.yml)",
         "other": "Outras"
       }

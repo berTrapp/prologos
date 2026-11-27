@@ -871,7 +871,7 @@
       "group": {
         "front": "Front end (goes to the browser: nothing secret here)",
         "app": "App (goes to the phone: nothing secret here)",
-        "back": "API (stays on the server)",
+        "back": "Back end (stays on the server)",
         "docker": "Docker (read by docker-compose.yml)",
         "other": "Other"
       }

@@ -382,7 +382,7 @@ Círculo que diz se uma decisão está resolvida (checklist, decisões essenciai
 
 Uma decisão essencial do Pronto para codar (RN 16).
 
-- **Anatomia:** linha de 48 px separada por 1 px `border` · marca de decisão (13.25) à esquerda · rótulo 14 px em `text` · detalhe à direita em 13 px: resolvida em `muted` (a escolha, "6 variáveis"), em aberto em `warning` ("A decidir", "1 de 4").
+- **Anatomia:** linha de no mínimo 48 px separada por 1 px `border` · marca de decisão (13.25) à esquerda · rótulo 14 px em `text` · detalhe à direita em 13 px, até 55% da largura, quebrando linha em vez de cortar: resolvida em `muted` (a escolha, "6 variáveis"), em aberto em `warning` ("A decidir", "1 de 4").
 - Não é clicável; o caminho para decidir é o "Abrir o checklist" embaixo da lista.
 
 ### 13.27 Marco

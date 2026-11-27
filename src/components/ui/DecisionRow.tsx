@@ -18,7 +18,8 @@ export function DecisionRow({ label, detail, resolved }: DecisionRowProps) {
       {detail ? (
         <span
           className={cn(
-            'max-w-[55%] truncate text-right text-[13px]',
+            // Wraps instead of cutting: the choice is the answer the row exists to show.
+            'max-w-[55%] text-right text-[13px] leading-snug text-pretty break-words',
             resolved ? 'text-muted' : 'text-warning',
           )}
         >

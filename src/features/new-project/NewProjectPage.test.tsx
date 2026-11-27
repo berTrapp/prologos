@@ -4,6 +4,7 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { repository } from '@/app/services';
 import i18n from '@/i18n';
 import { renderApp, resetAppData } from '@/test/render-app';
+import { useGuided } from './guided-store';
 
 const realMatchMedia = window.matchMedia;
 
@@ -92,6 +93,8 @@ describe('guided start (RN 13, 15)', () => {
     await user.click(screen.getByRole('button', { name: 'Criar projeto' }));
 
     await waitFor(() => expect(router.state.location.pathname).toMatch(/^\/p\//));
+    // The draft is cleared after the map opens, never before (no empty first step).
+    await waitFor(() => expect(useGuided.getState().answers.name).toBe(''));
     const snapshot = await projectAt(router.state.location.pathname);
     expect(snapshot.project).toMatchObject({
       name: 'Agenda de aulas',

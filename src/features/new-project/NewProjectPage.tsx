@@ -57,9 +57,10 @@ export function NewProjectPage() {
         createId: () => crypto.randomUUID(),
       });
       const id = await workspaceStore.getState().addProject(snapshot);
+      // ux-ui 14: the new project opens on screen, so no toast is needed. The draft is
+      // cleared only once the map is showing, or the empty first step flashes meanwhile.
+      await navigate(`/p/${id}`, { replace: true });
       reset();
-      // ux-ui 14: the new project opens on screen, so no toast is needed.
-      navigate(`/p/${id}`, { replace: true });
     } finally {
       setBusy(false);
     }

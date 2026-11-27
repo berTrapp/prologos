@@ -567,12 +567,41 @@ Validado automaticamente: referências entre itens, uma opção recomendada por 
           "en": "Default in the Microsoft ecosystem and common in companies. Runs in a Docker container; managed hosting is usually paid.",
           "es": "Estándar en el ecosistema Microsoft y común en empresas. Corre en un contenedor Docker; el hosting gestionado suele ser pago."
         },
+        "setup": [
+          {
+            "title": {
+              "pt-BR": "Subir o SQL Server",
+              "en": "Start SQL Server",
+              "es": "Levantar SQL Server"
+            },
+            "command": "docker compose up -d",
+            "ok": {
+              "pt-BR": "Com o docker-compose.yml e o .env do Pronto para codar na pasta do projeto, docker compose ps mostra o serviço db rodando. O SQL Server recusa senha fraca: se o serviço parar logo depois de subir, troque DB_PASSWORD por uma de 8 caracteres ou mais, com maiúsculas, minúsculas e números.",
+              "en": "With the docker-compose.yml and .env from Ready to code in the project folder, docker compose ps shows the db service running. SQL Server rejects weak passwords: if the service stops right after starting, change DB_PASSWORD to one with 8 or more characters, with uppercase, lowercase and digits.",
+              "es": "Con el docker-compose.yml y el .env de Listo para programar en la carpeta del proyecto, docker compose ps muestra el servicio db en marcha. SQL Server rechaza contraseñas débiles: si el servicio se detiene apenas levanta, cambia DB_PASSWORD por una de 8 caracteres o más, con mayúsculas, minúsculas y números."
+            }
+          },
+          {
+            "title": {
+              "pt-BR": "Ligar a API ao SQL Server",
+              "en": "Connect the API to SQL Server",
+              "es": "Conectar la API a SQL Server"
+            },
+            "command": "dotnet add Api package Microsoft.EntityFrameworkCore.SqlServer && dotnet add Api package Microsoft.EntityFrameworkCore.Design && dotnet tool install --global dotnet-ef",
+            "ok": {
+              "pt-BR": "Program.cs registra o DbContext com UseSqlServer(builder.Configuration.GetConnectionString(\"Default\")), a conexão fica em dotnet user-secrets e dotnet ef migrations add Inicial --project Api seguido de dotnet ef database update --project Api cria o banco e as tabelas.",
+              "en": "Program.cs registers the DbContext with UseSqlServer(builder.Configuration.GetConnectionString(\"Default\")), the connection lives in dotnet user-secrets, and dotnet ef migrations add Initial --project Api followed by dotnet ef database update --project Api creates the database and the tables.",
+              "es": "Program.cs registra el DbContext con UseSqlServer(builder.Configuration.GetConnectionString(\"Default\")), la conexión queda en dotnet user-secrets y dotnet ef migrations add Inicial --project Api seguido de dotnet ef database update --project Api crea la base y las tablas."
+            },
+            "docs": "https://learn.microsoft.com/ef/core/providers/sql-server/"
+          }
+        ],
         "env": {
           "CONNECTIONSTRINGS__DEFAULT": {
             "howToGet": {
-              "pt-BR": "Server=localhost,1433;Database=DB_NAME;User Id=sa;Password=DB_PASSWORD;TrustServerCertificate=True, com os valores do seu .env.",
-              "en": "Server=localhost,1433;Database=DB_NAME;User Id=sa;Password=DB_PASSWORD;TrustServerCertificate=True, with the values from your .env.",
-              "es": "Server=localhost,1433;Database=DB_NAME;User Id=sa;Password=DB_PASSWORD;TrustServerCertificate=True, con los valores de tu .env."
+              "pt-BR": "Server=localhost,1433;Database=nome_do_banco;User Id=sa;Password=DB_PASSWORD;TrustServerCertificate=True, com a senha do seu .env; o dotnet ef database update cria o banco com esse nome. Em desenvolvimento, guarde com dotnet user-secrets set ConnectionStrings:Default \"…\" --project Api.",
+              "en": "Server=localhost,1433;Database=database_name;User Id=sa;Password=DB_PASSWORD;TrustServerCertificate=True, with the password from your .env; dotnet ef database update creates the database with that name. In development, store it with dotnet user-secrets set ConnectionStrings:Default \"…\" --project Api.",
+              "es": "Server=localhost,1433;Database=nombre_de_la_base;User Id=sa;Password=DB_PASSWORD;TrustServerCertificate=True, con la contraseña de tu .env; dotnet ef database update crea la base con ese nombre. En desarrollo, guárdala con dotnet user-secrets set ConnectionStrings:Default \"…\" --project Api."
             }
           }
         }

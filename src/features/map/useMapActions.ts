@@ -17,7 +17,7 @@ import {
   type NewZone,
   type ZonePatch,
 } from '@/domain/rules/edit';
-import { setNotApplicable, setPrepStep } from '@/domain/rules/checklist';
+import { setNotApplicable, setPrepStep, type PrepStepId } from '@/domain/rules/checklist';
 import { addFlow, removeFlow, renameFlow, restoreFlow } from '@/domain/rules/flows';
 import {
   addNote,
@@ -174,8 +174,8 @@ export function useMapActions() {
         }
       },
       /** RN 15: a step of "Preparar o ambiente"; no toast (ux-ui 14). */
-      setPrepStep(index: number, done: boolean) {
-        apply((s) => setPrepStep(s, index, done));
+      setPrepStep(id: PrepStepId, done: boolean) {
+        apply((s) => setPrepStep(s, id, done));
       },
       setView(view: 'today' | 'complete') {
         store().change((draft) => {

@@ -12,6 +12,7 @@ import { InlineAlert } from '@/components/ui/InlineAlert';
 import { SegmentedControl } from '@/components/ui/SegmentedControl';
 import { envSummary, envType, validateEnvVars, type EnvIssue } from '@/domain/rules/env';
 import { kitText } from '@/domain/rules/kit';
+import { envHowToGet } from '@/domain/rules/kit-lookup';
 import type { EnvVar } from '@/domain/schemas/env';
 import { useMapModel } from '@/features/map/useMapModel';
 import { DataNotice } from '@/features/project/DataNotice';
@@ -61,8 +62,8 @@ export function VariablesPage() {
   const issues = validateEnvVars(vars, prefix);
   const summary = envSummary(vars, prefix);
   const howToGet = (key: string) => {
-    const source = model.kit?.envVars.find((v) => v.key === key);
-    return source?.howToGet ? kitText(source.howToGet, model.language) : undefined;
+    const hint = envHowToGet(model.snapshot, model.kit, key);
+    return hint ? kitText(hint, model.language) : undefined;
   };
   const issueText = (issue: EnvIssue) => t(`env.issues.${issue}`, { prefix: prefix ?? '' });
 

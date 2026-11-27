@@ -3,7 +3,7 @@ import { findKit } from '@/content/kits';
 import { kitProject } from '../fixtures';
 import type { Kit } from '../schemas/kit';
 import type { ProjectSnapshot } from '../schemas/snapshot';
-import { setNotApplicable, setPrepStep } from './checklist';
+import { setNotApplicable, setPrepStep, prepSteps } from './checklist';
 import { readyView } from './ready';
 
 const kit = (id: string): Kit => {
@@ -38,8 +38,8 @@ describe('readyView (RN 16)', () => {
   it('is ready once the trail is done and the runsOn items are decided or not applicable', () => {
     const django = kit('django');
     let snapshot = kitProject('django', { knownStack: 'none', runsOn: { database: 0 } });
-    for (let step = 0; step < django.prepTrail.length; step += 1)
-      snapshot = setPrepStep(snapshot, step, true);
+    // Every step, the database setup included (RN 15).
+    for (const step of prepSteps(snapshot, django)) snapshot = setPrepStep(snapshot, step.id, true);
     const hosting = snapshot.checklist.find((row) => row.itemRef === 'hosting');
     if (!hosting) throw new Error('hosting');
     snapshot = setNotApplicable(snapshot, hosting.id, 'Só local');

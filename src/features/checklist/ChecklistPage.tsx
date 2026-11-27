@@ -121,7 +121,6 @@ export function ChecklistPage() {
         {view.prep && model.kit ? (
           <PrepSection
             prep={view.prep}
-            kit={model.kit}
             techs={techs}
             language={model.language}
             onToggle={actions.setPrepStep}
@@ -167,7 +166,7 @@ function NextStepCard({
     // Keeps the "Tudo resolvido" title and body.
   } else if (step?.kind === 'prepare-env' && model.kit) {
     const next = prepDone?.steps.find((s) => !s.done);
-    const source = next ? model.kit.prepTrail[next.index] : undefined;
+    const source = next?.step;
     title = source ? kitText(source.title, model.language) : t('firstStep.prepare-env');
     body = t('checklist.next.prepBody', { techs, count: techCount });
   } else if (step?.kind === 'decide') {

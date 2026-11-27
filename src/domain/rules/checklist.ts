@@ -1,5 +1,6 @@
+import { SUPPORTED_LANGUAGES } from '@/i18n/languages';
 import type { ChecklistExpectation } from '../schemas/checklist';
-import type { Kit } from '../schemas/kit';
+import type { Kit, PendingOption, TrailStep } from '../schemas/kit';
 import type { Item, Zone } from '../schemas/map';
 import type { View } from '../schemas/project';
 import type { ProjectSnapshot } from '../schemas/snapshot';
@@ -21,7 +22,9 @@ export type ChecklistRow = {
 
 export type ChecklistSection = { zoneId: string; rows: ChecklistRow[]; pending: number };
 
-export type PrepStep = { index: number; done: boolean };
+/** A trail step by its position in the kit, or a chosen option's setup step by its key. */
+export type PrepStepId = { kind: 'trail'; index: number } | { kind: 'setup'; key: string };
+export type PrepStep = { id: PrepStepId; step: TrailStep; done: boolean };
 
 export type ChecklistView = {
   /** "Preparar o ambiente", when a technology is new (RN 15). */
@@ -41,10 +44,51 @@ export function hasPrepTrail(snapshot: Pick<ProjectSnapshot, 'items'>, kit: Kit 
   return Boolean(kit && kit.prepTrail.length > 0 && snapshot.items.some((item) => item.newForYou));
 }
 
+/**
+ * The kit option a decided item was resolved with. The choice is stored in the language the
+ * project was created in, so it is matched against every language (RN 17).
+ */
+export function chosenOption(
+  snapshot: Pick<ProjectSnapshot, 'items'>,
+  kit: Kit,
+  ref: string,
+): PendingOption | undefined {
+  const item = snapshot.items.find((i) => i.kitRef === ref && i.state === 'decided');
+  if (!item?.choice) return undefined;
+  return kit.pendingOptions[ref]?.find((option) =>
+    SUPPORTED_LANGUAGES.some(
+      (lng) => (typeof option.name === 'string' ? option.name : option.name[lng]) === item.choice,
+    ),
+  );
+}
+
+/**
+ * RN 15: the steps of "Preparar o ambiente": the kit's trail, then the setup of what was
+ * chosen in "Onde roda" (the database, for instance), in the kit's runsOn order. A setup
+ * step is done by its option, so choosing another database starts its steps fresh.
+ */
+export function prepSteps(snapshot: ProjectSnapshot, kit: Kit): PrepStep[] {
+  const trailDone = new Set(snapshot.project.prepDone ?? []);
+  const setupDone = new Set(snapshot.project.setupDone ?? []);
+  const steps: PrepStep[] = kit.prepTrail.map((step, index) => ({
+    id: { kind: 'trail', index },
+    step,
+    done: trailDone.has(index),
+  }));
+  for (const ref of kit.runsOn) {
+    const option = chosenOption(snapshot, kit, ref);
+    const choice = snapshot.items.find((item) => item.kitRef === ref)?.choice;
+    (option?.setup ?? []).forEach((step, index) => {
+      const key = `${ref}:${choice}:${index}`;
+      steps.push({ id: { kind: 'setup', key }, step, done: setupDone.has(key) });
+    });
+  }
+  return steps;
+}
+
 export function prepComplete(snapshot: ProjectSnapshot, kit: Kit | undefined): boolean {
   if (!kit || !hasPrepTrail(snapshot, kit)) return true;
-  const done = new Set(snapshot.project.prepDone ?? []);
-  return kit.prepTrail.every((_, index) => done.has(index));
+  return prepSteps(snapshot, kit).every((step) => step.done);
 }
 
 /** Expectations marked "Não se aplica", by the kit item they expect. */
@@ -146,8 +190,7 @@ export function checklistView(
 
   const result: ChecklistView = { sections, resolved: 0, total: 0, percent: 100 };
   if (kit && hasPrepTrail(snapshot, kit)) {
-    const done = new Set(snapshot.project.prepDone ?? []);
-    const steps = kit.prepTrail.map((_, index) => ({ index, done: done.has(index) }));
+    const steps = prepSteps(snapshot, kit);
     result.prep = { steps, done: steps.filter((step) => step.done).length };
   }
 
@@ -180,12 +223,18 @@ export function setNotApplicable(
 /** RN 15: marks a step of "Preparar o ambiente" as done or not. */
 export function setPrepStep(
   snapshot: ProjectSnapshot,
-  index: number,
+  id: PrepStepId,
   done: boolean,
 ): ProjectSnapshot {
+  if (id.kind === 'setup') {
+    const current = new Set(snapshot.project.setupDone ?? []);
+    if (done) current.add(id.key);
+    else current.delete(id.key);
+    return { ...snapshot, project: { ...snapshot.project, setupDone: [...current].sort() } };
+  }
   const current = new Set(snapshot.project.prepDone ?? []);
-  if (done) current.add(index);
-  else current.delete(index);
+  if (done) current.add(id.index);
+  else current.delete(id.index);
   return {
     ...snapshot,
     project: { ...snapshot.project, prepDone: [...current].sort((a, b) => a - b) },

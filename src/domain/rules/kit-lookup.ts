@@ -1,7 +1,8 @@
 import { SUPPORTED_LANGUAGES, type Language } from '@/i18n/languages';
-import type { Kit, KitItem, KitName } from '../schemas/kit';
+import type { Kit, KitItem, KitName, KitText } from '../schemas/kit';
 import type { Item, Zone } from '../schemas/map';
 import type { ProjectSnapshot } from '../schemas/snapshot';
+import { chosenOption } from './checklist';
 import { kitText, type EquivalenceConcept } from './kit';
 
 const allLanguages = (value: KitName): string[] =>
@@ -110,4 +111,21 @@ export function suggestionsFor(
       if (source.tech) suggestion.tech = source.tech;
       return suggestion;
     });
+}
+
+/**
+ * RN 3: where to get a variable's value. What was chosen in "Onde roda" wins over the kit's
+ * general hint, so DATABASE_URL follows the database (PostgreSQL, not "SQLite to start").
+ */
+export function envHowToGet(
+  snapshot: Pick<ProjectSnapshot, 'items'>,
+  kit: Kit | undefined,
+  key: string,
+): KitText | undefined {
+  if (!kit) return undefined;
+  for (const ref of kit.runsOn) {
+    const hint = chosenOption(snapshot, kit, ref)?.env?.[key]?.howToGet;
+    if (hint) return hint;
+  }
+  return kit.envVars.find((v) => v.key === key)?.howToGet;
 }

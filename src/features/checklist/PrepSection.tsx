@@ -4,8 +4,7 @@ import { Card } from '@/components/ui/Card';
 import { Checkbox } from '@/components/ui/Checkbox';
 import { Chip } from '@/components/ui/Chip';
 import { kitText } from '@/domain/rules/kit';
-import type { ChecklistView } from '@/domain/rules/checklist';
-import type { Kit } from '@/domain/schemas/kit';
+import type { ChecklistView, PrepStepId } from '@/domain/rules/checklist';
 import type { Language } from '@/i18n/languages';
 import { badgeForState } from '@/lib/status-variants';
 import { cn } from '@/lib/utils';
@@ -15,16 +14,14 @@ const newBadge = badgeForState('label', 'newForYou');
 /** RN 15: install, create, run, first test; each step with its command and how to tell. */
 export function PrepSection({
   prep,
-  kit,
   techs,
   language,
   onToggle,
 }: {
   prep: NonNullable<ChecklistView['prep']>;
-  kit: Kit;
   techs: string;
   language: Language;
-  onToggle: (index: number, done: boolean) => void;
+  onToggle: (id: PrepStepId, done: boolean) => void;
 }) {
   const { t } = useTranslation();
   return (
@@ -42,19 +39,17 @@ export function PrepSection({
         </span>
       </header>
       <ol className="flex flex-col">
-        {prep.steps.map(({ index, done }) => {
-          const step = kit.prepTrail[index];
-          if (!step) return null;
+        {prep.steps.map(({ id, step, done }) => {
           const title = kitText(step.title, language);
           return (
             <li
-              key={index}
+              key={id.kind === 'trail' ? id.index : id.key}
               className="flex flex-col gap-2 border-t border-border px-6 py-4 tablet:flex-row tablet:items-start tablet:gap-4"
             >
               <div className="flex min-w-0 flex-1 flex-col gap-1">
                 <Checkbox
                   checked={done}
-                  onCheckedChange={(next) => onToggle(index, next)}
+                  onCheckedChange={(next) => onToggle(id, next)}
                   label={
                     <span
                       className={cn(

@@ -1,4 +1,5 @@
 import type { EnvVar } from '../../schemas/env';
+import { envHowToGet } from '../kit-lookup';
 import { exportModel, slugify, type ExportInput } from './model';
 import { mapMermaid } from './mermaid';
 
@@ -298,9 +299,9 @@ export function readme(input: ExportInput, plan = composePlan(input)): string {
       '| --- | --- | --- |',
     );
     for (const row of rows) {
-      const source = kit?.envVars.find((v) => v.key === row.key);
-      const howToGet = source?.howToGet
-        ? cell(source.howToGet[language])
+      const hint = envHowToGet(snapshot, kit, row.key);
+      const howToGet = hint
+        ? cell(hint[language])
         : row.value
           ? t('files.readme.example', { value: code(row.value) })
           : row.group === 'docker' && row.secret

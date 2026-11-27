@@ -16,6 +16,24 @@ const Name = z.union([z.string().min(1), LocalizedText]);
 const Url = z.url();
 const EnvKey = z.string().regex(/^[A-Z][A-Z0-9_]*$/);
 const RunStep = z.object({ title: LocalizedText, command: z.string().min(1) });
+/** RN 15: a step of "Preparar o ambiente": what to do, the command and how to tell it worked. */
+const TrailStep = z.object({
+  title: LocalizedText,
+  command: z.string().min(1),
+  ok: LocalizedText,
+  docs: Url.optional(),
+});
+/**
+ * RN 15: an option of a pending item. A database option may bring the steps that set it up,
+ * added to the end of the trail once chosen, and where to get its variables.
+ */
+const PendingOption = z.object({
+  name: Name,
+  recommended: z.boolean().optional(),
+  why: LocalizedText,
+  setup: z.array(TrailStep).optional(),
+  env: z.record(EnvKey, z.object({ howToGet: LocalizedText })).optional(),
+});
 
 export { KNOWN_STACKS };
 
@@ -70,21 +88,9 @@ export const KitSchema = z
     flows: z.array(
       z.object({ id: z.string(), name: LocalizedText, path: z.array(z.string()).min(2) }),
     ),
-    pendingOptions: z.record(
-      z.string(),
-      z
-        .array(z.object({ name: Name, recommended: z.boolean().optional(), why: LocalizedText }))
-        .min(1),
-    ),
+    pendingOptions: z.record(z.string(), z.array(PendingOption).min(1)),
     checklist: z.partialRecord(z.enum(ZONE_IDS), z.array(z.string())),
-    prepTrail: z.array(
-      z.object({
-        title: LocalizedText,
-        command: z.string().min(1),
-        ok: LocalizedText,
-        docs: Url.optional(),
-      }),
-    ),
+    prepTrail: z.array(TrailStep),
     folders: z.array(z.object({ path: z.string().min(1), what: LocalizedText })),
     /** RN 16: what to install before running, for the generated README. */
     prerequisites: z.array(Name).min(1),
@@ -160,6 +166,8 @@ export const KitSchema = z
   });
 
 export type Kit = z.infer<typeof KitSchema>;
+export type TrailStep = Kit['prepTrail'][number];
+export type PendingOption = Kit['pendingOptions'][string][number];
 export type KitItem = z.infer<typeof KitItemSchema>;
 export type KitText = z.infer<typeof LocalizedText>;
 export type KitName = z.infer<typeof Name>;

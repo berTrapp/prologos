@@ -1,7 +1,7 @@
 import type { Kit } from '../schemas/kit';
 import type { Item } from '../schemas/map';
 import type { ProjectSnapshot } from '../schemas/snapshot';
-import { hasPrepTrail, notApplicableRefs } from './checklist';
+import { hasPrepTrail, notApplicableRefs, prepSteps } from './checklist';
 import { NO_KIT_RUNS_ON } from './guided-start';
 
 /** How an essential decision tied to a map item stands. */
@@ -46,13 +46,13 @@ export function readyView(snapshot: ProjectSnapshot, kit: Kit | undefined): Read
   });
 
   if (kit && hasPrepTrail(snapshot, kit)) {
-    const done = new Set(snapshot.project.prepDone ?? []);
-    const doneSteps = kit.prepTrail.filter((_, index) => done.has(index)).length;
+    const steps = prepSteps(snapshot, kit);
+    const doneSteps = steps.filter((step) => step.done).length;
     essentials.push({
       key: 'prep',
-      done: doneSteps === kit.prepTrail.length,
+      done: doneSteps === steps.length,
       doneSteps,
-      total: kit.prepTrail.length,
+      total: steps.length,
     });
   }
 

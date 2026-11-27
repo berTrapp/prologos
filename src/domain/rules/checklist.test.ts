@@ -5,13 +5,18 @@ import type { Kit } from '../schemas/kit';
 import type { ProjectSnapshot } from '../schemas/snapshot';
 import {
   checklistView,
+  chosenOption,
   hasPrepTrail,
   isResolved,
   notApplicableReason,
   prepComplete,
+  prepSteps,
   setNotApplicable,
   setPrepStep,
 } from './checklist';
+import { envHowToGet } from './kit-lookup';
+import { kitProject } from '../fixtures';
+import { chooseOption } from './edit';
 import { updateItem } from './edit';
 import { EMPTY_ANSWERS, buildProjectFromAnswers, firstStep, nextSteps } from './guided-start';
 import { removeItem } from './map';
@@ -155,18 +160,18 @@ describe('"Preparar o ambiente" (RN 15)', () => {
     const view = checklistView(snapshot, kit('django'), 'today');
     expect(view.prep?.steps).toHaveLength(kit('django').prepTrail.length);
     expect(view.prep?.done).toBe(0);
-    const withStep = setPrepStep(snapshot, 0, true);
+    const withStep = setPrepStep(snapshot, { kind: 'trail', index: 0 }, true);
     const after = checklistView(withStep, kit('django'), 'today');
     expect(after.prep?.done).toBe(1);
     expect(after.resolved).toBe(view.resolved + 1);
-    expect(setPrepStep(withStep, 0, false).project.prepDone).toEqual([]);
+    expect(setPrepStep(withStep, { kind: 'trail', index: 0 }, false).project.prepDone).toEqual([]);
   });
 
   it('leaves the next steps once every step is done', () => {
     let snapshot = project('none');
     expect(firstStep(snapshot, kit('django'))).toEqual({ kind: 'prepare-env' });
     kit('django').prepTrail.forEach((_, index) => {
-      snapshot = setPrepStep(snapshot, index, true);
+      snapshot = setPrepStep(snapshot, { kind: 'trail', index }, true);
     });
     expect(prepComplete(snapshot, kit('django'))).toBe(true);
     expect(firstStep(snapshot, kit('django')).kind).toBe('decide');
@@ -202,5 +207,72 @@ describe('"Não se aplica" (RN 5)', () => {
     const marked = setNotApplicable(snapshot, expectation(snapshot, 'backup').id, 'x'.repeat(200));
     expect(expectation(marked, 'backup').notApplicable?.reason).toHaveLength(140);
     expect(notApplicableReason({}, marked.checklist)).toBeUndefined();
+  });
+});
+
+describe('setup of what was chosen in "Onde roda" (RN 15)', () => {
+  const step = (title: string) => ({
+    title: { 'pt-BR': title, en: title, es: title },
+    command: `run ${title}`,
+    ok: { 'pt-BR': 'ok', en: 'ok', es: 'ok' },
+  });
+  const hint = (text: string) => ({ howToGet: { 'pt-BR': text, en: text, es: text } });
+  // A kit whose PostgreSQL brings two setup steps and its own DATABASE_URL hint.
+  const base = kit('django');
+  const withSetup: Kit = {
+    ...base,
+    pendingOptions: {
+      ...base.pendingOptions,
+      database: (base.pendingOptions.database ?? []).map((option, index) =>
+        index === 0
+          ? {
+              ...option,
+              setup: [step('Subir'), step('Conectar')],
+              env: { DATABASE_URL: hint('postgres://…') },
+            }
+          : option,
+      ),
+    },
+  };
+  const databaseId = (snapshot: ProjectSnapshot) =>
+    snapshot.items.find((item) => item.kitRef === 'database')?.id ?? '';
+
+  it('adds the chosen database setup to the end of the trail', () => {
+    const pending = kitProject('django', { knownStack: 'none' });
+    expect(prepSteps(pending, withSetup)).toHaveLength(base.prepTrail.length);
+    const decided = chooseOption(pending, databaseId(pending), 'PostgreSQL');
+    const steps = prepSteps(decided, withSetup);
+    expect(steps).toHaveLength(base.prepTrail.length + 2);
+    expect(steps.at(-1)?.id).toEqual({ kind: 'setup', key: 'database:PostgreSQL:1' });
+    expect(chosenOption(decided, withSetup, 'database')?.name).toBe('PostgreSQL');
+  });
+
+  it('keeps the setup done per option, so another database starts fresh', () => {
+    let snapshot = kitProject('django', { knownStack: 'none', runsOn: { database: 0 } });
+    for (const s of prepSteps(snapshot, withSetup)) snapshot = setPrepStep(snapshot, s.id, true);
+    expect(prepComplete(snapshot, withSetup)).toBe(true);
+    const mysql = chooseOption(snapshot, databaseId(snapshot), 'MySQL');
+    expect(prepComplete(mysql, withSetup)).toBe(true);
+    const back = chooseOption(mysql, databaseId(mysql), 'PostgreSQL');
+    expect(prepComplete(back, withSetup)).toBe(true);
+    const undone = setPrepStep(back, { kind: 'setup', key: 'database:PostgreSQL:0' }, false);
+    expect(prepComplete(undone, withSetup)).toBe(false);
+    expect(firstStep(undone, withSetup)).toEqual({ kind: 'prepare-env' });
+  });
+
+  it('matches a choice saved in another language', () => {
+    const snapshot = kitProject('django', { knownStack: 'none', runsOn: { hosting: 2 } }, 'en');
+    expect(chosenOption(snapshot, base, 'hosting')).toBe(base.pendingOptions.hosting?.[2]);
+  });
+
+  it('tells where to get a variable from the chosen option first', () => {
+    const pending = kitProject('django', { knownStack: 'none' });
+    expect(envHowToGet(pending, withSetup, 'DATABASE_URL')?.['pt-BR']).toMatch(/sqlite/);
+    const decided = chooseOption(pending, databaseId(pending), 'PostgreSQL');
+    expect(envHowToGet(decided, withSetup, 'DATABASE_URL')?.['pt-BR']).toBe('postgres://…');
+    expect(envHowToGet(decided, withSetup, 'SECRET_KEY')).toBe(
+      base.envVars.find((v) => v.key === 'SECRET_KEY')?.howToGet,
+    );
+    expect(envHowToGet(decided, undefined, 'DATABASE_URL')).toBeUndefined();
   });
 });

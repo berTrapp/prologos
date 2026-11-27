@@ -27,7 +27,7 @@ Modelo de conteúdo para os starter kits (RN 14). Os outros 7 kits seguem exatam
 | `technologies` | Tecnologias do kit, com "o que é" e documentação; usadas no passo "Experiência" |
 | `zones` / `items` | O mapa inicial |
 | `connections`, `flows` | Ligações e o primeiro fluxo sugerido |
-| `pendingOptions` | Opções com consequências para cada item pendente, com a recomendada para começar |
+| `pendingOptions` | Opções com consequências para cada item pendente, com a recomendada para começar. Uma opção de `runsOn` pode trazer `setup` (passos no formato da `prepTrail`, que entram no fim da trilha quando ela é escolhida) e `env` (`howToGet` por variável, no lugar do texto geral) (RN 15) |
 | `checklist` | Itens esperados por zona (RN 5) |
 | `prepTrail` | Trilha "Preparar o ambiente" (RN 15) |
 | `folders` | Estrutura de pastas explicada |
@@ -368,7 +368,7 @@ Modelo de conteúdo para os starter kits (RN 14). Os outros 7 kits seguem exatam
 - [ ] Todo id de `runsOn` é um item `pending` com `pendingOptions`
 - [ ] Todo id em `checklist`, `connections`, `flows` e `dependencyMap` existe em `items`
 - [ ] Nenhuma variável `secret: true` tem `example`
-- [ ] Os comandos da `prepTrail` foram executados numa máquina limpa e funcionam
+- [ ] Os comandos da `prepTrail` e dos `setup` de cada opção foram executados numa máquina limpa e funcionam
 - [ ] Os passos de `runLocally` funcionam num clone do repositório gerado
 - [ ] O `gitignore` ignora `.env` e não ignora `.env.example`
 - [ ] Os links de documentação abrem a página oficial certa

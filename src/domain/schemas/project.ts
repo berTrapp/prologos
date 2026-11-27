@@ -23,6 +23,8 @@ export const ProjectSchema = z.object({
   knownStack: z.enum(KNOWN_STACKS).optional(),
   /** RN 15: steps of "Preparar o ambiente" already done, by their position in the kit. */
   prepDone: z.array(z.number().int().nonnegative()).optional(),
+  /** RN 15: setup steps of a chosen option already done, as "ref:choice:position". */
+  setupDone: z.array(z.string().max(200)).optional(),
   view: z.enum(VIEWS),
   environments: z.array(Text(40)).min(1),
   createdAt: Timestamp,

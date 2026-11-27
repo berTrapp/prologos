@@ -538,6 +538,35 @@
           "en": "Default on many shared hosts. Works well; fewer advanced features.",
           "es": "Predeterminado en muchos hostings compartidos. Funciona bien; tiene menos funciones avanzadas."
         },
+        "setup": [
+          {
+            "title": {
+              "pt-BR": "Subir o MySQL",
+              "en": "Start MySQL",
+              "es": "Levantar MySQL"
+            },
+            "command": "docker compose up -d",
+            "ok": {
+              "pt-BR": "Com o docker-compose.yml e o .env do Pronto para codar na pasta do projeto, docker compose ps mostra o serviço db rodando.",
+              "en": "With the docker-compose.yml and .env from Ready to code in the project folder, docker compose ps shows the db service running.",
+              "es": "Con el docker-compose.yml y el .env de Listo para programar en la carpeta del proyecto, docker compose ps muestra el servicio db en marcha."
+            }
+          },
+          {
+            "title": {
+              "pt-BR": "Ligar o Laravel ao MySQL",
+              "en": "Connect Laravel to MySQL",
+              "es": "Conectar Laravel a MySQL"
+            },
+            "command": "php artisan migrate",
+            "ok": {
+              "pt-BR": "No .env, DB_CONNECTION=mysql, DB_HOST=127.0.0.1 e DB_PORT=3306; as tabelas aparecem no MySQL. Se faltar o driver, ative a extensão pdo_mysql do PHP.",
+              "en": "In .env, DB_CONNECTION=mysql, DB_HOST=127.0.0.1 and DB_PORT=3306; the tables show up in MySQL. If the driver is missing, enable PHP's pdo_mysql extension.",
+              "es": "En el .env, DB_CONNECTION=mysql, DB_HOST=127.0.0.1 y DB_PORT=3306; las tablas aparecen en MySQL. Si falta el driver, activa la extensión pdo_mysql de PHP."
+            },
+            "docs": "https://laravel.com/docs/database#configuration"
+          }
+        ],
         "env": {
           "DB_CONNECTION": {
             "howToGet": {

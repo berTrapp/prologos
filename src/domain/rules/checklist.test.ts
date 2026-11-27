@@ -251,8 +251,11 @@ describe('setup of what was chosen in "Onde roda" (RN 15)', () => {
     let snapshot = kitProject('django', { knownStack: 'none', runsOn: { database: 0 } });
     for (const s of prepSteps(snapshot, withSetup)) snapshot = setPrepStep(snapshot, s.id, true);
     expect(prepComplete(snapshot, withSetup)).toBe(true);
+    // MySQL brings its own steps, none of them done yet; SQLite brings none.
     const mysql = chooseOption(snapshot, databaseId(snapshot), 'MySQL');
-    expect(prepComplete(mysql, withSetup)).toBe(true);
+    expect(prepComplete(mysql, withSetup)).toBe(false);
+    const sqlite = chooseOption(snapshot, databaseId(snapshot), 'SQLite');
+    expect(prepComplete(sqlite, withSetup)).toBe(true);
     const back = chooseOption(mysql, databaseId(mysql), 'PostgreSQL');
     expect(prepComplete(back, withSetup)).toBe(true);
     const undone = setPrepStep(back, { kind: 'setup', key: 'database:PostgreSQL:0' }, false);

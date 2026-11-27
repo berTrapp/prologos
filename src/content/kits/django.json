@@ -547,12 +547,41 @@
           "en": "Very common on hosting providers. Works well; fewer advanced features than PostgreSQL.",
           "es": "Muy común en hostings. Funciona bien; tiene menos funciones avanzadas que PostgreSQL."
         },
+        "setup": [
+          {
+            "title": {
+              "pt-BR": "Subir o MySQL",
+              "en": "Start MySQL",
+              "es": "Levantar MySQL"
+            },
+            "command": "docker compose up -d",
+            "ok": {
+              "pt-BR": "Com o docker-compose.yml e o .env do Pronto para codar na pasta do projeto, docker compose ps mostra o serviço db rodando.",
+              "en": "With the docker-compose.yml and .env from Ready to code in the project folder, docker compose ps shows the db service running.",
+              "es": "Con el docker-compose.yml y el .env de Listo para programar en la carpeta del proyecto, docker compose ps muestra el servicio db en marcha."
+            }
+          },
+          {
+            "title": {
+              "pt-BR": "Ligar o Django ao MySQL",
+              "en": "Connect Django to MySQL",
+              "es": "Conectar Django a MySQL"
+            },
+            "command": "pip install mysqlclient django-environ",
+            "ok": {
+              "pt-BR": "Em config/settings.py, o .env é lido com django-environ e DATABASES = {\"default\": env.db()}; python manage.py migrate cria as tabelas no MySQL. No Linux, instale antes pkg-config e a biblioteca do cliente MySQL (no Ubuntu: sudo apt install pkg-config default-libmysqlclient-dev build-essential).",
+              "en": "In config/settings.py, the .env is read with django-environ and DATABASES = {\"default\": env.db()}; python manage.py migrate creates the tables in MySQL. On Linux, first install pkg-config and the MySQL client library (on Ubuntu: sudo apt install pkg-config default-libmysqlclient-dev build-essential).",
+              "es": "En config/settings.py, el .env se lee con django-environ y DATABASES = {\"default\": env.db()}; python manage.py migrate crea las tablas en MySQL. En Linux, instala antes pkg-config y la biblioteca del cliente MySQL (en Ubuntu: sudo apt install pkg-config default-libmysqlclient-dev build-essential)."
+            },
+            "docs": "https://github.com/PyMySQL/mysqlclient#install"
+          }
+        ],
         "env": {
           "DATABASE_URL": {
             "howToGet": {
-              "pt-BR": "mysql://DB_USER:DB_PASSWORD@localhost:3306/DB_NAME, com os valores do seu .env.",
-              "en": "mysql://DB_USER:DB_PASSWORD@localhost:3306/DB_NAME, with the values from your .env.",
-              "es": "mysql://DB_USER:DB_PASSWORD@localhost:3306/DB_NAME, con los valores de tu .env."
+              "pt-BR": "mysql://DB_USER:DB_PASSWORD@127.0.0.1:3306/DB_NAME, com os valores do seu .env. Use 127.0.0.1: com localhost, o mysqlclient procura o MySQL por um arquivo local em vez da porta do Docker.",
+              "en": "mysql://DB_USER:DB_PASSWORD@127.0.0.1:3306/DB_NAME, with the values from your .env. Use 127.0.0.1: with localhost, mysqlclient looks for MySQL through a local file instead of the Docker port.",
+              "es": "mysql://DB_USER:DB_PASSWORD@127.0.0.1:3306/DB_NAME, con los valores de tu .env. Usa 127.0.0.1: con localhost, mysqlclient busca MySQL por un archivo local en vez del puerto de Docker."
             }
           }
         }

@@ -3,7 +3,11 @@ import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { projectStore, repository, workspaceStore } from '@/app/services';
 import { KITS, findKit } from '@/content/kits';
-import { EMPTY_ANSWERS, buildProjectFromAnswers } from '@/domain/rules/guided-start';
+import {
+  EMPTY_ANSWERS,
+  buildProjectFromAnswers,
+  type GuidedAnswers,
+} from '@/domain/rules/guided-start';
 import i18n from '@/i18n';
 import { notify } from '@/lib/notify';
 import { renderApp, resetAppData } from '@/test/render-app';
@@ -21,9 +25,9 @@ afterEach(() => {
 });
 
 let counter = 0;
-async function djangoProject() {
+async function djangoProject(answers: Partial<GuidedAnswers> = {}) {
   const snapshot = buildProjectFromAnswers(
-    { ...EMPTY_ANSWERS, name: 'Agenda de aulas', type: 'web', knownStack: 'laravel' },
+    { ...EMPTY_ANSWERS, name: 'Agenda de aulas', type: 'web', knownStack: 'laravel', ...answers },
     findKit('django'),
     {
       id: `p-${++counter}`,
@@ -67,6 +71,20 @@ describe('map (RN 1, 2, 13, 15)', () => {
       }),
     ).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Recolher Dados' })).toBeInTheDocument();
+  });
+
+  it('takes the person to the trail when it is all that is left', async () => {
+    const user = userEvent.setup();
+    const project = await djangoProject({ runsOn: { database: 0, hosting: 0 } });
+    const { router } = await renderApp(`/p/${project.project.id}`);
+    const bar = await screen.findByRole('button', { name: /Próximo passo/ });
+    expect(bar).toHaveTextContent('Preparar o ambiente');
+    // Backup is still pending, and the trail counts as one more.
+    expect(bar).toHaveTextContent('2 pendências');
+    await user.click(bar);
+    await waitFor(() =>
+      expect(router.state.location.pathname).toBe(`/p/${project.project.id}/checklist`),
+    );
   });
 
   it('explains a new item and decides a pending one, with Desfazer', async () => {

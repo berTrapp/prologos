@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router';
 import { cn } from '@/lib/utils';
 import { useMapUi } from './map-ui-store';
 import type { MapModel } from './useMapModel';
@@ -17,7 +18,12 @@ export function NextStepBar({
 }) {
   const { t } = useTranslation();
   const select = useMapUi((s) => s.select);
-  const { text, pending, firstItemId } = useNextStepText(model);
+  const setDrawing = useMapUi((s) => s.setDrawing);
+  const navigate = useNavigate();
+  const next = useNextStepText(model);
+  const { text, pending } = next;
+  // Drawing a flow is desktop editing (ux-ui 12): on the phone that step is only shown.
+  const target = stacked && next.target?.kind === 'flow' ? undefined : next.target;
   const content = stacked ? (
     <>
       <span className="flex items-center justify-between gap-3">
@@ -38,15 +44,20 @@ export function NextStepBar({
     stacked ? 'flex-col gap-1 py-3' : 'min-h-10 items-center gap-3',
     className,
   );
-  // With an item to decide, the bar takes the person straight to it.
-  return firstItemId ? (
+  // The bar always leads somewhere: the item to decide, the trail, or a new flow.
+  const go = () => {
+    if (target?.kind === 'item') select({ kind: 'item', id: target.id });
+    if (target?.kind === 'checklist') void navigate(`/p/${model.snapshot.project.id}/checklist`);
+    if (target?.kind === 'flow') setDrawing([]);
+  };
+  return target ? (
     <button
       type="button"
       className={cn(
         classes,
         'transition-shadow duration-(--duration-fast) hover:inset-ring-accent/50 focus-visible:outline-2 focus-visible:outline-ring',
       )}
-      onClick={() => select({ kind: 'item', id: firstItemId })}
+      onClick={go}
     >
       {content}
     </button>

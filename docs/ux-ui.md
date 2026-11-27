@@ -37,7 +37,7 @@ No tema claro as cores de zona ficam um tom mais escuras para o texto e o traço
 - No máximo três níveis de texto por bloco: título, texto, detalhe (mono, caixa alta, cor apagada).
 - Divulgação progressiva: o essencial aparece; o detalhe vai para o painel lateral, um card expandido ou uma zona aberta.
 - Números importantes em tamanho grande e com rótulo curto embaixo.
-- O **próximo passo** fica sempre visível no topo do mapa e do checklist.
+- O **próximo passo** fica sempre visível no topo do mapa e do checklist. No mapa, a barra sempre leva a algum lugar: o primeiro item a decidir, a trilha "Preparar o ambiente" no checklist ou, sem nada pendente, um fluxo novo (só no desktop). A trilha incompleta conta como uma pendência.
 
 ## 4. Espaço e tamanho
 

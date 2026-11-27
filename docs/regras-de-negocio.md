@@ -89,7 +89,7 @@ Planejando · Em desenvolvimento · Pausado · Concluído · Arquivado. Arquivar
 - Arquivos gerados saem no idioma escolhido.
 - **Opções:** "Incluir itens futuros" (desligada: o mapa sai na visão Hoje; ligada: Completo, e o `mapa.html` ganha Hoje/Completo) e "Incluir notas e riscos" (notas públicas e riscos em aberto). "Esconder valores secretos" aparece sempre ligada e travada. As escolhas ficam lembradas.
 - O `.env.example` traz só chaves, agrupadas por onde vão (front ou app, API, Docker); segredo fica em branco e só valores não secretos de desenvolvimento aparecem.
-- O `docker-compose.yml` sai nos kits que usam Docker, com o serviço do banco escolhido (PostgreSQL, MySQL ou SQL Server), senha lida do `.env` e imagem sem versão fixa, com o aviso de fixar antes de produção. Com SQLite, banco a decidir ou "Não se aplica", o arquivo explica o que falta.
+- O `docker-compose.yml` sai nos kits que usam Docker, com o serviço do banco escolhido (PostgreSQL, MySQL ou SQL Server), senha lida do `.env` e imagem sem versão fixa, com o aviso de fixar antes de produção. Com MySQL, um script de início deixa o usuário do app criar bancos, porque o banco de sombra do Prisma e o banco de teste do Django precisam disso; o arquivo avisa que é só para desenvolvimento. Com SQLite, banco a decidir ou "Não se aplica", o arquivo explica o que falta.
 - PNG e SVG saem do mesmo desenho, com o tema atual; o PNG em dobro da resolução.
 
 ## 11. Lixeira

@@ -223,10 +223,26 @@ export function dockerCompose(input: ExportInput, plan = composePlan(input)): st
     `      - "${service.port}:${service.port}"`,
     '    volumes:',
     `      - db-data:${service.data}`,
-    '',
-    'volumes:',
-    '  db-data:',
   );
+  // The MySQL image gives its user access to one database only; Prisma's shadow database and
+  // Django's test database need to create more. Runs once, when the volume is still empty.
+  const grants = plan.engine === 'mysql' && plan.keys.user;
+  if (grants)
+    lines.push(
+      '    configs:',
+      '      - source: dev-grants',
+      '        target: /docker-entrypoint-initdb.d/dev-grants.sql',
+    );
+  lines.push('', 'volumes:', '  db-data:');
+  if (grants)
+    lines.push(
+      '',
+      `# ${t('files.compose.devGrants')}`,
+      'configs:',
+      '  dev-grants:',
+      '    content: |',
+      `      GRANT ALL PRIVILEGES ON *.* TO '\${${plan.keys.user}}'@'%';`,
+    );
   return `${lines.join('\n')}\n`;
 }
 

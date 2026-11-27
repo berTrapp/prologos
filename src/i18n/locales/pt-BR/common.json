@@ -884,6 +884,7 @@
       "pending": "O banco de dados ainda está a decidir. Decida no mapa e gere este arquivo de novo.",
       "notApplicable": "O projeto marcou o banco de dados como \"Não se aplica\", então não há serviço para subir.",
       "sqlite": "O banco é SQLite: um arquivo dentro do projeto, sem serviço para subir.",
+      "devGrants": "Só para desenvolvimento: o usuário do app pode criar bancos, como o de teste e o banco de sombra das migrações.",
       "unknown": "O Prólogos ainda não gera o serviço de {{choice}}. Acrescente o serviço à mão."
     },
     "gitignore": {

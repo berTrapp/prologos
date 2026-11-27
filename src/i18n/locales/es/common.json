@@ -884,6 +884,7 @@
       "pending": "La base de datos todavía está por decidir. Decídela en el mapa y genera este archivo de nuevo.",
       "notApplicable": "El proyecto marcó la base de datos como \"No aplica\", así que no hay servicio que levantar.",
       "sqlite": "La base es SQLite: un archivo dentro del proyecto, sin servicio que levantar.",
+      "devGrants": "Solo para desarrollo: el usuario de la app puede crear bases, como la de prueba y la base sombra de las migraciones.",
       "unknown": "Prólogos todavía no genera el servicio de {{choice}}. Agrega el servicio a mano."
     },
     "gitignore": {

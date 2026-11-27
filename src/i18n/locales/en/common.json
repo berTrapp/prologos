@@ -884,6 +884,7 @@
       "pending": "The database is still to decide. Decide it on the map and generate this file again.",
       "notApplicable": "The project marked the database as \"Not applicable\", so there is no service to start.",
       "sqlite": "The database is SQLite: a file inside the project, with no service to start.",
+      "devGrants": "Development only: the app user can create databases, such as the test database and the migrations shadow database.",
       "unknown": "Prólogos does not generate the {{choice}} service yet. Add the service by hand."
     },
     "gitignore": {

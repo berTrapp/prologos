@@ -186,6 +186,10 @@ describe('docker-compose.yml (RN 16)', () => {
     const { file } = compose(1);
     expect(file).toContain('image: mysql');
     expect(file).toContain('MYSQL_RANDOM_ROOT_PASSWORD: "yes"');
+    // The app user may create the test and shadow databases, read from .env like the rest.
+    expect(file).toContain('target: /docker-entrypoint-initdb.d/dev-grants.sql');
+    expect(file).toContain("GRANT ALL PRIVILEGES ON *.* TO '${DB_USERNAME}'@'%';");
+    expect(compose(0).file).not.toContain('dev-grants');
   });
 
   it('runs SQL Server for .NET and adds the Docker keys to .env.example', () => {

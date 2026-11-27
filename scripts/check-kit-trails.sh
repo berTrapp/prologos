@@ -16,8 +16,10 @@ declare -A image=(
   [static-astro]=node:lts
   [django-postgres]=python:3
   [laravel-postgres]=composer:latest
+  [node-postgres]=node:lts
+  [dotnet-postgres]=mcr.microsoft.com/dotnet/sdk:latest
 )
-kits=("$@"); [ ${#kits[@]} -eq 0 ] && kits=(django laravel-react node-react spring-react dotnet-react web-vite flutter react-native static-astro django-postgres laravel-postgres)
+kits=("$@"); [ ${#kits[@]} -eq 0 ] && kits=(django laravel-react node-react spring-react dotnet-react web-vite flutter react-native static-astro django-postgres laravel-postgres node-postgres dotnet-postgres)
 for kit in "${kits[@]}"; do
   echo ">>> $kit (${image[$kit]})"
   extra=()
